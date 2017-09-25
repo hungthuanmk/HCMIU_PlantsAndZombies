@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -11,12 +12,13 @@ public class PandZ extends JFrame {
 	
 	public PandZ(String title) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(new ImageIcon("D:\\IT\\Icon\\pen_icon.png").getImage());
 		setTitle(title);
 		setSize(800, 600);
 		setResizable(false);
 		setLocation(300, 50);
 		setVisible(true);
-	//	setIconImages("D:\\IT\\Icon\\school_of_fish.icon");
+		
 		JLabel lb = new JLabel("Hello World!");
 		add(lb);
 		
