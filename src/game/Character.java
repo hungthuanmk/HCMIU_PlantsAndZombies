@@ -1,12 +1,21 @@
 package game;
 
 public class Character {
-	public enum Direction {LEFT, RIGHT};
+	
+	private boolean running = true;
 	
 	private String name;
-	private int x, y;
+	private Position pos;
+	private String img; 
 	private int hp = 0;
-	private Direction dir = Direction.LEFT; 
+	private int damage = 0;
+	private int speed;
+	//private Direction dir = Direction.LEFT; 
+	//private Thread thread;
+	
+	public Character(String name) {
+		
+	}
 	
 	protected String getName() {
 		return this.name;
@@ -16,7 +25,39 @@ public class Character {
 		this.name = S;
 	}
 	
-	public Character() {
-		
+	public Position getPos() {
+		return pos;
 	}
+
+	public void setPos(Position pos) {
+		this.pos = pos;
+	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	
+	public void move() {
+		Position newPos = new Position(this.getPos().x + this.speed, this.getPos().y);
+		this.setPos(newPos);
+	}
+	
+	public void draw() {
+		//TODO: draw image to GUI
+	}
+
+
 }
+

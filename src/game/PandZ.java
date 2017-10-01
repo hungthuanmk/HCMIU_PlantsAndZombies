@@ -20,7 +20,15 @@ public class PandZ extends JFrame {
 		setVisible(true);
 		
 		JLabel lb = new JLabel("Hello World!");
-		add(lb);
+		//add(lb);
+		
+		
+		Thread plant = new Thread(new Character(""));
+		plant.start();
+		Thread plant2 = new Thread(new Character(""));
+		plant.start();
+	//	Thread plantThread = new Thread(new Character);
+		
 		
 	}
 
