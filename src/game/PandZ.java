@@ -25,7 +25,7 @@ public class PandZ extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		PandZ game = new PandZ("Plants & Zombies - HCMIU TTNT Team 2017");
+		PandZ game = new PandZ("Plants & Zombies - HCMIU TNT Team 2017");
 	}
 
 }
