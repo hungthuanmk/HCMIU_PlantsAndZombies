@@ -40,7 +40,7 @@ public class PZGUI extends StateBasedGame {
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new PZGUI());
-			appgc.setDisplayMode(800, 600, false);
+			appgc.setDisplayMode(1366, 768, true);
 			appgc.start();
 		} 
 		catch(SlickException e) {

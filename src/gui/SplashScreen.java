@@ -13,15 +13,15 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		//Sound snd = new Sound("res/0831.ogg");
+		Sound snd = new Sound("res/0831.ogg");
+		snd.loop();
 		//snd.play();
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		Image testImg = new Image("res/mk.jpg");
-		g.drawString(mouse, 10,100);
-		//testImg.draw(0,0);
-		//g.drawImage(testImg, 100, 100);
+		Image testImg = new Image("res/wallpaper.jpg");
+		testImg.drawWarped(0, 0, 0, 768, 1366, 768, 1366, 0);
+		
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
