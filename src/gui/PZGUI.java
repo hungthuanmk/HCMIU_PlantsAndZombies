@@ -32,6 +32,10 @@ public class PZGUI extends StateBasedGame {
 		this.enterState(splashScreen); // show SplashScreen first
 	}
 	
+	public static void changeState(int state) {
+		
+	}
+	
 	public static void main(String[] args){
 		AppGameContainer appgc;
 		try {

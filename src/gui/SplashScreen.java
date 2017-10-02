@@ -13,7 +13,8 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		
+		//Sound snd = new Sound("res/0831.ogg");
+		//snd.play();
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -24,6 +25,13 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		Input input = gc.getInput();
+		if (input.isKeyDown(Input.KEY_SPACE)) {
+			mouse = "Space is pressed!";
+			sbg.enterState(1);
+		}
+		else
+			mouse = "No input";
 		
 	}
 	
