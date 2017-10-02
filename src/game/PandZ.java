@@ -6,26 +6,19 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.command.InputProvider;
+import org.newdawn.slick.Animation;
 
 public class PandZ extends BasicGame {
 	
+	private boolean showFPS = true;
 	private int score = 0;
 	private int sun = 100;
-	private int targetFPS = 60;
+	private Image img;
 	
 	public PandZ(String gameName) {
-	/*	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(new ImageIcon("D:\\IT\\Icon\\pen_icon.png").getImage());
-		setTitle(title);
-		setSize(800, 600);
-		setResizable(false);
-		setLocation(300, 50);
-		setVisible(true);
-		
-		JLabel lb = new JLabel("Hello World!");
-		add(lb);	
-		*/
 		super(gameName);
 	}
 
@@ -47,7 +40,11 @@ public class PandZ extends BasicGame {
 	
 
 	@Override
-	public void init(GameContainer gc) throws SlickException {}
+	public void init(GameContainer gc) throws SlickException {
+	 	gc.setShowFPS(this.showFPS);
+		this.img = new Image("res/b.gif");	
+		
+	}
 
 	@Override
 	public void update(GameContainer gc, int i) throws SlickException {}
@@ -55,7 +52,9 @@ public class PandZ extends BasicGame {
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
-		g.drawString("Howdy!", 10, 10);
+		g.drawString("Nguyen Phan Hung Thuan", 10, 100);
+		g.drawOval(100, 200, 200, 100);
+		this.img.drawCentered(100, 100);
 	}
 
 	public static void main(String[] args)
@@ -63,8 +62,8 @@ public class PandZ extends BasicGame {
 		try
 		{
 			AppGameContainer appgc;
-			appgc = new AppGameContainer(new PandZ("Simple Slick Game"));
-			appgc.setDisplayMode(640, 480, false);
+			appgc = new AppGameContainer(new PandZ("TNT Plants VS Zombies Clone - HCMIU"));
+			appgc.setDisplayMode(1366, 768, false);
 			appgc.start();
 		}
 		catch (SlickException ex)
