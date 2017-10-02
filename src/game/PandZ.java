@@ -1,21 +1,21 @@
 package game;
 
-import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-//import javax.swing.*;
-
-public class PandZ extends JFrame implements Runnable {
+public class PandZ extends BasicGame {
 	
 	private int score = 0;
 	private int sun = 100;
 	private int targetFPS = 60;
 	
-	public PandZ(String title) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public PandZ(String gameName) {
+	/*	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(new ImageIcon("D:\\IT\\Icon\\pen_icon.png").getImage());
 		setTitle(title);
 		setSize(800, 600);
@@ -24,7 +24,9 @@ public class PandZ extends JFrame implements Runnable {
 		setVisible(true);
 		
 		JLabel lb = new JLabel("Hello World!");
-		//add(lb);	
+		add(lb);	
+		*/
+		super(gameName);
 	}
 
 	public int getScore() {
@@ -43,16 +45,32 @@ public class PandZ extends JFrame implements Runnable {
 		this.sun = sun;
 	}
 	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
-	public static void main(String[] args) {
-		//Thread game = new Thread(PandZ("Plants & Zombies - HCMIU TNT Team 2017"));
-		PandZ game = new PandZ("Plants & Zombies - HCMIU TNT Team 2017");
+	@Override
+	public void init(GameContainer gc) throws SlickException {}
+
+	@Override
+	public void update(GameContainer gc, int i) throws SlickException {}
+
+	@Override
+	public void render(GameContainer gc, Graphics g) throws SlickException
+	{
+		g.drawString("Howdy!", 10, 10);
+	}
+
+	public static void main(String[] args)
+	{
+		try
+		{
+			AppGameContainer appgc;
+			appgc = new AppGameContainer(new PandZ("Simple Slick Game"));
+			appgc.setDisplayMode(640, 480, false);
+			appgc.start();
+		}
+		catch (SlickException ex)
+		{
+			Logger.getLogger(PandZ.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 
 }
