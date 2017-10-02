@@ -1,4 +1,4 @@
-package game;
+package com;
 
 public class Position {
 	public int x=0, y=0; 

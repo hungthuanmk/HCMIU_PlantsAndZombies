@@ -1,4 +1,4 @@
-package game;
+package pz;
 
 public class Card {
 	private String name;

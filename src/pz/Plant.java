@@ -1,4 +1,4 @@
-package game;
+package pz;
 
 public class Plant extends Character {
 

@@ -1,4 +1,4 @@
-package game;
+package pz;
 
 public class Bullet {
 	private int damage = 0;

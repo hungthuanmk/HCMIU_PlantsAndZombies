@@ -1,4 +1,6 @@
-package game;
+package pz;
+
+import com.Position;
 
 public class Character {
 	
