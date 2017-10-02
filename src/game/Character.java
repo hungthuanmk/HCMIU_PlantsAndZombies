@@ -2,14 +2,15 @@ package game;
 
 public class Character {
 	
-	private boolean running = true;
+//	private boolean running = true;
 	
 	private String name;
 	private Position pos;
 	private String img; 
 	private int hp = 0;
 	private int damage = 0;
-	private int speed;
+	private int speed = 0;
+	private int attackInterval=100;
 	//private Direction dir = Direction.LEFT; 
 	//private Thread thread;
 	
