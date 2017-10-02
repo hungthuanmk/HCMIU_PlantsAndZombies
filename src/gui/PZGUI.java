@@ -6,8 +6,10 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 public class PZGUI extends StateBasedGame {
-	
+	public static final int weight = 1366;
+	public static final int height = 768;
 	public static final boolean showFPS = true;
+	public static final boolean fullScreen = false;
 	
 	public static final String gameName = "TNT Plants Vs. Zombies HCMIU";
 	public static final int splashScreen = 0;
@@ -15,7 +17,7 @@ public class PZGUI extends StateBasedGame {
 	public static final int play = 2;
 	public static final int gameOver = 3;
 	
-	public PZGUI() {
+	public PZGUI(String gameName) {
 		super(gameName);
 		this.addState(new SplashScreen(splashScreen));
 		this.addState(new Menu(menu));
@@ -39,8 +41,11 @@ public class PZGUI extends StateBasedGame {
 	public static void main(String[] args){
 		AppGameContainer appgc;
 		try {
-			appgc = new AppGameContainer(new PZGUI());
-			appgc.setDisplayMode(1366, 768, true);
+			appgc = new AppGameContainer(new PZGUI(gameName));
+			appgc.setDisplayMode(weight, height, fullScreen);
+			//appgc.setIcon("res/icon_16.png"); // it not work -_-
+			appgc.setTargetFrameRate(60);
+			appgc.setVSync(true);
 			appgc.start();
 		} 
 		catch(SlickException e) {

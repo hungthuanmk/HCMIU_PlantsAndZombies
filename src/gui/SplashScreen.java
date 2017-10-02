@@ -31,8 +31,7 @@ public class SplashScreen extends BasicGameState {
 			sbg.enterState(1);
 		}
 		else
-			mouse = "No input";
-		
+			mouse = "No input";		
 	}
 	
 	public int getID() {
