@@ -16,17 +16,18 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		//Sound snd = new Sound("res/0831.ogg");
-		//snd.loop();
-		//snd.play();
-		 testImg = new Image("res/wallpaper.jpg");
-		 pea = new Image("res/peashooter.png");
+		Sound snd = new Sound("res/main_theme.ogg"); // Why it play twice ?
+		//snd.loop(); 
+		snd.play();
+		testImg = new Image("res/wallpaper.jpg");
+		pea = new Image("res/peashooter.png");
+		 
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-	//	Image testImg = new Image("res/wallpaper.jpg");
+		//Image testImg = new Image("res/wallpaper.jpg");
 		testImg.drawWarped(0, 0, 0, 768, 1366, 768, 1366, 0);
-		g.drawImage(pea, x, 100);
+		//g.drawImage(pea, x, 100);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -38,7 +39,7 @@ public class SplashScreen extends BasicGameState {
 		else
 			mouse = "No input";
 		gc.sleep(100);
-		x++;
+		x+=10;
 	}
 	
 	public int getID() {
