@@ -21,8 +21,19 @@ public class SSound {
 		return this.snd;
 	}
 	
-	public final void play(float pitch, float volume) {
-		this.getSound().play(pitch, volume);
+	public final void play(boolean looping, float pitch, float volume) {
+		if (looping == false)
+			this.getSound().play(pitch, volume);
+		else
+			this.getSound().loop(pitch, volume);
+	}
+	
+	public final void play(boolean looping) {
+		this.play(looping, 1f, 1f);
+	}
+	
+	public final void play() {
+		this.play(false, 1f, 1f);
 	}
 	
 	public final void stop() {
@@ -39,6 +50,14 @@ public class SSound {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static final void play(String snd, boolean looping) {
+		play(snd, looping, 1f, 1f);
+	}
+	
+	public static final void play(String snd) {
+		play(snd, false, 1f, 1f);
 	}
 
 }
