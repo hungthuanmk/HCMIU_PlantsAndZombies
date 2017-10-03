@@ -9,15 +9,18 @@ public class SplashScreen extends BasicGameState {
 	public Image testImg;
 	public Image pea;
 	int x=0;
+	SpriteSheet sun;
+	Animation sunAni;
+	Vector<Animation> sunArray = new Vector<Animation>();
 	
 	public SplashScreen(int state) {
-		
+		//SSound.play("res/0831.ogg",false, 1f, 1f);
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
 		testImg = new Image("res/wallpaper.jpg");
-		pea = new Image("res/peashooter.png");
+		pea = new Image("res/sun.png");
 		sun = new SpriteSheet("res/sunSprite.png",500,500);
 		sunAni = new Animation(sun, 300);
 		sunArray.clear();
@@ -25,7 +28,8 @@ public class SplashScreen extends BasicGameState {
 		System.out.print("Init");
 		Sound snd = new Sound("res/main_theme.ogg"); // Why it play twice ?
 		//snd.loop(); 
-		snd.play();	 
+		snd.play();	
+		pea = new Image("res/sun.png");
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
