@@ -61,11 +61,10 @@ public class PZGUI extends StateBasedGame {
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
-		gc.setShowFPS(showFPS);
-		this.getState(splashScreen).init(gc, this);
-		this.getState(menu).		init(gc, this);
-		this.getState(play).		init(gc, this);
-		this.getState(gameOver).	init(gc, this);
+		//this.getState(splashScreen).init(gc, this);
+		//this.getState(menu).		init(gc, this);
+		//this.getState(play).		init(gc, this);
+		//this.getState(gameOver).	init(gc, this);
 		this.enterState(splashScreen); // show SplashScreen first	
 	}
 	
@@ -74,6 +73,7 @@ public class PZGUI extends StateBasedGame {
 		try {
 			appgc = new AppGameContainer(new PZGUI(gameName));
 			
+			appgc.setShowFPS(showFPS);
 			appgc.setDisplayMode(width, height, fullScreen);
 			appgc.setTargetFrameRate(targetFPS);
 			appgc.setVSync(vSync);

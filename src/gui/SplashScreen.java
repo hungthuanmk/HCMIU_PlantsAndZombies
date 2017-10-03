@@ -27,7 +27,8 @@ public class SplashScreen extends BasicGameState {
 		sun = new SpriteSheet("res/sunSprite.png",500,500);
 		sunAni = new Animation(sun, 300);
 		sunArray.clear();
-		sunArray.add(new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300));	 
+		sunArray.add(new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300));	
+		System.out.print("Init");
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
