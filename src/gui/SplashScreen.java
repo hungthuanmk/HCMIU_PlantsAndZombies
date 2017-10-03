@@ -22,22 +22,17 @@ public class SplashScreen extends BasicGameState {
 		//snd.play();
 		 testImg = new Image("res/wallpaper.jpg");
 		 pea = new Image("res/sun.png");
-		 sun = new SpriteSheet("res/sunSprite.png" ,500,500);
+		 sun = new SpriteSheet("res/sunSprite.png",500,500);
 		 sunAni = new Animation(sun, 150);
 		// gc.setMouseCursor(new Cursor(), arg1, arg2);
 		 
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-	//	Image testImg = new Image("res/wallpaper.jpg");
 		testImg.drawWarped(0, 0, 0, 768, 1366, 768, 1366, 0);
-		//g.drawImage(pea, x, 100);
-	//	g.setAntiAlias(true);
 		//pea.draw(x, 100, 0.5f, new Color(1,1,1, 0.65f)); //Transparent test
 		sunAni.draw(x, 100);
-		//pea.draw(x, 100, 0.5f);
-		
-		
+
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
