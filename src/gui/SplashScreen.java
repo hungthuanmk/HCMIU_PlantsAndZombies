@@ -17,7 +17,7 @@ public class SplashScreen extends BasicGameState {
 	Vector<Animation> sunArray = new Vector<Animation>();
 	
 	public SplashScreen(int state) {
-		//SSound.play("res/0831.ogg",false, 1f, 1f);
+		SSound.play("res/main_theme.ogg",false, 1f, 1f);
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -37,13 +37,15 @@ public class SplashScreen extends BasicGameState {
 		//sunAni.draw(x, 100);
 		Random r = new Random();
 		for (Animation a:sunArray) {
-			a.draw(r.nextInt(1366-500), r.nextInt(768-500));
+			//a.draw(r.nextInt(1366-500), r.nextInt(768-500));
+			a.draw(500, x, 100, 100);
 		}
 		
 		//gc.sleep(50);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		x++;
 	}
 	
 	public int getID() {
