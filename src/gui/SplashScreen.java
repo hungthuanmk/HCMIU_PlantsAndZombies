@@ -20,24 +20,30 @@ public class SplashScreen extends BasicGameState {
 		//snd.loop();
 		//snd.play();
 		 testImg = new Image("res/wallpaper.jpg");
-		 pea = new Image("res/peashooter.png");
+		 pea = new Image("res/sun.png");
+		// gc.setMouseCursor(new Cursor(), arg1, arg2);
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 	//	Image testImg = new Image("res/wallpaper.jpg");
 		testImg.drawWarped(0, 0, 0, 768, 1366, 768, 1366, 0);
-		g.drawImage(pea, x, 100);
+		//g.drawImage(pea, x, 100);
+		g.setAntiAlias(true);
+		pea.draw(x, 100, 0.5f, new Color(1,1,1, 0.65f)); //Transparent test
+		//pea.draw(x, 100, 0.5f);
+		
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_SPACE)) {
-			mouse = "Space is pressed!";
-			sbg.enterState(1);
+			
+			
+			//sbg.enterState(1);
 		}
 		else
 			mouse = "No input";
-		gc.sleep(100);
+		gc.sleep(5);
 		x++;
 	}
 	

@@ -8,5 +8,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jars/jorbis-0.0.15.jar"/>
 	<classpathentry kind="lib" path="lib/jars/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/jars/ini4j-0.5.4-jdk14.jar"/>
+	<classpathentry kind="lib" path="lib/jars/ini4j-0.5.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
