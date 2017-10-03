@@ -39,13 +39,25 @@ public class PZGUI extends StateBasedGame {
 			
 		} catch (InvalidFileFormatException e) {
 			e.printStackTrace();
+			this.loadDefaultSettings();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
+			this.loadDefaultSettings();
 		}
 		this.addState(new SplashScreen(splashScreen));
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
 		this.addState(new GameOver(gameOver));
+	}
+	
+	private void loadDefaultSettings() {
+		width      = 800;
+		height     = 600;
+		targetFPS  = 1000;
+		showFPS    = true;
+		fullScreen = false;
+		vSync      = false;
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
