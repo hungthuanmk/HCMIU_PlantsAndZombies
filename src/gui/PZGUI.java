@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
 import org.newdawn.slick.*;
+import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.*;
 
 public class PZGUI extends StateBasedGame {
@@ -65,7 +66,7 @@ public class PZGUI extends StateBasedGame {
 		this.getState(menu).		init(gc, this);
 		this.getState(play).		init(gc, this);
 		this.getState(gameOver).	init(gc, this);
-		this.enterState(splashScreen); // show SplashScreen first
+		this.enterState(splashScreen); // show SplashScreen first	
 	}
 	
 	public static void main(String[] args){

@@ -2,6 +2,7 @@ package gui;
 
 import java.util.Vector;
 import java.util.Random;
+import com.SSound;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -21,7 +22,8 @@ public class SplashScreen extends BasicGameState {
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
-		//Sound snd = new Sound("res/0831.ogg");
+		//Ssound.playSound("res/a.ogg", true);
+		SSound.play("res/0831.ogg", false);
 		//snd.loop();
 		//snd.play();
 		testImg = new Image("res/wallpaper.jpg");
@@ -32,7 +34,7 @@ public class SplashScreen extends BasicGameState {
 		sunArray.add(new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300));
 		//sunArray.add(new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300));
 		//sunArray.add(new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300));
-		 //sunAni.setSpeed(2f);
+		//sunAni.setSpeed(2f);
 		 
 	}
 	
@@ -40,7 +42,6 @@ public class SplashScreen extends BasicGameState {
 		testImg.drawWarped(0, 0, 0, 768, 1366, 768, 1366, 0);
 		//pea.draw(x, 100, 0.5f, new Color(1,1,1, 0.65f)); //Transparent test
 		//sunAni.draw(x, 100);
-	//	System.out.println(sunArray.size());
 		Random r = new Random();
 		for (Animation a:sunArray) {
 			a.draw(r.nextInt(1366-500), r.nextInt(768-500));
@@ -50,8 +51,6 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		//gc.sleep(5);
-		x++;
 	}
 	
 	public int getID() {
