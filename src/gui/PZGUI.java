@@ -64,9 +64,9 @@ public class PZGUI extends StateBasedGame {
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
 		//this.getState(splashScreen).init(gc, this);
-		//this.getState(menu).		init(gc, this);
-		//this.getState(play).		init(gc, this);
-		//this.getState(gameOver).	init(gc, this);
+		//this.getState(menu).		  init(gc, this);
+		//this.getState(play).		  init(gc, this);
+		//this.getState(gameOver).	  init(gc, this);
 		this.enterState(splashScreen, new FadeInTransition(), new EmptyTransition()); // show SplashScreen first	
 	}
 	
