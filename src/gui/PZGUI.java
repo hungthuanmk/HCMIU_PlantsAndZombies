@@ -1,24 +1,21 @@
 package gui;
 
-import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 public class PZGUI extends StateBasedGame {
-	public static int width = 1366;
-	public static int height = 768;
+	public static int width 	= 1366;
+	public static int height 	= 768;
 	public static int targetFPS = 65;
-	public static boolean showFPS = true;
+	public static boolean showFPS 	 = true;
 	public static boolean fullScreen = false;
-	public static boolean vSync = true;
+	public static boolean vSync 	 = true;
+	public static boolean AA		 = true;
 	
 	public static final String gameName = "TNT Plants Vs. Zombies HCMIU";
 	public static final int splashScreen = 0;
@@ -36,6 +33,7 @@ public class PZGUI extends StateBasedGame {
 			showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
 			fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
 			vSync      = Boolean.parseBoolean (ini.get("DISPLAY", "vSync"	  ));
+			vSync      = Boolean.parseBoolean (ini.get("DISPLAY", "AA"	  ));
 			
 		} catch (InvalidFileFormatException e) {
 			e.printStackTrace();
@@ -58,6 +56,7 @@ public class PZGUI extends StateBasedGame {
 		showFPS    = true;
 		fullScreen = false;
 		vSync      = false;
+		AA         = true;
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException {
@@ -73,10 +72,13 @@ public class PZGUI extends StateBasedGame {
 		AppGameContainer appgc;
 		try {
 			appgc = new AppGameContainer(new PZGUI(gameName));
+			
 			appgc.setDisplayMode(width, height, fullScreen);
-			//appgc.setIcon("res/pvz_icon.png"); // it not work -_-
 			appgc.setTargetFrameRate(targetFPS);
 			appgc.setVSync(vSync);
+			appgc.setSmoothDeltas(true);
+			appgc.setAlwaysRender(true);
+			
 			appgc.start(); //Begin thread game
 		} 
 		catch(SlickException e) {
