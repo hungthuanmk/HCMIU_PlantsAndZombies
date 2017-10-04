@@ -36,7 +36,7 @@ public class PZGUI extends StateBasedGame {
 			showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
 			fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
 			vSync      = Boolean.parseBoolean (ini.get("DISPLAY", "vSync"	  ));
-			vSync      = Boolean.parseBoolean (ini.get("DISPLAY", "AA"	  ));
+			AA         = Boolean.parseBoolean (ini.get("DISPLAY", "AA"	  ));
 			
 		} catch (InvalidFileFormatException e) {
 			e.printStackTrace();
