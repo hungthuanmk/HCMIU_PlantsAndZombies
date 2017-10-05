@@ -12,8 +12,8 @@ import org.newdawn.slick.state.transition.*;
 import javafx.animation.RotateTransition;
 
 public class PZGUI extends StateBasedGame {
-	public static int width 	= 1366;
-	public static int height 	= 768;
+	public static int width 	= 1600;
+	public static int height 	= 900;
 	public static int targetFPS = 65;
 	public static boolean showFPS 	 = true;
 	public static boolean fullScreen = false;

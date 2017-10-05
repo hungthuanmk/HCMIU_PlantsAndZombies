@@ -9,63 +9,86 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 public class SplashScreen extends BasicGameState {
-	
-	public Image testImg;
-	public Image pea;
+	// Declare variable
+	public Image background;
+	public Image sun;
 	public Image logo;
 	public Image playButton;
-	public Color filter = new Color(255, 255, 255, 1f);
 	
-	int x=0;
-	SpriteSheet sun;
 	Animation sunAni;
-	Vector<Animation> sunArray = new Vector<Animation>();
 	
+	int sunPosX = 0, sunPosY = 0;
+	
+	// PlaySound
 	public SplashScreen(int state) {
 		SSound.play("res/main_theme.ogg",false, 1f, 1f);
 	}
 	
+	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
-		testImg = new Image("res/wallpaper.jpg");
+		
+		background = new Image("res/wallpaper.jpg");
 		logo = new Image("res/pvz_logo.png");
-		pea = new Image("res/sun.png");
+		sun = new Image("res/sun.png");
 		playButton = new Image("res/Button/PlayDemo.png");
-		sun = new SpriteSheet("res/sunSprite.png",500,500);
-		sunAni = new Animation(sun, 300);
-		sunArray.clear();
-		sunArray.add(new Animation(new SpriteSheet("res/sunSprite.png",500,500), 100));
+		sunAni = new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300);
 		
-		System.out.print("Init");
+		System.out.println("SplashScreen Init complete");
+		System.out.println("Wid: " + PZGUI.width);
+		System.out.println("Hei: " + PZGUI.height);
 	}
 	
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		testImg.drawWarped(0, 0, 0, 768, 1366, 768, 1366, 0);
-		logo.draw(200, 50, 940, 143);
-		pea.draw(x, 100, 0.5f, new Color(1,1,1, 0.4f)); //Transparent test
-		sunAni.draw(x, 100);
-		playButton.draw(420, 520, 485, 98, filter);
+	// Create Thing
+	// Start Button
+	public void startButton(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		int posX = 420;
+		int posY = 520;
+		int edgeX = posX + playButton.getWidth();
+		int edgeY = posY + playButton.getHeight();
 		
-		Random r = new Random();
-		for (Animation a:sunArray) {
-			//a.draw(r.nextInt(1366-500), r.nextInt(768-500));
-			a.draw(500, x, 100, 100);
-		}
-				
-		//gc.sleep(50);
-	}
-	
-	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		x++;
-		int mouseX = Mouse.getX();
-		int mouseY = 768 - Mouse.getY();
-		if (mouseX >= 420 && mouseX <= 420+485 && mouseY >= 520 && mouseY <= 520+98){
-			filter = new Color(100, 100, 100, 0.5f);
+		if (Mouse.getX() >= posX && 
+			Mouse.getX() <= edgeX && 
+			PZGUI.height - Mouse.getY() >= posY && 
+			PZGUI.height - Mouse.getY() <= edgeY)
+		{
+			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight(), new Color(100, 100, 100, 0.5f));
 			if (Mouse.isButtonDown(0))
 				sbg.enterState(1);
 		}
 		else 
-			filter = new Color(255, 255, 255, 1f); 	
+			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight());		
+	}
+	// BackGround
+	public void showBackGround(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
+		//background.drawWarped(0, 0, 0, PZGUI.height, PZGUI.width, PZGUI.height, PZGUI.width, 0);
+		background.draw(0, 0, PZGUI.width, PZGUI.height);
+	}
+	// Game Logo
+	public void showLogo(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
+		float posX = PZGUI.width / (9/2); //Just a random number ._.
+		float posY = PZGUI.height / (16/2);
+		float wid = logo.getWidth() / (2);
+		float hei = logo.getHeight() / (2);
+		
+		logo.draw(posX, posY, wid, hei);
+	}	
+	// Sun
+	public void showSun(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		sun.draw(sunPosX, 100, 0.5f, new Color(1,1,1, 0.4f)); //Transparent test
+		sunAni.draw(sunPosX, 100);
+	}
+	
+	// Render
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		showBackGround(gc, sbg, g);
+		showLogo(gc, sbg, g);
+		startButton(gc, sbg, g);
+		showSun(gc, sbg, g);		
+	}
+	
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		sunPosX++;					
 	}
 	
 	public int getID() {
