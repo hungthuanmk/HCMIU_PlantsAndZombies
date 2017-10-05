@@ -49,7 +49,7 @@ public class PZGUI extends StateBasedGame {
 		this.addState(new SplashScreen(splashScreen));
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
-		this.addState(new GameOver(gameOver));
+		//this.addState(new GameOver(gameOver));
 	}
 	
 	private void loadDefaultSettings() {
