@@ -4,24 +4,18 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+import pz.Zombie;
+
 public class Play extends BasicGameState {
-	Animation zom = new Animation();
+	
+	Zombie zom;
+	
 	public Play(int state) {
 		
 	}
 	// Init Zombie
 	public void initZombie() throws SlickException{
-		int time=100;
-		zom.addFrame(new Image("res/Zombie/male/Walk (1).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (2).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (3).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (4).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (5).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (6).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (7).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (8).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (9).png"), time);
-		zom.addFrame(new Image("res/Zombie/male/Walk (10).png"), time);		
+		zom = new Zombie("bla");
 	}
 	
 	// Initialization
@@ -32,8 +26,8 @@ public class Play extends BasicGameState {
 	
 	// Show Zombie
 	public void showZombie(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
-		if (Mouse.isButtonDown(0))
-			zom.draw(Mouse.getX() - 20 , 768 - 50 - Mouse.getY(), zom.getWidth()/3, zom.getHeight()/3);
+		zom.draw();
+		//if (Mouse.isButtonDown(0))
 	}
 	
 	// Show Seed Board

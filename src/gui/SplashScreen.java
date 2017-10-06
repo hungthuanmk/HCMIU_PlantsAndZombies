@@ -52,12 +52,15 @@ public class SplashScreen extends BasicGameState {
 			PZGUI.height - Mouse.getY() >= posY && 
 			PZGUI.height - Mouse.getY() <= edgeY)
 		{
-			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight(), new Color(100, 100, 100, 0.5f));
+			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight(), new Color(100, 100, 100, 2f));
+			//playButton.drawCentered(posX, posY); //can't change filter, set size 
 			if (Mouse.isButtonDown(0))
 				sbg.enterState(1);
+			
 		}
 		else 
 			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight());		
+		
 	}
 	// BackGround
 	public void showBackGround(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
@@ -67,7 +70,7 @@ public class SplashScreen extends BasicGameState {
 	// Game Logo
 	public void showLogo(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		float posX = PZGUI.width / (9/2); //Just a random number ._.
-		float posY = PZGUI.height / (16/2);
+		float posY = PZGUI.height / (16/2); 
 		float wid = logo.getWidth() / (2);
 		float hei = logo.getHeight() / (2);
 		
