@@ -16,14 +16,20 @@ public class Zombie extends Character {
 	public Zombie(String name) throws SlickException {
 		super(name);
 		loadAni();
-		//zombie_ani = zombie_walk;
+		zombie_ani = zombie_walk;
 			
 	}
 	
 	public void draw() {
-		zombie_walk.draw(Mouse.getX(), PZGUI.height - Mouse.getY());
+		zombie_ani.draw(Mouse.getX(), PZGUI.height - Mouse.getY());
 	}
 	
+	public void setAnimationToWalk(){
+		zombie_ani = zombie_walk;
+	}
+	public void setAnimationToAttack(){
+		zombie_ani = zombie_attack;
+	}
 	public void loadWalkAni() throws SlickException{		
 		zombie_walk.addFrame(new Image("res/Zombie/male/Walk (1).png"), speed);
 		zombie_walk.addFrame(new Image("res/Zombie/male/Walk (2).png"), speed);

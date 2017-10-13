@@ -14,7 +14,7 @@ public class Play extends BasicGameState {
 	}
 	// Init Zombie
 	public void initZombie() throws SlickException{
-		zom = new Zombie("bla");
+		zom = new Zombie("");
 	}
 	
 	// Initialization
@@ -26,7 +26,14 @@ public class Play extends BasicGameState {
 	// Show Zombie
 	public void showZombie(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		zom.draw();
-		//if (Mouse.isButtonDown(0))
+		if (Mouse.isButtonDown(0))
+		{
+			zom.setAnimationToAttack();
+		}
+		else
+		{
+			zom.setAnimationToWalk();
+		}
 	}
 	
 	// Show Seed Board
