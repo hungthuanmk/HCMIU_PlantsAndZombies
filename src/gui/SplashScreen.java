@@ -30,7 +30,7 @@ public class SplashScreen extends BasicGameState {
 		
 		background = new Image("res/wallpaper.jpg");
 		logo = new Image("res/pvz_logo.png");
-		sun = new Image("res/sun.png");
+		
 		playButton = new Image("res/Button/PlayDemo.png");
 		sunAni = new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300);
 		

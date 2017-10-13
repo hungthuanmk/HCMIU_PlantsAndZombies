@@ -15,7 +15,7 @@ public class Play extends BasicGameState {
 	}
 	// Init Zombie
 	public void initZombie() throws SlickException{
-		zom = new Zombie("bla");
+		Zombie zom = new Zombie("bla");
 	}
 	
 	// Initialization
