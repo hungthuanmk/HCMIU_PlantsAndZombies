@@ -78,7 +78,6 @@ public class SplashScreen extends BasicGameState {
 	}	
 	// Sun
 	public void showSun(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		sun.draw(sunPosX, 100, 0.5f, new Color(1,1,1, 0.4f)); //Transparent test
 		sunAni.draw(sunPosX, 100);
 	}
 	

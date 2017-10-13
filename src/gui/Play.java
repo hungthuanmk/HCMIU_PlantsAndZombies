@@ -9,13 +9,12 @@ import pz.Zombie;
 public class Play extends BasicGameState {
 	
 	Zombie zom;
-	
 	public Play(int state) {
 		
 	}
 	// Init Zombie
 	public void initZombie() throws SlickException{
-		Zombie zom = new Zombie("bla");
+		zom = new Zombie("bla");
 	}
 	
 	// Initialization
