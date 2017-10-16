@@ -11,11 +11,12 @@ import org.newdawn.slick.state.*;
 public class SplashScreen extends BasicGameState {
 	// Declare variable
 	public Image background;
-	public Image sun;
+	
 	public Image logo;
 	public Image playButton;
 	
-	Animation sunAni;
+	Animation sunAni = new Animation();
+	Animation peaShooter = new Animation();
 	
 	int sunPosX = 0, sunPosY = 0;
 	
@@ -32,7 +33,19 @@ public class SplashScreen extends BasicGameState {
 		logo = new Image("res/pvz_logo.png");
 		
 		playButton = new Image("res/Button/PlayDemo.png");
-		sunAni = new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300);
+		
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 1.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 2.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 3.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 4.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), 200);
+		
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), 200);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), 200);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), 200);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), 200);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), 200);
 		
 		System.out.println("SplashScreen Init complete");
 		System.out.println("Wid: " + PZGUI.width);
@@ -78,7 +91,9 @@ public class SplashScreen extends BasicGameState {
 	}	
 	// Sun
 	public void showSun(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		sunAni.draw(sunPosX, 100);
+		sunAni.draw(400, sunPosY, 100, 100);
+		peaShooter.draw(500, 500, 200, 200);
+		
 	}
 	
 	// Render
@@ -90,7 +105,8 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		sunPosX++;					
+		//sunPosX++;					
+		sunPosY++;					
 	}
 	
 	public int getID() {
