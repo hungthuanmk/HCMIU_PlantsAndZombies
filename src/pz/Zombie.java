@@ -25,9 +25,12 @@ public class Zombie extends Character {
 	}
 	
 	public void setAnimationToWalk(){
+		zombie_walk.setCurrentFrame(0);
 		zombie_ani = zombie_walk;
 	}
 	public void setAnimationToAttack(){
+		
+		zombie_attack.setCurrentFrame(0);
 		zombie_ani = zombie_attack;
 	}
 	public void loadWalkAni() throws SlickException{		

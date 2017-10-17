@@ -41,11 +41,11 @@ public class SplashScreen extends BasicGameState {
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), 200);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), 200);
 		
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), 200);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), 200);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), 200);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), 200);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), 200);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), 300);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), 300);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), 300);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), 300);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), 300);
 		
 		System.out.println("SplashScreen Init complete");
 		System.out.println("Wid: " + PZGUI.width);
@@ -93,6 +93,7 @@ public class SplashScreen extends BasicGameState {
 	public void showSun(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		sunAni.draw(400, sunPosY, 100, 100);
 		peaShooter.draw(500, 500, 200, 200);
+		
 		
 	}
 	
