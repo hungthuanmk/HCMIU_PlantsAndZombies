@@ -2,9 +2,8 @@ package pz;
 
 public class Plant extends Character {
 
-	public Plant(String name) {
-		super(name);
+	public Plant() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
-
 }

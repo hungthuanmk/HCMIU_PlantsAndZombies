@@ -34,6 +34,7 @@ public class SplashScreen extends BasicGameState {
 		
 		playButton = new Image("res/Button/PlayDemo.png");
 		
+		
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 1.png"), 200);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 2.png"), 200);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 3.png"), 200);
@@ -41,11 +42,12 @@ public class SplashScreen extends BasicGameState {
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), 200);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), 200);
 		
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), 300);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), 300);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), 300);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), 300);
-		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), 300);
+		int ani_speed = 250;
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), ani_speed);
 		
 		System.out.println("SplashScreen Init complete");
 		System.out.println("Wid: " + PZGUI.width);

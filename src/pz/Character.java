@@ -1,5 +1,7 @@
 package pz;
 
+import org.newdawn.slick.Animation;
+
 import com.Position;
 
 public class Character {
@@ -12,11 +14,12 @@ public class Character {
 	private int hp = 0;
 	private int damage = 0;
 	private int speed = 0;
-	private int attackInterval=100;
+	private int attackInterval = 100;
+		
 	//private Direction dir = Direction.LEFT; 
 	//private Thread thread;
 	
-	public Character(String name) {
+	public Character() {
 		
 	}
 	
@@ -52,15 +55,8 @@ public class Character {
 		this.speed = speed;
 	}
 	
-	public void move() {
-		Position newPos = new Position(this.getPos().x + this.speed, this.getPos().y);
-		this.setPos(newPos);
-	}
-	
 	public void draw() {
 		//TODO: draw image to GUI
 	}
-
-
 }
 
