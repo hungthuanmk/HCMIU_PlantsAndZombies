@@ -5,14 +5,14 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Plant extends Character {
+public abstract class Plant extends Character {
 
-	public Plant() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Plant(String name) {
+		super(name);
 	}
-	
-	public void draw(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		
+
+	protected void move() {
+		this.setPos(this.getPos().x + this.getSpeed(), this.getPos().y);
 	}
+
 }

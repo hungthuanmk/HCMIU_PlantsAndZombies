@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 
 import gui.PZGUI;
 
-public class Zombie extends Character {
+public abstract class Zombie extends Character {
 	private int speed = 100;
 	
 	public Animation animation = new Animation();
@@ -15,15 +15,11 @@ public class Zombie extends Character {
 	public Animation attack = new Animation();
 	
 	
-	public Zombie() throws SlickException {
-		super();
+	public Zombie(String name) throws SlickException {
+		super(name);
 		loadAni();
 		animation = walk;
 			
-	}
-	
-	public void draw() {
-		
 	}
 	
 	public void setAnimationToWalk(){
@@ -42,6 +38,10 @@ public class Zombie extends Character {
 
 	public void loadAni() throws SlickException{
 		
+	}
+	
+	protected void move() {
+		this.setPos(this.getPos().x + this.getSpeed(), this.getPos().y);
 	}
 
 }

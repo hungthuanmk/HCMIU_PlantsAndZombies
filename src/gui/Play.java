@@ -11,6 +11,7 @@ public class Play extends BasicGameState {
 
 	Zombie[] zombie = new Zombie[50];
 	Plant[] plant;
+	//Plant a = new Plant();
 
 	public Play(int state) {
 
@@ -75,6 +76,7 @@ public class Play extends BasicGameState {
 		showSuncollectedGrid(gc, sbg, g);
 		showSeedZoneGrid(gc, sbg, g);
 		showPlantZoneGrid(gc, sbg, g);
+		//a.draw();
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {

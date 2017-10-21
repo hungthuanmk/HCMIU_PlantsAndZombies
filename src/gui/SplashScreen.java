@@ -22,7 +22,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// PlaySound
 	public SplashScreen(int state) {
-		SSound.play("res/main_themre.ogg",false, 1f, 1f);
+		//SSound.play("res/main_themre.ogg",false, 1f, 1f);
 	}
 	
 	// Initialization
