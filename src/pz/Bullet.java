@@ -1,14 +1,16 @@
 package pz;
 
-public class Bullet {
+import org.newdawn.slick.Image;
+
+public abstract class Bullet {
 	private int damage = 0;
-	private String img;
+	private Image img;
 	private int speed = 0;
 	
 	
-	public Bullet(String img, int damage, int speed) {
+	public Bullet(Image img, int damage, int speed) {
 		this.setDamage(damage);
-		this.img = img;
+		this.setImg(img);
 		this.setSpeed(speed);
 	}
 	
@@ -27,4 +29,15 @@ public class Bullet {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	
+	protected abstract void move();
+
+	public Image getImg() {
+		return img;
+	}
+
+	public void setImg(Image img) {
+		this.img = img;
+	}
+	
 }
