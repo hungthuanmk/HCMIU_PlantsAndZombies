@@ -9,13 +9,14 @@ public abstract class Bullet {
 	private Animation ani;
 	private int speed = 0;
 	private Position pos;
-	
+
 	public Bullet(Animation ani, int damage, int speed, Position pos) {
 		this.setDamage(damage);
 		this.setAnimation(ani);
 		this.setSpeed(speed);
+		
 	}
-	
+
 	public int getDamage() {
 		return damage;
 	}
@@ -31,8 +32,6 @@ public abstract class Bullet {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
-	protected abstract void move();
 
 	public Animation getAnimation() {
 		return ani;
@@ -49,10 +48,12 @@ public abstract class Bullet {
 	public void setPos(Position pos) {
 		this.pos = pos;
 	}
-	
+
 	public void setPos(int x, int y) {
 		this.pos.x = x;
 		this.pos.y = y;
 	}
-	
+
+	protected abstract void move();
+
 }
