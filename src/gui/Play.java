@@ -11,6 +11,8 @@ public class Play extends BasicGameState {
 
 	Zombie[] zombie = new Zombie[50];
 	Plant[] plant;
+	private Image background;
+	
 
 	public Play(int state) {
 
@@ -23,6 +25,7 @@ public class Play extends BasicGameState {
 
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		background = new Image("res/Map_1.jpg");
 		initZombie();
 	}
 
@@ -56,7 +59,7 @@ public class Play extends BasicGameState {
 
 	// Show Plant Zone
 	public void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		int posX = 350;
+		int posX = 443;
 		int posY = 150;
 		int W = 115;
 		int H = 135;
@@ -69,9 +72,13 @@ public class Play extends BasicGameState {
 	public void showPlantZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 
 	}
-
+	//Show Background
+	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		background.draw(-350, -205, (float)0.71);
+	}
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		showBackground(gc, sbg, g);
 		showSuncollectedGrid(gc, sbg, g);
 		showSeedZoneGrid(gc, sbg, g);
 		showPlantZoneGrid(gc, sbg, g);

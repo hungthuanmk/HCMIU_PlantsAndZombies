@@ -10,7 +10,7 @@ import org.newdawn.slick.state.*;
 
 public class SplashScreen extends BasicGameState {
 	// Declare variable
-	public Image background;
+	private Image background;
 	
 	public Image logo;
 	public Image playButton;
@@ -22,7 +22,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// PlaySound
 	public SplashScreen(int state) {
-		SSound.play("res/main_themre.ogg",false, 1f, 1f);
+		SSound.play("res/main_theme.ogg",false, 1f, 1f);
 	}
 	
 	// Initialization
