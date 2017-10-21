@@ -11,17 +11,18 @@ import org.newdawn.slick.state.*;
 public class SplashScreen extends BasicGameState {
 	// Declare variable
 	public Image background;
-	public Image sun;
+	
 	public Image logo;
 	public Image playButton;
 	
-	Animation sunAni;
+	Animation sunAni = new Animation();
+	Animation peaShooter = new Animation();
 	
 	int sunPosX = 0, sunPosY = 0;
 	
 	// PlaySound
 	public SplashScreen(int state) {
-		SSound.play("res/main_theme.ogg",false, 1f, 1f);
+		SSound.play("res/main_themre.ogg",false, 1f, 1f);
 	}
 	
 	// Initialization
@@ -30,9 +31,32 @@ public class SplashScreen extends BasicGameState {
 		
 		background = new Image("res/wallpaper.jpg");
 		logo = new Image("res/pvz_logo.png");
-		sun = new Image("res/sun.png");
+		
 		playButton = new Image("res/Button/PlayDemo.png");
-		sunAni = new Animation(new SpriteSheet("res/sunSprite.png",500,500), 300);
+		
+		
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 1.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 2.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 3.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 4.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), 200);
+		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), 200);
+		
+		int ani_speed = 100;
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 6.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 7.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 8.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 9.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 10.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 11.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 12.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 13.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 14.png"), ani_speed);
 		
 		System.out.println("SplashScreen Init complete");
 		System.out.println("Wid: " + PZGUI.width);
@@ -52,12 +76,15 @@ public class SplashScreen extends BasicGameState {
 			PZGUI.height - Mouse.getY() >= posY && 
 			PZGUI.height - Mouse.getY() <= edgeY)
 		{
-			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight(), new Color(100, 100, 100, 0.5f));
+			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight(), new Color(100, 100, 100, 2f));
+			//playButton.drawCentered(posX, posY); //can't change filter, set size 
 			if (Mouse.isButtonDown(0))
 				sbg.enterState(1);
+			
 		}
 		else 
 			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight());		
+		
 	}
 	// BackGround
 	public void showBackGround(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
@@ -67,7 +94,7 @@ public class SplashScreen extends BasicGameState {
 	// Game Logo
 	public void showLogo(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		float posX = PZGUI.width / (9/2); //Just a random number ._.
-		float posY = PZGUI.height / (16/2);
+		float posY = PZGUI.height / (16/2); 
 		float wid = logo.getWidth() / (2);
 		float hei = logo.getHeight() / (2);
 		
@@ -75,8 +102,10 @@ public class SplashScreen extends BasicGameState {
 	}	
 	// Sun
 	public void showSun(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		sun.draw(sunPosX, 100, 0.5f, new Color(1,1,1, 0.4f)); //Transparent test
-		sunAni.draw(sunPosX, 100);
+		sunAni.draw(400, sunPosY, 100, 100);
+		peaShooter.draw(500, 500, 200, 200);
+		
+		
 	}
 	
 	// Render
@@ -88,7 +117,8 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		sunPosX++;					
+		//sunPosX++;					
+		sunPosY++;					
 	}
 	
 	public int getID() {
