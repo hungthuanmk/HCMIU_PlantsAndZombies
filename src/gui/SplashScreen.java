@@ -22,7 +22,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// PlaySound
 	public SplashScreen(int state) {
-		SSound.play("res/main_theme.ogg",false, 1f, 1f);
+		SSound.play("res/main_themre.ogg",false, 1f, 1f);
 	}
 	
 	// Initialization
@@ -42,12 +42,21 @@ public class SplashScreen extends BasicGameState {
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), 200);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), 200);
 		
-		int ani_speed = 250;
+		int ani_speed = 100;
 		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 1.png"), ani_speed);
 		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 2.png"), ani_speed);
 		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 3.png"), ani_speed);
 		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 4.png"), ani_speed);
 		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 5.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 6.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 7.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 8.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 9.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 10.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 11.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 12.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 13.png"), ani_speed);
+		peaShooter.addFrame(new Image("/res/Peashooter/PeaShooter 14.png"), ani_speed);
 		
 		System.out.println("SplashScreen Init complete");
 		System.out.println("Wid: " + PZGUI.width);
