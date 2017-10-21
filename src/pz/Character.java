@@ -4,7 +4,7 @@ import org.newdawn.slick.Animation;
 
 import com.Position;
 
-public class Character {
+abstract class Character {
 	
 //	private boolean running = true;
 	
