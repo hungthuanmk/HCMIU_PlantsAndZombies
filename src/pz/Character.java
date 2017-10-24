@@ -1,42 +1,52 @@
 package pz;
 
-import org.newdawn.slick.Animation;
+import java.util.ArrayList;
 
 import com.Position;
 
 abstract class Character {
-	
-//	private boolean running = true;
-	
+
 	private String name;
 	private Position pos;
-	private String img; 
+
 	private int hp = 0;
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
 	private int damage = 0;
 	private int speed = 0;
-	private int attackInterval = 100;
-		
-	//private Direction dir = Direction.LEFT; 
-	//private Thread thread;
-	
-	public Character() {
-		
+
+	// private int attackInterval = 100;
+
+	public Character(String name) {
+		setName(name);
 	}
-	
-	protected String getName() {
+
+	public String getName() {
 		return this.name;
 	}
-	
-	protected void setName(String S) {
+
+	public void setName(String S) {
 		this.name = S;
 	}
-	
+
 	public Position getPos() {
 		return pos;
 	}
 
 	public void setPos(Position pos) {
 		this.pos = pos;
+	}
+
+	public void setPos(int x, int y) {
+		this.pos.x = x;
+		this.pos.y = y;
 	}
 
 	public int getDamage() {
@@ -54,9 +64,9 @@ abstract class Character {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
-	public void draw() {
-		//TODO: draw image to GUI
-	}
-}
 
+	protected abstract void move();
+
+	public abstract void attack(ArrayList<pz.Bullet> bulletArrayList);
+
+}
