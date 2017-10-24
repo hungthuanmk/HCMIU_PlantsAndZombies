@@ -45,7 +45,6 @@ public class Play extends BasicGameState {
 		PlayUI.showPlantZoneGrid(gc, sbg, g);
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
-
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
