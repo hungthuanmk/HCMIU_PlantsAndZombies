@@ -6,8 +6,12 @@ import com.Position;
 
 public class BPeaShooter extends pz.Bullet {
 
-	public BPeaShooter() {
-		super(new Animation(), 10, 20, new Position(0, 0));
+	public BPeaShooter(int x, int y) {
+		super(new Animation(), 10, 20, new Position(x, y));
+	}
+	
+	public BPeaShooter(Position pos) {
+		super(new Animation(), 10, 20, pos);
 	}
 
 	protected void move() {

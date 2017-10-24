@@ -1,5 +1,7 @@
 package pz;
 
+import java.util.ArrayList;
+
 import com.Position;
 
 abstract class Character {
@@ -65,6 +67,6 @@ abstract class Character {
 
 	protected abstract void move();
 
-	public abstract void attack();
+	public abstract void attack(ArrayList<pz.Bullet> bulletArrayList);
 
 }
