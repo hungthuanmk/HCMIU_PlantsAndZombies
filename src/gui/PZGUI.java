@@ -26,6 +26,9 @@ public class PZGUI extends StateBasedGame {
 	public static final int play = 2;
 	public static final int gameOver = 3;
 	
+	TrueTypeFont font;
+	TrueTypeFont font2;
+	
 	public PZGUI(String gameName) {
 		super(gameName);
 		try {
@@ -72,9 +75,9 @@ public class PZGUI extends StateBasedGame {
 	
 	public static void main(String[] args){
 		AppGameContainer appgc;
+	    
 		try {
-			appgc = new AppGameContainer(new PZGUI(gameName));
-			
+			appgc = new AppGameContainer(new PZGUI(gameName));			
 			appgc.setShowFPS(showFPS);
 			appgc.setDisplayMode(width, height, fullScreen);
 			appgc.setTargetFrameRate(targetFPS);
