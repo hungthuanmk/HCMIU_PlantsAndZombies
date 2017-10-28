@@ -8,6 +8,7 @@ import org.newdawn.slick.state.*;
 
 import pz.Bullet;
 import pz.Plant;
+import pz.Sun;
 import pz.Zombie;
 
 public class Play extends BasicGameState {
@@ -15,6 +16,7 @@ public class Play extends BasicGameState {
 	ArrayList<Zombie> zombie = new ArrayList<Zombie>();	
 	ArrayList<Plant> plant = new ArrayList<Plant>();
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
+	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
 	private static int sun = 50;
 	private Image background;
@@ -31,17 +33,15 @@ public class Play extends BasicGameState {
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		background = new Image("res/Map_1.jpg");
-		Sun sun = new Sun();
-		sun.loadImage();
-
+		SunUI.init();
 	}
 	// Sun set-get
 	public static void sunGain(int sunCollect){
 		sun += sunCollect;
 	}
 	
-	public static int getSunAmount(){
-		return sun;
+	public static String getSunAmount(){
+		return String.format("%s", sun);
 	}
 	// Show Background
 	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -58,7 +58,7 @@ public class Play extends BasicGameState {
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-
+		SunUI.update(gc, sbg, delta);
 	}
 
 	public int getID() {

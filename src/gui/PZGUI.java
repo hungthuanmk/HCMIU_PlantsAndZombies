@@ -26,9 +26,6 @@ public class PZGUI extends StateBasedGame {
 	public static final int play = 2;
 	public static final int gameOver = 3;
 	
-	TrueTypeFont font;
-	TrueTypeFont font2;
-	
 	public PZGUI(String gameName) {
 		super(gameName);
 		try {
