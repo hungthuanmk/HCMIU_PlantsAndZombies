@@ -18,7 +18,6 @@ public class Play extends BasicGameState {
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
-	private static int sun = 50;
 	private Image background;
 
 	public Play(int state) {
@@ -35,14 +34,7 @@ public class Play extends BasicGameState {
 		background = new Image("res/Map_1.jpg");
 		SunUI.init();
 	}
-	// Sun set-get
-	public static void sunGain(int sunCollect){
-		sun += sunCollect;
-	}
-	
-	public static String getSunAmount(){
-		return String.format("%s", sun);
-	}
+
 	// Show Background
 	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		background.draw(-350, -205, (float) 0.71);
@@ -55,10 +47,12 @@ public class Play extends BasicGameState {
 		PlayUI.showPlantZoneGrid(gc, sbg, g);
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
+		
+		SunUI.render(gc, sbg, g);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		SunUI.update(gc, sbg, delta);
+		SunUI.update(gc, sbg);
 	}
 
 	public int getID() {

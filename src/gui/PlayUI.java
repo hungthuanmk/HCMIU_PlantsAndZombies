@@ -12,7 +12,6 @@ import org.newdawn.slick.util.ResourceLoader;
 import pz.Sun;
 
 public class PlayUI {
-	private int sunCollected = 50;
 	
 	// Sun Collected
 	public static void showSunCollectedGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -28,7 +27,7 @@ public class PlayUI {
 		g.fillRoundRect(60, 20, 150, 50, 20);
 		SunUI.drawIcon(10, 5, 80, 80);
 		
-		g.drawString(Play.getSunAmount(), 100, 100);
+		g.drawString(SunUI.getSunCollected().toString(), 100, 100);
 		g.setColor(new Color(255, 255, 255));
 	}
 	
