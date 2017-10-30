@@ -18,8 +18,8 @@ public class SunUI {
 	private static Integer sunCollected = 50;
 	static Image sunIcon; 
 	static Animation sunAni = new Animation();	
-	static int spawnCoolDownInMilisec = 5000;
-	static int clock;
+	static Integer spawnCoolDownInMilisec = 1000;
+	static Integer startTime;
 	
 	static Timer timer;		
 	
@@ -39,9 +39,10 @@ public class SunUI {
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 4.png"), animationDuration);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), animationDuration);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), animationDuration);
-		sunAni.addFrame(new Image("/res/Pvz2plantfood.png"), animationDuration); // this for test animation restart
+		//sunAni.addFrame(new Image("/res/Pvz2plantfood.png"), animationDuration); // this for test animation restart
 		//sunIcon = sunAni.getImage(5); //bug...
 		sunIcon = new Image("/res/Sun Sprite/Sun 6.png");
+		startTime = (int) System.currentTimeMillis();
 	}
 	
 	public static Image drawIcon(int iconPosX, int iconPosY, int iconWidth, int iconHeight) throws SlickException{
@@ -53,15 +54,19 @@ public class SunUI {
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		for (int i=0; i<sunManager.size(); i++)
 			sunManager.get(i).drawSun();
-		
-		sunManager.add(new Sun(sunAni));
+		if (((int)System.currentTimeMillis() - startTime)%spawnCoolDownInMilisec > spawnCoolDownInMilisec - 100)
+		{
+			startTime = (int)System.currentTimeMillis();
+			sunManager.add(new Sun(sunAni));
+		}
+			
 	}
 	
 	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		//timer.schedule(sunTask, 0, spawnCoolDownInMilisec);
 		
 		for (int i=0; i<sunManager.size(); i++)
-			if (sunManager.get(i).isClicked() == false)
+			if (sunManager.get(i).isDone() == false)
 				sunManager.get(i).updateSun();
 			else{
 				sunManager.remove(i--);

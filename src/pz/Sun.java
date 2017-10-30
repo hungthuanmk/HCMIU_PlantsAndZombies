@@ -5,6 +5,7 @@ import org.newdawn.slick.*;
 import gui.PZGUI;
 import gui.SunUI;
 
+import java.awt.Cursor;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Sun{
@@ -15,7 +16,7 @@ public class Sun{
 	private int width = 80;
 	private int height = 80;
 	private boolean isClicked = false;
-	
+	private boolean isDone = false;
 	private Animation animation;
 	
 	public Sun(Animation ani) throws SlickException{
@@ -40,32 +41,39 @@ public class Sun{
 				this.posY++;
 		}
 		else{
-			// fly to SunCollectedBoard
+			if (posX > 30 && posY > 20)
+			{
+				posX -= posX / 20;
+				posY -= posY / 20;
+			}
+			else
+				isDone = true;
 		}
 		
 	}
 	
 	public boolean isClicked(){
 		if (isClicked == true){
-			//System.out.println("This sun isClicked true");
 			return true;
 		}			
 		else{
-			//System.out.println("This sun isClicked false");
 			return false;
 		}			
 	}
 	
 	public void clickOn(){
 		if (Mouse.getX() >= posX && Mouse.getX() <= posX + width && PZGUI.height - Mouse.getY() >= posY && PZGUI.height - Mouse.getY() <= posY + height) {
-			if (Mouse.isButtonDown(0))
+			
+			if (Mouse.isButtonDown(0) && isClicked == false)
 			{
 				SunUI.gainSun(50);
 				isClicked = true;
 			}
-			else {
-			}
 		}
+	}
+
+	public boolean isDone() {
+		return isDone;
 	}
 	
 	
