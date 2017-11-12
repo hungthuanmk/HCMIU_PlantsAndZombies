@@ -4,13 +4,13 @@ import com.Position;
 
 import pz.Bullet;
 
-public class BSunFlower extends Bullet {
+public class BSunflower extends Bullet {
 	
 	// y = -5x + 10;
 	private float x = 2f;
 	private float y = -5*x + 10;
 
-	public BSunFlower(int damage, int speed, Position pos) {
+	public BSunflower(int damage, int speed, Position pos) {
 		super(damage, speed, pos);
 		// TODO Auto-generated constructor stub
 	}
