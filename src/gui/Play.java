@@ -72,14 +72,22 @@ public class Play extends BasicGameState {
 		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
 		
 		for (Plant iPlant : plant) {
-			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, 50, 100);
+			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y);
+			//g.draw
+			//iPlant.getIdleAni().draw
+			g.setColor(Color.black);
+			g.setLineWidth(5);
+			g.drawRect(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth(), iPlant.getIdleAni().getHeight());
 		}
+		
 		
 		for (Bullet iBullet : bullet) {
 			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y);
+			g.drawRect(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth(), iBullet.getAnimation().getHeight());
 		}
 		
 		SunUI.render(gc, sbg, g);
+		
 
 	}
 
