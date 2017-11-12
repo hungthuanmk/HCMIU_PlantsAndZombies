@@ -1,20 +1,35 @@
 package pz.bullet;
 
-import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 import com.Position;
 
 public class BPeaShooter extends pz.Bullet {
+	
+	private static int damage 	= 10;
+	private static int speed	= 5;
+	//private static Animation ani = new Animation();
+	
+	public void loadAnimation() {
+		try {
+			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Pea.png"), 10);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public BPeaShooter(int x, int y) {
-		super(new Animation(), 10, 20, new Position(x, y));
+		super(damage, speed, new Position(x, y));
+		//loadAnimation();
 	}
 	
 	public BPeaShooter(Position pos) {
-		super(new Animation(), 10, 20, pos);
+		super(damage, speed, pos);
+		//loadAnimation();
 	}
 
-	protected void move() {
-		this.setPos(getSpeed(), this.getPos().y);
+	public void move() {
+		setPos(getPos().x + getSpeed(), getPos().y);	
 	}
 }

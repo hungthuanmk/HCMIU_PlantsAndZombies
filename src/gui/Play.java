@@ -12,7 +12,9 @@ import pz.Bullet;
 import pz.Plant;
 import pz.Sun;
 import pz.Zombie;
+import pz.bullet.BPeaShooter;
 import pz.plant.Peashooter;
+import pz.Bullet;
 
 public class Play extends BasicGameState {
 
@@ -20,6 +22,8 @@ public class Play extends BasicGameState {
 	ArrayList<Plant> plant = new ArrayList<Plant>();
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
+	
+	Bullet bl = new BPeaShooter(new Position(200,200));
 	
 	private Image background;
 	
@@ -31,7 +35,7 @@ public class Play extends BasicGameState {
 
 	// Init Zombie
 	public void initZombie() throws SlickException {
-		((Peashooter) pl).loadAnimation();
+		//((Peashooter) pl).loadAnimation();
 	}
 
 	// Initialization
@@ -41,6 +45,7 @@ public class Play extends BasicGameState {
 		//pl.getIdleAni().addFrame(new Image("res/Plants/PeaShooter/Idle/1.png"), 100);
 
 		SunUI.init();
+		((pz.bullet.BPeaShooter)bl).loadAnimation();
 
 	}
 
@@ -58,7 +63,7 @@ public class Play extends BasicGameState {
 		PlayUI.showSunCollected(gc, sbg, g);
 
 		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
-
+		bl.getAnimation().draw(bl.getPos().x, bl.getPos().y);
 		
 		SunUI.render(gc, sbg, g);
 
@@ -66,6 +71,7 @@ public class Play extends BasicGameState {
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		SunUI.update(gc, sbg);
+		bl.move();
 	}
 
 	public int getID() {

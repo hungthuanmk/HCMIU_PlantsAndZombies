@@ -6,15 +6,15 @@ import com.Position;
 
 public abstract class Bullet {
 	private int damage = 0;
-	private Animation ani;
+	private Animation ani = new Animation();
 	private int speed = 0;
 	private Position pos;
 
-	public Bullet(Animation ani, int damage, int speed, Position pos) {
-		this.setDamage(damage);
-		this.setAnimation(ani);
-		this.setSpeed(speed);
-
+	public Bullet(int damage, int speed, Position pos) {
+		setDamage(damage);
+		//this.setAnimation(ani);
+		setSpeed(speed);
+		setPos(pos);
 	}
 
 	public int getDamage() {
@@ -54,6 +54,6 @@ public abstract class Bullet {
 		this.pos.y = y;
 	}
 
-	protected abstract void move();
+	public abstract void move();
 
 }
