@@ -14,4 +14,9 @@ public class Sunflower extends pz.Plant {
 		
 	}
 
+	public void loadAnimation() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

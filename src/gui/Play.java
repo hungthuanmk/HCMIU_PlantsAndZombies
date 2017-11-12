@@ -45,7 +45,8 @@ public class Play extends BasicGameState {
 		//pl.getIdleAni().addFrame(new Image("res/Plants/PeaShooter/Idle/1.png"), 100);
 
 		SunUI.init();
-		((pz.bullet.BPeaShooter)bl).loadAnimation();
+		bl.loadAnimation();
+		pl.loadAnimation();
 
 	}
 
@@ -64,7 +65,7 @@ public class Play extends BasicGameState {
 
 		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
 		bl.getAnimation().draw(bl.getPos().x, bl.getPos().y);
-		
+		pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
 		SunUI.render(gc, sbg, g);
 
 	}

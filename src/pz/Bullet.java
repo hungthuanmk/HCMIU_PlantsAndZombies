@@ -55,5 +55,6 @@ public abstract class Bullet {
 	}
 
 	public abstract void move();
+	public abstract void loadAnimation();
 
 }

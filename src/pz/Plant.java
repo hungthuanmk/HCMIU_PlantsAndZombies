@@ -23,5 +23,7 @@ public abstract class Plant extends Character {
 	public void setIdleAni(Animation ani) {
 		this.idle = ani;
 	}
+	
+	public abstract void loadAnimation();
 
 }
