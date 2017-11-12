@@ -1,26 +1,33 @@
 package gui;
 
+import java.io.InputStream;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.ResourceLoader;
+
+import pz.Sun;
 
 public class PlayUI {
-	private int sunCollected = 50;
 	
 	// Sun Collected
 	public static void showSunCollectedGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		int posX = 10;
-		int posY = 10;
+		int posY = 20;
 		int W = 200;
-		int H = 45;
+		int H = 50;
 		g.drawRect(posX, posY, W, H);
 	}
 
 	public static void showSunCollected(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setColor(new Color(0, 0, 0, 150));
-		g.fillRoundRect(70, 10, 140, 45, 10);
+		g.fillRoundRect(60, 20, 150, 50, 20);
+		SunUI.drawIcon(10, 5, 80, 80);
+		
+		g.drawString(SunUI.getSunCollected().toString(), 100, 100);
 		g.setColor(new Color(255, 255, 255));
 	}
 	

@@ -1,10 +1,14 @@
 package gui;
 
+import java.util.Vector;
+import java.io.InputStream;
+import java.util.Random;
 import com.SSound;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.util.*;
 
 public class SplashScreen extends BasicGameState {
 	// Declare variable
@@ -20,6 +24,8 @@ public class SplashScreen extends BasicGameState {
 
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		
+		
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
 
 		background = new Image("res/wallpaper.jpg");
