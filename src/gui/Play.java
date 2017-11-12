@@ -42,15 +42,20 @@ public class Play extends BasicGameState {
 		plant.add(new pz.plant.Peashooter(new Position(200,100)));
 		plant.add(new pz.plant.Peashooter(new Position(300,100)));
 		
-		bullet.add(new pz.bullet.BPeashooter(new Position(200,200)));
-		bullet.add(new pz.bullet.BPeashooter(new Position(300,200)));
-		bullet.add(new pz.bullet.BPeashooter(new Position(500,200)));
 		
-		for (Plant iPlant: plant)
+		
+		//bullet.add(new pz.bullet.BPeashooter(new Position(200,200)));
+		//bullet.add(new pz.bullet.BPeashooter(new Position(300,200)));
+		//bullet.add(new pz.bullet.BPeashooter(new Position(500,200)));
+		
+		for (Plant iPlant: plant) {
 			iPlant.loadAnimation();
-		
-		for (Bullet iBullet: bullet)
-			iBullet.loadAnimation();
+			iPlant.attack(bullet);
+			bullet.get(bullet.size()-1).loadAnimation();
+		}
+				
+		//for (Bullet iBullet: bullet)
+			//iBullet.loadAnimation();
 
 	}
 
@@ -83,7 +88,7 @@ public class Play extends BasicGameState {
 		
 		for (Bullet iBullet : bullet) {
 			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y);
-			g.drawRect(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth(), iBullet.getAnimation().getHeight());
+			//g.drawRect(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth(), iBullet.getAnimation().getHeight());
 		}
 		
 		SunUI.render(gc, sbg, g);
