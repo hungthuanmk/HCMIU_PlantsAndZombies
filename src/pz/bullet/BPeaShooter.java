@@ -7,8 +7,8 @@ import com.Position;
 
 public class BPeashooter extends pz.Bullet {
 	
-	//private int damage 	= 10;
-	//private int speed	= 5;
+	private static int damage 	= 10;
+	private static int speed	= 5;
 	//private static Animation ani = new Animation();
 	
 	public void loadAnimation() {
@@ -20,12 +20,12 @@ public class BPeashooter extends pz.Bullet {
 	}
 
 	public BPeashooter(int x, int y) {
-		super(10, 5, new Position(x, y));
+		super(damage, speed, new Position(x, y));
 		//loadAnimation();
 	}
 	
 	public BPeashooter(Position pos) {
-		super(10, 5, pos);
+		super(damage, speed, pos);
 		//loadAnimation();
 	}
 
