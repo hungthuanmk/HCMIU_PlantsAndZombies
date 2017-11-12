@@ -5,10 +5,10 @@ import org.newdawn.slick.SlickException;
 
 import com.Position;
 
-public class BPeaShooter extends pz.Bullet {
+public class BPeashooter extends pz.Bullet {
 	
-	private static int damage 	= 10;
-	private static int speed	= 5;
+	//private int damage 	= 10;
+	//private int speed	= 5;
 	//private static Animation ani = new Animation();
 	
 	public void loadAnimation() {
@@ -19,13 +19,13 @@ public class BPeaShooter extends pz.Bullet {
 		}
 	}
 
-	public BPeaShooter(int x, int y) {
-		super(damage, speed, new Position(x, y));
+	public BPeashooter(int x, int y) {
+		super(10, 5, new Position(x, y));
 		//loadAnimation();
 	}
 	
-	public BPeaShooter(Position pos) {
-		super(damage, speed, pos);
+	public BPeashooter(Position pos) {
+		super(10, 5, pos);
 		//loadAnimation();
 	}
 

@@ -2,7 +2,6 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -27,7 +26,7 @@ public class Peashooter extends pz.Plant {
 	}
 
 	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
-		pz.Bullet pea = new pz.bullet.BPeaShooter(this.getPos().x, this.getPos().y);
+		pz.Bullet pea = new pz.bullet.BPeashooter(this.getPos().x, this.getPos().y);
 		bulletArrayList.add(pea);
 	}
 	

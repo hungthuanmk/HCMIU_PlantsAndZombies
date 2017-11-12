@@ -8,13 +8,7 @@ import org.newdawn.slick.state.*;
 
 import com.Position;
 
-import pz.Bullet;
-import pz.Plant;
-import pz.Sun;
-import pz.Zombie;
-import pz.bullet.BPeaShooter;
-import pz.plant.Peashooter;
-import pz.Bullet;
+import pz.*;
 
 public class Play extends BasicGameState {
 
@@ -23,11 +17,9 @@ public class Play extends BasicGameState {
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
-	Bullet bl = new BPeaShooter(new Position(200,200));
 	
 	private Image background;
 	
-	Plant pl = new pz.plant.Peashooter(new Position(100,100));
 
 	public Play(int state) {
 		
@@ -42,11 +34,23 @@ public class Play extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		background = new Image("res/Map_1.jpg");
 
-		//pl.getIdleAni().addFrame(new Image("res/Plants/PeaShooter/Idle/1.png"), 100);
 
 		SunUI.init();
-		bl.loadAnimation();
-		pl.loadAnimation();
+
+		
+		plant.add(new pz.plant.Peashooter(new Position(100,100)));
+		plant.add(new pz.plant.Peashooter(new Position(200,100)));
+		plant.add(new pz.plant.Peashooter(new Position(300,100)));
+		
+		bullet.add(new pz.bullet.BPeashooter(new Position(200,200)));
+		bullet.add(new pz.bullet.BPeashooter(new Position(300,200)));
+		bullet.add(new pz.bullet.BPeashooter(new Position(500,200)));
+		
+		for (Plant iPlant: plant)
+			iPlant.loadAnimation();
+		
+		for (Bullet iBullet: bullet)
+			iBullet.loadAnimation();
 
 	}
 
@@ -64,15 +68,27 @@ public class Play extends BasicGameState {
 		PlayUI.showSunCollected(gc, sbg, g);
 
 		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
-		bl.getAnimation().draw(bl.getPos().x, bl.getPos().y);
-		pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
+		//bl.getAnimation().draw(bl.getPos().x, bl.getPos().y);
+		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
+		
+		for (Plant iPlant : plant) {
+			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, 50, 100);
+		}
+		
+		for (Bullet iBullet : bullet) {
+			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y);
+		}
+		
 		SunUI.render(gc, sbg, g);
 
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		SunUI.update(gc, sbg);
-		bl.move();
+		
+		for (Bullet iBullet : bullet) {
+			iBullet.move();
+		}
 	}
 
 	public int getID() {
