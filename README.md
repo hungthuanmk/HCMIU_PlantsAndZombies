@@ -1,4 +1,4 @@
-# Plant VS Zombie
+# Plants VS Zombies
 It's a game!
 
 # Environment
