@@ -1,9 +1,11 @@
 package pz;
 
+import com.Position;
+
 public abstract class Zombie extends Character {
 
-	public Zombie(String name) {
-		super(name);
+	public Zombie(String name, int hp, Position pos) {
+		super(name, hp, pos);
 	}
 
 	protected void move() {

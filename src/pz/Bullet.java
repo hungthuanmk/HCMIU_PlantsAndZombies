@@ -14,7 +14,7 @@ public abstract class Bullet {
 		this.setDamage(damage);
 		this.setAnimation(ani);
 		this.setSpeed(speed);
-		
+
 	}
 
 	public int getDamage() {

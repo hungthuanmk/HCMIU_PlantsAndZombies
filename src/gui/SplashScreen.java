@@ -1,7 +1,5 @@
 package gui;
 
-import java.util.Vector;
-import java.util.Random;
 import com.SSound;
 
 import org.lwjgl.input.Mouse;
@@ -17,7 +15,7 @@ public class SplashScreen extends BasicGameState {
 
 	// PlaySound
 	public SplashScreen(int state) {
-		SSound.play("res/main_theme.ogg", false, 1f, 1f);
+		//SSound.play("res/main_theme.ogg", false, 1f, 1f);
 	}
 
 	// Initialization

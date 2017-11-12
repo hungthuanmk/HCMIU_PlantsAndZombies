@@ -2,10 +2,12 @@ package pz.plant;
 
 import java.util.ArrayList;
 
+import com.Position;
+
 public class Sunflower extends pz.Plant {
 
-	public Sunflower() {
-		super("Sunflower");
+	public Sunflower(Position pos) {
+		super("Sunflower", 100, pos);
 	}
 
 	public void attack(ArrayList<pz.Bullet> bulletArrayList) {

@@ -24,8 +24,10 @@ abstract class Character {
 
 	// private int attackInterval = 100;
 
-	public Character(String name) {
+	public Character(String name, int hp, Position pos) {
 		setName(name);
+		setHp(hp);
+		setPos(pos);
 	}
 
 	public String getName() {
