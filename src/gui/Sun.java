@@ -15,14 +15,14 @@ public class Sun {
 	
 	static Animation sunAni = new Animation();	
 	
-	public static void loadImage() throws SlickException{
-		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 1.png"), animationDuration);
-		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 2.png"), animationDuration);
-		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 3.png"), animationDuration);
-		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 4.png"), animationDuration);
-		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), animationDuration);
-		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), animationDuration);
-	}
+//	public static void loadImage() throws SlickException{
+//		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 1.png"), animationDuration);
+//		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 2.png"), animationDuration);
+//		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 3.png"), animationDuration);
+//		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 4.png"), animationDuration);
+//		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), animationDuration);
+//		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), animationDuration);
+//	}
 	
 	public void drawSun() throws SlickException{
 		sunAni.draw(posX, posY, width, height);

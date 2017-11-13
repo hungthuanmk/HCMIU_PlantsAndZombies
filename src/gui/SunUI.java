@@ -19,7 +19,9 @@ public class SunUI {
 	static Image sunIcon; 
 	static Animation sunAni = new Animation();	
 	static Integer spawnCoolDownInMilisec = 1000;
+	static Integer spawnCoolDownInFrame = 300;
 	static Integer startTime;
+	static Integer framePass = 0;
 	
 	static Timer timer;		
 	
@@ -52,11 +54,19 @@ public class SunUI {
 	
 	
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
+		framePass++;
 		for (int i=0; i<sunManager.size(); i++)
 			sunManager.get(i).drawSun();
+		/*
 		if (((int)System.currentTimeMillis() - startTime)%spawnCoolDownInMilisec > spawnCoolDownInMilisec - 100)
 		{
 			startTime = (int)System.currentTimeMillis();
+			sunManager.add(new Sun(sunAni));
+		}
+		*/
+		if (framePass > spawnCoolDownInFrame)
+		{
+			framePass = 0;
 			sunManager.add(new Sun(sunAni));
 		}
 			

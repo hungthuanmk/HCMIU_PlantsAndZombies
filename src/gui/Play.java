@@ -17,6 +17,10 @@ public class Play extends BasicGameState {
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
+	Image demoSeedPack;
+	
+	float plantScaleFactor = 0.25f;
+	
 	
 	private Image background;
 	
@@ -33,16 +37,12 @@ public class Play extends BasicGameState {
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		background = new Image("res/Map_1.jpg");
-
-
+		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
-
 		
 		plant.add(new pz.plant.Peashooter(new Position(100,100)));
 		plant.add(new pz.plant.Peashooter(new Position(200,100)));
 		plant.add(new pz.plant.Peashooter(new Position(300,100)));
-		
-		
 		
 		//bullet.add(new pz.bullet.BPeashooter(new Position(200,200)));
 		//bullet.add(new pz.bullet.BPeashooter(new Position(300,200)));
@@ -53,6 +53,8 @@ public class Play extends BasicGameState {
 			iPlant.attack(bullet);
 			bullet.get(bullet.size()-1).loadAnimation();
 		}
+		
+		
 				
 		//for (Bullet iBullet: bullet)
 			//iBullet.loadAnimation();
@@ -67,9 +69,13 @@ public class Play extends BasicGameState {
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		showBackground(gc, sbg, g);
+		demoSeedPack.draw(10,120, 140, 90);
+		demoSeedPack.draw(10,120+90, 140, 90);
+		demoSeedPack.draw(10,120+90+90, 140, 90);
+		demoSeedPack.draw(10,120+90+90+90, 140, 90);
 		PlayUI.showSunCollectedGrid(gc, sbg, g);
 		PlayUI.showPlantZoneGrid(gc, sbg, g);
-		PlayUI.showSeedZoneGrid(gc, sbg, g);
+		//PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 
 		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
@@ -77,10 +83,10 @@ public class Play extends BasicGameState {
 		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
 		
 		for (Plant iPlant : plant) {
-			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y);
-			g.setColor(Color.black);
-			g.setLineWidth(5);
-			g.drawRect(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth(), iPlant.getIdleAni().getHeight());
+			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor, iPlant.getIdleAni().getHeight()*plantScaleFactor);
+			//g.setColor(Color.black);
+			//g.setLineWidth(5);
+			//g.drawRect(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth(), iPlant.getIdleAni().getHeight());
 		}
 		
 		for (Bullet iBullet : bullet) {
@@ -93,7 +99,16 @@ public class Play extends BasicGameState {
 		
 		SunUI.render(gc, sbg, g);
 		
-
+		int posX = 443;
+		int posY = 150;
+		int W = 115;
+		int H = 135;
+		// 9//5
+		if (PZGUI.width - Mouse.getX() >= posX && PZGUI.width - Mouse.getX() <= 115 * 9 &&
+			PZGUI.height - Mouse.getY() >= posY && PZGUI.height - Mouse.getY() <= 135 * 5) {
+			g.setColor(new Color(1,1,1,0.5f));
+			g.drawRect();
+		}
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -102,6 +117,8 @@ public class Play extends BasicGameState {
 		for (Bullet iBullet : bullet) {
 			iBullet.move();
 		}
+		
+		
 	}
 
 	public int getID() {
