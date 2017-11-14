@@ -19,7 +19,8 @@ public class Play extends BasicGameState {
 	
 	Image demoSeedPack;
 	
-	float plantScaleFactor = 0.25f;
+	private static float plantScaleFactor = 0.25f;
+	private static float zombieScaleFactor = 0.3f;
 	
 	
 	private Image background;
@@ -40,25 +41,18 @@ public class Play extends BasicGameState {
 		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
 		
-		plant.add(new pz.plant.Peashooter(new Position(100,100)));
-		plant.add(new pz.plant.Peashooter(new Position(200,100)));
-		plant.add(new pz.plant.Peashooter(new Position(300,100)));
+		plant.add(new pz.plant.Peashooter(new Position(100,300)));
+		plant.add(new pz.plant.Peashooter(new Position(100,500)));
+		plant.add(new pz.plant.Peashooter(new Position(100,700)));
+		plant.add(new pz.plant.Sunflower(new Position(100, 200)));
 		
-		//bullet.add(new pz.bullet.BPeashooter(new Position(200,200)));
-		//bullet.add(new pz.bullet.BPeashooter(new Position(300,200)));
-		//bullet.add(new pz.bullet.BPeashooter(new Position(500,200)));
+		zombie.add(new pz.zombie.FemaleZombie(new Position(1400, 700)));
+		zombie.add(new pz.zombie.MaleZombie(new Position(1400, 500)));
 		
-		for (Plant iPlant: plant) {
-			iPlant.loadAnimation();
-			iPlant.attack(bullet);
-			bullet.get(bullet.size()-1).loadAnimation();
-		}
+		//for (Plant iPlant: plant) {
+		//	iPlant.attack(bullet);
+		//}
 		
-		
-				
-		//for (Bullet iBullet: bullet)
-			//iBullet.loadAnimation();
-
 	}
 
 	// Show Background
@@ -77,47 +71,47 @@ public class Play extends BasicGameState {
 		PlayUI.showPlantZoneGrid(gc, sbg, g);
 		//PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
-
-		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
-		//bl.getAnimation().draw(bl.getPos().x, bl.getPos().y);
-		//pl.getIdleAni().draw(pl.getPos().x, pl.getPos().y);
 		
 		for (Plant iPlant : plant) {
 			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor, iPlant.getIdleAni().getHeight()*plantScaleFactor);
-			//g.setColor(Color.black);
-			//g.setLineWidth(5);
-			//g.drawRect(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth(), iPlant.getIdleAni().getHeight());
+		}
+		
+		for (Zombie iZombie : zombie) {
+			iZombie.getAnimation().draw(iZombie.getPos().x, iZombie.getPos().y, iZombie.getAnimation().getWidth()*zombieScaleFactor, iZombie.getAnimation().getHeight()*zombieScaleFactor);
 		}
 		
 		for (Bullet iBullet : bullet) {
 			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y);
-			//g.drawRect(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth(), iBullet.getAnimation().getHeight());
-
-			g.drawRect(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth(), iBullet.getAnimation().getHeight());
-
 		}
 		
 		SunUI.render(gc, sbg, g);
 		
 		int posX = 443;
 		int posY = 150;
-		int W = 115;
-		int H = 135;
+	//	int W = 115;
+	//	int H = 135;
 		// 9//5
 		if (PZGUI.width - Mouse.getX() >= posX && PZGUI.width - Mouse.getX() <= 115 * 9 &&
 			PZGUI.height - Mouse.getY() >= posY && PZGUI.height - Mouse.getY() <= 135 * 5) {
 			g.setColor(new Color(1,1,1,0.5f));
-			g.drawRect();
+			//g.drawRect();
 		}
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		SunUI.update(gc, sbg);
 		
-		for (Bullet iBullet : bullet) {
-			iBullet.move();
+		for (Plant iPlant: plant) {
+			iPlant.attack(bullet);
 		}
 		
+		for (Zombie iZombie : zombie) {
+			iZombie.move(); //move zombie
+		}
+		
+		for (Bullet iBullet : bullet) {
+			iBullet.move();
+		}	
 		
 	}
 

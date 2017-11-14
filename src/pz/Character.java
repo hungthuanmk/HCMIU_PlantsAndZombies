@@ -67,7 +67,7 @@ abstract class Character {
 		this.speed = speed;
 	}
 
-	protected abstract void move();
+	public abstract void move();
 
 	public abstract void attack(ArrayList<pz.Bullet> bulletArrayList);
 

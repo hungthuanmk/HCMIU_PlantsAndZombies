@@ -11,7 +11,7 @@ public class BPeashooter extends pz.Bullet {
 	private static int speed	= 5;
 	//private static Animation ani = new Animation();
 	
-	public void loadAnimation() {
+	protected void loadAnimation() {
 		try {
 			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Pea.png"), 10);
 		} catch (SlickException e) {
@@ -21,12 +21,17 @@ public class BPeashooter extends pz.Bullet {
 
 	public BPeashooter(int x, int y) {
 		super(damage, speed, new Position(x, y));
-		//loadAnimation();
+		loadAnimation();
 	}
 	
 	public BPeashooter(Position pos) {
 		super(damage, speed, pos);
-		//loadAnimation();
+		loadAnimation();
+	}
+	
+	public BPeashooter(Position pos, int _damage, int _speed) {
+		super(_damage, _speed, pos);
+		loadAnimation();
 	}
 
 	public void move() {

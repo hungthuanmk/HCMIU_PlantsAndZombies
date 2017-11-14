@@ -15,6 +15,7 @@ public abstract class Bullet {
 		//this.setAnimation(ani);
 		setSpeed(speed);
 		setPos(pos);
+		loadAnimation();
 	}
 
 	public int getDamage() {
@@ -55,6 +56,6 @@ public abstract class Bullet {
 	}
 
 	public abstract void move();
-	public abstract void loadAnimation();
+	protected abstract void loadAnimation();
 
 }

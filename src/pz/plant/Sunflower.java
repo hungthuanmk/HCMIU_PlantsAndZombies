@@ -9,13 +9,14 @@ import com.Position;
 
 public class Sunflower extends pz.Plant {
 	
+	private static int hp = 100;
+	private static int damage = 0;
 
 	public Sunflower(Position pos) {
-		super("Sunflower", 100, pos);
+		super("Sunflower", hp, damage, 0, pos);
 	}
 
-
-	public void loadAnimation() {
+	protected void loadAnimation() {
 		try {
 			for (int i=1; i<=30; i++)
 				getIdleAni().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 30);

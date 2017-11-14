@@ -9,8 +9,6 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.*;
 
-import javafx.animation.RotateTransition;
-
 public class PZGUI extends StateBasedGame {
 	public static int width 	= 1600;
 	public static int height 	= 900;

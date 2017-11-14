@@ -11,7 +11,7 @@ public class Sun {
 	private int width = 100;
 	private int height = 100;
 	
-	private static int animationDuration = 200;
+//	private static int animationDuration = 200;
 	
 	static Animation sunAni = new Animation();	
 	

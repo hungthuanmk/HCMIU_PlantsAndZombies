@@ -5,7 +5,6 @@ import org.newdawn.slick.*;
 import gui.PZGUI;
 import gui.SunUI;
 
-import java.awt.Cursor;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Sun{

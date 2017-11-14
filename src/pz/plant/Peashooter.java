@@ -2,34 +2,43 @@ package pz.plant;
 
 import java.util.ArrayList;
 
+//import java.util.ArrayList;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
-import pz.Bullet.*;
+import pz.Bullet;
+
+//import pz.Bullet.*;
 
 public class Peashooter extends pz.Plant {
+	
+	private static int hp = 100;
+	private static int damage = 20;
+	private static int attackInterval = 200;
 
 	public Peashooter(Position pos) {
-		super("Peashooter", 100, pos);
+		super("Peashooter", hp, damage, attackInterval, pos);
 	}
 	
-	public void loadAnimation() {
+	@Override
+	protected void loadAnimation() {
 		try {
 			for (int i=1; i<=30; i++)
 				getIdleAni().addFrame(new Image("res/Plants/PeaShooter/Idle/"+i+".png"), 30);
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
-		pz.Bullet pea = new pz.bullet.BPeashooter(this.getPos().x, this.getPos().y);
-		pea.loadAnimation();
-		bulletArrayList.add(pea);	
+	@Override
+	public void attack(ArrayList<Bullet> bulletArrayList) {
+		if (getFramePassed() > getAttackInterval()) {
+			bulletArrayList.add(new pz.bullet.BPeashooter(this.getPos().x, this.getPos().y));
+			setFramePassed(0);
+		}
+		setFramePassed(getFramePassed()+1)	;
 	}
-	
-
 }

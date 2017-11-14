@@ -22,9 +22,7 @@ public class BSunflower extends Bullet {
 		x = getPos().x;
 		delta = getPos().x;
 		theta = getPos().y;
-		// TODO Auto-generated constructor stub
 	}
-
 	
 	public void move() {
 		if (time % 10 == 0) {
@@ -36,7 +34,7 @@ public class BSunflower extends Bullet {
 		time++;
 	}
 	
-	public void loadAnimation() {
+	protected void loadAnimation() {
 		try {
 			for (int i=1; i<=6; i++)
 				getAnimation().addFrame(new Image("res/Sun Sprite/Sun "+i+".png").getScaledCopy(0.1f), 200);

@@ -1,14 +1,8 @@
 package gui;
 
-import java.util.Vector;
-import java.io.InputStream;
-import java.util.Random;
-import com.SSound;
-
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.util.*;
 
 public class SplashScreen extends BasicGameState {
 	// Declare variable
