@@ -27,7 +27,8 @@ public class Peashooter extends pz.Plant {
 
 	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
 		pz.Bullet pea = new pz.bullet.BPeashooter(this.getPos().x, this.getPos().y);
-		bulletArrayList.add(pea);
+		pea.loadAnimation();
+		bulletArrayList.add(pea);	
 	}
 	
 
