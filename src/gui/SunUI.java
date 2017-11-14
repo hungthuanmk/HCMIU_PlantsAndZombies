@@ -57,13 +57,7 @@ public class SunUI {
 		framePass++;
 		for (int i=0; i<sunManager.size(); i++)
 			sunManager.get(i).drawSun();
-		/*
-		if (((int)System.currentTimeMillis() - startTime)%spawnCoolDownInMilisec > spawnCoolDownInMilisec - 100)
-		{
-			startTime = (int)System.currentTimeMillis();
-			sunManager.add(new Sun(sunAni));
-		}
-		*/
+		
 		if (framePass > spawnCoolDownInFrame)
 		{
 			framePass = 0;
