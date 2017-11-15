@@ -3,11 +3,11 @@ package gui;
 import java.awt.Font;
 import java.io.InputStream;
  
-import org.lwjgl.LWJGLException;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
+//import org.lwjgl.LWJGLException;
+//import org.lwjgl.input.Mouse;
+//import org.lwjgl.opengl.Display;
+//import org.lwjgl.opengl.DisplayMode;
+//import org.lwjgl.opengl.GL11;
  
 import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
