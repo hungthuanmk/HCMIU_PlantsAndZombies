@@ -30,7 +30,6 @@ public class Play extends BasicGameState {
 
 	// Init Zombie
 	public void initZombie() throws SlickException {
-		//((Peashooter) pl).loadAnimation();
 	}
 
 	// Initialization
@@ -47,16 +46,18 @@ public class Play extends BasicGameState {
 		zombie.add(new pz.zombie.FemaleZombie(new Position(1400, 700)));
 		zombie.add(new pz.zombie.MaleZombie(new Position(1400, 500)));
 		
-		//for (Plant iPlant: plant) {
-		//	iPlant.attack(bullet);
-		//}
 		
 	}
 
 	// Show Background
 	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		background.draw(-350, -205, (float) 0.71);
-		//background.draw(0, 0, (float)PZGUI.width/background.getWidth() + (float)PZGUI.height/background.getHeight());
+		float rate = (float)0.69;
+		float width = background.getWidth() * PZGUI.resolutionRateWidth * rate;
+		float height = background.getHeight() * PZGUI.resolutionRateHeight * rate;
+		float moveLeft = (float)PZGUI.width * (7.0f/32);
+		float moveUp = (float)PZGUI.height * (41.0f/180);
+		
+		background.draw(-moveLeft, -moveUp, width, height);
 	}
 
 	// Render
@@ -68,7 +69,7 @@ public class Play extends BasicGameState {
 		demoSeedPack.draw(10,120+90+90+90, 140, 90);
 		PlayUI.showSunCollectedGrid(gc, sbg, g);
 		PlayUI.showPlantZoneGrid(gc, sbg, g);
-		//PlayUI.showSeedZoneGrid(gc, sbg, g);
+		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 		
 		for (Plant iPlant : plant) {

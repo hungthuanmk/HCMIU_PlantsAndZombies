@@ -1,5 +1,6 @@
 package gui;
 
+import org.lwjgl.Sys;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -18,13 +19,11 @@ public class SplashScreen extends BasicGameState {
 
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		
-		
+				
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
 
 		background = new Image("res/wallpaper.jpg");
 		logo = new Image("res/pvz_logo.png");
-
 		playButton = new Image("res/Button/PlayDemo.png");
 
 		System.out.println("SplashScreen Init complete");
@@ -35,38 +34,45 @@ public class SplashScreen extends BasicGameState {
 	// Create Thing
 	// Start Button
 	public void startButton(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		int posX = 420;
-		int posY = 520;
-		int edgeX = posX + playButton.getWidth();
-		int edgeY = posY + playButton.getHeight();
+		float rate = (float)0.9;
+		float width = playButton.getWidth() * PZGUI.resolutionRateWidth * rate;
+		float height = playButton.getHeight() * PZGUI.resolutionRateHeight * rate;
+		
+		float posX = PZGUI.width  /2 - width/2;
+		float posY = PZGUI.height * (float)(0.7) - height/2;
+		
+		float edgeX = posX + width;
+		float edgeY = posY + height;
 
-		if (Mouse.getX() >= posX && Mouse.getX() <= edgeX && PZGUI.height - Mouse.getY() >= posY
-				&& PZGUI.height - Mouse.getY() <= edgeY) {
-			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight(), new Color(100, 100, 100, 2f));
+//		System.out.println("Width = " + width);
+//		System.out.println("Height = " + height);
+		
+		playButton.draw(posX, posY, width, height);
+		if (	Mouse.getX() >= posX && 
+				Mouse.getX() <= edgeX && 
+				PZGUI.height - Mouse.getY() >= posY	&& 
+				PZGUI.height - Mouse.getY() <= edgeY) {
+			playButton.draw(posX, posY, width, height, new Color(100, 100, 100, 60));
 			
 			if (Mouse.isButtonDown(0))
 				sbg.enterState(1);
-
-		} else
-			playButton.draw(posX, posY, playButton.getWidth(), playButton.getHeight());
-
+		}
 	}
 
 	// BackGround
 	public void showBackGround(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		// background.drawWarped(0, 0, 0, PZGUI.height, PZGUI.width,
-		// PZGUI.height, PZGUI.width, 0);
 		background.draw(0, 0, PZGUI.width, PZGUI.height);
 	}
 
 	// Game Logo
 	public void showLogo(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		float posX = PZGUI.width / (9 / 2); // Just a random number ._.
-		float posY = PZGUI.height / (16 / 2);
-		float wid = logo.getWidth() / (2);
-		float hei = logo.getHeight() / (2);
+		float rate = (float) 0.7;
+		float width = logo.getWidth() * PZGUI.resolutionRateWidth * rate;
+		float height = logo.getHeight() * PZGUI.resolutionRateHeight * rate;
+		float posX = PZGUI.width/2 - width/2;
+		float posY = PZGUI.height*(float)(0.2) - height/2;
 
-		logo.draw(posX, posY, wid, hei);
+		logo.draw(posX, posY, width, height);
 	}
 
 	

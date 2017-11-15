@@ -47,7 +47,7 @@ public class SunUI {
 		startTime = (int) System.currentTimeMillis();
 	}
 	
-	public static Image drawIcon(int iconPosX, int iconPosY, int iconWidth, int iconHeight) throws SlickException{
+	public static Image drawIcon(float iconPosX, float iconPosY, float iconWidth, float iconHeight) throws SlickException{
 		sunIcon.draw(iconPosX, iconPosY, iconWidth, iconHeight);
 		return sunIcon;
 	}
