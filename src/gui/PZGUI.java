@@ -9,11 +9,11 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.*;
 
-import javafx.animation.RotateTransition;
-
 public class PZGUI extends StateBasedGame {
-	public static int width 	= 1600;
-	public static int height 	= 900;
+	public static int width 	= 1600; 	public static int height 	= 900;
+	
+//	public static int width		= 800;  	public static int height	= 450;
+	
 	public static int targetFPS = 65;
 	public static boolean showFPS 	 = true;
 	public static boolean fullScreen = false;
@@ -26,12 +26,19 @@ public class PZGUI extends StateBasedGame {
 	public static final int play = 2;
 	public static final int gameOver = 3;
 	
+	public static float resolutionRateWidth;
+	public static float resolutionRateHeight;
+	
+	private static int defaultWidth = 1600;
+	private static int defaultHeight = 900;
+	
 	public PZGUI(String gameName) {
 		super(gameName);
 		try {
 			Ini ini = new Ini(new File("config.ini"));
-			width      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
-			height     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
+			
+//			width      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
+//			height     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
 			targetFPS  = Integer.parseInt	  (ini.get("DISPLAY", "targetFPS" ));
 			showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
 			fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
@@ -53,12 +60,12 @@ public class PZGUI extends StateBasedGame {
 	}
 	
 	private void loadDefaultSettings() {
-		width      = 800;
-		height     = 600;
-		targetFPS  = 1000;
+		width      = defaultWidth;
+		height     = defaultWidth;
+		targetFPS  = 60;
 		showFPS    = true;
 		fullScreen = false;
-		vSync      = false;
+		vSync      = true;
 		AA         = true;
 	}
 	
@@ -76,12 +83,19 @@ public class PZGUI extends StateBasedGame {
 		try {
 			appgc = new AppGameContainer(new PZGUI(gameName));			
 			appgc.setShowFPS(showFPS);
+			
+			if (fullScreen == true){
+				width = appgc.getScreenWidth();
+				height  = appgc.getScreenHeight();
+			}			
 			appgc.setDisplayMode(width, height, fullScreen);
+			appgc.setUpdateOnlyWhenVisible(true);
 			appgc.setTargetFrameRate(targetFPS);
 			appgc.setVSync(vSync);
 			appgc.setSmoothDeltas(true);
-			appgc.setAlwaysRender(true);
-			
+			appgc.setAlwaysRender(true);					
+			resolutionRateHeight = (float)appgc.getHeight() / (float)defaultHeight;
+			resolutionRateWidth = (float)appgc.getWidth() / (float)defaultWidth;
 			appgc.start(); //Begin thread game
 		} 
 		catch(SlickException e) {

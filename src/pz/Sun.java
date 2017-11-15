@@ -5,7 +5,6 @@ import org.newdawn.slick.*;
 import gui.PZGUI;
 import gui.SunUI;
 
-import java.awt.Cursor;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Sun{
@@ -15,6 +14,10 @@ public class Sun{
 	
 	private int width = 80;
 	private int height = 80;
+	
+	private int framePass;
+	private int stayTimeInFrame = 60*10; // fps * second
+	
 	private boolean isClicked = false;
 	private boolean isDone = false;
 	private Animation animation;
@@ -27,11 +30,12 @@ public class Sun{
 		ani.stop();
 		this.animation = ani;
 		this.animation.start(); // I think it can restart the animation
-		
+		framePass = 0;		
 	}
 	
 	public void drawSun() throws SlickException{
 		animation.draw(posX, posY, width, height);
+		
 	}
 	
 	public void updateSun(){
@@ -39,6 +43,12 @@ public class Sun{
 		if (isClicked == false){
 			if (posY < edgeY)
 				this.posY++;
+			else{
+				if (framePass <= stayTimeInFrame)
+					framePass++;
+				else
+					isDone = true;
+			}
 		}
 		else{
 			if (posX > 30 && posY > 20)

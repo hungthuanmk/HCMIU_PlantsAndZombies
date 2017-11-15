@@ -1,13 +1,27 @@
 package pz;
 
+import org.newdawn.slick.Animation;
+
+import com.Position;
+
 public abstract class Zombie extends Character {
 
-	public Zombie(String name) {
-		super(name);
+	private Animation ani = new Animation();
+	
+	public Zombie(String name, int hp, int speed, Position pos) {
+		super(name, hp, pos);
+		setSpeed(speed);
+		loadAnimation();
 	}
 
-	protected void move() {
-		this.setPos(this.getPos().x + this.getSpeed(), this.getPos().y);
+	public Animation getAnimation() {
+		return ani;
 	}
+
+	public void setAnimation(Animation ani) {
+		this.ani = ani;
+	}
+	
+	protected abstract void loadAnimation();
 
 }
