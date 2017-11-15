@@ -41,7 +41,7 @@ public class PlayUI {
 		g.fillRoundRect(posX, posY, W, H, 20);
 		SunUI.drawIcon(iconPosX, iconPosY, iconW, iconH);
 		
-		text.render(textPosX, textPosY, SunUI.getSunCollected().toString());
+		text.render(textPosX, textPosY, SunUI.getSunCollected().toString(), Color.white);
 		g.setColor(new Color(255, 255, 255));
 	}
 	

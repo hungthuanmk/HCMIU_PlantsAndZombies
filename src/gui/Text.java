@@ -34,4 +34,8 @@ public class Text {
     public void render(float x, float y, String whatchars) {
         font.drawString(x, y, whatchars);
     }
+    
+    public void render(float x, float y, String whatchars, Color color){
+    	font.drawString(x, y, whatchars, color);
+    }
 }
