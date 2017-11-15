@@ -19,15 +19,13 @@ public class Play extends BasicGameState {
 	
 	Image demoSeedPack;
 	
-	private static float plantScaleFactor = 0.25f;
+	private static float plantScaleFactor  = 0.25f;
 	private static float zombieScaleFactor = 0.3f;
-	
+	private static float bulletScaleFactor = 0.6f;
 	
 	private Image background;
 	
-
-	public Play(int state) {
-		
+	public Play(int state) {	
 	}
 
 	// Init Zombie
@@ -58,6 +56,7 @@ public class Play extends BasicGameState {
 	// Show Background
 	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		background.draw(-350, -205, (float) 0.71);
+		//background.draw(0, 0, (float)PZGUI.width/background.getWidth() + (float)PZGUI.height/background.getHeight());
 	}
 
 	// Render
@@ -81,7 +80,7 @@ public class Play extends BasicGameState {
 		}
 		
 		for (Bullet iBullet : bullet) {
-			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y);
+			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth()*bulletScaleFactor, iBullet.getAnimation().getHeight()*bulletScaleFactor);
 		}
 		
 		SunUI.render(gc, sbg, g);
@@ -101,7 +100,7 @@ public class Play extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		SunUI.update(gc, sbg);
 		
-		for (Plant iPlant: plant) {
+		for (Plant iPlant : plant) {
 			iPlant.attack(bullet);
 		}
 		
@@ -111,8 +110,10 @@ public class Play extends BasicGameState {
 		
 		for (Bullet iBullet : bullet) {
 			iBullet.move();
-		}	
-		
+			if (iBullet.getPos().x > PZGUI.width + 500 || iBullet.getPos().y > PZGUI.height + 500) {
+				iBullet = null;
+			}
+		}
 	}
 
 	public int getID() {

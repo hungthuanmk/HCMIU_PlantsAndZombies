@@ -24,6 +24,16 @@ public class BPeashooter extends pz.Bullet {
 		loadAnimation();
 	}
 	
+	public BPeashooter(int x, int y, int _damage, int _speed) {
+		super(_damage, _speed, new Position(x, y));
+		loadAnimation();
+	}
+	
+	public BPeashooter(int x, int y, int _damage) {
+		super(_damage, speed, new Position(x, y));
+		loadAnimation();
+	}
+	
 	public BPeashooter(Position pos) {
 		super(damage, speed, pos);
 		loadAnimation();

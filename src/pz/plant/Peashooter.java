@@ -17,7 +17,7 @@ public class Peashooter extends pz.Plant {
 	
 	private static int hp = 100;
 	private static int damage = 20;
-	private static int attackInterval = 200;
+	private static int attackInterval = 300;
 
 	public Peashooter(Position pos) {
 		super("Peashooter", hp, damage, attackInterval, pos);
@@ -36,7 +36,7 @@ public class Peashooter extends pz.Plant {
 	@Override
 	public void attack(ArrayList<Bullet> bulletArrayList) {
 		if (getFramePassed() > getAttackInterval()) {
-			bulletArrayList.add(new pz.bullet.BPeashooter(this.getPos().x, this.getPos().y));
+			bulletArrayList.add(new pz.bullet.BPeashooter(getPos().x + 60, getPos().y, damage));
 			setFramePassed(0);
 		}
 		setFramePassed(getFramePassed()+1)	;
