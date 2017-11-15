@@ -31,7 +31,7 @@ public class Text {
         }
     }
     
-    public void render(int x, int y, String whatchars) {
+    public void render(float x, float y, String whatchars) {
         font.drawString(x, y, whatchars);
     }
 }

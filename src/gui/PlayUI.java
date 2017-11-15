@@ -11,7 +11,7 @@ public class PlayUI {
 	private static Text text = new Text();
 	
 	public static void init(){
-		text.init("res/Fonts/FbUsv8C5eI.ttf", 35);
+		text.init("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
 	}
 	
 	// Sun Collected
@@ -19,7 +19,7 @@ public class PlayUI {
 		float posX = 10 * PZGUI.resolutionRateWidth;
 		float posY = 20 * PZGUI.resolutionRateHeight;
 		float W = 200 * PZGUI.resolutionRateWidth;
-		float H = 50 * PZGUI.resolutionRateHeight;
+		float H = 45 * PZGUI.resolutionRateHeight;
 		g.drawRect(posX, posY, W, H);
 	}
 
@@ -28,6 +28,10 @@ public class PlayUI {
 		float iconPosY = 5 * PZGUI.resolutionRateHeight;
 		float iconW = 80 * PZGUI.resolutionRateWidth;
 		float iconH = 80 * PZGUI.resolutionRateHeight;
+		
+		float textPosX = 120 * PZGUI.resolutionRateWidth;
+		float textPosY = 22 * PZGUI.resolutionRateHeight;
+		
 		float posX = 60 * PZGUI.resolutionRateWidth;
 		float posY = 20 * PZGUI.resolutionRateHeight;
 		float W = 150 * PZGUI.resolutionRateWidth;
@@ -37,8 +41,7 @@ public class PlayUI {
 		g.fillRoundRect(posX, posY, W, H, 20);
 		SunUI.drawIcon(iconPosX, iconPosY, iconW, iconH);
 		
-		text.render(120, 22, SunUI.getSunCollected().toString());
-		g.drawString(SunUI.getSunCollected().toString(), 100, 100);
+		text.render(textPosX, textPosY, SunUI.getSunCollected().toString());
 		g.setColor(new Color(255, 255, 255));
 	}
 	
