@@ -96,6 +96,7 @@ public class Play extends BasicGameState {
 			g.setColor(new Color(1,1,1,0.5f));
 			//g.drawRect();
 		}
+		DebugTool.showMousePosition(gc, sbg, g);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {

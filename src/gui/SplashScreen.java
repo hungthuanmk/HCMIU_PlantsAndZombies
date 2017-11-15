@@ -81,13 +81,9 @@ public class SplashScreen extends BasicGameState {
 		showBackGround(gc, sbg, g);
 		showLogo(gc, sbg, g);
 		startButton(gc, sbg, g);
-		showMousePosition(gc, sbg, g);
+		DebugTool.showMousePosition(gc, sbg, g);
 		
-	}
-	// Debug
-	public void showMousePosition(GameContainer gc, StateBasedGame sbg, Graphics g)throws SlickException {
-		g.drawString(String.format("[%d, %d]", Mouse.getX(), PZGUI.height - Mouse.getY()), Mouse.getX(), PZGUI.height - Mouse.getY());
-	}
+	}	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		
