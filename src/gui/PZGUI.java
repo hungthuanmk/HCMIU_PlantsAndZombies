@@ -28,8 +28,9 @@ public class PZGUI extends StateBasedGame {
 		super(gameName);
 		try {
 			Ini ini = new Ini(new File("config.ini"));
-			width      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
-			height     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
+			
+//			width      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
+//			height     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
 			targetFPS  = Integer.parseInt	  (ini.get("DISPLAY", "targetFPS" ));
 			showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
 			fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
@@ -74,12 +75,15 @@ public class PZGUI extends StateBasedGame {
 		try {
 			appgc = new AppGameContainer(new PZGUI(gameName));			
 			appgc.setShowFPS(showFPS);
+			
+			width = appgc.getScreenWidth();
+			height  = appgc.getScreenHeight();
+			
 			appgc.setDisplayMode(width, height, fullScreen);
 			appgc.setTargetFrameRate(targetFPS);
 			appgc.setVSync(vSync);
 			appgc.setSmoothDeltas(true);
-			appgc.setAlwaysRender(true);
-			
+			appgc.setAlwaysRender(true);			
 			appgc.start(); //Begin thread game
 		} 
 		catch(SlickException e) {
