@@ -46,7 +46,7 @@ public class Play extends BasicGameState {
 		zombie.add(new pz.zombie.FemaleZombie(new Position(1400, 700)));
 		zombie.add(new pz.zombie.MaleZombie(new Position(1400, 500)));
 		
-		
+		PlayUI.init();
 	}
 
 	// Show Background
