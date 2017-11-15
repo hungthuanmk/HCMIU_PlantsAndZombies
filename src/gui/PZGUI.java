@@ -89,6 +89,7 @@ public class PZGUI extends StateBasedGame {
 				height  = appgc.getScreenHeight();
 			}			
 			appgc.setDisplayMode(width, height, fullScreen);
+			appgc.setUpdateOnlyWhenVisible(true);
 			appgc.setTargetFrameRate(targetFPS);
 			appgc.setVSync(vSync);
 			appgc.setSmoothDeltas(true);
