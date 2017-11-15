@@ -8,18 +8,19 @@ import org.newdawn.slick.state.*;
 public class SplashScreen extends BasicGameState {
 	// Declare variable
 	private Image background;
-
 	public Image logo;
 	public Image playButton;
-
+	
 	// PlaySound
 	public SplashScreen(int state) {
 		//SSound.play("res/main_theme.ogg", false, 1f, 1f);
 	}
-
+	
+	// Text
+	Text text = new Text();
+	
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-				
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
 
 		background = new Image("res/wallpaper.jpg");
@@ -82,7 +83,6 @@ public class SplashScreen extends BasicGameState {
 		showLogo(gc, sbg, g);
 		startButton(gc, sbg, g);
 		DebugTool.showMousePosition(gc, sbg, g);
-		
 	}	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {

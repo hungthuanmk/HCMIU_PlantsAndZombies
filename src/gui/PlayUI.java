@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class PlayUI {
+	private static Text sunCollected = new Text("res/Fonts/FbUsv8C5eI.ttf",24);
 	
 	// Sun Collected
 	public static void showSunCollectedGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -30,6 +31,8 @@ public class PlayUI {
 		g.setColor(new Color(0, 0, 0, 150));
 		g.fillRoundRect(posX, posY, W, H, 20);
 		SunUI.drawIcon(iconPosX, iconPosY, iconW, iconH);
+		
+		sunCollected.render(posX, posY, SunUI.getSunCollected().toString());
 		
 		g.drawString(SunUI.getSunCollected().toString(), 100, 100);
 		g.setColor(new Color(255, 255, 255));
