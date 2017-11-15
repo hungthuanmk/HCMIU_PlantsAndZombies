@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Transform;
 import org.newdawn.slick.state.*;
 
 import com.Position;
@@ -40,11 +42,11 @@ public class Play extends BasicGameState {
 		
 		plant.add(new pz.plant.Peashooter(new Position(100,300)));
 		plant.add(new pz.plant.Peashooter(new Position(100,500)));
-		plant.add(new pz.plant.Peashooter(new Position(100,700)));
+		plant.add(new pz.plant.Peashooter(new Position(100,100)));
 		plant.add(new pz.plant.Sunflower(new Position(100, 200)));
 		
-		zombie.add(new pz.zombie.FemaleZombie(new Position(1400, 700)));
-		zombie.add(new pz.zombie.MaleZombie(new Position(1400, 500)));
+		zombie.add(new pz.zombie.FemaleZombie(new Position(1200, 200)));
+		zombie.add(new pz.zombie.MaleZombie(new Position(1200, 300)));
 		
 		PlayUI.init();
 	}
@@ -62,15 +64,22 @@ public class Play extends BasicGameState {
 
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		
+		DebugTool.showMousePosition(g);
+		
 		showBackground(gc, sbg, g);
+		
 		demoSeedPack.draw(10,120, 140, 90);
 		demoSeedPack.draw(10,120+90, 140, 90);
 		demoSeedPack.draw(10,120+90+90, 140, 90);
 		demoSeedPack.draw(10,120+90+90+90, 140, 90);
-		PlayUI.showSunCollectedGrid(gc, sbg, g);
+		
+		//PlayUI.showSunCollectedGrid(gc, sbg, g);
 		PlayUI.showPlantZoneGrid(gc, sbg, g);
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
+		
+		SunUI.render(gc, sbg, g);
 		
 		for (Plant iPlant : plant) {
 			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor, iPlant.getIdleAni().getHeight()*plantScaleFactor);
@@ -84,19 +93,8 @@ public class Play extends BasicGameState {
 			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth()*bulletScaleFactor, iBullet.getAnimation().getHeight()*bulletScaleFactor);
 		}
 		
-		SunUI.render(gc, sbg, g);
 		
-		int posX = 443;
-		int posY = 150;
-	//	int W = 115;
-	//	int H = 135;
-		// 9//5
-		if (PZGUI.width - Mouse.getX() >= posX && PZGUI.width - Mouse.getX() <= 115 * 9 &&
-			PZGUI.height - Mouse.getY() >= posY && PZGUI.height - Mouse.getY() <= 135 * 5) {
-			g.setColor(new Color(1,1,1,0.5f));
-			//g.drawRect();
-		}
-		DebugTool.showMousePosition(gc, sbg, g);
+		onCellMoveOn(1, 1, new Position(500,500), g);
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -116,7 +114,14 @@ public class Play extends BasicGameState {
 				iBullet = null;
 			}
 		}
+		
+		
 	}
+	
+	public void onCellMoveOn(int x, int y, Position pos, Graphics g) {
+		//g.drawString("Hello", pos.x, pos.y);
+	}
+	
 
 	public int getID() {
 		return 2;

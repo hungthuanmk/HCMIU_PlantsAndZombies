@@ -81,7 +81,7 @@ public class SplashScreen extends BasicGameState {
 		showBackGround(gc, sbg, g);
 		showLogo(gc, sbg, g);
 		startButton(gc, sbg, g);
-		DebugTool.showMousePosition(gc, sbg, g);
+		DebugTool.showMousePosition(g);
 		
 	}	
 	

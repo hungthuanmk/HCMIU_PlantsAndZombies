@@ -10,6 +10,27 @@ public class PlayUI {
 	
 	private static Text text = new Text();
 	
+	private static float plantZonePosX = 432 * PZGUI.resolutionRateWidth;
+	private static float plantZonePosY = 142 * PZGUI.resolutionRateHeight;
+	private static float cellW = 110 * PZGUI.resolutionRateWidth;
+	private static float cellH = 130 * PZGUI.resolutionRateHeight;
+	
+	public static float getPlantZonePosX() {
+		return plantZonePosX;
+	}
+
+	public static float getPlantZonePosY() {
+		return plantZonePosY;
+	}
+
+	public static float getCellW() {
+		return cellW;
+	}
+
+	public static float getCellH() {
+		return cellH;
+	}
+	
 	public static void init(){
 		text.init("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
 	}
@@ -62,16 +83,11 @@ public class PlayUI {
 	
 	// Show Plant Zone
 	public static void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		float posX = 432 * PZGUI.resolutionRateWidth;
-		float posY = 142 * PZGUI.resolutionRateHeight;
 		
-		float W = 110 * PZGUI.resolutionRateWidth;
-		float H = 130 * PZGUI.resolutionRateHeight;
 		
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 9; j++)
-				g.drawRect(posX + W * j, posY + H * i, W, H);
-
+				g.drawRect(plantZonePosX + cellW * j, plantZonePosY + cellH * i, cellW, cellH);
 	}
 
 	public static void showPlantZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {

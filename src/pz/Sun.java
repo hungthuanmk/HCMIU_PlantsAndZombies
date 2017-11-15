@@ -35,7 +35,6 @@ public class Sun{
 	
 	public void drawSun() throws SlickException{
 		animation.draw(posX, posY, width, height);
-		
 	}
 	
 	public void updateSun(){

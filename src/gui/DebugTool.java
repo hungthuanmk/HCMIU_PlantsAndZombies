@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class DebugTool {
-	public static void showMousePosition(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+	public static void showMousePosition(Graphics g) throws SlickException {
 		if (Mouse.getX() < PZGUI.width - 100)
 			g.drawString(String.format("[%d, %d]", Mouse.getX(), PZGUI.height - Mouse.getY()), Mouse.getX(), PZGUI.height - Mouse.getY());
 		else
