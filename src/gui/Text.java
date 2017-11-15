@@ -18,27 +18,8 @@ public class Text {
 
     private boolean antiAlias = true;
 	
-    public Text(){
-    	Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
-        font = new TrueTypeFont(awtFont, antiAlias);
-    }
-    
-    public Text(float fontSize){
-    	Font awtFont = new Font("Times New Roman", Font.BOLD, (int)fontSize);
-        font = new TrueTypeFont(awtFont, antiAlias);
-    }
-    
-    public Text(String fontDirection, float fontSize){
-    	this.init(fontDirection, fontSize);
-    }
-    
-    public void init(float fontSize){
-    	Font awtFont = new Font("Times New Roman", Font.BOLD, (int)fontSize);
-        font = new TrueTypeFont(awtFont, antiAlias);
-    }
-    
-    public void init(String fontDirection, float fontSize){
-    	try {
+    public void init(String fontDirection, float fontSize) {
+        try {
             InputStream inputStream = ResourceLoader.getResourceAsStream(fontDirection);
              
             Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
@@ -50,11 +31,7 @@ public class Text {
         }
     }
     
-    public void render(float x, float y, String whatchars){
-    	font.drawString(x, y, whatchars);
-    }
-    
-    public void render(float x, float y, String whatchars, Color color){
-    	font.drawString(x, y, whatchars, color);
+    public void render(int x, int y, String whatchars) {
+        font.drawString(x, y, whatchars);
     }
 }

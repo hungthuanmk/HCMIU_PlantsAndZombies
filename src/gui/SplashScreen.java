@@ -17,7 +17,6 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	// Text
-	Text text = new Text();
 	
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -83,6 +82,7 @@ public class SplashScreen extends BasicGameState {
 		showLogo(gc, sbg, g);
 		startButton(gc, sbg, g);
 		DebugTool.showMousePosition(gc, sbg, g);
+		
 	}	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
