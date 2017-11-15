@@ -13,7 +13,7 @@ import pz.Zombie;
 public class FemaleZombie extends Zombie {
 
 	private static int hp = 100;
-	private static int speed = 1;
+	private static float speed = 0.4f;
 
 	public FemaleZombie(Position pos) {
 		super("FemaleZombie", hp, speed, pos);
@@ -33,7 +33,7 @@ public class FemaleZombie extends Zombie {
 	protected void loadAnimation() {
 		try {
 			for (int i = 1; i <= 10; i++)
-				getAnimation().addFrame(new Image("res/ZombieTest/female/Walk (" + i + ").png"), 80);
+				getAnimation().addFrame(new Image("res/ZombieTest/female/Walk (" + i + ").png"), 110);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -8,7 +8,7 @@ public abstract class Zombie extends Character {
 
 	private Animation ani = new Animation();
 	
-	public Zombie(String name, int hp, int speed, Position pos) {
+	public Zombie(String name, int hp, float speed, Position pos) {
 		super(name, hp, pos);
 		setSpeed(speed);
 		loadAnimation();

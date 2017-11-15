@@ -20,7 +20,7 @@ public abstract class Plant extends Character {
 	}
 
 	public void move() {
-		this.setPos(this.getPos().x + this.getSpeed(), this.getPos().y);
+		this.setPos(getPos().x + getSpeed(), getPos().y);
 	}
 
 	public Animation getIdleAni() {

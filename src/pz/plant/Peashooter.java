@@ -36,7 +36,7 @@ public class Peashooter extends pz.Plant {
 	@Override
 	public void attack(ArrayList<Bullet> bulletArrayList) {
 		if (getFramePassed() > getAttackInterval()) {
-			bulletArrayList.add(new pz.bullet.BPeashooter(getPos().x + 60, getPos().y, damage));
+			bulletArrayList.add(new pz.bullet.BPeashooter(getPos().x + 100, getPos().y+20, damage));
 			setFramePassed(0);
 		}
 		setFramePassed(getFramePassed()+1)	;

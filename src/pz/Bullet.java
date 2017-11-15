@@ -7,10 +7,10 @@ import com.Position;
 public abstract class Bullet {
 	private int damage = 0;
 	private Animation ani = new Animation();
-	private int speed = 0;
+	private float speed = 0;
 	private Position pos;
 
-	public Bullet(int damage, int speed, Position pos) {
+	public Bullet(int damage, float speed, Position pos) {
 		setDamage(damage);
 		//this.setAnimation(ani);
 		setSpeed(speed);
@@ -26,11 +26,11 @@ public abstract class Bullet {
 		this.damage = damage;
 	}
 
-	public int getSpeed() {
+	public float getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(int speed) {
+	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 
@@ -50,7 +50,7 @@ public abstract class Bullet {
 		this.pos = pos;
 	}
 
-	public void setPos(int x, int y) {
+	public void setPos(float x, float y) {
 		this.pos.x = x;
 		this.pos.y = y;
 	}
