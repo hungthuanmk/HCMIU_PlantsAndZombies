@@ -83,7 +83,5 @@ public class Sun{
 
 	public boolean isDone() {
 		return isDone;
-	}
-	
-	
+	}	
 }
