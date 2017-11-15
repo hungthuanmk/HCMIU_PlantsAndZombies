@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Transform;
 import org.newdawn.slick.state.*;
 
+import com.Controller;
 import com.Position;
 
 import pz.*;
@@ -64,10 +65,10 @@ public class Play extends BasicGameState {
 
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		
-		DebugTool.showMousePosition(g);
-		
+
 		showBackground(gc, sbg, g);
+		
+		eventHandle(g);
 		
 		demoSeedPack.draw(10,120, 140, 90);
 		demoSeedPack.draw(10,120+90, 140, 90);
@@ -75,18 +76,18 @@ public class Play extends BasicGameState {
 		demoSeedPack.draw(10,120+90+90+90, 140, 90);
 		
 		//PlayUI.showSunCollectedGrid(gc, sbg, g);
-		PlayUI.showPlantZoneGrid(gc, sbg, g);
+		//PlayUI.showPlantZoneGrid(gc, sbg, g);
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 		
 		SunUI.render(gc, sbg, g);
 		
-		for (Plant iPlant : plant) {
-			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor, iPlant.getIdleAni().getHeight()*plantScaleFactor);
-		}
-		
 		for (Zombie iZombie : zombie) {
 			iZombie.getAnimation().draw(iZombie.getPos().x, iZombie.getPos().y, iZombie.getAnimation().getWidth()*zombieScaleFactor, iZombie.getAnimation().getHeight()*zombieScaleFactor);
+		}
+		
+		for (Plant iPlant : plant) {
+			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor, iPlant.getIdleAni().getHeight()*plantScaleFactor);
 		}
 		
 		for (Bullet iBullet : bullet) {
@@ -94,7 +95,25 @@ public class Play extends BasicGameState {
 		}
 		
 		
-		onCellMoveOn(1, 1, new Position(500,500), g);
+		
+		DebugTool.showMousePosition(g);
+		
+	}
+	
+	
+	
+	private void eventHandle(Graphics g) {
+		int mouseX = Controller.getMouseX();
+		int mouseY = Controller.getMouseY();
+		
+		if (mouseX >= PlayUI.getPlantZonePosX() && mouseX <= PlayUI.getPlantZonePosX() + PlayUI.getCellW() * 9 &&
+			mouseY >= PlayUI.getPlantZonePosY() && mouseY <= PlayUI.getPlantZonePosY() + PlayUI.getCellH() * 5   ) {
+			int hozId = (int) ( (mouseX - PlayUI.getPlantZonePosX()) / (int)PlayUI.getCellW() ) ;
+			int verId = (int) ( (mouseY - PlayUI.getPlantZonePosY()) / (int)PlayUI.getCellH() ) ;
+			Position posCell = new Position( (int) (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
+											   (int) (PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
+			onCellMoveOn(hozId, verId, posCell, g);
+		}
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -115,11 +134,12 @@ public class Play extends BasicGameState {
 			}
 		}
 		
-		
 	}
 	
-	public void onCellMoveOn(int x, int y, Position pos, Graphics g) {
-		//g.drawString("Hello", pos.x, pos.y);
+	public void onCellMoveOn(int hozId, int verId, Position pos, Graphics g) {
+		g.setColor(new Color(1, 1, 1, 0.15f));
+		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
+		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
 	}
 	
 

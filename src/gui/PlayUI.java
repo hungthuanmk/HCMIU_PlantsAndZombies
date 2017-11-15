@@ -83,8 +83,6 @@ public class PlayUI {
 	
 	// Show Plant Zone
 	public static void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		
-		
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 9; j++)
 				g.drawRect(plantZonePosX + cellW * j, plantZonePosY + cellH * i, cellW, cellH);
