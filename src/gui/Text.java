@@ -14,11 +14,12 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 
 public class Text {
-	private TrueTypeFont font;
-
-    private boolean antiAlias = true;
+	private boolean antiAlias = true;
 	
-    public void init(String fontDirection, float fontSize) {
+	private Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
+	private TrueTypeFont font = new TrueTypeFont(awtFont, antiAlias);
+
+    public void loadFont(String fontDirection, float fontSize) {
         try {
             InputStream inputStream = ResourceLoader.getResourceAsStream(fontDirection);
              

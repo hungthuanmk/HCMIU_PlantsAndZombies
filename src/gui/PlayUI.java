@@ -11,7 +11,7 @@ public class PlayUI {
 	private static Text text = new Text();
 	
 	public static void init(){
-		text.init("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
+		text.loadFont("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
 	}
 	
 	// Sun Collected
