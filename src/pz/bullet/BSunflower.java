@@ -10,10 +10,10 @@ import pz.Bullet;
 public class BSunflower extends Bullet {
 	
 	// y = -5x + 10;
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 	private int time = 0;
-	private int delta, theta;
+	private float delta, theta;
 	private static int damage = 0;
 	private static int speed = 10;
 

@@ -20,7 +20,7 @@ abstract class Character {
 	}
 
 	private int damage = 0;
-	private int speed = 0;
+	private float speed = 0;
 
 	// private int attackInterval = 100;
 
@@ -46,7 +46,7 @@ abstract class Character {
 		this.pos = pos;
 	}
 
-	public void setPos(int x, int y) {
+	public void setPos(float x, float y) {
 		this.pos.x = x;
 		this.pos.y = y;
 	}
@@ -59,11 +59,11 @@ abstract class Character {
 		this.damage = damage;
 	}
 
-	public int getSpeed() {
+	public float getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(int speed) {
+	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
 

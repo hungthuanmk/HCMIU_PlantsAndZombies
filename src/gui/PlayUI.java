@@ -10,8 +10,44 @@ public class PlayUI {
 	
 	private static Text text = new Text();
 	
+	private static float plantZonePosX = 432 * PZGUI.resolutionRateWidth;
+	private static float plantZonePosY = 142 * PZGUI.resolutionRateHeight;
+	private static float cellW = 110 * PZGUI.resolutionRateWidth;
+	private static float cellH = 130 * PZGUI.resolutionRateHeight;
+	
+	private static float seedZonePosX = 10 * PZGUI.resolutionRateWidth;
+	private static float seedZonePosY = 120 * PZGUI.resolutionRateHeight;
+	private static float seedZoneW = 140 * PZGUI.resolutionRateWidth;
+	private static float seedZoneH = 90 * PZGUI.resolutionRateHeight;
+	
+	public static float getPlantZonePosX() {
+		return plantZonePosX;
+	}
+	public static float getPlantZonePosY() {
+		return plantZonePosY;
+	}
+	public static float getCellW() {
+		return cellW;
+	}
+	public static float getCellH() {
+		return cellH;
+	}
+	public static float getSeedZonePosX() {
+		return seedZonePosX;
+	}
+	public static float getSeedZonePosY() {
+		return seedZonePosY;
+	}
+	public static float getSeedZoneW() {
+		return seedZoneW;
+	}
+	public static float getSeedZoneH() {
+
+		return seedZoneH;
+	}
+	
 	public static void init(){
-		text.init("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
+		text.loadFont("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
 	}
 	
 	// Sun Collected
@@ -41,18 +77,14 @@ public class PlayUI {
 		g.fillRoundRect(posX, posY, W, H, 20);
 		SunUI.drawIcon(iconPosX, iconPosY, iconW, iconH);
 		
-		text.render(textPosX, textPosY, SunUI.getSunCollected().toString());
+		text.render(textPosX, textPosY, SunUI.getSunCollected().toString(), Color.white);
 		g.setColor(new Color(255, 255, 255));
 	}
 	
 	// Show Seed Zone
 	public static void showSeedZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		float posX = 10 * PZGUI.resolutionRateWidth;
-		float posY = 120 * PZGUI.resolutionRateHeight;
-		float W = 140 * PZGUI.resolutionRateWidth;
-		float H = 90 * PZGUI.resolutionRateHeight;
 		for (int i = 0; i < 8; i++) {
-			g.drawRect(posX, posY + H * i, W, H);
+			g.drawRect(seedZonePosX, seedZonePosY + seedZoneH * i, seedZoneW, seedZoneH);
 		}
 	}
 
@@ -62,16 +94,9 @@ public class PlayUI {
 	
 	// Show Plant Zone
 	public static void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		float posX = 432 * PZGUI.resolutionRateWidth;
-		float posY = 142 * PZGUI.resolutionRateHeight;
-		
-		float W = 110 * PZGUI.resolutionRateWidth;
-		float H = 130 * PZGUI.resolutionRateHeight;
-		
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 9; j++)
-				g.drawRect(posX + W * j, posY + H * i, W, H);
-
+				g.drawRect(plantZonePosX + cellW * j, plantZonePosY + cellH * i, cellW, cellH);
 	}
 
 	public static void showPlantZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {

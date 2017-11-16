@@ -1,16 +1,16 @@
 package gui;
 
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
+
+import com.Controller;
 
 public class DebugTool {
-	public static void showMousePosition(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+	public static void showMousePosition(Graphics g) throws SlickException {
 		if (Mouse.getX() < PZGUI.width - 100)
-			g.drawString(String.format("[%d, %d]", Mouse.getX(), PZGUI.height - Mouse.getY()), Mouse.getX(), PZGUI.height - Mouse.getY());
+			g.drawString( String.format("[%d, %d]", Controller.getMouseX(), Controller.getMouseY()) , Controller.getMouseX() + 10, Controller.getMouseY());
 		else
-			g.drawString(String.format("[%d, %d]", Mouse.getX(), PZGUI.height - Mouse.getY()), Mouse.getX() - 100, PZGUI.height - Mouse.getY());
+			g.drawString( String.format("[%d, %d]", Controller.getMouseX(), Controller.getMouseY()), Controller.getMouseX() - 100, Controller.getMouseY());
 	}
 }
