@@ -5,6 +5,8 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+import com.SSound;
+
 public class SplashScreen extends BasicGameState {
 	// Declare variable
 	private Image background;
@@ -13,7 +15,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// PlaySound
 	public SplashScreen(int state) {
-		//SSound.play("res/main_theme.ogg", false, 1f, 1f);
+		SSound.play("res/main_theme.ogg", false, 1f, 1f);
 	}
 	
 	// Text
