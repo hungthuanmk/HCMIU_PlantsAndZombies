@@ -9,6 +9,7 @@ import org.newdawn.slick.SlickException;
 
 import com.Position;
 
+import gui.PZGUI;
 import pz.Bullet;
 
 //import pz.Bullet.*;
@@ -36,7 +37,7 @@ public class Peashooter extends pz.Plant {
 	@Override
 	public void attack(ArrayList<Bullet> bulletArrayList) {
 		if (getFramePassed() > getAttackInterval()) {
-			bulletArrayList.add(new pz.bullet.BPeashooter(getPos().x + 100, getPos().y+20, damage));
+			bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + 80)*PZGUI.resolutionRateWidth, (getPos().y+17)*PZGUI.resolutionRateHeight, damage));
 			setFramePassed(0);
 		}
 		setFramePassed(getFramePassed()+1)	;
