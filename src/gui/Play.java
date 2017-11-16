@@ -175,11 +175,10 @@ public class Play extends BasicGameState {
 			g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
 			g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
 //		}
-			if (Mouse.getEventButtonState()) {
+			if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 				if (plant2[hozId][verId] == null) 
 					plant2[hozId][verId] = new Peashooter(pos);
 			}
-				
 	}
 	
 	public int getID() {
