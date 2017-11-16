@@ -24,9 +24,9 @@ public class Sun{
 	
 	public Sun(Animation ani) throws SlickException{
 		super();
-		posX = ThreadLocalRandom.current().nextInt(450, 1400 + 1);
+		posX = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.resolutionRateWidth), (int)(PZGUI.resolutionRateHeight*1350));
 		posY = -98;
-		edgeY = ThreadLocalRandom.current().nextInt(100, 760 + 1);
+		edgeY = ThreadLocalRandom.current().nextInt((int)(100*PZGUI.resolutionRateWidth), (int)(750*PZGUI.resolutionRateHeight));
 		ani.stop();
 		this.animation = ani;
 		this.animation.start(); // I think it can restart the animation
