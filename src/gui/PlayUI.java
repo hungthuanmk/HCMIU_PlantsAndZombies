@@ -15,20 +15,35 @@ public class PlayUI {
 	private static float cellW = 110 * PZGUI.resolutionRateWidth;
 	private static float cellH = 130 * PZGUI.resolutionRateHeight;
 	
+	private static float seedZonePosX = 10 * PZGUI.resolutionRateWidth;
+	private static float seedZonePosY = 120 * PZGUI.resolutionRateHeight;
+	private static float seedZoneW = 140 * PZGUI.resolutionRateWidth;
+	private static float seedZoneH = 90 * PZGUI.resolutionRateHeight;
+	
 	public static float getPlantZonePosX() {
 		return plantZonePosX;
 	}
-
 	public static float getPlantZonePosY() {
 		return plantZonePosY;
 	}
-
 	public static float getCellW() {
 		return cellW;
 	}
-
 	public static float getCellH() {
 		return cellH;
+	}
+	public static float getSeedZonePosX() {
+		return seedZonePosX;
+	}
+	public static float getSeedZonePosY() {
+		return seedZonePosY;
+	}
+	public static float getSeedZoneW() {
+		return seedZoneW;
+	}
+	public static float getSeedZoneH() {
+
+		return seedZoneH;
 	}
 	
 	public static void init(){
@@ -68,12 +83,8 @@ public class PlayUI {
 	
 	// Show Seed Zone
 	public static void showSeedZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		float posX = 10 * PZGUI.resolutionRateWidth;
-		float posY = 120 * PZGUI.resolutionRateHeight;
-		float W = 140 * PZGUI.resolutionRateWidth;
-		float H = 90 * PZGUI.resolutionRateHeight;
 		for (int i = 0; i < 8; i++) {
-			g.drawRect(posX, posY + H * i, W, H);
+			g.drawRect(seedZonePosX, seedZonePosY + seedZoneH * i, seedZoneW, seedZoneH);
 		}
 	}
 

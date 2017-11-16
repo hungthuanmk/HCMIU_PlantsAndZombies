@@ -14,4 +14,11 @@ public class Controller {
 	public static Position getMousePos() {
 		return new Position(getMouseX(), getMouseY());
 	}
+	public static boolean mouseInArea(float topLeftX, float topLeftY, float botRightX, float botRightY) {
+		float mX = getMouseX(), mY = getMouseY();
+		if (mX >= topLeftX && mX <= botRightX)
+			if (mY >= topLeftY && mY <= botRightY)
+				return true;
+		return false;
+	}
 }

@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 
 import org.newdawn.slick.state.*;
@@ -10,6 +11,7 @@ import com.Controller;
 import com.Position;
 
 import pz.*;
+import pz.plant.Peashooter;
 
 public class Play extends BasicGameState {
 
@@ -18,9 +20,11 @@ public class Play extends BasicGameState {
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
+	Plant[][] plant2 = new Plant[9][5];
+	
 	Image demoSeedPack;
 	
-	private static float plantScaleFactor  = 0.25f;
+	private static float plantScaleFactor  = 0.20f;
 	private static float zombieScaleFactor = 0.3f;
 	private static float bulletScaleFactor = 0.6f;
 	
@@ -39,11 +43,12 @@ public class Play extends BasicGameState {
 		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
 		
-		plant.add(new pz.plant.Peashooter(new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*0)));
-		plant.add(new pz.plant.Peashooter(new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*1)));
-		plant.add(new pz.plant.Peashooter(new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*2)));
-		plant.add(new pz.plant.Sunflower (new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*3)));
-		
+		// TEST PURPOSE
+//		plant.add(new pz.plant.Peashooter(new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*0)));
+//		plant.add(new pz.plant.Peashooter(new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*1)));
+//		plant.add(new pz.plant.Peashooter(new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*2)));
+//		plant.add(new pz.plant.Sunflower (new Position(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY()+PlayUI.getCellH()*3)));
+//		
 		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
 		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
@@ -78,41 +83,23 @@ public class Play extends BasicGameState {
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 		
-		SunUI.render(gc, sbg, g);
+		for (Plant iPlant : plant) {
+			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor*PZGUI.resolutionRateWidth, iPlant.getIdleAni().getHeight()*plantScaleFactor*PZGUI.resolutionRateHeight);
+		}
 		
 		for (Zombie iZombie : zombie) {
 			iZombie.getAnimation().draw(iZombie.getPos().x, iZombie.getPos().y, iZombie.getAnimation().getWidth()*zombieScaleFactor*PZGUI.resolutionRateWidth, iZombie.getAnimation().getHeight()*zombieScaleFactor*PZGUI.resolutionRateHeight);
-		}
-		
-		for (Plant iPlant : plant) {
-			iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor*PZGUI.resolutionRateWidth, iPlant.getIdleAni().getHeight()*plantScaleFactor*PZGUI.resolutionRateHeight);
 		}
 		
 		for (Bullet iBullet : bullet) {
 			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth()*bulletScaleFactor*PZGUI.resolutionRateWidth, iBullet.getAnimation().getHeight()*bulletScaleFactor*PZGUI.resolutionRateHeight);
 		}
 		
+		SunUI.render(gc, sbg, g);
 		
 		DebugTool.showMousePosition(g);
 		
 	}
-	
-	
-	
-	private void eventHandle(Graphics g) {
-		int mouseX = Controller.getMouseX();
-		int mouseY = Controller.getMouseY();
-		
-		if (mouseX >= PlayUI.getPlantZonePosX() && mouseX <= PlayUI.getPlantZonePosX() + PlayUI.getCellW() * 9 &&
-			mouseY >= PlayUI.getPlantZonePosY() && mouseY <= PlayUI.getPlantZonePosY() + PlayUI.getCellH() * 5   ) {
-			int hozId = (int) ( (mouseX - PlayUI.getPlantZonePosX()) / PlayUI.getCellW() ) ;
-			int verId = (int) ( (mouseY - PlayUI.getPlantZonePosY()) / PlayUI.getCellH() ) ;
-			Position posCell = new Position(  (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
-											    (PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
-			onCellMoveOn(hozId, verId, posCell, g);
-		}
-	}
-
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		SunUI.update(gc, sbg);
 		
@@ -133,13 +120,52 @@ public class Play extends BasicGameState {
 		
 	}
 	
-	public void onCellMoveOn(int hozId, int verId, Position pos, Graphics g) {
-		g.setColor(new Color(1, 1, 1, 0.15f));
-		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
-		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
+	private void eventHandle(Graphics g) {
+		int mouseX = Controller.getMouseX();
+		int mouseY = Controller.getMouseY();
+		
+		// Mouse on PlantZone
+		if (Controller.mouseInArea( PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY(), 
+									PlayUI.getPlantZonePosX()+9*PlayUI.getCellW(), PlayUI.getPlantZonePosY()+5*PlayUI.getCellH())) {
+			int hozId = (int) ( (mouseX - PlayUI.getPlantZonePosX()) / PlayUI.getCellW() ) ;
+			int verId = (int) ( (mouseY - PlayUI.getPlantZonePosY()) / PlayUI.getCellH() ) ;
+			Position posCell = new Position(  (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
+											    (PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
+			onPlantZoneMoveOn(hozId, verId, posCell, g);
+		}
+		
+		// Mouse on SeedZone
+		if (Controller.mouseInArea( PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY(), 
+									PlayUI.getSeedZonePosX()+PlayUI.getSeedZoneW(), PlayUI.getSeedZonePosY()+PlayUI.getSeedZoneH()*8)) {
+			int itemId = (int) ( (mouseY - PlayUI.getSeedZonePosY()) / PlayUI.getSeedZoneH() ) ;
+			Position posItem = new Position(PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY() + itemId * PlayUI.getSeedZoneH()  );
+			onSeedZoneMoveOn(itemId, posItem, g);
+		}
+	}
+
+	private void onSeedZoneMoveOn(int itemId, Position posItem, Graphics g) {
+		g.fillRect(posItem.x, posItem.y, PlayUI.getSeedZoneW(), PlayUI.getSeedZoneH());
+	}
+
+	@Override
+	public void mousePressed(int button, int x, int y) {
+		//System.out.println("Mouse clicked!");
+	}
+	@Override
+	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
+		System.out.println(String.format("%d %d", newx, newy));
 	}
 	
-
+	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
+//		if (Mouse.isButtonDown(0)) {
+			g.setColor(new Color(1, 1, 1, 0.15f));
+			g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
+			g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
+//		}
+			if (Mouse.getEventButtonState()) 
+				plant.add(new Peashooter(pos));
+	}
+	
 	public int getID() {
 		return 2;
 	}

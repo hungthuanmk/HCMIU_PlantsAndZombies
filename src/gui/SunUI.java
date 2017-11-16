@@ -33,7 +33,6 @@ public class SunUI {
 		SunUI.sunCollected += sunCollected;
 	}
 
-
 	public static void init() throws SlickException{
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 1.png"), animationDuration);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 2.png"), animationDuration);
