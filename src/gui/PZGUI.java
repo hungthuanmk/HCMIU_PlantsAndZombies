@@ -10,9 +10,9 @@ import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.*;
 
 public class PZGUI extends StateBasedGame {
-	public static int width 	= 1600; 	public static int height 	= 900;
+//	public static int width 	= 1600; 	public static int height 	= 900;
 	
-//	public static int width		= 800;  	public static int height	= 450;
+	public static int width		= 800;  	public static int height	= 450;
 	
 	public static int targetFPS = 65;
 	public static boolean showFPS 	 = true;
