@@ -59,6 +59,10 @@ public class PZGUI extends StateBasedGame {
 		//this.addState(new GameOver(gameOver));
 	}
 	
+	public void addState(BasicGameState state){
+		
+	}
+	
 	private void loadDefaultSettings() {
 		width      = defaultWidth;
 		height     = defaultWidth;

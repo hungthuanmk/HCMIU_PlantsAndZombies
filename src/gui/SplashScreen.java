@@ -15,6 +15,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// Loader
 	private void loader(){
+		
 	}
 	
 	
