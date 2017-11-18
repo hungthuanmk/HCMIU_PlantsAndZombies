@@ -13,12 +13,15 @@ public class SplashScreen extends BasicGameState {
 	public Image logo;
 	public Image playButton;
 	
+	// Loader
+	private void loader(){
+	}
+	
+	
 	// PlaySound
 	public SplashScreen(int state) {
 		SSound.play("res/main_theme.ogg", false, 1f, 1f);
 	}
-	
-	// Text
 	
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -33,7 +36,6 @@ public class SplashScreen extends BasicGameState {
 		System.out.println("Hei: " + PZGUI.height);
 	}
 
-	// Create Thing
 	// Start Button
 	public void startButton(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		float rate = (float)0.9;
@@ -46,9 +48,6 @@ public class SplashScreen extends BasicGameState {
 		float edgeX = posX + width;
 		float edgeY = posY + height;
 
-//		System.out.println("Width = " + width);
-//		System.out.println("Height = " + height);
-		
 		playButton.draw(posX, posY, width, height);
 		if (	Mouse.getX() >= posX && 
 				Mouse.getX() <= edgeX && 
