@@ -1,9 +1,13 @@
 package pz.bullet;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
+
+import pz.Zombie;
 
 public class BPeashooter extends pz.Bullet {
 	
@@ -11,7 +15,7 @@ public class BPeashooter extends pz.Bullet {
 	private static int speed	= 5;
 	//private static Animation ani = new Animation();
 	
-	protected void loadAnimation() {
+	protected void loadAnimation() { 
 		try {
 			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Pea.png"), 10);
 		} catch (SlickException e) {
@@ -46,5 +50,13 @@ public class BPeashooter extends pz.Bullet {
 
 	public void move() {
 		setPos(getPos().x + getSpeed(), getPos().y);	
+	}
+	
+	public void attack(ArrayList<Zombie>[] zombieList) {
+		for (ArrayList<Zombie> zomList : zombieList)
+			for (Zombie z : zomList) {
+				
+				z.setHp(z.getHp() - getDamage());
+			}
 	}
 }
