@@ -82,7 +82,7 @@ public class PZGUI extends StateBasedGame {
 		AppGameContainer appgc;
 	    
 		try {
-			Graphics gp = new Graphics();
+			
 			appgc = new AppGameContainer(new PZGUI(gameName));			
 			appgc.setShowFPS(showFPS);
 			
