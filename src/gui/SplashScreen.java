@@ -19,6 +19,8 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	
+	
+	
 	// PlaySound
 	public SplashScreen(int state) {
 		SSound.play("res/main_theme.ogg", false, 1f, 1f);

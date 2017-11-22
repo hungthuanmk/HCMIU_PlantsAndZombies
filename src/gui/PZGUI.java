@@ -59,9 +59,6 @@ public class PZGUI extends StateBasedGame {
 		//this.addState(new GameOver(gameOver));
 	}
 	
-	public void addState(BasicGameState state){
-		
-	}
 	
 	private void loadDefaultSettings() {
 		width      = defaultWidth;
@@ -85,6 +82,7 @@ public class PZGUI extends StateBasedGame {
 		AppGameContainer appgc;
 	    
 		try {
+			Graphics gp = new Graphics();
 			appgc = new AppGameContainer(new PZGUI(gameName));			
 			appgc.setShowFPS(showFPS);
 			
