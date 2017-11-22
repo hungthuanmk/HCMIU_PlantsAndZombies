@@ -59,7 +59,6 @@ public class PZGUI extends StateBasedGame {
 		//this.addState(new GameOver(gameOver));
 	}
 	
-	
 	private void loadDefaultSettings() {
 		width      = defaultWidth;
 		height     = defaultWidth;
@@ -83,7 +82,7 @@ public class PZGUI extends StateBasedGame {
 	    
 		try {
 			
-			appgc = new AppGameContainer(new PZGUI(gameName));			
+			appgc = new AppGameContainer(new PZGUI(gameName));	
 			appgc.setShowFPS(showFPS);
 			
 			if (fullScreen == true){
@@ -98,6 +97,7 @@ public class PZGUI extends StateBasedGame {
 			appgc.setAlwaysRender(true);					
 			resolutionRateHeight = (float)appgc.getHeight() / (float)defaultHeight;
 			resolutionRateWidth = (float)appgc.getWidth() / (float)defaultWidth;
+			
 			appgc.start(); //Begin thread game
 		} 
 		catch(SlickException e) {
