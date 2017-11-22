@@ -34,7 +34,7 @@ public class FemaleZombie extends Zombie {
 	protected void loadAnimation() {
 		try {
 			for (int i = 1; i <= 10; i++)
-				getAnimation().addFrame(new Image("res/ZombieTest/female/Walk (" + i + ").png"), 110);
+				getAnimation().addFrame(new Image("res/ZombieTest/female/Walk (" + i + ").png").getFlippedCopy(true, false), 110);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
