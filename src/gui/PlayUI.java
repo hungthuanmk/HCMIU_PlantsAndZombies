@@ -3,12 +3,14 @@ package gui;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class PlayUI {
 	
 	private static Text text = new Text();
+	private static Image pauseButton;
 	
 	private static float plantZonePosX = 432 * PZGUI.resolutionRateWidth;
 	private static float plantZonePosY = 142 * PZGUI.resolutionRateHeight;
@@ -19,6 +21,11 @@ public class PlayUI {
 	private static float seedZonePosY = 120 * PZGUI.resolutionRateHeight;
 	private static float seedZoneW = 140 * PZGUI.resolutionRateWidth;
 	private static float seedZoneH = 90 * PZGUI.resolutionRateHeight;
+	
+	private static float pauseButtonPosX;
+	private static float pauseButtonPosY;
+	private static float pauseButtonWidth;
+	private static float pauseButtonHeight;
 	
 	public static float getPlantZonePosX() {
 		return plantZonePosX;
@@ -46,8 +53,9 @@ public class PlayUI {
 		return seedZoneH;
 	}
 	
-	public static void init(){
+	public static void init() throws SlickException{
 		text.loadFont("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
+		pauseButton = new Image("res/UI/pause.png");
 	}
 	
 	// Sun Collected
@@ -87,10 +95,6 @@ public class PlayUI {
 			g.drawRect(seedZonePosX, seedZonePosY + seedZoneH * i, seedZoneW, seedZoneH);
 		}
 	}
-
-	public static void showSeedZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
-	}
 	
 	// Show Plant Zone
 	public static void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -99,8 +103,9 @@ public class PlayUI {
 				g.drawRect(plantZonePosX + cellW * j, plantZonePosY + cellH * i, cellW, cellH);
 	}
 
-	public static void showPlantZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
+	// Pause button
+	public static void showPauseButton(Graphics g) throws SlickException {
+		
 	}
 	
 }
