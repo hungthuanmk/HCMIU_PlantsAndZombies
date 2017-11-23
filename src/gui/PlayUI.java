@@ -1,14 +1,22 @@
 package gui;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import com.Controller;
 
 public class PlayUI {
 	
 	private static Text text = new Text();
+	private static Image pauseButton;
+	private static Image playButton;
+	private static Image speedUpButton;
+	
 	
 	private static float plantZonePosX = 432 * PZGUI.resolutionRateWidth;
 	private static float plantZonePosY = 142 * PZGUI.resolutionRateHeight;
@@ -19,6 +27,16 @@ public class PlayUI {
 	private static float seedZonePosY = 120 * PZGUI.resolutionRateHeight;
 	private static float seedZoneW = 140 * PZGUI.resolutionRateWidth;
 	private static float seedZoneH = 90 * PZGUI.resolutionRateHeight;
+	
+	private static float pauseButtonPosX = 1530 * PZGUI.resolutionRateWidth;
+	private static float pauseButtonPosY = 10 * PZGUI.resolutionRateHeight;
+	private static float pauseButtonWidth = 60 * PZGUI.resolutionRateWidth;
+	private static float pauseButtonHeight = 60 * PZGUI.resolutionRateHeight;
+	
+	private static float speedUpButtonPosX = 1460 * PZGUI.resolutionRateWidth;
+	private static float speedUpButtonPosY = 10 * PZGUI.resolutionRateHeight;
+	private static float speedUpButtonWidth = 60 * PZGUI.resolutionRateWidth;
+	private static float speedUpButtonHeight = 60 * PZGUI.resolutionRateHeight;
 	
 	public static float getPlantZonePosX() {
 		return plantZonePosX;
@@ -46,8 +64,11 @@ public class PlayUI {
 		return seedZoneH;
 	}
 	
-	public static void init(){
+	public static void init() throws SlickException{
 		text.loadFont("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
+		pauseButton = new Image("res/UI/pause.png");
+		playButton = new Image("res/UI/play.png");
+		speedUpButton = new Image("res/UI/speedUp.png");
 	}
 	
 	// Sun Collected
@@ -87,10 +108,6 @@ public class PlayUI {
 			g.drawRect(seedZonePosX, seedZonePosY + seedZoneH * i, seedZoneW, seedZoneH);
 		}
 	}
-
-	public static void showSeedZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
-	}
 	
 	// Show Plant Zone
 	public static void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -99,8 +116,28 @@ public class PlayUI {
 				g.drawRect(plantZonePosX + cellW * j, plantZonePosY + cellH * i, cellW, cellH);
 	}
 
-	public static void showPlantZone(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
+	// Pause button
+	public static void showPauseButton(Graphics g) throws SlickException {
+		pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
+		
+		if (Mouse.getX() > pauseButtonPosX &&
+			Mouse.getX() < pauseButtonPosX + pauseButtonWidth &&
+			PZGUI.height - Mouse.getY() > pauseButtonPosY &&
+			PZGUI.height - Mouse.getY() < pauseButtonPosY + pauseButtonHeight){
+			pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight, new Color(0, 0, 0, 50));
+		}
+	}
+	
+	// Speed Up button
+	public static void showSpeedUpButton(Graphics g) throws SlickException {
+		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
+		
+		if (Mouse.getX() > speedUpButtonPosX &&
+			Mouse.getX() < speedUpButtonPosX + speedUpButtonWidth &&
+			PZGUI.height - Mouse.getY() > speedUpButtonPosY &&
+			PZGUI.height - Mouse.getY() < speedUpButtonPosY + speedUpButtonHeight){
+			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 50));
+		}
 	}
 	
 }
