@@ -56,9 +56,7 @@ public class Play extends BasicGameState {
 
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
 		showBackground(gc, sbg, g);
-		
 		eventHandle(g);
 		
 		//PlayUI.showSunCollectedGrid(gc, sbg, g);
@@ -147,16 +145,14 @@ public class Play extends BasicGameState {
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
+		g.setColor(new Color(1, 1, 1, 0.15f));
+		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
+		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
 
-//		if (Mouse.isButtonDown(0)) {
-			g.setColor(new Color(1, 1, 1, 0.15f));
-			g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
-			g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
-//		}
-			if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
-				if (plant[hozId][verId] == null) 
-					plant[hozId][verId] = new Peashooter(pos);
-		
+		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
+			if (plant[hozId][verId] == null) 
+				plant[hozId][verId] = new Peashooter(pos);
+		}
 	}
 	
 	public int getID() {

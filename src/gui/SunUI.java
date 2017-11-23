@@ -41,7 +41,6 @@ public class SunUI {
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 5.png"), animationDuration);
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), animationDuration);
 		//sunAni.addFrame(new Image("/res/Pvz2plantfood.png"), animationDuration); // this for test animation restart
-		//sunIcon = sunAni.getImage(5); //bug...
 		sunIcon = new Image("/res/Sun Sprite/Sun 6.png");
 		startTime = (int) System.currentTimeMillis();
 	}
