@@ -1,18 +1,22 @@
 package pz;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Animation;
 
 import com.Position;
+
+import gui.PZGUI;
 
 public abstract class Bullet {
 	private int damage = 0;
 	private Animation ani = new Animation();
 	private float speed = 0;
 	private Position pos;
+	private static float scaleFactor = 0.6f;
 
 	public Bullet(int damage, float speed, Position pos) {
 		setDamage(damage);
-		//this.setAnimation(ani);
 		setSpeed(speed);
 		setPos(pos);
 		loadAnimation();
@@ -54,8 +58,21 @@ public abstract class Bullet {
 		this.pos.x = x;
 		this.pos.y = y;
 	}
+	
+	public float getWith() {
+		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
+	}
+	
+	public float getHeight() {
+		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
+	}
+	
+	public void draw() {
+		getAnimation().draw(getPos().x, getPos().y, getWith(), getHeight());
+	}
 
 	public abstract void move();
+	public abstract void attack(ArrayList<Zombie>[] zombieList);
 	protected abstract void loadAnimation();
 
 }

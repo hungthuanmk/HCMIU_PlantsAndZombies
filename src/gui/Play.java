@@ -1,7 +1,6 @@
 package gui;
 
 import java.util.ArrayList;
-import java.lang.reflect.*;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -15,21 +14,14 @@ import pz.*;
 import pz.plant.Peashooter;
 
 
-
 public class Play extends BasicGameState {
 
 	ArrayList<Zombie> zombie = new ArrayList<Zombie>();	
-	ArrayList<Plant> plant = new ArrayList<Plant>();
+	Plant[][] plant = new Plant[9][5];
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
-	Plant[][] plant2 = new Plant[9][5];
-	
 	Image demoSeedPack;
-	
-	private static float plantScaleFactor  = 0.20f;
-	private static float zombieScaleFactor = 0.3f;
-	private static float bulletScaleFactor = 0.6f;
 	
 	private Image background;
 	
@@ -45,7 +37,6 @@ public class Play extends BasicGameState {
 		background = new Image("res/Map_1.jpg");
 		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
-		
 		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
 		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
@@ -74,34 +65,35 @@ public class Play extends BasicGameState {
 		//PlayUI.showPlantZoneGrid(gc, sbg, g);
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
+
 		PlayUI.showPauseButton(g);
 		PlayUI.showSpeedUpButton(g);
-		
-		for (Plant[] iPlant2 : plant2) {
-			for (Plant iPlant : iPlant2) {
+    
+		for (Plant[] iPlantRow : plant) {
+			for (Plant iPlant : iPlantRow) {
 				if (iPlant != null)
-					iPlant.getIdleAni().draw(iPlant.getPos().x, iPlant.getPos().y, iPlant.getIdleAni().getWidth()*plantScaleFactor*PZGUI.resolutionRateWidth, iPlant.getIdleAni().getHeight()*plantScaleFactor*PZGUI.resolutionRateHeight);
+					iPlant.draw();
 			}
 		}
 		
 		for (Zombie iZombie : zombie) {
-			iZombie.getAnimation().draw(iZombie.getPos().x, iZombie.getPos().y, iZombie.getAnimation().getWidth()*zombieScaleFactor*PZGUI.resolutionRateWidth, iZombie.getAnimation().getHeight()*zombieScaleFactor*PZGUI.resolutionRateHeight);
+			iZombie.draw();
 		}
 		
 		for (Bullet iBullet : bullet) {
-			iBullet.getAnimation().draw(iBullet.getPos().x, iBullet.getPos().y, iBullet.getAnimation().getWidth()*bulletScaleFactor*PZGUI.resolutionRateWidth, iBullet.getAnimation().getHeight()*bulletScaleFactor*PZGUI.resolutionRateHeight);
+			iBullet.draw();
 		}
 		
 		SunUI.render(gc, sbg, g);
 		
-		DebugTool.showMousePosition(g);
-		
+		DebugTool.showMousePosition(g);	
 	}
+	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		SunUI.update(gc, sbg);
 		
-		for (Plant[] iPlant2 : plant2) {
-			for (Plant iPlant : iPlant2) {
+		for (Plant[] iPlantRow : plant) {
+			for (Plant iPlant : iPlantRow) {
 				if (iPlant != null)
 					iPlant.attack(bullet);
 			}
@@ -117,7 +109,6 @@ public class Play extends BasicGameState {
 				iBullet = null;
 			}
 		}
-		
 	}
 	
 	private void eventHandle(Graphics g) {
@@ -156,13 +147,16 @@ public class Play extends BasicGameState {
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
-		g.setColor(new Color(1, 1, 1, 0.15f));
-		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
-		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
-		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
-			if (plant2[hozId][verId] == null) 
-				plant2[hozId][verId] = new Peashooter(pos);
-		}
+
+//		if (Mouse.isButtonDown(0)) {
+			g.setColor(new Color(1, 1, 1, 0.15f));
+			g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
+			g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
+//		}
+			if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
+				if (plant[hozId][verId] == null) 
+					plant[hozId][verId] = new Peashooter(pos);
+		
 	}
 	
 	public int getID() {

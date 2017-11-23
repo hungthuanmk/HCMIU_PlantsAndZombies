@@ -1,14 +1,14 @@
-# Plant VS Zombie
+# Plants VS Zombies
 It's a game!
 
 # Environment
   
-# Collaborators:
+# Dev
   + Nguyễn Thanh Xuân Tùng | https://www.facebook.com/ntxt98
   + Nguyễn Phan Hùng Thuận | https://www.facebook.com/hungthuanmk
   + Huỳnh Thị Yến Nhi | https://www.facebook.com/nhi.huynh.79656921
 
-# Email:
+# Email
   + hungthuanmk@gmail.com
   + xuantung.1998@gmail.com
   + huynhthiyennhi156@gmail.com

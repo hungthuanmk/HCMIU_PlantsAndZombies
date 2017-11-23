@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.Position;
 
+import gui.PZGUI;
+
 abstract class Character {
 
 	private String name;
@@ -66,9 +68,8 @@ abstract class Character {
 	public void setSpeed(float speed) {
 		this.speed = speed;
 	}
-
+	
 	public abstract void move();
-
 	public abstract void attack(ArrayList<pz.Bullet> bulletArrayList);
 
 }
