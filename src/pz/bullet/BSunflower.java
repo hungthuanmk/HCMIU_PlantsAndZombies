@@ -1,11 +1,14 @@
 package pz.bullet;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
 import pz.Bullet;
+import pz.Zombie;
 
 public class BSunflower extends Bullet {
 	
@@ -41,6 +44,10 @@ public class BSunflower extends Bullet {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}	
+	}
+	
+	public void attack(ArrayList<Zombie>[] zombieList) {
+		
 	}
 
 }

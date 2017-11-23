@@ -12,8 +12,8 @@ public class Sun{
 	private int posY;
 	private int edgeY;
 	
-	private int width = 80;
-	private int height = 80;
+	private float width = 80 * PZGUI.resolutionRateWidth;
+	private float height = 80 * PZGUI.resolutionRateHeight;
 	
 	private int framePass;
 	private int stayTimeInFrame = 60*10; // fps * second
