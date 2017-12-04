@@ -11,7 +11,7 @@ import com.Controller;
 import com.Position;
 
 import pz.*;
-import pz.plant.Peashooter;
+import pz.plant.*;
 
 
 public class Play extends BasicGameState {
@@ -37,7 +37,12 @@ public class Play extends BasicGameState {
 		background = new Image("res/Map_1.jpg");
 		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
+//<<<<<<< master
 		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
+//=======
+				
+//		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
+//>>>>>>> PZ
 		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
 		PlayUI.init();
@@ -138,10 +143,11 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
+		System.out.println("Mouse clicked!");
 	}
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-		System.out.println(String.format("%d %d", newx, newy));
+		System.out.println(String.format("Mouse moved %d %d", newx, newy));
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
