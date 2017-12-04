@@ -11,7 +11,7 @@ import com.Controller;
 import com.Position;
 
 import pz.*;
-import pz.plant.Peashooter;
+import pz.plant.*;
 
 
 public class Play extends BasicGameState {
@@ -38,7 +38,7 @@ public class Play extends BasicGameState {
 		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
 				
-		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
+		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
 		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
 		PlayUI.init();
@@ -57,7 +57,7 @@ public class Play extends BasicGameState {
 
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
+		
 		showBackground(gc, sbg, g);
 		
 		eventHandle(g);
@@ -143,11 +143,11 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
-		//System.out.println("Mouse clicked!");
+		System.out.println("Mouse clicked!");
 	}
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-		System.out.println(String.format("%d %d", newx, newy));
+		System.out.println(String.format("Mouse moved %d %d", newx, newy));
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
@@ -158,7 +158,7 @@ public class Play extends BasicGameState {
 //		}
 			if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 				if (plant[hozId][verId] == null) 
-					plant[hozId][verId] = new Peashooter(pos);
+					plant[hozId][verId] = new Sunflower(pos);
 			}
 	}
 	

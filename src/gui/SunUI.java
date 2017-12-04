@@ -1,5 +1,5 @@
 package gui;
-
+ 
 import java.util.ArrayList;
 import java.util.*;
 
@@ -51,27 +51,24 @@ public class SunUI {
 		return sunIcon;
 	}
 	
-	
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		framePass++;
 		for (int i=0; i<sunManager.size(); i++)
-			sunManager.get(i).drawSun();
-		
+			sunManager.get(i).drawSun();	
+	}
+	
+	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		//timer.schedule(sunTask, 0, spawnCoolDownInMilisec);
 		if (framePass > spawnCoolDownInFrame)
 		{
 			framePass = 0;
 			sunManager.add(new Sun(sunAni));
 		}
-			
-	}
-	
-	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		//timer.schedule(sunTask, 0, spawnCoolDownInMilisec);
 		
 		for (int i=0; i<sunManager.size(); i++)
 			if (sunManager.get(i).isDone() == false)
 				sunManager.get(i).updateSun();
-			else{
+			else {
 				sunManager.remove(i--);
 			}
 	}
