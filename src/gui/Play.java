@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
-
 import org.newdawn.slick.state.*;
 
 import com.Controller;
@@ -13,11 +12,10 @@ import com.Position;
 import pz.*;
 import pz.plant.*;
 
-
 public class Play extends BasicGameState {
 
 	ArrayList<Zombie> zombie = new ArrayList<Zombie>();	
-	Plant[][] plant = new Plant[9][5];
+	Plant[][] plant = new Plant[5][9];
 	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
 	ArrayList<Sun> sunList = new ArrayList<Sun>();
 	
@@ -62,7 +60,7 @@ public class Play extends BasicGameState {
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		showBackground(gc, sbg, g);
-		eventHandle(g);
+		eventHandle(gc, g);
 		
 		//PlayUI.showSunCollectedGrid(gc, sbg, g);
 		//PlayUI.showPlantZoneGrid(gc, sbg, g);
@@ -89,7 +87,7 @@ public class Play extends BasicGameState {
 		
 		SunUI.render(gc, sbg, g);
 		
-		DebugTool.showMousePosition(g);	
+		//DebugTool.showMousePosition(g);	
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -104,17 +102,21 @@ public class Play extends BasicGameState {
 		
 		for (Zombie iZombie : zombie) {
 			iZombie.move(); //move zombie
+			iZombie.attack(plant);
 		}
 		
-		for (Bullet iBullet : bullet) {
-			iBullet.move();
-			if (iBullet.getPos().x > PZGUI.width + 500 || iBullet.getPos().y > PZGUI.height + 500) {
-				iBullet = null;
+		
+		for (int i=0; i<bullet.size(); i++) {	
+			bullet.get(i).move();
+			bullet.get(i).attack(zombie);
+			if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
+				bullet.remove(i);
 			}
 		}
+		
 	}
 	
-	private void eventHandle(Graphics g) {
+	private void eventHandle(GameContainer gc, Graphics g) {
 		int mouseX = Controller.getMouseX();
 		int mouseY = Controller.getMouseY();
 		
@@ -134,7 +136,12 @@ public class Play extends BasicGameState {
 			int itemId = (int) ( (mouseY - PlayUI.getSeedZonePosY()) / PlayUI.getSeedZoneH() ) ;
 			Position posItem = new Position(PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY() + itemId * PlayUI.getSeedZoneH()  );
 			onSeedZoneMoveOn(itemId, posItem, g);
+			gc.pause();
+			
 		}
+		
+		//if (Controller.mouseInArea(, topLeftY, botRightX, botRightY))
+		
 	}
 
 	private void onSeedZoneMoveOn(int itemId, Position posItem, Graphics g) {
@@ -147,7 +154,7 @@ public class Play extends BasicGameState {
 	}
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-		System.out.println(String.format("Mouse moved %d %d", newx, newy));
+		//System.out.println(String.format("Mouse moved %d %d", newx, newy));
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
@@ -156,8 +163,8 @@ public class Play extends BasicGameState {
 		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
 
 		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
-			if (plant[hozId][verId] == null) 
-				plant[hozId][verId] = new Peashooter(pos);
+			if (plant[verId][hozId] == null) 
+				plant[verId][hozId] = new Peashooter2(pos);
 		}
 	}
 	

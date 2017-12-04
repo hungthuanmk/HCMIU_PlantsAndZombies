@@ -1,75 +1,61 @@
 package pz;
 
-import java.util.ArrayList;
-
+import org.newdawn.slick.Animation;
 import com.Position;
 
-import gui.PZGUI;
+abstract class Character{
 
-abstract class Character {
-
-	private String name;
+	private String   name;
 	private Position pos;
+	private Integer  hp     = 10000;
+	private int      damage = 0;
+	private float    speed  = 0;
+	private Integer  attackInterval = 100;
+	
+	private Animation ani = new Animation();
+	
+	public Animation getAnimation() 			 	  {return ani;}
+	public void      setAnimation(Animation ani)      {this.ani = ani;}
+	
+	public Integer  getAttackInterval() 					  {return attackInterval;}
+	public void     setAttackInterval(Integer attackInterval) {this.attackInterval = attackInterval;}
+	
+	public String   getName() 		 	 {return name;}
+	public void     setName(String name) {this.name = name;}
 
-	private int hp = 0;
+	public Position getPos() 			 	 {return pos;}
+	public void     setPos(Position pos) 	 {this.pos = pos;}
+	public void     setPos(float x, float y) {this.pos = new Position(x,y);}
 
-	public int getHp() {
-		return hp;
-	}
+	public Integer  getHp() 			 {return hp;}
+	public void     setHp(Integer hp) 	 {this.hp = hp;}
 
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
+	public int      getDamage() 	      {return damage;}
+	public void     setDamage(int damage) {this.damage = damage;}
 
-	private int damage = 0;
-	private float speed = 0;
-
-	// private int attackInterval = 100;
-
-	public Character(String name, int hp, Position pos) {
+	public float    getSpeed() 		      {return speed;}
+	public void     setSpeed(float speed) {this.speed = speed;}
+	
+	/**
+	 * Character constructor
+	 * @param name	Name
+	 * @param hp	Health power
+	 * @param damage	Damage
+	 * @param attackInterval	Attack interval
+	 * @param pos	Position
+	 */
+	public Character(String name, Integer hp, int damage, int attackInterval, Position pos) {
 		setName(name);
 		setHp(hp);
 		setPos(pos);
 	}
 
-	public String getName() {
-		return this.name;
-	}
+	public abstract float getWidth();
+	public abstract float getHeight();
 
-	public void setName(String S) {
-		this.name = S;
-	}
-
-	public Position getPos() {
-		return pos;
-	}
-
-	public void setPos(Position pos) {
-		this.pos = pos;
-	}
-
-	public void setPos(float x, float y) {
-		this.pos.x = x;
-		this.pos.y = y;
-	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
-
-	public float getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(float speed) {
-		this.speed = speed;
-	}
-	
 	public abstract void move();
-	public abstract void attack(ArrayList<pz.Bullet> bulletArrayList);
+	public abstract void draw();
+	
+	protected abstract void loadAnimation();
 
 }

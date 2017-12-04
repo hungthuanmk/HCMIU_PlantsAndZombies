@@ -2,7 +2,7 @@ package gui;
 
 import org.newdawn.slick.Image;
 
-public class SeedPack {
+public class SeedUI {
 	
 	private Image img;
 

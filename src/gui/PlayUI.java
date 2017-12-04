@@ -1,6 +1,5 @@
 package gui;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -120,24 +119,16 @@ public class PlayUI {
 	public static void showPauseButton(Graphics g) throws SlickException {
 		pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
 		
-		if (Mouse.getX() > pauseButtonPosX &&
-			Mouse.getX() < pauseButtonPosX + pauseButtonWidth &&
-			PZGUI.height - Mouse.getY() > pauseButtonPosY &&
-			PZGUI.height - Mouse.getY() < pauseButtonPosY + pauseButtonHeight){
+		if (Controller.mouseInArea(pauseButtonPosX, pauseButtonPosY, pauseButtonPosX+pauseButtonHeight, pauseButtonPosY+pauseButtonHeight))
 			pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight, new Color(0, 0, 0, 50));
-		}
 	}
 	
 	// Speed Up button
 	public static void showSpeedUpButton(Graphics g) throws SlickException {
 		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
 		
-		if (Mouse.getX() > speedUpButtonPosX &&
-			Mouse.getX() < speedUpButtonPosX + speedUpButtonWidth &&
-			PZGUI.height - Mouse.getY() > speedUpButtonPosY &&
-			PZGUI.height - Mouse.getY() < speedUpButtonPosY + speedUpButtonHeight){
+		if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX+speedUpButtonWidth, speedUpButtonPosY+speedUpButtonHeight))
 			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 50));
-		}
 	}
 	
 }

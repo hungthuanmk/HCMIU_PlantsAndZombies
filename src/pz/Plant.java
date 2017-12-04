@@ -1,68 +1,44 @@
 package pz;
 
-import org.newdawn.slick.Animation;
-
+import java.util.ArrayList;
 import com.Position;
-
 import gui.PZGUI;
 
 public abstract class Plant extends Character {
-	
-	private Animation idle = new Animation();
-	
-	private int attackInterval = 0;
+
+	//private Animation ani = new Animation();	
 	private int framePassed = 0;
-	
 	private float scaleFactor = 0.2f;
+	//===========================
+	
+	public int  getFramePassed() 				 {return framePassed;}
+	public void setFramePassed(int framePassed)  {this.framePassed = framePassed;}
 
-	public Plant(String name, int hp, int damage, int attackInterval, Position pos) {
-		super(name, hp, pos);
+	/**
+	 * Plant contructor
+	 * @param name	Name of instance (optional)
+	 * @param hp	Health power
+	 * @param damage	Damage
+	 * @param attackInterval	attack interval
+	 * @param pos	Position
+	 */
+	public Plant(String name, Integer hp, int damage, int attackInterval, Position pos) {
+		super(name, hp, damage, attackInterval, pos);
 		loadAnimation(); 
-		setDamage(damage);
-		setAttackInterval(attackInterval);
-		setFramePassed(attackInterval);
-	}
-
-	public void move() {
-		this.setPos(getPos().x + getSpeed(), getPos().y);
-	}
-
-	public Animation getIdleAni() {
-		return idle;
-	}
-
-	public void setIdleAni(Animation ani) {
-		this.idle = ani;
+		setFramePassed(0);
 	}
 	
-	protected abstract void loadAnimation();
-
-	public int getFramePassed() {
-		return framePassed;
-	}
-
-	public void setFramePassed(int framePassed) {
-		this.framePassed = framePassed;
-	}
-
-	public int getAttackInterval() {
-		return attackInterval;
-	}
-
-	public void setAttackInterval(int attackInterval) {
-		this.attackInterval = attackInterval;
-	}
-	
-	public float getWith() {
-		return getIdleAni().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
-	}
-	
+	@Override
+	public float getWidth() {
+		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;}	
+	@Override
 	public float getHeight() {
-		return getIdleAni().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
+		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
 	}
 	
 	public void draw() {
-		getIdleAni().draw(getPos().x, getPos().y, getWith(), getHeight());
+		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());
 	}
 
+	public abstract void attack(ArrayList<Bullet> bulletArrayList);
 }

@@ -19,7 +19,7 @@ public class Sunflower extends pz.Plant {
 	protected void loadAnimation() {
 		try {
 			for (int i=1; i<=30; i++)
-				getIdleAni().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 30);
+				getAnimation().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 30);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -27,6 +27,12 @@ public class Sunflower extends pz.Plant {
 	}
 	
 	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
+		
+	}
+
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
 		
 	}
 

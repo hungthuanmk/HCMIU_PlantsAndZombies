@@ -46,7 +46,7 @@ public class BSunflower extends Bullet {
 		}	
 	}
 	
-	public void attack(ArrayList<Zombie>[] zombieList) {
+	public void attack(ArrayList<Zombie> zombieList) {
 		
 	}
 

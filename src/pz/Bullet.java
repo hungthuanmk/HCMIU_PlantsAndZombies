@@ -59,7 +59,7 @@ public abstract class Bullet {
 		this.pos.y = y;
 	}
 	
-	public float getWith() {
+	public float getWidth() {
 		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
 	}
 	
@@ -68,11 +68,11 @@ public abstract class Bullet {
 	}
 	
 	public void draw() {
-		getAnimation().draw(getPos().x, getPos().y, getWith(), getHeight());
+		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());
 	}
 
 	public abstract void move();
-	public abstract void attack(ArrayList<Zombie>[] zombieList);
+	public abstract void attack(ArrayList<Zombie> zombieList);
 	protected abstract void loadAnimation();
 
 }
