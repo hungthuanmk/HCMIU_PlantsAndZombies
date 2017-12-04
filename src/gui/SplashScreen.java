@@ -13,10 +13,6 @@ public class SplashScreen extends BasicGameState {
 	public Image logo;
 	public Image playButton;
 	
-	// Loader
-	private void loader(){
-	}
-	
 	
 	// PlaySound
 	public SplashScreen(int state) {
