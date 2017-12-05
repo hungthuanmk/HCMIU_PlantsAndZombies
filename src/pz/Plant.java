@@ -22,7 +22,7 @@ public abstract class Plant extends Character {
 	 * @param attackInterval	attack interval
 	 * @param pos	Position
 	 */
-	public Plant(String name, Integer hp, int damage, int attackInterval, Position pos) {
+	public Plant(String name, int hp, int damage, int attackInterval, Position pos) {
 		super(name, hp, damage, attackInterval, pos);
 		loadAnimation(); 
 		setFramePassed(0);

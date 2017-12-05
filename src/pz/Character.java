@@ -3,22 +3,22 @@ package pz;
 import org.newdawn.slick.Animation;
 import com.Position;
 
-abstract class Character{
+abstract class Character implements CharacterI{
 
 	private String   name;
 	private Position pos;
-	private Integer  hp     = 10000;
+	private int  	 hp     = 10000;
 	private int      damage = 0;
 	private float    speed  = 0;
-	private Integer  attackInterval = 100;
+	private int      attackInterval;
 	
 	private Animation ani = new Animation();
 	
 	public Animation getAnimation() 			 	  {return ani;}
 	public void      setAnimation(Animation ani)      {this.ani = ani;}
 	
-	public Integer  getAttackInterval() 					  {return attackInterval;}
-	public void     setAttackInterval(Integer attackInterval) {this.attackInterval = attackInterval;}
+	public int  	getAttackInterval() 				  {return attackInterval;}
+	public void     setAttackInterval(int attackInterval) {this.attackInterval = attackInterval;}
 	
 	public String   getName() 		 	 {return name;}
 	public void     setName(String name) {this.name = name;}
@@ -47,6 +47,8 @@ abstract class Character{
 	public Character(String name, Integer hp, int damage, int attackInterval, Position pos) {
 		setName(name);
 		setHp(hp);
+		setDamage(damage);
+		setAttackInterval(attackInterval);
 		setPos(pos);
 	}
 
@@ -57,5 +59,4 @@ abstract class Character{
 	public abstract void draw();
 	
 	protected abstract void loadAnimation();
-
 }

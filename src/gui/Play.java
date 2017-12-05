@@ -36,10 +36,10 @@ public class Play extends BasicGameState {
 		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
 //<<<<<<< master
-		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
+		//zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
 //=======
 				
-//		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
+		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
 //>>>>>>> PZ
 		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
@@ -48,11 +48,11 @@ public class Play extends BasicGameState {
 
 	// Show Background
 	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		float rate = 0.69f;
-		float width = background.getWidth() * PZGUI.resolutionRateWidth * rate;
-		float height = background.getHeight() * PZGUI.resolutionRateHeight * rate;
-		float moveLeft = (float)PZGUI.width * (7.0f/32);
-		float moveUp = (float)PZGUI.height * (41.0f/180);
+		float rate 		= 0.69f;
+		float width 	= background.getWidth() * PZGUI.resolutionRateWidth * rate;
+		float height 	= background.getHeight() * PZGUI.resolutionRateHeight * rate;
+		float moveLeft  = (float)PZGUI.width * (7.0f/32);
+		float moveUp 	= (float)PZGUI.height * (41.0f/180);
 		
 		background.draw(-moveLeft, -moveUp, width, height);
 	}
@@ -108,8 +108,8 @@ public class Play extends BasicGameState {
 		
 		for (int i=0; i<bullet.size(); i++) {	
 			bullet.get(i).move();
-			bullet.get(i).attack(zombie);
-			if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
+			boolean attackHit = bullet.get(i).attack(zombie);
+			if (attackHit || bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
 				bullet.remove(i);
 			}
 		}
@@ -136,8 +136,6 @@ public class Play extends BasicGameState {
 			int itemId = (int) ( (mouseY - PlayUI.getSeedZonePosY()) / PlayUI.getSeedZoneH() ) ;
 			Position posItem = new Position(PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY() + itemId * PlayUI.getSeedZoneH()  );
 			onSeedZoneMoveOn(itemId, posItem, g);
-			gc.pause();
-			
 		}
 		
 		//if (Controller.mouseInArea(, topLeftY, botRightX, botRightY))
@@ -164,7 +162,11 @@ public class Play extends BasicGameState {
 
 		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				plant[verId][hozId] = new Peashooter2(pos);
+				plant[verId][hozId] = new Peashooter(pos);
+		}
+		if (Mouse.getEventButton() == 1 && Mouse.getEventButtonState() == true) {
+			if (plant[verId][hozId] == null) 
+				plant[verId][hozId] = new Peashooter3(pos);
 		}
 	}
 	

@@ -2,28 +2,23 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Graphics;
-
-//import java.util.ArrayList;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
-import gui.PZGUI;
 import pz.Bullet;
 
 //import pz.Bullet.*;
 
 public class Peashooter2 extends pz.Plant {
 	
-	private static int hp = 100;
-	private static int damage = 20;
-	private static int attackInterval = 300;
-	private static float scaleFactor = 0.2f;
+	private static int _hp = 100;
+	private static int _damage = 20;
+	private static int _attackInterval = 100;
+	//private static float scaleFactor = 0.2f;
 	public Peashooter2(Position pos) {
-		super("Peashooter2", hp, damage, attackInterval, pos);
+		super("Peashooter2", _hp, _damage, _attackInterval, pos);
 	}
 	
 	@Override
@@ -39,19 +34,19 @@ public class Peashooter2 extends pz.Plant {
 	@Override
 	public void attack(ArrayList<Bullet> bulletArrayList) {
 		if (getFramePassed() == getAttackInterval()) {
-			bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getAnimation().getWidth() * scaleFactor * 0.8f * PZGUI.resolutionRateWidth) , 
-														  (getPos().y + getAnimation().getHeight() * scaleFactor * 0.15f * PZGUI.resolutionRateHeight), 
+			bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
+														  (getPos().y + getHeight() * 0.15f), 
 														  getDamage()));
 		}
 		else
 			if (getFramePassed() == getAttackInterval()+10) {
-				bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getAnimation().getWidth() * scaleFactor * 0.8f * PZGUI.resolutionRateWidth) , 
-						  (getPos().y + getAnimation().getHeight() * scaleFactor * 0.15f * PZGUI.resolutionRateHeight), 
-						  getDamage()));
+				bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
+						  									  (getPos().y + getHeight() * 0.15f), 
+						  									  getDamage()));
 				setFramePassed(0);
 			}
 		
-		setFramePassed(getFramePassed()+1)	;
+		setFramePassed(getFramePassed()+1);
 	}
 
 	@Override

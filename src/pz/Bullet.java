@@ -22,42 +22,18 @@ public abstract class Bullet {
 		loadAnimation();
 	}
 
-	public int getDamage() {
-		return damage;
-	}
+	public int  getDamage() {return damage;}
+	public void setDamage(int damage) {this.damage = damage;}
 
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
+	public float getSpeed() {return speed;}
+	public void  setSpeed(float speed) {this.speed = speed;}
 
-	public float getSpeed() {
-		return speed;
-	}
+	public Animation getAnimation() {return ani;}
+	public void 	 setAnimation(Animation img) {this.ani = img;}
 
-	public void setSpeed(float speed) {
-		this.speed = speed;
-	}
-
-	public Animation getAnimation() {
-		return ani;
-	}
-
-	public void setAnimation(Animation img) {
-		this.ani = img;
-	}
-
-	public Position getPos() {
-		return pos;
-	}
-
-	public void setPos(Position pos) {
-		this.pos = pos;
-	}
-
-	public void setPos(float x, float y) {
-		this.pos.x = x;
-		this.pos.y = y;
-	}
+	public Position getPos() {return pos;}
+	public void 	setPos(Position pos) {this.pos = pos;}
+	public void 	setPos(float x, float y) {this.pos.x = x; this.pos.y = y;}
 	
 	public float getWidth() {
 		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
@@ -72,7 +48,7 @@ public abstract class Bullet {
 	}
 
 	public abstract void move();
-	public abstract void attack(ArrayList<Zombie> zombieList);
+	public abstract boolean attack(ArrayList<Zombie> zombieList);
 	protected abstract void loadAnimation();
 
 }

@@ -46,8 +46,8 @@ public class BSunflower extends Bullet {
 		}	
 	}
 	
-	public void attack(ArrayList<Zombie> zombieList) {
-		
+	public boolean attack(ArrayList<Zombie> zombieList) {
+		return false;
 	}
 
 }

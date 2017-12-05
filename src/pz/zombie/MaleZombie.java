@@ -14,7 +14,7 @@ public class MaleZombie extends Zombie {
 	private static int damage = 100;
 	private static int attackInterval = 100;
 	private static float speed = 0.4f;
-	private static float scaleFactor = 0.2f;
+	//private static float scaleFactor = 0.2f;
 
 	public MaleZombie(Position pos) {
 		super("MaleZombie", hp, damage, attackInterval, speed, pos);
@@ -40,8 +40,11 @@ public class MaleZombie extends Zombie {
 		for (int i=0; i<5; i++)
 			for (int j=0; j<9; j++) {
 				if (plant[i][j] != null)
-					if (Position.isInteract(this, plant[i][j])) 
+					if (Position.isInteract(this, plant[i][j])) {
+						setSpeed(0);
 						System.out.println("touched");
+					}
+						
 			}
 	}
 

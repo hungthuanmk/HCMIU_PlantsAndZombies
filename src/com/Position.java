@@ -11,7 +11,7 @@ public class Position {
 	@Override
 	public String toString()
 	{
-		return "X:" +  Float.toString(x) + " Y:" + Float.toString(y);
+		return "X:" +  x + " Y:" + y;
 	}
 	
 	public static boolean isInteract(Bullet bullet, Zombie zombie) {

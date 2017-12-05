@@ -10,10 +10,11 @@ import com.Position;
 public class Sunflower extends pz.Plant {
 	
 	private static int hp = 100;
+	private static int attackInterval = 1000;
 	//private static int damage = 0;
 
 	public Sunflower(Position pos) {
-		super("Sunflower", hp, 0, 0, pos);
+		super("Sunflower", hp, 0, attackInterval, pos);
 	}
 
 	protected void loadAnimation() {

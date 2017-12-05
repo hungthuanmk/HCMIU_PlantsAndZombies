@@ -14,7 +14,7 @@ public class FemaleZombie extends Zombie {
 	private static int damage = 100;
 	private static int attackInterval = 50;
 	private static float speed = 0.4f;
-	private static float scaleFactor = 0.2f;
+	//private static float scaleFactor = 0.2f;
 
 	public FemaleZombie(Position pos) {
 		super("FemaleZombie", hp, damage, attackInterval, speed, pos);

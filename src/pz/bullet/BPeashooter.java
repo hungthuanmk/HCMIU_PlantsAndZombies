@@ -52,14 +52,16 @@ public class BPeashooter extends pz.Bullet {
 		setPos(getPos().x + getSpeed(), getPos().y);
 	}
 	
-	public void attack(ArrayList<Zombie> zombieList) {
+	public boolean attack(ArrayList<Zombie> zombieList) {
 		//for (ArrayList<Zombie> zomList : zombieList)
 			for (Zombie z : zombieList) {
 				if (Position.isInteract(this, z)) {
 					z.setHp(z.getHp() - getDamage());
 					
 					System.out.println("hit");
+					return true;
 				}		
 			}
+			return false;
 	}
 }
