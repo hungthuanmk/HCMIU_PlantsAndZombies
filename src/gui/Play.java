@@ -14,14 +14,12 @@ import pz.plant.*;
 
 public class Play extends BasicGameState {
 
-	ArrayList<Zombie> zombie = new ArrayList<Zombie>();	
-	Plant[][] plant = new Plant[5][9];
-	ArrayList<Bullet> bullet = new ArrayList<Bullet>();
-	ArrayList<Sun> sunList = new ArrayList<Sun>();
+	ArrayList<Zombie> zombie 	= new ArrayList<Zombie>();	
+	Plant[][] 		  plant 	= new Plant[5][9];
+	ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
+	ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
 	
-	Image demoSeedPack;
-	
-	private Image background;
+	private static Image background;
 	
 	public Play(int state) {	
 	}
@@ -33,10 +31,9 @@ public class Play extends BasicGameState {
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		background = new Image("res/Map_1.jpg");
-		demoSeedPack = new Image("res/Plants/PeaShooter/Peashooter_Seed_Packet.png");
 		SunUI.init();
 //<<<<<<< master
-		//zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
+		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));
 //=======
 				
 		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
@@ -104,8 +101,7 @@ public class Play extends BasicGameState {
 			iZombie.move(); //move zombie
 			iZombie.attack(plant);
 		}
-		
-		
+			
 		for (int i=0; i<bullet.size(); i++) {	
 			bullet.get(i).move();
 			boolean attackHit = bullet.get(i).attack(zombie);
@@ -113,7 +109,6 @@ public class Play extends BasicGameState {
 				bullet.remove(i);
 			}
 		}
-		
 	}
 	
 	private void eventHandle(GameContainer gc, Graphics g) {
@@ -137,9 +132,6 @@ public class Play extends BasicGameState {
 			Position posItem = new Position(PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY() + itemId * PlayUI.getSeedZoneH()  );
 			onSeedZoneMoveOn(itemId, posItem, g);
 		}
-		
-		//if (Controller.mouseInArea(, topLeftY, botRightX, botRightY))
-		
 	}
 
 	private void onSeedZoneMoveOn(int itemId, Position posItem, Graphics g) {
@@ -166,7 +158,7 @@ public class Play extends BasicGameState {
 		}
 		if (Mouse.getEventButton() == 1 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				plant[verId][hozId] = new Peashooter3(pos);
+				plant[verId][hozId] = new Sunflower(pos);
 		}
 	}
 	

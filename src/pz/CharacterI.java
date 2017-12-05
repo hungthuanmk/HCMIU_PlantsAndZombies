@@ -5,31 +5,31 @@ import org.newdawn.slick.Animation;
 import com.Position;
 
 public interface CharacterI {
-	public Animation getAnimation(); 
-	public void      setAnimation(Animation ani);    
+    Animation getAnimation(); 
+	void      setAnimation(Animation ani);    
 	
-	public int  	getAttackInterval();		
-	public void     setAttackInterval(int attackInterval); 
+	int  	  getAttackInterval();		
+	void      setAttackInterval(int attackInterval); 
 	
-	public String   getName(); 		 	 
-	public void     setName(String name); 
+	String    getName(); 		 	 
+	void      setName(String name); 
 
-	public Position getPos(); 		
-	public void     setPos(Position pos); 	 
-	public void     setPos(float x, float y);
+	Position  getPos(); 		
+	void      setPos(Position pos); 	 
+	void      setPos(float x, float y);
 
-	public Integer  getHp(); 			
-	public void     setHp(Integer hp); 	 
+	Integer   getHp(); 			
+	void      setHp(Integer hp); 	 
 
-	public int      getDamage(); 	      
-	public void     setDamage(int damage);
+	int       getDamage(); 	      
+	void      setDamage(int damage);
 
-	public float    getSpeed(); 		     
-	public void     setSpeed(float speed);
+	float     getSpeed(); 		     
+	void      setSpeed(float speed);
 
-	public float getWidth();
-	public float getHeight();
+	float 	  getWidth();
+	float 	  getHeight();
 
-	public void move();
-	public void draw();
+	void 	  move();
+	void 	  draw();
 }
