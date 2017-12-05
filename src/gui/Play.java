@@ -97,10 +97,19 @@ public class Play extends BasicGameState {
 			}
 		}
 		
-		for (Zombie iZombie : zombie) {
-			iZombie.move(); //move zombie
-			iZombie.attack(plant);
+		for (int i=0; i< zombie.size(); i++) {
+			if (zombie.get(i).getHp() == 0) {
+				zombie.remove(i);
+				break;
+			}		
+			zombie.get(i).move(); //move zombie
+			zombie.get(i).attack(plant);
 		}
+		
+//		for (Zombie iZombie : zombie) {
+//			iZombie.move(); //move zombie
+//			iZombie.attack(plant);
+//		}
 			
 		for (int i=0; i<bullet.size(); i++) {	
 			bullet.get(i).move();
