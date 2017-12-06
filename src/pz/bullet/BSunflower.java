@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import com.Clickable;
 import com.Position;
 
 import pz.Bullet;
 import pz.Zombie;
 
-public class BSunflower extends Bullet {
+public class BSunflower extends Bullet implements Clickable{
 	
 	// y = -5x + 10;
 	private float x;
@@ -48,6 +49,12 @@ public class BSunflower extends Bullet {
 	
 	public boolean attack(ArrayList<Zombie> zombieList) {
 		return false;
+	}
+
+	@Override
+	public void onClicked() {
+		// inscrease Sun
+		
 	}
 
 }
