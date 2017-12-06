@@ -61,7 +61,7 @@ public class Play extends BasicGameState {
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 
-		PlayUI.showPauseButton(g);
+		PlayUI.showPauseButton(gc, g);
 		PlayUI.showSpeedUpButton(g);
     
 		for (Plant[] iPlantRow : plant) {

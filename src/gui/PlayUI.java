@@ -1,13 +1,16 @@
 package gui;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.Controller;
+import com.sun.glass.events.MouseEvent;
 
 public class PlayUI {
 
@@ -97,13 +100,17 @@ public class PlayUI {
 	}
 
 	// Pause button
-	public static void showPauseButton(Graphics g) throws SlickException {
+	public static void showPauseButton(GameContainer gc, Graphics g) throws SlickException {
 		pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
 
 		if (Controller.mouseInArea(pauseButtonPosX, pauseButtonPosY, pauseButtonPosX + pauseButtonHeight,
-									pauseButtonPosY + pauseButtonHeight))
-			pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight,
-					new Color(0, 0, 0, 50));
+									pauseButtonPosY + pauseButtonHeight)) {
+			pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight, new Color(0, 0, 0, 50));
+			if (gc.getInput().isKeyPressed(Input.KEY_P)) {
+				gc.setPaused(true);
+			}
+		}
+			
 	}
 
 	// Speed Up button
