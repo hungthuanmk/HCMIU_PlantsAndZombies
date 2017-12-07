@@ -56,7 +56,7 @@ abstract class Character implements CharacterI{
 	public abstract float getHeight();
 
 	public abstract void move();
-	public abstract void draw();
+	public abstract void draw(boolean updateImg);
 	
 	protected abstract void loadAnimation();
 }

@@ -48,5 +48,6 @@ public class Peashooter extends pz.Plant {
 		//setPos(getPos().x + getSpeed(), getPos().y);
 	}
 
+
 	
 }

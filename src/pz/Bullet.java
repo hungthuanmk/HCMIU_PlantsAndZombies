@@ -43,12 +43,12 @@ public abstract class Bullet {
 		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
 	}
 	
-	public void draw() {
+	public void draw(boolean updateImg) {
 		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());
 	}
 
 	public abstract void move();
-	public abstract boolean attack(ArrayList<Zombie> zombieList);
+	public abstract void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList, int bulletIdx);
 	protected abstract void loadAnimation();
 
 }

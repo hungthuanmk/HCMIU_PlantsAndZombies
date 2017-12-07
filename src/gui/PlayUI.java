@@ -106,8 +106,11 @@ public class PlayUI {
 		if (Controller.mouseInArea(pauseButtonPosX, pauseButtonPosY, pauseButtonPosX + pauseButtonHeight,
 									pauseButtonPosY + pauseButtonHeight)) {
 			pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight, new Color(0, 0, 0, 50));
+			
 			if (gc.getInput().isKeyPressed(Input.KEY_P)) {
-				gc.setPaused(true);
+				gc.setPaused(!gc.isPaused());
+//				gc.setVSync(false);
+//				gc.setTargetFrameRate(0);
 			}
 		}
 			

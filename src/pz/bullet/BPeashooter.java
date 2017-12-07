@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 
 import com.Position;
 
+import pz.Bullet;
 import pz.Zombie;
 
 public class BPeashooter extends pz.Bullet {
@@ -51,17 +52,16 @@ public class BPeashooter extends pz.Bullet {
 	public void move() {
 		setPos(getPos().x + getSpeed(), getPos().y);
 	}
-	
-	public boolean attack(ArrayList<Zombie> zombieList) {
-		//for (ArrayList<Zombie> zomList : zombieList)
-			for (Zombie z : zombieList) {
-				if (Position.isInteract(this, z)) {
-					z.setHp(z.getHp() - getDamage());
-					
-					System.out.println("hit");
-					return true;
-				}		
-			}
-			return false;
+
+	@Override
+	public void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList, int bulletIdx) {
+		for (Zombie z : zombieList) {
+			if (Position.isIntersect(this, z)) {
+				z.setHp(z.getHp() - getDamage());
+				
+				System.out.println("hit");
+				bulletList.remove(bulletIdx);
+			}		
+		}
 	}
 }

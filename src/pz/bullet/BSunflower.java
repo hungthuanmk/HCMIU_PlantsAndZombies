@@ -46,14 +46,16 @@ public class BSunflower extends Bullet implements Clickable{
 			e.printStackTrace();
 		}	
 	}
-	
-	public boolean attack(ArrayList<Zombie> zombieList) {
-		return false;
-	}
 
 	@Override
 	public void onClicked() {
 		// inscrease Sun
+		
+	}
+
+	@Override
+	public void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList, int bulletIdx) {
+		// TODO Auto-generated method stub
 		
 	}
 

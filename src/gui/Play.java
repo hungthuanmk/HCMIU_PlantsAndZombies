@@ -63,20 +63,20 @@ public class Play extends BasicGameState {
 
 		PlayUI.showPauseButton(gc, g);
 		PlayUI.showSpeedUpButton(g);
-    
+   		
 		for (Plant[] iPlantRow : plant) {
 			for (Plant iPlant : iPlantRow) {
 				if (iPlant != null)
-					iPlant.draw();
+					iPlant.draw(!gc.isPaused());
 			}
 		}
 		
 		for (Zombie iZombie : zombie) {
-			iZombie.draw();
+			iZombie.draw(!gc.isPaused());
 		}
 		
 		for (Bullet iBullet : bullet) {
-			iBullet.draw();
+			iBullet.draw(!gc.isPaused());
 		}
 		
 		SunUI.render(gc, sbg, g);
@@ -85,6 +85,7 @@ public class Play extends BasicGameState {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		if (! gc.isPaused() ) {
 		SunUI.update(gc, sbg);
 		
 		for (Plant[] iPlantRow : plant) {
@@ -110,10 +111,11 @@ public class Play extends BasicGameState {
 			
 		for (int i=0; i<bullet.size(); i++) {	
 			bullet.get(i).move();
-			boolean attackHit = bullet.get(i).attack(zombie);
-			if (attackHit || bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
+			if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
 				bullet.remove(i);
 			}
+			bullet.get(i).attack(zombie, bullet, i);
+		}
 		}
 	}
 	
@@ -146,11 +148,11 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
-		System.out.println("Mouse clicked!");
+//		System.out.println("Mouse clicked!");
 	}
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-		//System.out.println(String.format("Mouse moved %d %d", newx, newy));
+//		System.out.println(String.format("Mouse moved %d %d", newx, newy));
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
