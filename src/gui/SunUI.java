@@ -53,7 +53,12 @@ public class SunUI {
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		framePass++;
 		for (int i=0; i<sunManager.size(); i++)
-			sunManager.get(i).drawSun();	
+			if (!gc.isPaused()) {
+				sunManager.get(i).drawSun();	
+			}else {
+				sunManager.get(i).drawStopSun();
+			}
+			
 	}
 	
 	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {

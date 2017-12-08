@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.concurrent.TimeUnit;
+
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -14,7 +16,6 @@ import com.sun.glass.events.MouseEvent;
 
 public class PlayUI {
 
-	private static Text text = new Text();
 	private static Image pauseButton;
 	private static Image playButton;
 	private static Image speedUpButton;
@@ -49,7 +50,6 @@ public class PlayUI {
 	public static float getSeedZoneH()     {return seedZoneH;}
 
 	public static void init() throws SlickException {
-		text.loadFont("res/Fonts/FbUsv8C5eI.ttf", 35.0f * PZGUI.resolutionRateHeight);
 		pauseButton   = new Image("res/UI/pause.png");
 		playButton    = new Image("res/UI/play.png");
 		speedUpButton = new Image("res/UI/speedUp.png");
@@ -82,7 +82,7 @@ public class PlayUI {
 		g.fillRoundRect(posX, posY, W, H, 20);
 		SunUI.drawIcon(iconPosX, iconPosY, iconW, iconH);
 
-		text.render(textPosX, textPosY, SunUI.getSunCollected().toString(), Color.white);
+		Text.render35(textPosX, textPosY, SunUI.getSunCollected().toString(), Color.white);
 		g.setColor(new Color(255, 255, 255));
 	}
 
@@ -106,14 +106,25 @@ public class PlayUI {
 		if (Controller.mouseInArea(pauseButtonPosX, pauseButtonPosY, pauseButtonPosX + pauseButtonHeight,
 									pauseButtonPosY + pauseButtonHeight)) {
 			pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight, new Color(0, 0, 0, 50));
-			
-			if (gc.getInput().isKeyPressed(Input.KEY_P)) {
+
+			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
 				gc.setPaused(!gc.isPaused());
-//				gc.setVSync(false);
-//				gc.setTargetFrameRate(0);
+				try {
+					TimeUnit.MICROSECONDS.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-			
+	}
+	
+	public static void showPlayButton(GameContainer gc, Graphics g) {
+		if (gc.isPaused()) {
+			g.setColor(new Color(1, 1, 1, 100));
+			g.fillRect(0, 0, PZGUI.width, PZGUI.height);
+			Text.render70((PZGUI.width/2 - 170) * PZGUI.resolutionRateWidth, 300 * PZGUI.resolutionRateHeight, "Game is Paused!");
+			playButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
+		}
 	}
 
 	// Speed Up button

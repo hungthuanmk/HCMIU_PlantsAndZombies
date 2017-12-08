@@ -20,6 +20,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		new Text();
 		gc.getGraphics().setAntiAlias(PZGUI.AA);
 
 		background = new Image("res/wallpaper.jpg");
