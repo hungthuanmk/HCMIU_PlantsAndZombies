@@ -18,7 +18,6 @@ public class Play extends BasicGameState {
 	Plant[][] 		  plant 	= new Plant[5][9];
 	ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
 	ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
-	
 	private static Image background;
 	
 	public Play(int state) {	
@@ -61,9 +60,6 @@ public class Play extends BasicGameState {
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 
-		PlayUI.showPauseButton(gc, g);
-		PlayUI.showSpeedUpButton(g);
-   		
 		for (Plant[] iPlantRow : plant) {
 			for (Plant iPlant : iPlantRow) {
 				if (iPlant != null)
@@ -80,6 +76,11 @@ public class Play extends BasicGameState {
 		}
 		
 		SunUI.render(gc, sbg, g);
+		
+		PlayUI.showPauseButton(gc, g);
+		PlayUI.showSpeedUpButton(g);
+		PlayUI.showPlayButton(gc, g);
+		
 		
 		//DebugTool.showMousePosition(g);	
 	}
