@@ -8,12 +8,21 @@ public class Seed {
 	private Image 	img;
 	private Integer money;
 	
+	public Class get_class() 		    {return _class;       }
+	public void set_class(Class _class) {this._class = _class;}
+
+	public Image getImg() 			    {return img;          }
+	public void setImg(Image img)       {this.img = img;      }
+
+	public Integer getMoney()           {return money;        }
+	public void setMoney(Integer money) {this.money = money;  }
+
 	public Seed(Class _class, Image img, Integer money) {
 		this._class = _class;
-		this.img 	= img;
-		this.money  = money;
+		this.img = img;
+		this.money = money;
 	}
-	
+
 	public Seed(Class _class, String img, Integer money) {
 		this._class = _class;
 		try {
@@ -21,9 +30,7 @@ public class Seed {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		this.money  = money;
+		this.money = money;
 	}
-	
-	
-	
+
 }

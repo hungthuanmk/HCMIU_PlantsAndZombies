@@ -5,8 +5,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import com.Position;
 
-import pz.plant.Peashooter;
-
 public class PlantBuilder {
 
 	public Plant createPlant(Class plantClass, Position pos) {

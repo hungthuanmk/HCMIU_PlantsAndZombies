@@ -26,10 +26,6 @@ public class Play extends BasicGameState {
 	public Play(int state) {	
 	}
 
-	// Init Zombie
-	public void initZombie() throws SlickException {
-	}
-
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		background = new Image("res/Map_1.jpg");
@@ -40,6 +36,8 @@ public class Play extends BasicGameState {
 		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
 		PlayUI.init();
+		SeedUI.addSeed(Sunflower.class , 100);
+		SeedUI.addSeed(Peashooter.class, 100);
 	}
 
 	// Show Background
@@ -60,7 +58,7 @@ public class Play extends BasicGameState {
 		
 		//PlayUI.showSunCollectedGrid(gc, sbg, g);
 		//PlayUI.showPlantZoneGrid(gc, sbg, g);
-		PlayUI.showSeedZoneGrid(gc, sbg, g);
+		//PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 
 		for (Plant[] iPlantRow : plant) {
@@ -77,8 +75,9 @@ public class Play extends BasicGameState {
 		for (Bullet iBullet : bullet) {
 			iBullet.draw(!gc.isPaused());
 		}
-		
-		SunUI.render(gc, sbg, g);
+	
+		SunUI. render(gc, sbg, g);
+		SeedUI.render(gc, sbg, g);
 		
 		PlayUI.showPauseButton(gc, g);
 		PlayUI.showSpeedUpButton(g);
@@ -147,7 +146,7 @@ public class Play extends BasicGameState {
 	}
 
 	private void onSeedZoneMoveOn(int itemId, Position posItem, Graphics g) {
-		g.fillRect(posItem.x, posItem.y, PlayUI.getSeedZoneW(), PlayUI.getSeedZoneH());
+		//g.fillRect(posItem.x, posItem.y, PlayUI.getSeedZoneW(), PlayUI.getSeedZoneH());
 	}
 
 	@Override
