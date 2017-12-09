@@ -87,36 +87,36 @@ public class Play extends BasicGameState {
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		if (! gc.isPaused() ) {
-		SunUI.update(gc, sbg);
-		
-		for (Plant[] iPlantRow : plant) {
-			for (Plant iPlant : iPlantRow) {
-				if (iPlant != null)
-					iPlant.attack(bullet);
-			}
-		}
-		
-		for (int i=0; i< zombie.size(); i++) {
-			if (zombie.get(i).getHp() == 0) {
-				zombie.remove(i);
-				break;
-			}		
-			zombie.get(i).move(); //move zombie
-			zombie.get(i).attack(plant);
-		}
-		
-//		for (Zombie iZombie : zombie) {
-//			iZombie.move(); //move zombie
-//			iZombie.attack(plant);
-//		}
+			SunUI.update(gc, sbg);
 			
-		for (int i=0; i<bullet.size(); i++) {	
-			bullet.get(i).move();
-			if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
-				bullet.remove(i);
+			for (Plant[] iPlantRow : plant) {
+				for (Plant iPlant : iPlantRow) {
+					if (iPlant != null)
+						iPlant.attack(bullet);
+				}
 			}
-			bullet.get(i).attack(zombie, bullet, i);
-		}
+			
+			for (int i=0; i< zombie.size(); i++) {
+				if (zombie.get(i).getHp() == 0) {
+					zombie.remove(i);
+					break;
+				}		
+				zombie.get(i).move(); //move zombie
+				zombie.get(i).attack(plant);
+			}
+			
+	//		for (Zombie iZombie : zombie) {
+	//			iZombie.move(); //move zombie
+	//			iZombie.attack(plant);
+	//		}
+				
+			for (int i=0; i<bullet.size(); i++) {	
+				bullet.get(i).move();
+				if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
+					bullet.remove(i);
+				}
+				bullet.get(i).attack(zombie, bullet, i);
+			}
 		}
 	}
 	
