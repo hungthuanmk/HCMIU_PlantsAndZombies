@@ -162,12 +162,11 @@ public class Play extends BasicGameState {
 
 		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				//plant[verId][hozId] = new Peashooter(pos);
 				plant[verId][hozId] = plantBuilder.createPlant(Peashooter.class, pos);
 		}
 		if (Mouse.getEventButton() == 1 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				plant[verId][hozId] = new Sunflower(pos);
+				plant[verId][hozId] = plantBuilder.createPlant(Sunflower.class, pos);
 		}
 		
 		

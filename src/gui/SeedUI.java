@@ -2,11 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import pz.Plant;
-import pz.plant.Peashooter;
 
 public class SeedUI {
 	
