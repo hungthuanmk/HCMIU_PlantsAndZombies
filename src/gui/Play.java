@@ -19,6 +19,8 @@ public class Play extends BasicGameState {
 	ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
 	ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
 	
+	PlantBuilder plantBuilder = new PlantBuilder();
+	
 	private static Image background;
 	
 	public Play(int state) {	
@@ -160,12 +162,16 @@ public class Play extends BasicGameState {
 
 		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				plant[verId][hozId] = new Peashooter(pos);
+				//plant[verId][hozId] = new Peashooter(pos);
+				plant[verId][hozId] = plantBuilder.createPlant(Peashooter.class, pos);
 		}
 		if (Mouse.getEventButton() == 1 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
 				plant[verId][hozId] = new Sunflower(pos);
 		}
+		
+		
+		
 	}
 	
 	public int getID() {
