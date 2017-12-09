@@ -81,7 +81,6 @@ public class Play extends BasicGameState {
 		SunUI.render(gc, sbg, g);
 		
 		PlayUI.showPauseButton(gc, g);
-		PlayUI.showSpeedUpButton(g);
 		PlayUI.showPlayButton(gc, g);
 		
 		

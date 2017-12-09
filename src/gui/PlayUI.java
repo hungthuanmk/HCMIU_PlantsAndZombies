@@ -19,6 +19,8 @@ public class PlayUI {
 	private static Image pauseButton;
 	private static Image playButton;
 	private static Image speedUpButton;
+	
+	private static boolean isSpeedUpClicked = false;
 
 	private static float plantZonePosX = 432 * PZGUI.resolutionRateWidth;
 	private static float plantZonePosY = 142 * PZGUI.resolutionRateHeight;
@@ -128,13 +130,27 @@ public class PlayUI {
 	}
 
 	// Speed Up button
-	public static void showSpeedUpButton(Graphics g) throws SlickException {
 		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
-
+		
 		if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX + speedUpButtonWidth,
-									speedUpButtonPosY + speedUpButtonHeight))
 			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
 					new Color(0, 0, 0, 50));
+								new Color(0, 0, 0, 50));
+			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
+				gc.setTargetFrameRate(60 * (isSpeedUpClicked==false?0:1));
+				gc.setVSync(isSpeedUpClicked);
+				isSpeedUpClicked = !isSpeedUpClicked;
+				try {
+					TimeUnit.MICROSECONDS.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		if (isSpeedUpClicked == false) {
+			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 100));
+		}
+		
 	}
 
 }
