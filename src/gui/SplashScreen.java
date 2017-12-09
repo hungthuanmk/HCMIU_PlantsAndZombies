@@ -28,8 +28,8 @@ public class SplashScreen extends BasicGameState {
 		playButton = new Image("res/Button/PlayDemo.png");
 
 		System.out.println("SplashScreen Init complete");
-		System.out.println("Wid: " + PZGUI.width);
-		System.out.println("Hei: " + PZGUI.height);
+		System.out.println("Wid: " + PZGUI.getWidth());
+		System.out.println("Hei: " + PZGUI.getHeight());
 	}
 
 	// Start Button
@@ -38,8 +38,8 @@ public class SplashScreen extends BasicGameState {
 		float width = playButton.getWidth() * PZGUI.resolutionRateWidth * rate;
 		float height = playButton.getHeight() * PZGUI.resolutionRateHeight * rate;
 		
-		float posX = PZGUI.width  /2 - width/2;
-		float posY = PZGUI.height * (float)(0.7) - height/2;
+		float posX = PZGUI.getWidth()  /2 - width/2;
+		float posY = PZGUI.getHeight() * (float)(0.7) - height/2;
 		
 		float edgeX = posX + width;
 		float edgeY = posY + height;
@@ -47,8 +47,8 @@ public class SplashScreen extends BasicGameState {
 		playButton.draw(posX, posY, width, height);
 		if (	Mouse.getX() >= posX && 
 				Mouse.getX() <= edgeX && 
-				PZGUI.height - Mouse.getY() >= posY	&& 
-				PZGUI.height - Mouse.getY() <= edgeY) {
+				PZGUI.getHeight() - Mouse.getY() >= posY	&& 
+				PZGUI.getHeight() - Mouse.getY() <= edgeY) {
 			playButton.draw(posX, posY, width, height, new Color(100, 100, 100, 60));
 			
 			if (Mouse.isButtonDown(0))
@@ -58,7 +58,7 @@ public class SplashScreen extends BasicGameState {
 
 	// BackGround
 	public void showBackGround() throws SlickException {
-		background.draw(0, 0, PZGUI.width, PZGUI.height);
+		background.draw(0, 0, PZGUI.getWidth(), PZGUI.getHeight());
 	}
 
 	// Game Logo
@@ -66,8 +66,8 @@ public class SplashScreen extends BasicGameState {
 		float rate = (float) 0.7;
 		float width = logo.getWidth() * PZGUI.resolutionRateWidth * rate;
 		float height = logo.getHeight() * PZGUI.resolutionRateHeight * rate;
-		float posX = PZGUI.width/2 - width/2;
-		float posY = PZGUI.height*(float)(0.2) - height/2;
+		float posX = PZGUI.getWidth()/2 - width/2;
+		float posY = PZGUI.getHeight()*(float)(0.2) - height/2;
 
 		logo.draw(posX, posY, width, height);
 	}
