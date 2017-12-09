@@ -145,18 +145,18 @@ public class Play extends BasicGameState {
 	}
 
 	@Override
-	public void mousePressed(int button, int x, int y) {
-//		System.out.println("Mouse clicked!");
-	}
-	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
 //		System.out.println(String.format("Mouse moved %d %d", newx, newy));
+	}
+	@Override
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+		System.out.println("Mouse clicked!");
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
 		g.setColor(new Color(1, 1, 1, 0.15f));
-		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
-		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
+		//g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
+		//g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
 
 		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 

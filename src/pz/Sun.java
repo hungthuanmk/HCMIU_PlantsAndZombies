@@ -22,7 +22,7 @@ public class Sun implements Clickable{
 	private int stayTimeInFrame = 60*10; // fps * second
 	
 	private boolean isClicked = false;
-	private boolean isDone = false;
+	private boolean isDone    = false;
 	private Animation animation;
 	
 	public Sun(Animation ani) throws SlickException{

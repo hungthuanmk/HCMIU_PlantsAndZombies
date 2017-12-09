@@ -58,7 +58,6 @@ public class SunUI {
 			}else {
 				sunManager.get(i).drawStopSun();
 			}
-			
 	}
 	
 	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
