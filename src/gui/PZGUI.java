@@ -18,7 +18,7 @@ public class PZGUI extends StateBasedGame {
 	private static boolean showFPS 	 = true;
 	private static boolean fullScreen = false;
 	private static boolean vSync 	 = true;
-	public static boolean AA		 = true;
+	private static boolean AA		 = true;
 	
 	public static final String gameName = "TNT Plants Vs. Zombies HCMIU";
 	public static final int splashScreen = 0;
@@ -105,4 +105,12 @@ public class PZGUI extends StateBasedGame {
 		}
 	}
 
+	public static boolean isAA() {
+		return AA;
+	}
+
+	public static void setAA(boolean aA) {
+		AA = aA;
+	}
+	
 }

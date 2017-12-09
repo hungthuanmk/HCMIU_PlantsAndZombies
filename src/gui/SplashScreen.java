@@ -21,7 +21,7 @@ public class SplashScreen extends BasicGameState {
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		new Text();
-		gc.getGraphics().setAntiAlias(PZGUI.AA);
+		gc.getGraphics().setAntiAlias(PZGUI.isAA());
 
 		background = new Image("res/wallpaper.jpg");
 		logo = new Image("res/pvz_logo.png");
@@ -74,7 +74,7 @@ public class SplashScreen extends BasicGameState {
 	
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.setAntiAlias(PZGUI.AA);
+		g.setAntiAlias(PZGUI.isAA());
 		showBackGround();
 		showLogo();
 		startButton(gc, sbg, g);
