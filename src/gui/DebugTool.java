@@ -8,7 +8,7 @@ import com.Controller;
 
 public class DebugTool {
 	public static void showMousePosition(Graphics g) throws SlickException {
-		if (Mouse.getX() < PZGUI.width - 100)
+		if (Mouse.getX() < PZGUI.getWidth() - 100)
 			g.drawString( String.format("[%d, %d]", Controller.getMouseX(), Controller.getMouseY()) , Controller.getMouseX() + 10, Controller.getMouseY());
 		else
 			g.drawString( String.format("[%d, %d]", Controller.getMouseX(), Controller.getMouseY()), Controller.getMouseX() - 100, Controller.getMouseY());

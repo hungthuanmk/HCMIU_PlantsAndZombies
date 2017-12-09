@@ -35,9 +35,9 @@ public class Play extends BasicGameState {
 		background = new Image("res/Map_1.jpg");
 		SunUI.init();
 		
-		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));			
-		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
-		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.width, PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
+		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));			
+		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
+		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
 		
 		PlayUI.init();
 	}
@@ -45,10 +45,10 @@ public class Play extends BasicGameState {
 	// Show Background
 	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		float rate 		= 0.69f;
-		float width 	= background.getWidth() * PZGUI.resolutionRateWidth * rate;
-		float height 	= background.getHeight() * PZGUI.resolutionRateHeight * rate;
-		float moveLeft  = (float)PZGUI.width * (7.0f/32);
-		float moveUp 	= (float)PZGUI.height * (41.0f/180);
+		float width 	= background.getWidth() * PZGUI.getResolutionRateWidth() * rate;
+		float height 	= background.getHeight() * PZGUI.getResolutionRateHeight() * rate;
+		float moveLeft  = (float)PZGUI.getWidth() * (7.0f/32);
+		float moveUp 	= (float)PZGUI.getHeight() * (41.0f/180);
 		
 		background.draw(-moveLeft, -moveUp, width, height);
 	}
@@ -115,7 +115,7 @@ public class Play extends BasicGameState {
 				
 			for (int i=0; i<bullet.size(); i++) {	
 				bullet.get(i).move();
-				if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
+				if (bullet.get(i).getPos().x > PZGUI.getWidth() || bullet.get(i).getPos().y > PZGUI.getHeight()) {
 					bullet.remove(i);
 				}
 				bullet.get(i).attack(zombie, bullet, i);

@@ -29,8 +29,8 @@ public class Text {
             inputStream = ResourceLoader.getResourceAsStream(fontDir);
              
             Font awtFont = Font.createFont(Font.TRUETYPE_FONT, inputStream);
-            font35 = new TrueTypeFont(awtFont.deriveFont(35.0f * PZGUI.resolutionRateHeight), antiAlias);
-            font70 = new TrueTypeFont(awtFont.deriveFont(70.0f * PZGUI.resolutionRateHeight), antiAlias);
+            font35 = new TrueTypeFont(awtFont.deriveFont(35.0f * PZGUI.getResolutionRateHeight()), antiAlias);
+            font70 = new TrueTypeFont(awtFont.deriveFont(70.0f * PZGUI.getResolutionRateHeight()), antiAlias);
              
         } catch (Exception e) {
             e.printStackTrace();

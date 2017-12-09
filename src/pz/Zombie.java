@@ -23,11 +23,11 @@ public abstract class Zombie extends Character {
 	
 	@Override
 	public float getWidth() {
-		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
+		return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;
 	}
 	@Override
 	public float getHeight() {
-		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
+		return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight() ;
 	}
 	
 	public void draw(boolean updateImg) {

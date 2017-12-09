@@ -27,8 +27,8 @@ public class PZGUI extends StateBasedGame {
 	private static final int play = 2;
 	private static final int gameOver = 3;
 	
-	public static float resolutionRateWidth;
-	public static float resolutionRateHeight;
+	private static float resolutionRateWidth;
+	private static float resolutionRateHeight;
 	
 	private static int defaultWidth = 1600;
 	private static int defaultHeight = 900;
@@ -129,6 +129,13 @@ public class PZGUI extends StateBasedGame {
 	public static void setHeight(int height) {
 		PZGUI.height = height;
 	}
-	
+
+	public static float getResolutionRateWidth() {
+		return resolutionRateWidth;
+	}
+
+	public static float getResolutionRateHeight() {
+		return resolutionRateHeight;
+	}
 	
 }

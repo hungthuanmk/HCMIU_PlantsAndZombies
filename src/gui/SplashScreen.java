@@ -35,8 +35,8 @@ public class SplashScreen extends BasicGameState {
 	// Start Button
 	public void startButton(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		float rate = 0.9f;
-		float width = playButton.getWidth() * PZGUI.resolutionRateWidth * rate;
-		float height = playButton.getHeight() * PZGUI.resolutionRateHeight * rate;
+		float width = playButton.getWidth() * PZGUI.getResolutionRateWidth() * rate;
+		float height = playButton.getHeight() * PZGUI.getResolutionRateHeight() * rate;
 		
 		float posX = PZGUI.getWidth()  /2 - width/2;
 		float posY = PZGUI.getHeight() * (float)(0.7) - height/2;
@@ -64,8 +64,8 @@ public class SplashScreen extends BasicGameState {
 	// Game Logo
 	public void showLogo() throws SlickException {
 		float rate = (float) 0.7;
-		float width = logo.getWidth() * PZGUI.resolutionRateWidth * rate;
-		float height = logo.getHeight() * PZGUI.resolutionRateHeight * rate;
+		float width = logo.getWidth() * PZGUI.getResolutionRateWidth() * rate;
+		float height = logo.getHeight() * PZGUI.getResolutionRateHeight() * rate;
 		float posX = PZGUI.getWidth()/2 - width/2;
 		float posY = PZGUI.getHeight()*(float)(0.2) - height/2;
 
