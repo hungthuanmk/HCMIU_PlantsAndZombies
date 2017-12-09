@@ -130,11 +130,12 @@ public class PlayUI {
 	}
 
 	// Speed Up button
+	public static void showSpeedUpButton(GameContainer gc, Graphics g) throws SlickException {
 		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
 		
 		if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX + speedUpButtonWidth,
+									speedUpButtonPosY + speedUpButtonHeight)) {
 			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
-					new Color(0, 0, 0, 50));
 								new Color(0, 0, 0, 50));
 			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
 				gc.setTargetFrameRate(60 * (isSpeedUpClicked==false?0:1));
