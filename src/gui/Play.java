@@ -63,58 +63,62 @@ public class Play extends BasicGameState {
 		PlayUI.showSeedZoneGrid(gc, sbg, g);
 		PlayUI.showSunCollected(gc, sbg, g);
 
-		PlayUI.showPauseButton(g);
-		PlayUI.showSpeedUpButton(g);
-    
 		for (Plant[] iPlantRow : plant) {
 			for (Plant iPlant : iPlantRow) {
 				if (iPlant != null)
-					iPlant.draw();
+					iPlant.draw(!gc.isPaused());
 			}
 		}
 		
 		for (Zombie iZombie : zombie) {
-			iZombie.draw();
+			iZombie.draw(!gc.isPaused());
 		}
 		
 		for (Bullet iBullet : bullet) {
-			iBullet.draw();
+			iBullet.draw(!gc.isPaused());
 		}
 		
 		SunUI.render(gc, sbg, g);
+		
+		PlayUI.showPauseButton(gc, g);
+		PlayUI.showSpeedUpButton(g);
+		PlayUI.showPlayButton(gc, g);
+		
 		
 		//DebugTool.showMousePosition(g);	
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		SunUI.update(gc, sbg);
-		
-		for (Plant[] iPlantRow : plant) {
-			for (Plant iPlant : iPlantRow) {
-				if (iPlant != null)
-					iPlant.attack(bullet);
-			}
-		}
-		
-		for (int i=0; i< zombie.size(); i++) {
-			if (zombie.get(i).getHp() == 0) {
-				zombie.remove(i);
-				break;
-			}		
-			zombie.get(i).move(); //move zombie
-			zombie.get(i).attack(plant);
-		}
-		
-//		for (Zombie iZombie : zombie) {
-//			iZombie.move(); //move zombie
-//			iZombie.attack(plant);
-//		}
+		if (! gc.isPaused() ) {
+			SunUI.update(gc, sbg);
 			
-		for (int i=0; i<bullet.size(); i++) {	
-			bullet.get(i).move();
-			boolean attackHit = bullet.get(i).attack(zombie);
-			if (attackHit || bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
-				bullet.remove(i);
+			for (Plant[] iPlantRow : plant) {
+				for (Plant iPlant : iPlantRow) {
+					if (iPlant != null)
+						iPlant.attack(bullet);
+				}
+			}
+			
+			for (int i=0; i< zombie.size(); i++) {
+				if (zombie.get(i).getHp() == 0) {
+					zombie.remove(i);
+					break;
+				}		
+				zombie.get(i).move(); //move zombie
+				zombie.get(i).attack(plant);
+			}
+			
+	//		for (Zombie iZombie : zombie) {
+	//			iZombie.move(); //move zombie
+	//			iZombie.attack(plant);
+	//		}
+				
+			for (int i=0; i<bullet.size(); i++) {	
+				bullet.get(i).move();
+				if (bullet.get(i).getPos().x > PZGUI.width || bullet.get(i).getPos().y > PZGUI.height) {
+					bullet.remove(i);
+				}
+				bullet.get(i).attack(zombie, bullet, i);
 			}
 		}
 	}
@@ -148,11 +152,11 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void mousePressed(int button, int x, int y) {
-		System.out.println("Mouse clicked!");
+//		System.out.println("Mouse clicked!");
 	}
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-		//System.out.println(String.format("Mouse moved %d %d", newx, newy));
+//		System.out.println(String.format("Mouse moved %d %d", newx, newy));
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {

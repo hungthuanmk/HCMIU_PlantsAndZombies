@@ -13,6 +13,7 @@ public class Sunflower extends pz.Plant {
 	
 	private static int hp = 100;
 	private static int attackInterval = 500;
+	private static float scaleFactor = 0.2f;
 	//private static int damage = 0;
 
 	public Sunflower(Position pos) {
@@ -22,7 +23,7 @@ public class Sunflower extends pz.Plant {
 	protected void loadAnimation() {
 		try {
 			for (int i=1; i<=30; i++)
-				getAnimation().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 30);
+				getAnimation().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 50);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

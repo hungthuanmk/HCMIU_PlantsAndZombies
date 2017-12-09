@@ -37,6 +37,10 @@ public class Sun{
 		animation.draw(posX, posY, width, height);
 	}
 	
+	public void drawStopSun() throws SlickException{
+		animation.getCurrentFrame().draw(posX, posY, width, height);
+	}
+	
 	public void updateSun(){
 		clickOn();
 		if (isClicked == false){

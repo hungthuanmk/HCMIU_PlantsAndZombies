@@ -30,7 +30,8 @@ public abstract class Zombie extends Character {
 		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
 	}
 	
-	public void draw() {
+	public void draw(boolean updateImg) {
+		getAnimation().setAutoUpdate(updateImg);
 		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());
 	}
 	

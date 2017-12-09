@@ -14,7 +14,7 @@ public class Position {
 		return "X:" +  x + " Y:" + y;
 	}
 	
-	public static boolean isInteract(Bullet bullet, Zombie zombie) {
+	public static boolean isIntersect(Bullet bullet, Zombie zombie) {
 		float topLeftX1 = bullet.getPos().x;
 		float topLeftY1 = bullet.getPos().y;
 		float botRightX1 = topLeftX1 + bullet.getWidth();

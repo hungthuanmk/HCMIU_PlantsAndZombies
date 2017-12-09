@@ -31,5 +31,5 @@ public interface CharacterI {
 	float 	  getHeight();
 
 	void 	  move();
-	void 	  draw();
+	void 	  draw(boolean updateImg);
 }
