@@ -78,7 +78,7 @@ public class SplashScreen extends BasicGameState {
 		showBackGround();
 		showLogo();
 		startButton(gc, sbg, g);
-		DebugTool.showMousePosition(g);
+		//DebugTool.showMousePosition(g);
 	}	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {

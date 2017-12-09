@@ -42,7 +42,7 @@ public class SunUI {
 		sunAni.addFrame(new Image("/res/Sun Sprite/Sun 6.png"), animationDuration);
 		//sunAni.addFrame(new Image("/res/Pvz2plantfood.png"), animationDuration); // this for test animation restart
 		sunIcon = new Image("/res/Sun Sprite/Sun 6.png");
-		startTime = (int) System.currentTimeMillis();
+		//startTime = (int) System.currentTimeMillis();
 	}
 	
 	public static Image drawIcon(float iconPosX, float iconPosY, float iconWidth, float iconHeight) throws SlickException{

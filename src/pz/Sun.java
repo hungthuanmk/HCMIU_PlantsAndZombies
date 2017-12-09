@@ -2,17 +2,20 @@ package pz;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+
+import com.Clickable;
+
 import gui.PZGUI;
 import gui.SunUI;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Sun{
-	private int posX;
-	private int posY;
+public class Sun implements Clickable{
+	private float posX;
+	private float posY;
 	private int edgeY;
 	
-	private float width = 80 * PZGUI.getResolutionRateWidth();
+	private float width  = 80 * PZGUI.getResolutionRateWidth();
 	private float height = 80 * PZGUI.getResolutionRateHeight();
 	
 	private int framePass;
@@ -24,8 +27,8 @@ public class Sun{
 	
 	public Sun(Animation ani) throws SlickException{
 		super();
-		posX = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.getResolutionRateWidth()), (int)(PZGUI.getResolutionRateHeight()*1350));
-		posY = -98;
+		posX  = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.getResolutionRateWidth()), (int)(PZGUI.getResolutionRateHeight()*1350));
+		posY  = -98;
 		edgeY = ThreadLocalRandom.current().nextInt((int)(100*PZGUI.getResolutionRateWidth()), (int)(750*PZGUI.getResolutionRateHeight()));
 		ani.stop();
 		this.animation = ani;
@@ -54,10 +57,11 @@ public class Sun{
 			}
 		}
 		else{
-			if (posX > 30 && posY > 20)
+			//if (posX > 30 && posY > 20)
+			if (posX > 30)
 			{
-				posX -= posX / 20;
-				posY -= posY / 20;
+				posX -= posX / 20f;
+				posY -= posY / 20f;
 			}
 			else
 				isDone = true;
@@ -87,5 +91,11 @@ public class Sun{
 
 	public boolean isDone() {
 		return isDone;
+	}
+
+	@Override
+	public void onClicked() {
+		// TODO Auto-generated method stub
+		
 	}	
 }
