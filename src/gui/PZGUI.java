@@ -10,7 +10,8 @@ import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.*;
 
 public class PZGUI extends StateBasedGame {
-	public static int width 	= 1600; 	public static int height 	= 900;
+	private static int width 	= 1600; 	
+	private static int height 	= 900;
 	
 //	public static int width		= 800;  	public static int height	= 450;
 	
@@ -18,16 +19,16 @@ public class PZGUI extends StateBasedGame {
 	private static boolean showFPS 	 = true;
 	private static boolean fullScreen = false;
 	private static boolean vSync 	 = true;
-	public static boolean AA		 = true;
+	private static boolean AA		 = true;
 	
-	public static final String gameName = "TNT Plants Vs. Zombies HCMIU";
-	public static final int splashScreen = 0;
-	public static final int menu = 1;
-	public static final int play = 2;
-	public static final int gameOver = 3;
+	private static final String gameName = "TNT Plants Vs. Zombies HCMIU";
+	private static final int splashScreen = 0;
+	private static final int menu = 1;
+	private static final int play = 2;
+	private static final int gameOver = 3;
 	
-	public static float resolutionRateWidth;
-	public static float resolutionRateHeight;
+	private static float resolutionRateWidth;
+	private static float resolutionRateHeight;
 	
 	private static int defaultWidth = 1600;
 	private static int defaultHeight = 900;
@@ -105,4 +106,36 @@ public class PZGUI extends StateBasedGame {
 		}
 	}
 
+	public static boolean isAA() {
+		return AA;
+	}
+
+	public static void setAA(boolean aA) {
+		AA = aA;
+	}
+
+	public static int getWidth() {
+		return width;
+	}
+
+	public static void setWidth(int width) {
+		PZGUI.width = width;
+	}
+
+	public static int getHeight() {
+		return height;
+	}
+
+	public static void setHeight(int height) {
+		PZGUI.height = height;
+	}
+
+	public static float getResolutionRateWidth() {
+		return resolutionRateWidth;
+	}
+
+	public static float getResolutionRateHeight() {
+		return resolutionRateHeight;
+	}
+	
 }

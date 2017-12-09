@@ -12,8 +12,8 @@ public class Sun{
 	private int posY;
 	private int edgeY;
 	
-	private float width = 80 * PZGUI.resolutionRateWidth;
-	private float height = 80 * PZGUI.resolutionRateHeight;
+	private float width = 80 * PZGUI.getResolutionRateWidth();
+	private float height = 80 * PZGUI.getResolutionRateHeight();
 	
 	private int framePass;
 	private int stayTimeInFrame = 60*10; // fps * second
@@ -24,9 +24,9 @@ public class Sun{
 	
 	public Sun(Animation ani) throws SlickException{
 		super();
-		posX = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.resolutionRateWidth), (int)(PZGUI.resolutionRateHeight*1350));
+		posX = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.getResolutionRateWidth()), (int)(PZGUI.getResolutionRateHeight()*1350));
 		posY = -98;
-		edgeY = ThreadLocalRandom.current().nextInt((int)(100*PZGUI.resolutionRateWidth), (int)(750*PZGUI.resolutionRateHeight));
+		edgeY = ThreadLocalRandom.current().nextInt((int)(100*PZGUI.getResolutionRateWidth()), (int)(750*PZGUI.getResolutionRateHeight()));
 		ani.stop();
 		this.animation = ani;
 		this.animation.start(); // I think it can restart the animation
@@ -75,7 +75,7 @@ public class Sun{
 	}
 	
 	public void clickOn(){
-		if (Mouse.getX() >= posX && Mouse.getX() <= posX + width && PZGUI.height - Mouse.getY() >= posY && PZGUI.height - Mouse.getY() <= posY + height) {
+		if (Mouse.getX() >= posX && Mouse.getX() <= posX + width && PZGUI.getHeight() - Mouse.getY() >= posY && PZGUI.getHeight() - Mouse.getY() <= posY + height) {
 			
 			if (Mouse.isButtonDown(0) && isClicked == false)
 			{

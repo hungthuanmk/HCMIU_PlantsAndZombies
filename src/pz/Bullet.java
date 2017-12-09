@@ -36,11 +36,11 @@ public abstract class Bullet {
 	public void 	setPos(float x, float y) {this.pos.x = x; this.pos.y = y;}
 	
 	public float getWidth() {
-		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
+		return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;
 	}
 	
 	public float getHeight() {
-		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
+		return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight() ;
 	}
 	
 	public void draw(boolean updateImg) {

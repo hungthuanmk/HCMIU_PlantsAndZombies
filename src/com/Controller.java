@@ -9,7 +9,7 @@ public class Controller {
 		return Mouse.getX();
 	}
 	public static int getMouseY() {
-		return PZGUI.height - Mouse.getY();
+		return PZGUI.getHeight() - Mouse.getY();
 	}
 	public static Position getMousePos() {
 		return new Position(getMouseX(), getMouseY());
