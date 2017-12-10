@@ -10,10 +10,10 @@ import gui.SunUI;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Sun implements Clickable{
+public abstract class Sun implements Clickable{
 	private float posX;
 	private float posY;
-	private int edgeY;
+	private float edgeY;
 	
 	private float width  = 80 * PZGUI.getResolutionRateWidth();
 	private float height = 80 * PZGUI.getResolutionRateHeight();
@@ -25,11 +25,37 @@ public class Sun implements Clickable{
 	private boolean isDone    = false;
 	private Animation animation;
 	
-	public Sun(Animation ani) throws SlickException{
-		super();
-		posX  = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.getResolutionRateWidth()), (int)(PZGUI.getResolutionRateHeight()*1350));
-		posY  = -98;
-		edgeY = ThreadLocalRandom.current().nextInt((int)(100*PZGUI.getResolutionRateWidth()), (int)(750*PZGUI.getResolutionRateHeight()));
+	public float getPosX() 			 					{return posX;}
+	public void  setPosX(float posX) 					{this.posX = posX;}
+
+	public float getPosY() 			 					{return posY;}
+	public void  setPosY(float posY) 					{this.posY = posY;}
+
+	public float  getEdgeY() 							{return edgeY;}
+	public void   setEdgeY(float edgeY) 				{this.edgeY = edgeY;}
+		
+	public float getWidth() 							{return width;}
+	public void  setWidth(float width)  				{this.width = width;}
+
+	public float getHeight() 			  				{return height;}
+	public void  setHeight(float height)  				{this.height = height;}
+
+	public int  getFramePass() 							{return framePass;}
+	public void setFramePass(int framePass) 			{this.framePass = framePass;}
+
+	public int getStayTimeInFrame() 					{return stayTimeInFrame;}
+	public void setStayTimeInFrame(int stayTimeInFrame) {this.stayTimeInFrame = stayTimeInFrame;}
+
+	public Animation getAnimation() 				    {return animation;}
+	public void      setAnimation(Animation animation)  {this.animation = animation;}
+
+	public void setClicked(boolean isClicked) 			{this.isClicked = isClicked;}
+	public void setDone(boolean isDone) 				{this.isDone = isDone;}
+
+	public Sun(Animation ani, float posX, float posY, float edgeY) throws SlickException{
+		this.posX = posX;
+		this.posY = posY;
+		this.edgeY = edgeY;
 		ani.stop();
 		this.animation = ani;
 		this.animation.start(); // I think it can restart the animation
@@ -44,30 +70,7 @@ public class Sun implements Clickable{
 		animation.getCurrentFrame().draw(posX, posY, width, height);
 	}
 	
-	public void updateSun(){
-		clickOn();
-		if (isClicked == false){
-			if (posY < edgeY)
-				this.posY++;
-			else{
-				if (framePass <= stayTimeInFrame)
-					framePass++;
-				else
-					isDone = true;
-			}
-		}
-		else{
-			//if (posX > 30 && posY > 20)
-			if (posX > 30)
-			{
-				posX -= posX / 20f;
-				posY -= posY / 20f;
-			}
-			else
-				isDone = true;
-		}
-		
-	}
+	public abstract void updateSun();
 	
 	public boolean isClicked(){
 		if (isClicked == true){
@@ -78,7 +81,7 @@ public class Sun implements Clickable{
 		}			
 	}
 	
-	public void clickOn(){
+	protected void clickOn(){
 		if (Mouse.getX() >= posX && Mouse.getX() <= posX + width && PZGUI.getHeight() - Mouse.getY() >= posY && PZGUI.getHeight() - Mouse.getY() <= posY + height) {
 			
 			if (Mouse.isButtonDown(0) && isClicked == false)

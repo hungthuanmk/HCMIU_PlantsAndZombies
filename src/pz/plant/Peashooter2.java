@@ -9,8 +9,6 @@ import com.Position;
 
 import pz.Bullet;
 
-//import pz.Bullet.*;
-
 public class Peashooter2 extends pz.Plant {
 	
 	private static int _hp = 100;

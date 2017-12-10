@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import pz.Sun;
+import pz.sun.SunNatural;
 
 public class SunUI {
 	private static int animationDuration = 200;
@@ -25,6 +26,10 @@ public class SunUI {
 	
 	static Timer timer;		
 	
+	public static Animation getSunAni() {
+		return sunAni;
+	}
+
 	public static Integer getSunCollected() {
 		return sunCollected;
 	}
@@ -65,7 +70,7 @@ public class SunUI {
 		if (framePass > spawnCoolDownInFrame)
 		{
 			framePass = 0;
-			sunManager.add(new Sun(sunAni));
+			sunManager.add(new SunNatural(sunAni));
 		}
 		
 		for (int i=0; i<sunManager.size(); i++)
@@ -75,5 +80,10 @@ public class SunUI {
 				sunManager.remove(i--);
 			}
 	}
+
+	public static ArrayList<Sun> getSunManager() {
+		return sunManager;
+	}
+	
 
 }

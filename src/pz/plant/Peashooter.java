@@ -2,15 +2,12 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
 import pz.Bullet;
-
-//import pz.Bullet.*;
 
 public class Peashooter extends pz.Plant {
 	

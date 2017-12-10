@@ -13,7 +13,6 @@ import pz.Zombie;
 
 public class BSunflower extends Bullet implements Clickable{
 	
-	// y = -5x + 10;
 	private float x;
 	private float y;
 	private float initX, initY;
