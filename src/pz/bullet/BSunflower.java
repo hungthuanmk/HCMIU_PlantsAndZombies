@@ -54,8 +54,8 @@ public class BSunflower extends Bullet implements Clickable{
 	}
 
 	@Override
-	public void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList, int bulletIdx) {
-		// TODO Auto-generated method stub
+	public void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList) {
+		
 		
 	}
 

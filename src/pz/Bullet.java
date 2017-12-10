@@ -48,7 +48,7 @@ public abstract class Bullet {
 	}
 
 	public abstract void move();
-	public abstract void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList, int bulletIdx);
+	public abstract void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList);
 	protected abstract void loadAnimation();
 
 }

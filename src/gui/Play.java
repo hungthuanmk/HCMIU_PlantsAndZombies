@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -19,7 +20,7 @@ public class Play extends BasicGameState {
 	ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
 	ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
 	
-	PlantBuilder plantBuilder = new PlantBuilder();
+	CharacterBuilder plantBuilder = new CharacterBuilder();
 	
 	private static Image background;
 	
@@ -63,13 +64,16 @@ public class Play extends BasicGameState {
 
 		for (Plant[] iPlantRow : plant) {
 			for (Plant iPlant : iPlantRow) {
-				if (iPlant != null)
+				if (iPlant != null) {
 					iPlant.draw(!gc.isPaused());
+					g.drawRect(iPlant.getPos().x, iPlant.getPos().y, iPlant.getWidth(), iPlant.getHeight());
+				}		
 			}
 		}
 		
 		for (Zombie iZombie : zombie) {
 			iZombie.draw(!gc.isPaused());
+			g.drawRect(iZombie.getPos().x, iZombie.getPos().y, iZombie.getWidth(), iZombie.getHeight());
 		}
 		
 		for (Bullet iBullet : bullet) {
@@ -98,22 +102,30 @@ public class Play extends BasicGameState {
 				}
 			}
 			
-			for (int i=0; i< zombie.size(); i++) {
+			for (int i=0; i<bullet.size(); i++) {
+				//if (bullet.get(i) == null) continue;
+				bullet.get(i).move();
+				bullet.get(i).attack(zombie, bullet);				
+			}
+			
+			//Iterator<String> b = bullet.iterator();
+//			for (Iterator<Bullet> it = bullet.iterator(); it.hasNext();) {
+//				Bullet b = it.next();
+//				
+//				b.move();
+//				b.attack(zombie, bullet);		
+//			}
+			
+			for (int i=0; i < zombie.size(); i++) {
+				if (zombie.get(i) == null) continue;
 				if (zombie.get(i).getHp() == 0) {
 					zombie.remove(i);
-					break;
+					continue;
 				}		
 				zombie.get(i).move(); //move zombie
-				zombie.get(i).attack(plant);
+				zombie.get(i).attack(plant, bullet);
 			}
-				
-			for (int i=0; i<bullet.size(); i++) {	
-				bullet.get(i).move();
-				if (bullet.get(i).getPos().x > PZGUI.getWidth() || bullet.get(i).getPos().y > PZGUI.getHeight()) {
-					bullet.remove(i);
-				}
-				bullet.get(i).attack(zombie, bullet, i);
-			}
+	
 		}
 	}
 	
