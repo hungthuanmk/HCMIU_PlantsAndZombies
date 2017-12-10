@@ -22,57 +22,33 @@ public abstract class Bullet {
 		loadAnimation();
 	}
 
-	public int getDamage() {
-		return damage;
-	}
+	public int  getDamage() {return damage;}
+	public void setDamage(int damage) {this.damage = damage;}
 
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
+	public float getSpeed() {return speed;}
+	public void  setSpeed(float speed) {this.speed = speed;}
 
-	public float getSpeed() {
-		return speed;
-	}
+	public Animation getAnimation() {return ani;}
+	public void 	 setAnimation(Animation img) {this.ani = img;}
 
-	public void setSpeed(float speed) {
-		this.speed = speed;
-	}
-
-	public Animation getAnimation() {
-		return ani;
-	}
-
-	public void setAnimation(Animation img) {
-		this.ani = img;
-	}
-
-	public Position getPos() {
-		return pos;
-	}
-
-	public void setPos(Position pos) {
-		this.pos = pos;
-	}
-
-	public void setPos(float x, float y) {
-		this.pos.x = x;
-		this.pos.y = y;
-	}
+	public Position getPos() {return pos;}
+	public void 	setPos(Position pos) {this.pos = pos;}
+	public void 	setPos(float x, float y) {this.pos.x = x; this.pos.y = y;}
 	
-	public float getWith() {
-		return getAnimation().getWidth() * scaleFactor * PZGUI.resolutionRateWidth ;
+	public float getWidth() {
+		return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;
 	}
 	
 	public float getHeight() {
-		return getAnimation().getHeight() * scaleFactor * PZGUI.resolutionRateHeight ;
+		return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight() ;
 	}
 	
-	public void draw() {
-		getAnimation().draw(getPos().x, getPos().y, getWith(), getHeight());
+	public void draw(boolean updateImg) {
+		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());
 	}
 
 	public abstract void move();
-	public abstract void attack(ArrayList<Zombie>[] zombieList);
+	public abstract void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList);
 	protected abstract void loadAnimation();
 
 }

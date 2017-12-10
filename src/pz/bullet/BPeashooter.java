@@ -1,12 +1,12 @@
 package pz.bullet;
 
 import java.util.ArrayList;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
+import pz.Bullet;
 import pz.Zombie;
 
 public class BPeashooter extends pz.Bullet {
@@ -49,14 +49,25 @@ public class BPeashooter extends pz.Bullet {
 	}
 
 	public void move() {
-		setPos(getPos().x + getSpeed(), getPos().y);	
+		setPos(getPos().x + getSpeed(), getPos().y);
+//		if (getPos().x > PZGUI.getWidth() || getPos().y > PZGUI.getHeight()) {
+//			bulletList.remove(this);
+//			return;
+//		}
 	}
-	
-	public void attack(ArrayList<Zombie>[] zombieList) {
-		for (ArrayList<Zombie> zomList : zombieList)
-			for (Zombie z : zomList) {
-				
+
+	@Override
+	public void attack(ArrayList<Zombie> zombieList, ArrayList<Bullet> bulletList) {
+		for (Zombie z : zombieList) {
+			//if (z == null) continue;
+			if (Position.isIntersect(this, z)) {
 				z.setHp(z.getHp() - getDamage());
+				
+				System.out.println("hit");
+				bulletList.remove(this);
+				//bulletList.removeIf()
+				return;
 			}
+		}
 	}
 }

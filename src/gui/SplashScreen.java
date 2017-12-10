@@ -1,6 +1,5 @@
 package gui;
 
-import org.lwjgl.Sys;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -21,25 +20,25 @@ public class SplashScreen extends BasicGameState {
 	
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		gc.getGraphics().setAntiAlias(PZGUI.AA);
+		gc.getGraphics().setAntiAlias(PZGUI.isAA());
 
 		background = new Image("res/wallpaper.jpg");
 		logo = new Image("res/pvz_logo.png");
 		playButton = new Image("res/Button/PlayDemo.png");
 
 		System.out.println("SplashScreen Init complete");
-		System.out.println("Wid: " + PZGUI.width);
-		System.out.println("Hei: " + PZGUI.height);
+		System.out.println("Wid: " + PZGUI.getWidth());
+		System.out.println("Hei: " + PZGUI.getHeight());
 	}
 
 	// Start Button
 	public void startButton(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		float rate = 0.9f;
-		float width = playButton.getWidth() * PZGUI.resolutionRateWidth * rate;
-		float height = playButton.getHeight() * PZGUI.resolutionRateHeight * rate;
+		float width = playButton.getWidth() * PZGUI.getResolutionRateWidth() * rate;
+		float height = playButton.getHeight() * PZGUI.getResolutionRateHeight() * rate;
 		
-		float posX = PZGUI.width  /2 - width/2;
-		float posY = PZGUI.height * (float)(0.7) - height/2;
+		float posX = PZGUI.getWidth()  /2 - width/2;
+		float posY = PZGUI.getHeight() * (float)(0.7) - height/2;
 		
 		float edgeX = posX + width;
 		float edgeY = posY + height;
@@ -47,8 +46,8 @@ public class SplashScreen extends BasicGameState {
 		playButton.draw(posX, posY, width, height);
 		if (	Mouse.getX() >= posX && 
 				Mouse.getX() <= edgeX && 
-				PZGUI.height - Mouse.getY() >= posY	&& 
-				PZGUI.height - Mouse.getY() <= edgeY) {
+				PZGUI.getHeight() - Mouse.getY() >= posY	&& 
+				PZGUI.getHeight() - Mouse.getY() <= edgeY) {
 			playButton.draw(posX, posY, width, height, new Color(100, 100, 100, 60));
 			
 			if (Mouse.isButtonDown(0))
@@ -58,27 +57,27 @@ public class SplashScreen extends BasicGameState {
 
 	// BackGround
 	public void showBackGround() throws SlickException {
-		background.draw(0, 0, PZGUI.width, PZGUI.height);
+		background.draw(0, 0, PZGUI.getWidth(), PZGUI.getHeight());
 	}
 
 	// Game Logo
 	public void showLogo() throws SlickException {
 		float rate = (float) 0.7;
-		float width = logo.getWidth() * PZGUI.resolutionRateWidth * rate;
-		float height = logo.getHeight() * PZGUI.resolutionRateHeight * rate;
-		float posX = PZGUI.width/2 - width/2;
-		float posY = PZGUI.height*(float)(0.2) - height/2;
+		float width = logo.getWidth() * PZGUI.getResolutionRateWidth() * rate;
+		float height = logo.getHeight() * PZGUI.getResolutionRateHeight() * rate;
+		float posX = PZGUI.getWidth()/2 - width/2;
+		float posY = PZGUI.getHeight()*(float)(0.2) - height/2;
 
 		logo.draw(posX, posY, width, height);
 	}
 	
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.setAntiAlias(PZGUI.AA);
+		g.setAntiAlias(PZGUI.isAA());
 		showBackGround();
 		showLogo();
 		startButton(gc, sbg, g);
-		DebugTool.showMousePosition(g);
+		//DebugTool.showMousePosition(g);
 	}	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {

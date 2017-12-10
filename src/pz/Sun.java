@@ -2,31 +2,60 @@ package pz;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+
+import com.Clickable;
+
 import gui.PZGUI;
 import gui.SunUI;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Sun{
-	private int posX;
-	private int posY;
-	private int edgeY;
+public abstract class Sun implements Clickable{
+	private float posX;
+	private float posY;
+	private float edgeY;
 	
-	private float width = 80 * PZGUI.resolutionRateWidth;
-	private float height = 80 * PZGUI.resolutionRateHeight;
+	private float width  = 80 * PZGUI.getResolutionRateWidth();
+	private float height = 80 * PZGUI.getResolutionRateHeight();
 	
 	private int framePass;
 	private int stayTimeInFrame = 60*10; // fps * second
 	
 	private boolean isClicked = false;
-	private boolean isDone = false;
+	private boolean isDone    = false;
 	private Animation animation;
 	
-	public Sun(Animation ani) throws SlickException{
-		super();
-		posX = ThreadLocalRandom.current().nextInt((int)(420*PZGUI.resolutionRateWidth), (int)(PZGUI.resolutionRateHeight*1350));
-		posY = -98;
-		edgeY = ThreadLocalRandom.current().nextInt((int)(100*PZGUI.resolutionRateWidth), (int)(750*PZGUI.resolutionRateHeight));
+	public float getPosX() 			 					{return posX;}
+	public void  setPosX(float posX) 					{this.posX = posX;}
+
+	public float getPosY() 			 					{return posY;}
+	public void  setPosY(float posY) 					{this.posY = posY;}
+
+	public float  getEdgeY() 							{return edgeY;}
+	public void   setEdgeY(float edgeY) 				{this.edgeY = edgeY;}
+		
+	public float getWidth() 							{return width;}
+	public void  setWidth(float width)  				{this.width = width;}
+
+	public float getHeight() 			  				{return height;}
+	public void  setHeight(float height)  				{this.height = height;}
+
+	public int  getFramePass() 							{return framePass;}
+	public void setFramePass(int framePass) 			{this.framePass = framePass;}
+
+	public int getStayTimeInFrame() 					{return stayTimeInFrame;}
+	public void setStayTimeInFrame(int stayTimeInFrame) {this.stayTimeInFrame = stayTimeInFrame;}
+
+	public Animation getAnimation() 				    {return animation;}
+	public void      setAnimation(Animation animation)  {this.animation = animation;}
+
+	public void setClicked(boolean isClicked) 			{this.isClicked = isClicked;}
+	public void setDone(boolean isDone) 				{this.isDone = isDone;}
+
+	public Sun(Animation ani, float posX, float posY, float edgeY) throws SlickException{
+		this.posX = posX;
+		this.posY = posY;
+		this.edgeY = edgeY;
 		ani.stop();
 		this.animation = ani;
 		this.animation.start(); // I think it can restart the animation
@@ -37,29 +66,11 @@ public class Sun{
 		animation.draw(posX, posY, width, height);
 	}
 	
-	public void updateSun(){
-		clickOn();
-		if (isClicked == false){
-			if (posY < edgeY)
-				this.posY++;
-			else{
-				if (framePass <= stayTimeInFrame)
-					framePass++;
-				else
-					isDone = true;
-			}
-		}
-		else{
-			if (posX > 30 && posY > 20)
-			{
-				posX -= posX / 20;
-				posY -= posY / 20;
-			}
-			else
-				isDone = true;
-		}
-		
+	public void drawStopSun() throws SlickException{
+		animation.getCurrentFrame().draw(posX, posY, width, height);
 	}
+	
+	public abstract void updateSun();
 	
 	public boolean isClicked(){
 		if (isClicked == true){
@@ -70,8 +81,8 @@ public class Sun{
 		}			
 	}
 	
-	public void clickOn(){
-		if (Mouse.getX() >= posX && Mouse.getX() <= posX + width && PZGUI.height - Mouse.getY() >= posY && PZGUI.height - Mouse.getY() <= posY + height) {
+	protected void clickOn(){
+		if (Mouse.getX() >= posX && Mouse.getX() <= posX + width && PZGUI.getHeight() - Mouse.getY() >= posY && PZGUI.getHeight() - Mouse.getY() <= posY + height) {
 			
 			if (Mouse.isButtonDown(0) && isClicked == false)
 			{
@@ -83,5 +94,11 @@ public class Sun{
 
 	public boolean isDone() {
 		return isDone;
+	}
+
+	@Override
+	public void onClicked() {
+		// TODO Auto-generated method stub
+		
 	}	
 }

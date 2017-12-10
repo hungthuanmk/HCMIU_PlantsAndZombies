@@ -1,9 +1,6 @@
 package com;
 
-import org.newdawn.slick.Animation;
-
-import pz.Bullet;
-import pz.Zombie;
+import pz.*;
 
 public class Position {
 	public float x=0, y=0; 
@@ -14,19 +11,35 @@ public class Position {
 	@Override
 	public String toString()
 	{
-		return "X:" +  Float.toString(x) + " Y:" + Float.toString(y);
+		return "X:" +  x + " Y:" + y;
 	}
-	public static boolean isInteract(Bullet a1, Zombie a2) {
-		float topLeftX1 = a1.getPos().x;
-		float topLeftY1 = a1.getPos().y;
-		float botRightX1 = topLeftX1 + a1.getAnimation().getWidth();
-		float botRightY1 = topLeftY1 + a1.getAnimation().getHeight();
-		float topLeftX2 = a2.getPos().x;
-		float topLeftY2 = a2.getPos().y;
-		float botRightX2 = topLeftX2 + a2.getAnimation().getWidth();
-		float botRightY2 = topLeftY2 + a2.getAnimation().getHeight();
+	
+	public static boolean isIntersect(Bullet bullet, Zombie zombie) {
+		float topLeftX1 = bullet.getPos().x;
+		float topLeftY1 = bullet.getPos().y;
+		float botRightX1 = topLeftX1 + bullet.getWidth();
+		float botRightY1 = topLeftY1 + bullet.getHeight();
+		float topLeftX2 = zombie.getPos().x;
+		float topLeftY2 = zombie.getPos().y;
+		float botRightX2 = topLeftX2 + zombie.getWidth();
+		float botRightY2 = topLeftY2 + zombie.getHeight();
 		
-		return (topLeftX1 > topLeftX2 && topLeftX1 < botRightX2   &&
-				topLeftY1 > topLeftX2 && topLeftY1 < botRightY2   );
+		return (topLeftX1 > topLeftX2 && topLeftY1 > topLeftY2   &&
+				botRightX1 < botRightX2 && botRightY1 < botRightY2   );
+	}
+	
+	public static boolean isInteract(Zombie zombie, Plant plant) {
+		float topLeftX1 = zombie.getPos().x + zombie.getWidth()*0.33f;
+		float topLeftY1 = zombie.getPos().y;
+		@SuppressWarnings("unused")
+		float botRightX1 = topLeftX1 + zombie.getWidth();
+		float botRightY1 = topLeftY1 + zombie.getHeight();
+		float topLeftX2 = plant.getPos().x;
+		float topLeftY2 = plant.getPos().y;
+		float botRightX2 = topLeftX2 + plant.getWidth();
+		float botRightY2 = topLeftY2 + plant.getHeight();
+		
+		return (topLeftX1 < botRightX2  && botRightX1 > botRightX2 &&
+				topLeftY1 < topLeftY2 && botRightY1 > botRightY2   );
 	}
 }
