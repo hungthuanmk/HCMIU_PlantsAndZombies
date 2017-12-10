@@ -2,12 +2,13 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
+import gui.AnimationLoader;
 import gui.SunUI;
+import pz.Bullet;
 import pz.sun.SunSunflower;
 
 public class Sunflower extends pz.Plant {
@@ -23,15 +24,16 @@ public class Sunflower extends pz.Plant {
 	}
 
 	protected void loadAnimation() {
-		try {
-			for (int i=1; i<=30; i++)
-				getAnimation().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 50);
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			for (int i=1; i<=30; i++)
+//				getAnimation().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 50);
+//		} catch (SlickException e) {
+//			e.printStackTrace();
+//		}
+		setAnimation(AnimationLoader.getAnimation(this.getClass()));
 	}
 	
-	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
+	public void attack(ArrayList<Bullet> bulletArrayList) {
 		if (getFramePassed() > getAttackInterval()) {
 			//bulletArrayList.add(new BSunflower(new Position(getPos().x, getPos().y)));
 			try {

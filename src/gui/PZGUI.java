@@ -98,7 +98,7 @@ public class PZGUI extends StateBasedGame {
 			appgc.setSmoothDeltas(true);
 			appgc.setAlwaysRender(true);					
 			resolutionRateHeight = (float)appgc.getHeight() / (float)defaultHeight;
-			resolutionRateWidth = (float)appgc.getWidth() / (float)defaultWidth;
+			resolutionRateWidth  = (float)appgc.getWidth() / (float)defaultWidth;
 			
 			appgc.start(); //Begin thread game
 		} 
@@ -107,36 +107,16 @@ public class PZGUI extends StateBasedGame {
 		}
 	}
 
-	public static boolean isAA() {
-		return AA;
-	}
+	public static boolean isAA() 					{return AA;}
+	public static void 	  setAA(boolean aA) 		{AA = aA;}
 
-	public static void setAA(boolean aA) {
-		AA = aA;
-	}
+	public static int 	  getWidth() 				{return width;}
+	public static void 	  setWidth(int width) 		{PZGUI.width = width;}
 
-	public static int getWidth() {
-		return width;
-	}
+	public static int 	  getHeight() 				{return height;}
+	public static void    setHeight(int height)     {PZGUI.height = height;}
 
-	public static void setWidth(int width) {
-		PZGUI.width = width;
-	}
-
-	public static int getHeight() {
-		return height;
-	}
-
-	public static void setHeight(int height) {
-		PZGUI.height = height;
-	}
-
-	public static float getResolutionRateWidth() {
-		return resolutionRateWidth;
-	}
-
-	public static float getResolutionRateHeight() {
-		return resolutionRateHeight;
-	}
+	public static float   getResolutionRateWidth()  {return resolutionRateWidth;}
+	public static float   getResolutionRateHeight() {return resolutionRateHeight;}
 	
 }

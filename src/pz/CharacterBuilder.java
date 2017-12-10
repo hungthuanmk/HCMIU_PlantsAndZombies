@@ -52,7 +52,7 @@ public class CharacterBuilder {
 		rowIdx = rowIdx < 0 ? 0 : rowIdx > 4 ? 4 : rowIdx;
 		Position pos = new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY() + rowIdx*PlayUI.getCellH());
 		Zombie zombie =  buildZombie(zombieClass, pos);
-		zombie.setPos(zombie.getPos().x, zombie.getPos().y - (zombie.getHeight() - PlayUI.getCellH()/1.05f));
+		//zombie.setPos(zombie.getPos().x, zombie.getPos().y - (zombie.getHeight() - PlayUI.getCellH()/1.05f));
 		return zombie;
 	}
 	

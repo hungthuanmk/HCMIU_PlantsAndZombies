@@ -25,6 +25,8 @@ public class Play extends BasicGameState {
 
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		new AnimationLoader();
+		
 		background = new Image("res/Map_1.jpg");
 		SunUI.init();
 		PlayUI.init();
@@ -32,11 +34,11 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Sunflower.class , 100);
 		SeedUI.addSeed(Peashooter.class, 100);
 		
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
-		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
-		zombie.add(CharacterBuilder.buildZombie(MaleZombie.class, 3));
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
+//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
+//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
+//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
+//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
+//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
 	}
 
 	// Show Background

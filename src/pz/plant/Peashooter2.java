@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 
 import com.Position;
 
+import gui.AnimationLoader;
 import pz.Bullet;
 
 public class Peashooter2 extends pz.Plant {
@@ -21,12 +22,13 @@ public class Peashooter2 extends pz.Plant {
 	
 	@Override
 	protected void loadAnimation() {
-		try {
-			for (int i=1; i<=30; i++)
-				getAnimation().addFrame(new Image("res/Plants/PeaShooter/Idle/"+i+".png"), 30);
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+//		try {
+//		for (int i=1; i<=30; i++)
+//			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Idle/"+i+".png"), 30);
+//		} catch (SlickException e) {
+//			e.printStackTrace();
+//		}
+		setAnimation(AnimationLoader.getAnimation(Peashooter.class));
 	}
 
 	@Override
