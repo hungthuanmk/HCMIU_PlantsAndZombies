@@ -122,29 +122,29 @@ public class PlayUI {
 	}
 	
 	// Speed Up button
-		public static void showSpeedUpButton(GameContainer gc, Graphics g) throws SlickException {
-			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
-			
-			if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX + speedUpButtonWidth,
-										speedUpButtonPosY + speedUpButtonHeight)) {
-				speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
-									new Color(0, 0, 0, 50));
-				if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
-					gc.setTargetFrameRate(60 * (isSpeedUpClicked==false?0:1));
-					gc.setVSync(isSpeedUpClicked);
-					isSpeedUpClicked = !isSpeedUpClicked;
-					try {
-						TimeUnit.MILLISECONDS.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+	public static void showSpeedUpButton(GameContainer gc, Graphics g) throws SlickException {
+		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
+		
+		if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX + speedUpButtonWidth,
+									speedUpButtonPosY + speedUpButtonHeight)) {
+			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
+								new Color(0, 0, 0, 50));
+			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
+				gc.setTargetFrameRate(isSpeedUpClicked==false?180:60);
+				gc.setVSync(isSpeedUpClicked);
+				isSpeedUpClicked = !isSpeedUpClicked;
+				try {
+					TimeUnit.MILLISECONDS.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 			}
-			if (isSpeedUpClicked == false) {
-				speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 100));
-			}
-			
 		}
+		if (isSpeedUpClicked == false) {
+			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 100));
+		}
+		
+	}
 	
 	public static void showPlayButton(GameContainer gc, Graphics g) {
 		if (gc.isPaused()) {

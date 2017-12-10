@@ -31,7 +31,6 @@ public class SunNatural extends Sun {
 			}
 		}
 		else {
-				//if (posX > 30 && posY > 20)
 			if (getPosX() > 30) {
 				setPosX(getPosX() - getPosX()/20f);
 				setPosY(getPosY() - getPosY()/20f);
