@@ -18,6 +18,9 @@ public class PlayUI {
 	private static Image playButton;
 	private static Image speedUpButton;
 	
+	private static Text sunView = new Text(35.0f);
+	private static Text gamePausedText = new Text(70.0f);
+	
 	private static boolean isSpeedUpClicked = false;
 
 	private static float plantZonePosX = 432 * PZGUI.getResolutionRateWidth();
@@ -82,7 +85,7 @@ public class PlayUI {
 		g.fillRoundRect(posX, posY, W, H, 20);
 		SunUI.drawIcon(iconPosX, iconPosY, iconW, iconH);
 
-		Text.render35(textPosX, textPosY, SunUI.getSunCollected().toString(), Color.white);
+		sunView.render(textPosX, textPosY, SunUI.getSunCollected().toString(), Color.white);
 		g.setColor(new Color(255, 255, 255));
 	}
 
@@ -147,7 +150,7 @@ public class PlayUI {
 		if (gc.isPaused()) {
 			g.setColor(new Color(1, 1, 1, 100));
 			g.fillRect(0, 0, PZGUI.getWidth(), PZGUI.getHeight());
-			Text.render70((PZGUI.getWidth()/2 - 170) * PZGUI.getResolutionRateWidth(), 300 * PZGUI.getResolutionRateHeight(), "Game is Paused!");
+			gamePausedText.render((PZGUI.getWidth()/2 - 170) * PZGUI.getResolutionRateWidth(), 300 * PZGUI.getResolutionRateHeight(), "Game is Paused!");
 			playButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
 		}
 	}
