@@ -24,9 +24,18 @@ public class AnimationLoader {
 	   });
 	   System.out.println(Arrays.toString(dirs));
 	}
+	
+	private static String getFileExtension(String fileName) {
+		try {
+			return fileName.substring(fileName.lastIndexOf(".")+1);
+		}
+		catch (Exception e) {
+			return "";
+		}
+	}
 
 	public static void main(String[] args) {
-		listFilesForFolder("res/");
+		listFilesForFolder("res/Plants/PeaShooter");
 	}
 	
 	
