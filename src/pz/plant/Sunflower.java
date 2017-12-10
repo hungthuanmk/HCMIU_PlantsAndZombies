@@ -16,7 +16,6 @@ public class Sunflower extends pz.Plant {
 	private static int attackInterval = 300;
 	@SuppressWarnings("unused")
 	private static float scaleFactor = 0.2f;
-	//private static int damage = 0;
 
 	public Sunflower(Position pos) {
 		super("Sunflower", hp, 0, attackInterval, pos);
@@ -33,7 +32,6 @@ public class Sunflower extends pz.Plant {
 	
 	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
 		if (getFramePassed() > getAttackInterval()) {
-			//bulletArrayList.add(new BSunflower(new Position(getPos().x, getPos().y)));
 			try {
 				SunUI.getSunManager().add(new SunSunflower(SunUI.getSunAni(), getPos().x, getPos().y + getHeight()/3f));
 			} catch (SlickException e) {

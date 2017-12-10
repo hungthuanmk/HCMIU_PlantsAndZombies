@@ -38,7 +38,6 @@ public class PZGUI extends StateBasedGame {
 		super(gameName);
 		try {
 			Ini ini = new Ini(new File("config.ini"));
-			
 //			width      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
 //			height     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
 			targetFPS  = Integer.parseInt	  (ini.get("DISPLAY", "targetFPS" ));
