@@ -35,13 +35,13 @@ public class PlayUI {
 
 	private static float pauseButtonPosX   = 1530 * PZGUI.getResolutionRateWidth();
 	private static float pauseButtonPosY   = 10   * PZGUI.getResolutionRateHeight();
-	private static float pauseButtonWidth  = 60  * PZGUI.getResolutionRateWidth();
-	private static float pauseButtonHeight = 60 * PZGUI.getResolutionRateHeight();
+	private static float pauseButtonWidth  = 60   * PZGUI.getResolutionRateWidth();
+	private static float pauseButtonHeight = 60   * PZGUI.getResolutionRateHeight();
 
 	private static float speedUpButtonPosX   = 1460 * PZGUI.getResolutionRateWidth();
 	private static float speedUpButtonPosY   = 10   * PZGUI.getResolutionRateHeight();
-	private static float speedUpButtonWidth  = 60  * PZGUI.getResolutionRateWidth();
-	private static float speedUpButtonHeight = 60 * PZGUI.getResolutionRateHeight();
+	private static float speedUpButtonWidth  = 60   * PZGUI.getResolutionRateWidth();
+	private static float speedUpButtonHeight = 60   * PZGUI.getResolutionRateHeight();
 
 	public static float getPlantZonePosX() {return plantZonePosX;}
 	public static float getPlantZonePosY() {return plantZonePosY;}
@@ -154,7 +154,5 @@ public class PlayUI {
 			playButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
 		}
 	}
-
-	
 
 }
