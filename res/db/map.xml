@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+
+	<lvl1>
+		<MaleZombie count="10"></MaleZombie>
+		<FemaleZombie count="10"></FemaleZombie>
+	</lvl1>		
+	
+	<lvl2>
+		<MaleZombie count="20"></MaleZombie>
+		<FemaleZombie count="20"></FemaleZombie>
+	</lvl2>	
+	
+	<lvl3>
+		<MaleZombie count="30"></MaleZombie>
+		<FemaleZombie count="30"></FemaleZombie>
+	</lvl3>	
+
+</map>
