@@ -19,13 +19,7 @@ public class Peashooter3 extends pz.Plant {
 	
 	@Override
 	protected void loadAnimation() {
-//		try {
-//		for (int i=1; i<=30; i++)
-//			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Idle/"+i+".png"), 30);
-//		} catch (SlickException e) {
-//			e.printStackTrace();
-//		}
-		setAnimation(AnimationLoader.getAnimation(Peashooter.class));
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30));
 	}
 
 	@Override

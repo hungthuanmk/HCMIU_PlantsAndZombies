@@ -1,7 +1,11 @@
 package gui;
 
+import java.io.IOException;
+
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.loading.DeferredResource;
+import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.*;
 
 import com.SSound;
@@ -81,7 +85,6 @@ public class SplashScreen extends BasicGameState {
 	}	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		
 	}
 
 	public int getID() {

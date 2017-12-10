@@ -37,7 +37,9 @@ public class FemaleZombie extends Zombie {
 //		} catch (SlickException e) {
 //			e.printStackTrace();
 //		}
-		AnimationLoader.getAnimation(FemaleZombie.class);
+		
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/walk", 110));
+		//AnimationLoader.getAnimation(FemaleZombie.class);
 	}
 
 	@Override

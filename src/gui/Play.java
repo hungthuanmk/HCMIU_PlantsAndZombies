@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 import org.newdawn.slick.*;
+import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.*;
 
 import com.Controller;
@@ -36,11 +37,11 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Wallnut.class, 50);
 		SeedUI.addSeed(Torchwood.class, 100);
 		
-//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
-//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
-//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
-//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
+		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
+		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
 	}
 
 	// Show Background
@@ -123,6 +124,8 @@ public class Play extends BasicGameState {
 			}
 	
 		}
+		
+		
 	}
 	
 	private void eventHandle(GameContainer gc, Graphics g) {

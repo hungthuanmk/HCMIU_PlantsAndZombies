@@ -2,15 +2,13 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import com.Position;
 
+import gui.AnimationLoader;
 import pz.Bullet;
 
 public class Wallnut extends pz.Plant {
-	private static int hp = 3000;
+	private static int hp = 2000;
 	private static int attackInterval = 0;
 	private static float scaleFactor = 1.0f;
 
@@ -30,12 +28,7 @@ public class Wallnut extends pz.Plant {
 
 	@Override
 	protected void loadAnimation() {
-		try {
-			for (int i=1; i<=12; i++)
-				getAnimation().addFrame(new Image("res/Plants/WallNut/Idle2/"+i+".png"), 100);
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/WallNut/Idle2", 100));
 	}
 
 }

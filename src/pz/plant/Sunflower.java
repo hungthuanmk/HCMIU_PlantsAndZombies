@@ -23,13 +23,7 @@ public class Sunflower extends pz.Plant {
 	}
 
 	protected void loadAnimation() {
-//		try {
-//			for (int i=1; i<=30; i++)
-//				getAnimation().addFrame(new Image("res/Plants/SunFlower/Idle/"+i+".png"), 50);
-//		} catch (SlickException e) {
-//			e.printStackTrace();
-//		}
-		setAnimation(AnimationLoader.getAnimation(this.getClass()));
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/SunFlower/Idle", 50));
 	}
 	
 	public void attack(ArrayList<Bullet> bulletArrayList) {

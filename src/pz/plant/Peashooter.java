@@ -2,9 +2,6 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import com.Position;
 
 import gui.AnimationLoader;
@@ -22,14 +19,7 @@ public class Peashooter extends pz.Plant {
 	
 	@Override
 	protected void loadAnimation() {
-//		try {
-//			for (int i=1; i<=30; i++)
-//				getAnimation().addFrame(new Image("res/Plants/PeaShooter/Idle/"+i+".png"), 30);
-//		} catch (SlickException e) {
-//			e.printStackTrace();
-//		}
-		setAnimation(AnimationLoader.getAnimation(this.getClass()));
-		//System.out.println(getAnimation());
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30));
 	}
 
 	@Override

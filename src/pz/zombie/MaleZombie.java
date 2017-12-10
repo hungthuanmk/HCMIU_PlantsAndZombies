@@ -37,7 +37,9 @@ public class MaleZombie extends Zombie {
 //		} catch (SlickException e) {
 //			e.printStackTrace();
 //		}
-		AnimationLoader.getAnimation(MaleZombie.class);
+		//AnimationLoader.getAnimation(MaleZombie.class);
+		
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110));
 	}
 
 	@Override

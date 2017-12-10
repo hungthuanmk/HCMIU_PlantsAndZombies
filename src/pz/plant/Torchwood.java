@@ -2,11 +2,9 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import com.Position;
 
+import gui.AnimationLoader;
 import pz.Bullet;
 import pz.Plant;
 
@@ -33,13 +31,7 @@ public class Torchwood extends Plant{
 
 	@Override
 	protected void loadAnimation() {
-		try {
-			for (int i=1; i<=8; i++)
-				getAnimation().addFrame(new Image("res/Plants/Torchwood/Idle/"+i+".png"), 100);
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
-		
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/Torchwood/Idle", 100));
 	}
 
 }
