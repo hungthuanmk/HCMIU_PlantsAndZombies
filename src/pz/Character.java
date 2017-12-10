@@ -7,15 +7,18 @@ abstract class Character implements CharacterI{
 
 	private String   name;
 	private Position pos;
+	private Animation ani = new Animation();
 	private int  	 hp     = 10000;
 	private int      damage = 0;
 	private float    speed  = 0;
 	private int      attackInterval;
+	private int		 framePassed = 0;
 	
-	private Animation ani = new Animation();
-	
+	public int 	getFramePassed() 				{return framePassed;}
+	public void setFramePassed(int framePassed) {this.framePassed = framePassed;}
+
+	public void		 setAnimation(Animation ani) 	  {this.ani = ani;}
 	public Animation getAnimation() 			 	  {return ani;}
-	public void      setAnimation(Animation ani)      {this.ani = ani;}
 	
 	public int  	getAttackInterval() 				  {return attackInterval;}
 	public void     setAttackInterval(int attackInterval) {this.attackInterval = attackInterval;}

@@ -6,13 +6,8 @@ import gui.PZGUI;
 
 public abstract class Plant extends Character {
 
-	//private Animation ani = new Animation();	
-	private int framePassed = 0;
 	private float scaleFactor = 0.2f;
 	//===========================
-	
-	public int  getFramePassed() 				 {return framePassed;}
-	public void setFramePassed(int framePassed)  {this.framePassed = framePassed;}
 
 	/**
 	 * Plant contructor

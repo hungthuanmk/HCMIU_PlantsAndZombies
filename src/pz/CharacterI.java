@@ -11,6 +11,9 @@ public interface CharacterI {
 	int  	  getAttackInterval();		
 	void      setAttackInterval(int attackInterval); 
 	
+	int 	  getFramePassed();
+	void 	  setFramePassed(int framePassed);
+	
 	String    getName(); 		 	 
 	void      setName(String name); 
 

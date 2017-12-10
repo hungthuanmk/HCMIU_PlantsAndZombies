@@ -39,7 +39,7 @@ public class Position {
 		float botRightX2 = topLeftX2 + plant.getWidth();
 		float botRightY2 = topLeftY2 + plant.getHeight();
 		
-		return (topLeftX1 < botRightX2  &&
+		return (topLeftX1 < botRightX2  && botRightX1 > botRightX2 &&
 				topLeftY1 < topLeftY2 && botRightY1 > botRightY2   );
 	}
 }

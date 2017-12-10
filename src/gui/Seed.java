@@ -7,7 +7,7 @@ public class Seed {
 	@SuppressWarnings("rawtypes")
 	private Class 	_class;
 	private Image 	img;
-	private Integer money;
+	private Integer price;
 	
 	@SuppressWarnings("rawtypes")
 	public Class get_class() 		    {return _class;       }
@@ -17,25 +17,25 @@ public class Seed {
 	public Image getImg() 			    {return img;          }
 	public void setImg(Image img)       {this.img = img;      }
 
-	public Integer getMoney()           {return money;        }
-	public void setMoney(Integer money) {this.money = money;  }
+	public Integer getPrice()           {return price;        }
+	public void setPrice(Integer price) {this.price = price;  }
 
 	@SuppressWarnings("rawtypes")
-	public Seed(Class _class, Image img, Integer money) {
+	public Seed(Class _class, Image img, Integer price) {
 		this._class = _class;
 		this.img = img;
-		this.money = money;
+		this.price = price;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Seed(Class _class, String img, Integer money) {
+	public Seed(Class _class, String img, Integer price) {
 		this._class = _class;
 		try {
 			this.img = new Image(img);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		this.money = money;
+		this.price = price;
 	}
 
 }

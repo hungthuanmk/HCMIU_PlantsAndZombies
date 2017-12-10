@@ -2,6 +2,7 @@ package pz.zombie;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -40,15 +41,24 @@ public class FemaleZombie extends Zombie {
 
 	@Override
 	public void attack(Plant[][] plant, ArrayList<Bullet> bulletList) {
-		for (int i=0; i<5; i++)
+		boolean hit = false;
+		for (int i=0; i<5; i++) {
 			for (int j=0; j<9; j++) {
-				if (plant[i][j] != null)
+				if (plant[i][j] != null) {
 					if (Position.isInteract(this, plant[i][j])) {
+						hit = true;
 						setSpeed(0);
-						System.out.println("touched");
+						//System.out.println("touched");
+						if (getFramePassed() >= getAttackInterval()) {
+							plant[i][j].setHp(plant[i][j].getHp() - getDamage());
+							setFramePassed(0);
+						}
+						setFramePassed(getFramePassed()+1);
 					}
-						
+				}			
 			}
+		}
+		if (hit == false) setSpeed(speed);
 	}
 
 }
