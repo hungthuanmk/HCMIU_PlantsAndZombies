@@ -31,14 +31,6 @@ public class MaleZombie extends Zombie {
 
 	@Override
 	protected void loadAnimation() {
-//		try {
-//			for (int i = 1; i <= 10; i++)
-//				getAnimation().addFrame(new Image("res/ZombieTest/male/Walk (" + i + ").png").getFlippedCopy(true, false), 110);
-//		} catch (SlickException e) {
-//			e.printStackTrace();
-//		}
-		//AnimationLoader.getAnimation(MaleZombie.class);
-		
 		setAnimation(AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110));
 	}
 
@@ -51,6 +43,7 @@ public class MaleZombie extends Zombie {
 					if (Position.isInteract(this, plant[i][j])) {
 						hit = true;
 						setSpeed(0);
+						//setAnimation(AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/attack", 110));
 						//System.out.println("touched");
 						if (getFramePassed() >= getAttackInterval()) {
 							plant[i][j].setHp(plant[i][j].getHp() - getDamage());

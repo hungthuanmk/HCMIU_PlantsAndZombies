@@ -70,7 +70,8 @@ public class AnimationLoader {
 		AnimationLoader.getAnimationFromFolder("res/Plants/SunFlower/Idle", 50);
 		AnimationLoader.getAnimationFromFolder("res/Plants/Torchwood/Idle", 100);
 		AnimationLoader.getAnimationFromFolder("res/Plants/WallNut/Idle2", 100);
-		
+		AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/walk", 110);
+		AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110);
 	}
 	
 	public static Animation getAnimationFromFolder(String directory, int duration) {
