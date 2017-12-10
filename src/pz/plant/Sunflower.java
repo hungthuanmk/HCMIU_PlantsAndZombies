@@ -13,6 +13,7 @@ public class Sunflower extends pz.Plant {
 	
 	private static int hp = 100;
 	private static int attackInterval = 500;
+	@SuppressWarnings("unused")
 	private static float scaleFactor = 0.2f;
 	//private static int damage = 0;
 

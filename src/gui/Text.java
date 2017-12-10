@@ -16,7 +16,6 @@ import org.newdawn.slick.util.ResourceLoader;
 public class Text {
 	private static String fontDir = "res/Fonts/FbUsv8C5eI.ttf";
 	
-	private static Text instance = null;
 	private static boolean antiAlias = true;
 	
 	private static Font awtFont = new Font("Times New Roman", Font.BOLD, 24);

@@ -21,6 +21,7 @@ public class SeedUI {
 	
 	public static void clear() { new SeedUI(); }
 	
+	@SuppressWarnings("rawtypes")
 	public static void addSeed(Class plantClass, Integer money) {
 		if (plantClass.getSuperclass() == Plant.class)
 			seed.add(new Seed(plantClass, "res/Seed/"+plantClass.getSimpleName()+".png", money));

@@ -1,14 +1,11 @@
 package pz.bullet;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
-import gui.PZGUI;
 import pz.Bullet;
 import pz.Zombie;
 

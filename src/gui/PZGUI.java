@@ -25,6 +25,7 @@ public class PZGUI extends StateBasedGame {
 	private static final int splashScreen = 0;
 	private static final int menu = 1;
 	private static final int play = 2;
+	@SuppressWarnings("unused")
 	private static final int gameOver = 3;
 	
 	private static float resolutionRateWidth;

@@ -1,8 +1,6 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -12,6 +10,7 @@ import com.Position;
 
 import pz.*;
 import pz.plant.*;
+import pz.zombie.FemaleZombie;
 
 public class Play extends BasicGameState {
 
@@ -19,8 +18,6 @@ public class Play extends BasicGameState {
 	Plant[][] 		  plant 	= new Plant[5][9];
 	ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
 	ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
-	
-	CharacterBuilder plantBuilder = new CharacterBuilder();
 	
 	private static Image background;
 	
@@ -32,11 +29,14 @@ public class Play extends BasicGameState {
 		background = new Image("res/Map_1.jpg");
 		SunUI.init();
 		
-		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY()+PlayUI.getCellW()*1)));			
-		zombie.add(new pz.zombie.FemaleZombie(new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY()+PlayUI.getCellW()*0-50)));
-		zombie.add(new pz.zombie.MaleZombie  (new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY()+PlayUI.getCellW()*2)));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 1));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 3));
+		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
 		
 		PlayUI.init();
+		
 		SeedUI.addSeed(Sunflower.class , 100);
 		SeedUI.addSeed(Peashooter.class, 100);
 	}
@@ -60,29 +60,29 @@ public class Play extends BasicGameState {
 		//PlayUI.showSunCollectedGrid(gc, sbg, g);
 		//PlayUI.showPlantZoneGrid(gc, sbg, g);
 		//PlayUI.showSeedZoneGrid(gc, sbg, g);
-		PlayUI.showSunCollected(gc, sbg, g);
+		//PlayUI.showSunCollected(gc, sbg, g);
 
 		for (Plant[] iPlantRow : plant) {
 			for (Plant iPlant : iPlantRow) {
 				if (iPlant != null) {
 					iPlant.draw(!gc.isPaused());
-					g.drawRect(iPlant.getPos().x, iPlant.getPos().y, iPlant.getWidth(), iPlant.getHeight());
 				}		
 			}
 		}
 		
 		for (Zombie iZombie : zombie) {
 			iZombie.draw(!gc.isPaused());
-			g.drawRect(iZombie.getPos().x, iZombie.getPos().y, iZombie.getWidth(), iZombie.getHeight());
 		}
 		
 		for (Bullet iBullet : bullet) {
 			iBullet.draw(!gc.isPaused());
 		}
 	
+		
 		SunUI. render(gc, sbg, g);
 		SeedUI.render(gc, sbg, g);
 		
+		PlayUI.showSunCollected(gc, sbg, g);
 		PlayUI.showPauseButton(gc, g);
 		PlayUI.showSpeedUpButton(gc, g);
 		PlayUI.showPlayButton(gc, g);
@@ -172,11 +172,11 @@ public class Play extends BasicGameState {
 
 		if (Mouse.getEventButton() == 0 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				plant[verId][hozId] = plantBuilder.createPlant(Peashooter.class, pos);
+				plant[verId][hozId] = CharacterBuilder.buildPlant(Peashooter.class, pos);
 		}
 		if (Mouse.getEventButton() == 1 && Mouse.getEventButtonState() == true) {
 			if (plant[verId][hozId] == null) 
-				plant[verId][hozId] = plantBuilder.createPlant(Sunflower.class, pos);
+				plant[verId][hozId] = CharacterBuilder.buildPlant(Sunflower.class, pos);
 		}
 		
 	}
