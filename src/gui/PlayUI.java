@@ -7,12 +7,10 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.Controller;
-import com.sun.glass.events.MouseEvent;
 
 public class PlayUI {
 
@@ -35,14 +33,14 @@ public class PlayUI {
 	private static float seedZoneW = 140 * PZGUI.getResolutionRateWidth();
 	private static float seedZoneH = 90  * PZGUI.getResolutionRateHeight();
 
-	private static float pauseButtonPosX = 1530 * PZGUI.getResolutionRateWidth();
-	private static float pauseButtonPosY = 10   * PZGUI.getResolutionRateHeight();
-	private static float pauseButtonWidth = 60  * PZGUI.getResolutionRateWidth();
+	private static float pauseButtonPosX   = 1530 * PZGUI.getResolutionRateWidth();
+	private static float pauseButtonPosY   = 10   * PZGUI.getResolutionRateHeight();
+	private static float pauseButtonWidth  = 60  * PZGUI.getResolutionRateWidth();
 	private static float pauseButtonHeight = 60 * PZGUI.getResolutionRateHeight();
 
-	private static float speedUpButtonPosX = 1460 * PZGUI.getResolutionRateWidth();
-	private static float speedUpButtonPosY = 10   * PZGUI.getResolutionRateHeight();
-	private static float speedUpButtonWidth = 60  * PZGUI.getResolutionRateWidth();
+	private static float speedUpButtonPosX   = 1460 * PZGUI.getResolutionRateWidth();
+	private static float speedUpButtonPosY   = 10   * PZGUI.getResolutionRateHeight();
+	private static float speedUpButtonWidth  = 60  * PZGUI.getResolutionRateWidth();
 	private static float speedUpButtonHeight = 60 * PZGUI.getResolutionRateHeight();
 
 	public static float getPlantZonePosX() {return plantZonePosX;}
@@ -115,13 +113,38 @@ public class PlayUI {
 			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
 				gc.setPaused(!gc.isPaused());
 				try {
-					TimeUnit.MICROSECONDS.sleep(500);
+					TimeUnit.MILLISECONDS.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 	}
+	
+	// Speed Up button
+		public static void showSpeedUpButton(GameContainer gc, Graphics g) throws SlickException {
+			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
+			
+			if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX + speedUpButtonWidth,
+										speedUpButtonPosY + speedUpButtonHeight)) {
+				speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
+									new Color(0, 0, 0, 50));
+				if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
+					gc.setTargetFrameRate(60 * (isSpeedUpClicked==false?0:1));
+					gc.setVSync(isSpeedUpClicked);
+					isSpeedUpClicked = !isSpeedUpClicked;
+					try {
+						TimeUnit.MILLISECONDS.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			if (isSpeedUpClicked == false) {
+				speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 100));
+			}
+			
+		}
 	
 	public static void showPlayButton(GameContainer gc, Graphics g) {
 		if (gc.isPaused()) {
@@ -132,29 +155,6 @@ public class PlayUI {
 		}
 	}
 
-	// Speed Up button
-	public static void showSpeedUpButton(GameContainer gc, Graphics g) throws SlickException {
-		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
-		
-		if (Controller.mouseInArea(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonPosX + speedUpButtonWidth,
-									speedUpButtonPosY + speedUpButtonHeight)) {
-			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
-								new Color(0, 0, 0, 50));
-			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
-				gc.setTargetFrameRate(60 * (isSpeedUpClicked==false?0:1));
-				gc.setVSync(isSpeedUpClicked);
-				isSpeedUpClicked = !isSpeedUpClicked;
-				try {
-					TimeUnit.MICROSECONDS.sleep(500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		if (isSpeedUpClicked == false) {
-			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight, new Color(0, 0, 0, 100));
-		}
-		
-	}
+	
 
 }

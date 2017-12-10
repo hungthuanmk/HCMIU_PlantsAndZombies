@@ -29,8 +29,9 @@ public class Position {
 	}
 	
 	public static boolean isInteract(Zombie zombie, Plant plant) {
-		float topLeftX1 = zombie.getPos().x;
+		float topLeftX1 = zombie.getPos().x + zombie.getWidth()*0.33f;
 		float topLeftY1 = zombie.getPos().y;
+		@SuppressWarnings("unused")
 		float botRightX1 = topLeftX1 + zombie.getWidth();
 		float botRightY1 = topLeftY1 + zombie.getHeight();
 		float topLeftX2 = plant.getPos().x;
@@ -38,7 +39,7 @@ public class Position {
 		float botRightX2 = topLeftX2 + plant.getWidth();
 		float botRightY2 = topLeftY2 + plant.getHeight();
 		
-		return (topLeftX1 < botRightX2  &&
+		return (topLeftX1 < botRightX2  && botRightX1 > botRightX2 &&
 				topLeftY1 < topLeftY2 && botRightY1 > botRightY2   );
 	}
 }

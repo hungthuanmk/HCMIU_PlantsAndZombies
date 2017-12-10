@@ -1,10 +1,13 @@
 package pz.zombie;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import com.Position;
 
+import pz.Bullet;
 import pz.Plant;
 import pz.Zombie;
 
@@ -29,23 +32,32 @@ public class MaleZombie extends Zombie {
 	protected void loadAnimation() {
 		try {
 			for (int i = 1; i <= 10; i++)
-				getAnimation().addFrame(new Image("res/ZombieTest/male/Walk (" + i + ").png"), 110);
+				getAnimation().addFrame(new Image("res/ZombieTest/male/Walk (" + i + ").png").getFlippedCopy(true, false), 110);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void attack(Plant[][] plant) {
-		for (int i=0; i<5; i++)
+	public void attack(Plant[][] plant, ArrayList<Bullet> bulletList) {
+		boolean hit = false;
+		for (int i=0; i<5; i++) {
 			for (int j=0; j<9; j++) {
-				if (plant[i][j] != null)
+				if (plant[i][j] != null) {
 					if (Position.isInteract(this, plant[i][j])) {
+						hit = true;
 						setSpeed(0);
-						System.out.println("touched");
+						//System.out.println("touched");
+						if (getFramePassed() >= getAttackInterval()) {
+							plant[i][j].setHp(plant[i][j].getHp() - getDamage());
+							setFramePassed(0);
+						}
+						setFramePassed(getFramePassed()+1);
 					}
-						
+				}			
 			}
+		}
+		if (hit == false) setSpeed(speed);
 	}
 
 }

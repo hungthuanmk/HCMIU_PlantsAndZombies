@@ -7,12 +7,14 @@ import org.newdawn.slick.SlickException;
 
 import com.Position;
 
-import pz.bullet.BSunflower;
+import gui.SunUI;
+import pz.sun.SunSunflower;
 
 public class Sunflower extends pz.Plant {
 	
 	private static int hp = 100;
-	private static int attackInterval = 500;
+	private static int attackInterval = 300;
+	@SuppressWarnings("unused")
 	private static float scaleFactor = 0.2f;
 	//private static int damage = 0;
 
@@ -31,7 +33,12 @@ public class Sunflower extends pz.Plant {
 	
 	public void attack(ArrayList<pz.Bullet> bulletArrayList) {
 		if (getFramePassed() > getAttackInterval()) {
-			bulletArrayList.add(new BSunflower(new Position(getPos().x, getPos().y)));
+			//bulletArrayList.add(new BSunflower(new Position(getPos().x, getPos().y)));
+			try {
+				SunUI.getSunManager().add(new SunSunflower(SunUI.getSunAni(), getPos().x, getPos().y + getHeight()/3f));
+			} catch (SlickException e) {
+				e.printStackTrace();
+			}
 			setFramePassed(0);
 		}
 		setFramePassed(getFramePassed()+1);

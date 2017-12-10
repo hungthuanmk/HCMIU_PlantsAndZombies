@@ -9,8 +9,6 @@ import com.Position;
 
 import pz.Bullet;
 
-//import pz.Bullet.*;
-
 public class Peashooter extends pz.Plant {
 	
 	private static int _hp = 100;
@@ -46,6 +44,8 @@ public class Peashooter extends pz.Plant {
 	public void move() {
 		//setPos(getPos().x + getSpeed(), getPos().y);
 	}
+
+
 
 
 	

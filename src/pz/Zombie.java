@@ -1,5 +1,7 @@
 package pz;
 
+import java.util.ArrayList;
+
 import com.Position;
 import gui.PZGUI;
 
@@ -35,5 +37,5 @@ public abstract class Zombie extends Character {
 		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());
 	}
 	
-	public abstract void attack(Plant[][] plane);
+	public abstract void attack(Plant[][] plant, ArrayList<Bullet> bulletList);
 }
