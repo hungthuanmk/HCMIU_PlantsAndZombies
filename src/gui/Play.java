@@ -32,6 +32,7 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Sunflower.class , 50);
 		SeedUI.addSeed(Peashooter.class, 100);
 		SeedUI.addSeed(Wallnut.class, 50);
+		SeedUI.addSeed(Torchwood.class, 100);
 		
 		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
 		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
