@@ -11,6 +11,9 @@ import pz.Plant;
 
 public class SeedUI {
 	
+	private static float x,y,w,h;
+	private static int itemPrice;
+	
 	private static ArrayList<Seed> seed = new ArrayList<>();
 	//private static boolean picked = false;
 	@SuppressWarnings({ "rawtypes" })
@@ -26,15 +29,6 @@ public class SeedUI {
 		return pickedClass;
 	}
 
-//	public static boolean isPicked() {
-//		return picked;
-//	}
-//
-//	public static void setPicked(boolean picked) {
-//		SeedUI.picked = picked;
-//	}
-
-	private static float x,y,w,h;
 
 	public SeedUI() {
 		seed.clear();	
@@ -70,11 +64,15 @@ public class SeedUI {
 	public static void onItemClicked(int itemIdx) {
 		if (seed.get(itemIdx) == null) return;
 		if (seed.get(itemIdx).getPrice() <= SunUI.getSunCollected()) { //having enough money
-			SunUI.gainSun( - seed.get(itemIdx).getPrice());
+			itemPrice = seed.get(itemIdx).getPrice();
 			pickedClass = seed.get(itemIdx).get_class();
-			//setPicked(true);
 			System.out.println(""+ itemIdx + " - " + seed.get(itemIdx).get_class().getSimpleName());
 		}
+	}
+	
+	public static void bought() {
+		pickedClass = null;
+		SunUI.gainSun( - itemPrice);
 	}
 	
 	

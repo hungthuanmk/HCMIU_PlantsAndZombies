@@ -161,7 +161,7 @@ public class Play extends BasicGameState {
 						    //(PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
 			if (plant[verId][hozId] == null && SeedUI.getPickedClass() != null) {
 				plant[verId][hozId] = CharacterBuilder.buildPlant(SeedUI.getPickedClass(), verId, hozId);
-				SeedUI.setPickedClass(null); //had bought
+				SeedUI.bought(); //had bought
 			}
 		}
 		
