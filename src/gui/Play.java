@@ -94,7 +94,7 @@ public class Play extends BasicGameState {
 			SunUI.update(gc, sbg);
 			
 			for (int i=0; i<5; i++)
-				for (int j=0; j<8; j++) {
+				for (int j=0; j<9; j++) {
 					if (plant[i][j] != null) {
 						if (plant[i][j].getHp() <= 0) {
 							plant[i][j] = null;
