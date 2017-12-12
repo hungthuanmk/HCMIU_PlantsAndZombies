@@ -3,7 +3,6 @@ package gui;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
@@ -43,6 +42,10 @@ public class AnimationLoader {
 		//loadResources("res"); /
 	}
 	
+	/**
+	 * Load all resources in directory and subdirectory 
+	 * @param directory Directory
+	 */
 	private void loadResources(String directory) {
 		String[] folders = getFolders(directory);
 	
@@ -136,9 +139,5 @@ public class AnimationLoader {
 			return "";
 		}
 	}
-
-//	public static void main(String[] args) {
-//		new AnimationLoader();
-//	}
 	
 }

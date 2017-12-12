@@ -9,7 +9,8 @@ import pz.Bullet;
 import pz.Plant;
 
 public class Torchwood extends Plant {
-	private static int hp = 1000;
+	
+	private static int hp = 200;
 	private static int damage = 20;
 	private static int attackInterval = 0;
 	

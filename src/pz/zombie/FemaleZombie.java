@@ -14,13 +14,12 @@ import pz.Zombie;
 public class FemaleZombie extends Zombie {
 
 	private static int hp = 100;
-	private static int damage = 100;
+	private static int damage = 50;
 	private static int attackInterval = 50;
 	private static float speed = 0.4f;
 	
 	private Animation walkAni;
 	private Animation attackAni;
-	//private static float scaleFactor = 0.2f;
 
 	public FemaleZombie(Position pos) {
 		super("FemaleZombie", hp, damage, attackInterval, speed, pos);
