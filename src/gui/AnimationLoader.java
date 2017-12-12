@@ -9,6 +9,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import pz.plant.Peashooter;
+
 /**
  * 
  * @author Nguyen Phan Hung Thuan
@@ -72,7 +74,7 @@ public class AnimationLoader {
 //		}
 //		
 		
-		AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30);
+		Peashooter.img = AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30).getImage(0);
 		AnimationLoader.getAnimationFromFolder("res/Plants/SunFlower/Idle", 50);
 		AnimationLoader.getAnimationFromFolder("res/Plants/Torchwood/Idle", 100);
 		AnimationLoader.getAnimationFromFolder("res/Plants/WallNut/Idle2", 100);
