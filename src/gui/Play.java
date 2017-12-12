@@ -22,7 +22,6 @@ public class Play extends BasicGameState {
 	private ArrayList<Zombie> zombie 	= new ArrayList<Zombie>();	
 	private Plant[][] 		  plant 	= new Plant[5][9];
 	private ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
-	//private ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
 	
 	private static Image background;
 	
@@ -128,7 +127,6 @@ public class Play extends BasicGameState {
 				zombie.get(i).move(); //move zombie
 				zombie.get(i).attack(plant, bullet);
 			}
-	
 		}
 		
 		
@@ -154,7 +152,6 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-
 	}
 	
 	@Override

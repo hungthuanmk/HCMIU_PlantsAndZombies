@@ -70,7 +70,7 @@ public class SeedUI {
 				seed.get(i).getImg().draw(  x, y + i*h, w, h );
 				g.drawString(""+seed.get(i).getPrice(), x + w * 0.71f, y + i*h + h*0.7f);
 				if (seed.get(i).getPrice() > SunUI.getSunCollected()) {
-					g.setColor(new Color(1,1,1,0.5f));
+					g.setColor(new Color(1,1,1,100));
 					g.fillRoundRect(x, y + i*h, w, h, 5);
 				}	
 			}
