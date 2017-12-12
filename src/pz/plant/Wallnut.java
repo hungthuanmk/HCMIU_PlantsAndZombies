@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import com.Position;
 
 import gui.AnimationLoader;
+
 import pz.Bullet;
 
 public class Wallnut extends pz.Plant {
+	
 	private static int hp = 2000;
 	private static int attackInterval = 0;
-	private static float scaleFactor = 1.0f;
 
 	public Wallnut(Position pos) {
 		super("Wallnut", hp, 0, attackInterval, pos);

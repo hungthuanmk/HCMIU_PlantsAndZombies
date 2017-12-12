@@ -5,20 +5,28 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.Position;
+
+import pz.CharacterBuilder;
 import pz.Plant;
 
 public class SeedUI {
 	
 	private static float x,y,w,h;
 	private static int itemPrice;
+	private static Text cost = new Text(41.0f);
 	
 	private static ArrayList<Seed> seed = new ArrayList<>();
 	//private static boolean picked = false;
 	@SuppressWarnings({ "rawtypes" })
 	private static Class pickedClass = null;
+	private static Image pickedImg = null;
 	
+	public static Image getPickedImg() { return pickedImg; }
+
 	@SuppressWarnings("rawtypes")
 	/**
 	 * Set picked class for onItemClicked event
@@ -68,11 +76,24 @@ public class SeedUI {
 				w = PlayUI.getSeedZoneW();
 				h = PlayUI.getSeedZoneH();
 				seed.get(i).getImg().draw(  x, y + i*h, w, h );
-				g.drawString(""+seed.get(i).getPrice(), x + w * 0.71f, y + i*h + h*0.7f);
+//				g.drawString(""+seed.get(i).getPrice(), x + w * 0.71f, y + i*h + h*0.7f);
 				if (seed.get(i).getPrice() > SunUI.getSunCollected()) {
 					g.setColor(new Color(1,1,1,100));
 					g.fillRoundRect(x, y + i*h, w, h, 5);
 				}	
+			}
+		}
+		for (int i=0; i<seed.size() && i<8; i++) {
+			if (seed.get(i) != null) {
+				x = PlayUI.getSeedZonePosX();
+				y = PlayUI.getSeedZonePosY();
+				w = PlayUI.getSeedZoneW();
+				h = PlayUI.getSeedZoneH();
+				if (seed.get(i).getPrice() > SunUI.getSunCollected())
+					cost.render(x + w * 0.594f, y + i*h + h*0.5f, (seed.get(i).getPrice()<100 ? "   " : "") + seed.get(i).getPrice().toString(), new Color(180, 180, 180));
+				else
+					cost.render(x + w * 0.594f, y + i*h + h*0.5f, (seed.get(i).getPrice()<100 ? "   " : "") + seed.get(i).getPrice().toString(), new Color(245, 245, 245));
+					
 			}
 		}
 	}
@@ -86,15 +107,17 @@ public class SeedUI {
 		if (seed.get(itemIdx).getPrice() <= SunUI.getSunCollected()) { //having enough money
 			itemPrice = seed.get(itemIdx).getPrice();
 			pickedClass = seed.get(itemIdx).get_class();
+			pickedImg = CharacterBuilder.buildPlant(pickedClass, new Position(0,0)).getAnimation().getImage(0).getScaledCopy(0.15f);
 			System.out.println(""+ itemIdx + " - " + seed.get(itemIdx).get_class().getSimpleName());
 		}
 	}
 	
 	/**
-	 * The plant had been bought successfully and substrat money!
+	 * The plant had been bought successfully and subtract money!
 	 */
 	public static void bought() {
 		pickedClass = null;
+		pickedImg = null;
 		SunUI.gainSun( - itemPrice);
 	}
 	

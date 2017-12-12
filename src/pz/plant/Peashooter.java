@@ -2,11 +2,10 @@ package pz.plant;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-
 import com.Position;
 
 import gui.AnimationLoader;
+
 import pz.Bullet;
 
 /**
@@ -16,11 +15,10 @@ import pz.Bullet;
  */
 public class Peashooter extends pz.Plant {
 	
-	public static Image img;
 	private static int _hp = 100;
 	private static int _damage = 20;
 	private static int _attackInterval = 100;
-	//private static float scaleFactor = 0.2f;
+	
 	public Peashooter(Position pos) {
 		super("Peashooter", _hp, _damage, _attackInterval, pos);
 	}
