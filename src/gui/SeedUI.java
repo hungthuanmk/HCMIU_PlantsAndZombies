@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.Position;
+
+import pz.CharacterBuilder;
 import pz.Plant;
 
 public class SeedUI {
@@ -19,7 +23,10 @@ public class SeedUI {
 	//private static boolean picked = false;
 	@SuppressWarnings({ "rawtypes" })
 	private static Class pickedClass = null;
+	private static Image pickedImg = null;
 	
+	public static Image getPickedImg() { return pickedImg; }
+
 	@SuppressWarnings("rawtypes")
 	/**
 	 * Set picked class for onItemClicked event
@@ -100,6 +107,7 @@ public class SeedUI {
 		if (seed.get(itemIdx).getPrice() <= SunUI.getSunCollected()) { //having enough money
 			itemPrice = seed.get(itemIdx).getPrice();
 			pickedClass = seed.get(itemIdx).get_class();
+			pickedImg = CharacterBuilder.buildPlant(pickedClass, new Position(0,0)).getAnimation().getImage(0).getScaledCopy(0.15f);
 			System.out.println(""+ itemIdx + " - " + seed.get(itemIdx).get_class().getSimpleName());
 		}
 	}
@@ -109,6 +117,7 @@ public class SeedUI {
 	 */
 	public static void bought() {
 		pickedClass = null;
+		pickedImg = null;
 		SunUI.gainSun( - itemPrice);
 	}
 	

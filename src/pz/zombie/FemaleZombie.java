@@ -2,6 +2,8 @@ package pz.zombie;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Animation;
+
 import com.Position;
 
 import gui.AnimationLoader;
@@ -12,13 +14,17 @@ import pz.Zombie;
 public class FemaleZombie extends Zombie {
 
 	private static int hp = 100;
-	private static int damage = 100;
+	private static int damage = 50;
 	private static int attackInterval = 50;
 	private static float speed = 0.4f;
-	//private static float scaleFactor = 0.2f;
+	
+	private Animation walkAni;
+	private Animation attackAni;
 
 	public FemaleZombie(Position pos) {
 		super("FemaleZombie", hp, damage, attackInterval, speed, pos);
+		walkAni = getAnimation();
+		attackAni = AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/attack", 110);
 	}
 
 	@Override
@@ -40,6 +46,7 @@ public class FemaleZombie extends Zombie {
 					if (Position.isInteract(this, plant[i][j])) {
 						hit = true;
 						setSpeed(0);
+						setAnimation(attackAni);
 						//System.out.println("touched");
 						if (getFramePassed() >= getAttackInterval()) {
 							plant[i][j].setHp(plant[i][j].getHp() - getDamage());
@@ -51,7 +58,10 @@ public class FemaleZombie extends Zombie {
 				}			
 			}
 		}
-		if (hit == false) setSpeed(speed);
+		if (hit == false) {
+			setAnimation(walkAni);
+			setSpeed(speed);
+		}
 	}
 
 }

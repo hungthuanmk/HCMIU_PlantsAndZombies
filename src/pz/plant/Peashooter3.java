@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.Position;
 
 import gui.AnimationLoader;
+
 import pz.Bullet;
 
 public class Peashooter3 extends pz.Plant {
@@ -12,7 +13,7 @@ public class Peashooter3 extends pz.Plant {
 	private static int _hp = 100;
 	private static int _damage = 20;
 	private static int _attackInterval = 100;
-	//private static float scaleFactor = 0.2f;
+
 	public Peashooter3(Position pos) {
 		super("Peashooter3", _hp, _damage, _attackInterval, pos);
 	}
