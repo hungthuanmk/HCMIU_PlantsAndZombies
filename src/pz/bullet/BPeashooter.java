@@ -64,9 +64,8 @@ public class BPeashooter extends pz.Bullet {
 			if (Position.isIntersect(this, z)) {
 				z.setHp(z.getHp() - getDamage());
 				
-				System.out.println("hit");
+				//System.out.println("hit");
 				bulletList.remove(this);
-				//bulletList.removeIf()
 				return;
 			}
 		}

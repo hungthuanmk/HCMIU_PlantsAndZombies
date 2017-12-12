@@ -75,11 +75,26 @@ public class AnimationLoader {
 //		
 		
 		Peashooter.img = AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30).getImage(0);
-		AnimationLoader.getAnimationFromFolder("res/Plants/SunFlower/Idle", 50);
-		AnimationLoader.getAnimationFromFolder("res/Plants/Torchwood/Idle", 100);
-		AnimationLoader.getAnimationFromFolder("res/Plants/WallNut/Idle2", 100);
-		AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/walk", 110);
-		AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110);
+//		AnimationLoader.getAnimationFromFolder("res/Plants/SunFlower/Idle", 450);
+//		AnimationLoader.getAnimationFromFolder("res/Plants/Torchwood/Idle", 1100);
+//		AnimationLoader.getAnimationFromFolder("res/Plants/WallNut/Idle2", 100);
+//		AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/walk", 110);
+//		AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110);
+		
+		
+		
+		//loadResources("res");
+	}
+	
+	private void loadResources(String directory) {
+		String[] folders = getFolders(directory);
+	
+		AnimationLoader.getAnimationFromFolder(directory, 50);
+			
+		System.out.println(">>" + directory);
+	
+		for (int i=0; i<folders.length; i++) 
+			loadResources(directory + "/" + folders[i]);	
 	}
 	
 	/**
