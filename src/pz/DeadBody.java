@@ -1,7 +1,5 @@
 package pz;
 
-import java.util.ArrayList;
-
 import org.newdawn.slick.Animation;
 
 import com.Position;

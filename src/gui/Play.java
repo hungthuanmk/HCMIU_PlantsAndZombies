@@ -32,7 +32,7 @@ public class Play extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		new AnimationLoader();
 		
-		background = new Image("res/Map_1.jpg");
+		background = new Image("res/Map/Map_1.jpg");
 		SunUI.init();
 		PlayUI.init();
 		
@@ -128,6 +128,14 @@ public class Play extends BasicGameState {
 				zombie.get(i).attack(plant, bullet);
 			}
 		}
+		
+//		if (delta % 5 == 0) {
+//			zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
+//			zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
+//			zombie.add(CharacterBuilder.buildZombie(NhiZombie.class, 2));
+//			zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
+//			zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
+//		}
 		
 		
 	}
