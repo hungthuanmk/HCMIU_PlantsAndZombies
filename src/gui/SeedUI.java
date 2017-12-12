@@ -17,6 +17,7 @@ public class SeedUI {
 	
 	private static float x,y,w,h;
 	private static int itemPrice;
+	private static Text cost = new Text(41.0f);
 	
 	private static ArrayList<Seed> seed = new ArrayList<>();
 	//private static boolean picked = false;
@@ -75,11 +76,24 @@ public class SeedUI {
 				w = PlayUI.getSeedZoneW();
 				h = PlayUI.getSeedZoneH();
 				seed.get(i).getImg().draw(  x, y + i*h, w, h );
-				g.drawString(""+seed.get(i).getPrice(), x + w * 0.71f, y + i*h + h*0.7f);
+//				g.drawString(""+seed.get(i).getPrice(), x + w * 0.71f, y + i*h + h*0.7f);
 				if (seed.get(i).getPrice() > SunUI.getSunCollected()) {
 					g.setColor(new Color(1,1,1,100));
 					g.fillRoundRect(x, y + i*h, w, h, 5);
 				}	
+			}
+		}
+		for (int i=0; i<seed.size() && i<8; i++) {
+			if (seed.get(i) != null) {
+				x = PlayUI.getSeedZonePosX();
+				y = PlayUI.getSeedZonePosY();
+				w = PlayUI.getSeedZoneW();
+				h = PlayUI.getSeedZoneH();
+				if (seed.get(i).getPrice() > SunUI.getSunCollected())
+					cost.render(x + w * 0.594f, y + i*h + h*0.5f, (seed.get(i).getPrice()<100 ? "   " : "") + seed.get(i).getPrice().toString(), new Color(180, 180, 180));
+				else
+					cost.render(x + w * 0.594f, y + i*h + h*0.5f, (seed.get(i).getPrice()<100 ? "   " : "") + seed.get(i).getPrice().toString(), new Color(245, 245, 245));
+					
 			}
 		}
 	}
