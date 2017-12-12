@@ -10,7 +10,7 @@ import pz.Plant;
 
 public class Torchwood extends Plant {
 	private static int hp = 1000;
-	private static int damage = 100;
+	private static int damage = 20;
 	private static int attackInterval = 0;
 	
 	public Torchwood(Position pos) {
@@ -25,7 +25,7 @@ public class Torchwood extends Plant {
 						bulletList.get(i).getPos().x < getPos().x + getWidth() &&
 						bulletList.get(i).getPos().y > getPos().y &&
 						bulletList.get(i).getPos().y < getPos().y + getHeight()) {
-					bulletList.get(i).setDamage(bulletList.get(i).getDamage()+20);
+					bulletList.get(i).setDamage(bulletList.get(i).getDamage()+ getDamage());
 					bulletList.get(i).getBoosted = true;
 					bulletList.get(i).setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/Peashooter/Bullet/fire", 150));
 				}

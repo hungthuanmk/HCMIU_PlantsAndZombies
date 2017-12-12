@@ -14,9 +14,7 @@ import pz.sun.SunSunflower;
 public class Sunflower extends pz.Plant {
 	
 	private static int hp = 100;
-	private static int attackInterval = 300;
-	@SuppressWarnings("unused")
-	private static float scaleFactor = 0.2f;
+	private static int attackInterval = 500;
 
 	public Sunflower(Position pos) {
 		super("Sunflower", hp, 0, attackInterval, pos);

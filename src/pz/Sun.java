@@ -12,6 +12,7 @@ public abstract class Sun implements Clickable{
 	private float posX;
 	private float posY;
 	private float edgeY;
+	private static int gainValue = 50;
 	
 	private float width  = 80 * PZGUI.getResolutionRateWidth();
 	private float height = 80 * PZGUI.getResolutionRateHeight();
@@ -84,7 +85,7 @@ public abstract class Sun implements Clickable{
 			
 			if (Mouse.isButtonDown(0) && isClicked == false)
 			{
-				SunUI.gainSun(50);
+				SunUI.gainSun(gainValue);
 				isClicked = true;
 			}
 		}

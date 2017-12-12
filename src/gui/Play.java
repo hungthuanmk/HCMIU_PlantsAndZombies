@@ -36,20 +36,17 @@ public class Play extends BasicGameState {
 		new AnimationLoader();
 		
 		background = new Image("res/Map/Map_1.jpg");
+		
 		SunUI.init();
 		PlayUI.init();
 		
-		SeedUI.addSeed(Sunflower.class , 50);
-		SeedUI.addSeed(Peashooter.class, 100);
-		SeedUI.addSeed(Wallnut.class, 50);
-		SeedUI.addSeed(Torchwood.class, 100);
-		SeedUI.addSeed(Peashooter3.class, 100);
+		SeedUI.addSeed(Sunflower.  class, 50);
+		SeedUI.addSeed(Peashooter. class, 100);
+		SeedUI.addSeed(Peashooter2.class, 200);
+		SeedUI.addSeed(Wallnut.    class, 50);
+		SeedUI.addSeed(Torchwood.  class, 100);
 		
-//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
-//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-//		zombie.add(CharacterBuilder.buildZombie(NhiZombie   .class, 2));
-//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
-//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
+		
 	}
 
 	// Show Background

@@ -16,8 +16,8 @@ import pz.Zombie;
  */
 public class BPeashooter extends pz.Bullet {
 	
-	private static int damage 	= 10;
-	private static int speed	= 5;
+	private static int   damage 	= 10;
+	private static float speed		= 4f;
 	//private static Animation ani = new Animation();
 	
 	protected void loadAnimation() { 

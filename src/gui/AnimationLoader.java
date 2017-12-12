@@ -9,7 +9,11 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import pz.plant.Peashooter;
+import pz.CharacterBuilder;
+import pz.plant.*;
+import pz.zombie.FemaleZombie;
+import pz.zombie.MaleZombie;
+import pz.zombie.NhiZombie;
 
 /**
  * 
@@ -25,65 +29,18 @@ public class AnimationLoader {
 	 */
 	public AnimationLoader() {
 		
-//		String plantDir = "res/Plants/";
-//		String zombieDir = "res/ZombieTest/";
-//		String[] plantFolder = getFolders(plantDir);
-//		String[] zombieFolder = getFolders(zombieDir);
-//		System.out.println(Arrays.toString(plantFolder));
-//		for (int i=0; i<plantFolder.length; i++) {
-//			String[] imgs = getFiles(plantDir+plantFolder[i]+"/Idle/");
-//			if (imgs.length != 0) {
-//				try {
-//					AnimationItem item = new AnimationItem(Class.forName("pz.plant."+plantFolder[i]));
-//					for (int k=0; k<imgs.length; k++) {
-//						item.getAni().addFrame(new Image(plantDir + plantFolder[i] +"/Idle/" + imgs[k]), 30);
-//					}
-//					aniList.add(item);
-//				} catch (ClassNotFoundException e) {
-//					//e.printStackTrace();
-//					System.out.println("<ERROR:ANIMATION> NOT FOUND CLASS "+plantFolder[i]);
-//					continue;
-//				} catch (SlickException e) {
-//					e.printStackTrace();
-//				}
-//				
-//			}			
-//			System.out.println("LOADED " + Arrays.toString(imgs) + " -> " + plantFolder[i]);
-//		}
-//		
-//		System.out.println(Arrays.toString(zombieFolder));
-//		for (int i=0; i<zombieFolder.length; i++) {
-//			String[] imgs = getFiles(zombieDir+zombieFolder[i]+"/walk/");
-//			if (imgs.length != 0) {
-//				try {
-//					AnimationItem item = new AnimationItem(Class.forName("pz.zombie."+zombieFolder[i]));
-//					for (int k=0; k<imgs.length; k++) {
-//						item.getAni().addFrame(new Image(zombieDir + zombieFolder[i] +"/walk/" + imgs[k]), 30);
-//					}
-//					aniList.add(item);
-//				} catch (ClassNotFoundException e) {
-//					//e.printStackTrace();
-//					System.out.println("<ERROR:ANIMATION> NOT FOUND CLASS "+zombieFolder[i]);
-//					continue;
-//				} catch (SlickException e) {
-//					e.printStackTrace();
-//				}
-//				
-//			}			
-//			System.out.println("LOADED " + Arrays.toString(imgs) + " -> " + zombieFolder[i]);
-//		}
-//		
+		CharacterBuilder.buildPlant(Peashooter.	  class, null);
+		CharacterBuilder.buildPlant(Peashooter2.  class, null);
+		CharacterBuilder.buildPlant(Peashooter3.  class, null);
+		CharacterBuilder.buildPlant(Sunflower.	  class, null);
+		CharacterBuilder.buildPlant(Torchwood.	  class, null);
+		CharacterBuilder.buildPlant(Wallnut.	  class, null);
 		
-		Peashooter.img = AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30).getImage(0);
-//		AnimationLoader.getAnimationFromFolder("res/Plants/SunFlower/Idle", 450);
-//		AnimationLoader.getAnimationFromFolder("res/Plants/Torchwood/Idle", 1100);
-//		AnimationLoader.getAnimationFromFolder("res/Plants/WallNut/Idle2", 100);
-//		AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/walk", 110);
-//		AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110);
+		CharacterBuilder.buildZombie(MaleZombie.  class, null);
+		CharacterBuilder.buildZombie(FemaleZombie.class, null);
+		CharacterBuilder.buildZombie(NhiZombie.	  class, null);
 		
-		
-		
-		//loadResources("res");
+		//loadResources("res"); /
 	}
 	
 	private void loadResources(String directory) {
