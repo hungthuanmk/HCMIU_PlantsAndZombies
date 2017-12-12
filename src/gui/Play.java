@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 import org.newdawn.slick.*;
+import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.*;
 
 import com.Controller;
@@ -11,12 +12,16 @@ import pz.*;
 import pz.plant.*;
 import pz.zombie.*;
 
+/**
+ * 
+ * @author Nguyen Thanh Xuan Tung + Nguyen Phan Hung Thuan
+ *
+ */
 public class Play extends BasicGameState {
 
 	private ArrayList<Zombie> zombie 	= new ArrayList<Zombie>();	
 	private Plant[][] 		  plant 	= new Plant[5][9];
 	private ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
-	//private ArrayList<Sun>    sunList 	= new ArrayList<Sun>();
 	
 	private static Image background;
 	
@@ -25,6 +30,8 @@ public class Play extends BasicGameState {
 
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		new AnimationLoader();
+		
 		background = new Image("res/Map_1.jpg");
 		SunUI.init();
 		PlayUI.init();
@@ -33,11 +40,12 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Peashooter.class, 100);
 		SeedUI.addSeed(Wallnut.class, 50);
 		SeedUI.addSeed(Torchwood.class, 100);
+		SeedUI.addSeed(Peashooter3.class, 100);
 		
 		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
 		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
-		zombie.add(CharacterBuilder.buildZombie(MaleZombie.class, 3));
+		zombie.add(CharacterBuilder.buildZombie(NhiZombie.class, 2));
+		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
 		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
 	}
 
@@ -119,8 +127,9 @@ public class Play extends BasicGameState {
 				zombie.get(i).move(); //move zombie
 				zombie.get(i).attack(plant, bullet);
 			}
-	
 		}
+		
+		
 	}
 	
 	private void eventHandle(GameContainer gc, Graphics g) {
@@ -143,7 +152,6 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
-
 	}
 	
 	@Override

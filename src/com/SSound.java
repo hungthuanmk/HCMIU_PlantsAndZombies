@@ -3,11 +3,14 @@ package com;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public class SSound {
 	private Sound snd;
-	public SSound(String snd) {
-		this.setSound(snd);
-	}
+	public SSound(String snd) {this.setSound(snd);}
 	
 	public void setSound(String snd) {
 		try {
@@ -17,9 +20,7 @@ public class SSound {
 		}
 	}
 	
-	public Sound getSound() {
-		return this.snd;
-	}
+	public Sound getSound() {return this.snd;}
 	
 	public final void play(boolean looping, float pitch, float volume) {
 		if (looping == false)
@@ -28,17 +29,10 @@ public class SSound {
 			this.getSound().loop(pitch, volume);
 	}
 	
-	public final void play(boolean looping) {
-		this.play(looping, 1f, 1f);
-	}
+	public final void play(boolean looping) {this.play(looping, 1f, 1f);}	
+	public final void play() {this.play(false, 1f, 1f);}
 	
-	public final void play() {
-		this.play(false, 1f, 1f);
-	}
-	
-	public final void stop() {
-		this.getSound().stop();
-	}
+	public final void stop() {this.getSound().stop();}
 	
 	public static final void play(String snd, boolean looping, float pitch, float volume) {	
 		try {
@@ -52,12 +46,7 @@ public class SSound {
 		}
 	}
 	
-	public static final void play(String snd, boolean looping) {
-		play(snd, looping, 1f, 1f);
-	}
-	
-	public static final void play(String snd) {
-		play(snd, false, 1f, 1f);
-	}
+	public static final void play(String snd, boolean looping) {play(snd, looping, 1f, 1f);}
+	public static final void play(String snd) {play(snd, false, 1f, 1f);}
 
 }

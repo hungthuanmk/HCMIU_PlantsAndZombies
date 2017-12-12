@@ -2,11 +2,9 @@ package pz.zombie;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import com.Position;
 
+import gui.AnimationLoader;
 import pz.Bullet;
 import pz.Plant;
 import pz.Zombie;
@@ -30,12 +28,7 @@ public class MaleZombie extends Zombie {
 
 	@Override
 	protected void loadAnimation() {
-		try {
-			for (int i = 1; i <= 10; i++)
-				getAnimation().addFrame(new Image("res/ZombieTest/male/Walk (" + i + ").png").getFlippedCopy(true, false), 110);
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/walk", 110));
 	}
 
 	@Override
@@ -47,12 +40,14 @@ public class MaleZombie extends Zombie {
 					if (Position.isInteract(this, plant[i][j])) {
 						hit = true;
 						setSpeed(0);
+						//setAnimation(AnimationLoader.getAnimationFromFolder("res/ZombieTest/MaleZombie/attack", 110));
 						//System.out.println("touched");
 						if (getFramePassed() >= getAttackInterval()) {
 							plant[i][j].setHp(plant[i][j].getHp() - getDamage());
 							setFramePassed(0);
 						}
 						setFramePassed(getFramePassed()+1);
+						return;
 					}
 				}			
 			}

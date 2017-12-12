@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import com.Position;
 import gui.PZGUI;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public abstract class Zombie extends Character {
 	
 	private float scaleFactor = 0.3f;
@@ -24,13 +29,9 @@ public abstract class Zombie extends Character {
 	}
 	
 	@Override
-	public float getWidth() {
-		return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;
-	}
+	public float getWidth() {return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;}
 	@Override
-	public float getHeight() {
-		return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight() ;
-	}
+	public float getHeight() {return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight() ;}
 	
 	public void draw(boolean updateImg) {
 		getAnimation().setAutoUpdate(updateImg);

@@ -12,6 +12,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import com.Controller;
 
+/**
+ * 
+ * @author Nguyen Thanh Xuan Tung
+ *
+ */
 public class PlayUI {
 
 	private static Image pauseButton;
@@ -52,13 +57,23 @@ public class PlayUI {
 	public static float getSeedZoneW()     {return seedZoneW;}
 	public static float getSeedZoneH()     {return seedZoneH;}
 
+	/**
+	 * Initialize images for PlayUI
+	 * @throws SlickException
+	 */
 	public static void init() throws SlickException {
 		pauseButton   = new Image("res/UI/pause.png");
 		playButton    = new Image("res/UI/play.png");
 		speedUpButton = new Image("res/UI/speedUp.png");
 	}
 
-	// Sun Collected
+	/**
+	 * Draw SunCollected grid
+	 * @param gc GameContainer
+	 * @param sbg	StateBasedGame
+	 * @param g	Graphics
+	 * @throws SlickException
+	 */
 	public static void showSunCollectedGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		float posX = 10 * PZGUI.getResolutionRateWidth();
 		float posY = 20 * PZGUI.getResolutionRateHeight();
@@ -67,6 +82,13 @@ public class PlayUI {
 		g.drawRect(posX, posY, W, H);
 	}
 
+	/**
+	 * Draw sun collected
+	 * @param gc	GameContainer
+	 * @param sbg	StateBasedGame
+	 * @param g	Graphics
+	 * @throws SlickException
+	 */
 	public static void showSunCollected(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		float iconPosX = 10 * PZGUI.getResolutionRateWidth();
 		float iconPosY = 5  * PZGUI.getResolutionRateHeight();
@@ -90,12 +112,26 @@ public class PlayUI {
 	}
 
 	// Show Seed Zone
+	/**
+	 * Draw seedzone's grid
+	 * @param gc GameContainer
+	 * @param sbg StatedBaseGame
+	 * @param g	Graphics
+	 * @throws SlickException
+	 */
 	public static void showSeedZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		for (int i = 0; i < 8; i++) 
 			g.drawRect(seedZonePosX, seedZonePosY + seedZoneH * i, seedZoneW, seedZoneH);
 	}
 
 	// Show Plant Zone
+	/**
+	 * Draw plant zone
+	 * @param gc GameContainer
+	 * @param sbg StateBasedGame
+	 * @param g	Graphics
+	 * @throws SlickException
+	 */
 	public static void showPlantZoneGrid(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		for (int i = 0; i < 5; i++)
 			for (int j = 0; j < 9; j++)
@@ -103,6 +139,12 @@ public class PlayUI {
 	}
 
 	// Pause button
+	/**
+	 * Draw Pause button
+	 * @param gc	GameContainer
+	 * @param g	Grapghics
+	 * @throws SlickException
+	 */
 	public static void showPauseButton(GameContainer gc, Graphics g) throws SlickException {
 		pauseButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
 
@@ -122,6 +164,12 @@ public class PlayUI {
 	}
 	
 	// Speed Up button
+	/**
+	 * Show speedUp button
+	 * @param gc	GameContainer
+	 * @param g	Graphics
+	 * @throws SlickException
+	 */
 	public static void showSpeedUpButton(GameContainer gc, Graphics g) throws SlickException {
 		speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight);
 		
@@ -146,6 +194,11 @@ public class PlayUI {
 		
 	}
 	
+	/**
+	 * Show play button
+	 * @param gc	GameContainer
+	 * @param g	Graphics
+	 */
 	public static void showPlayButton(GameContainer gc, Graphics g) {
 		if (gc.isPaused()) {
 			g.setColor(new Color(1, 1, 1, 100));

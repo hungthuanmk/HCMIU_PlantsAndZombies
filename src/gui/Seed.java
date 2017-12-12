@@ -3,6 +3,11 @@ package gui;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public class Seed {
 	@SuppressWarnings("rawtypes")
 	private Class 	_class;
@@ -21,6 +26,12 @@ public class Seed {
 	public void setPrice(Integer price) {this.price = price;  }
 
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Create Seed with class, img and price
+	 * @param _class Classname
+	 * @param img	Image
+	 * @param price	Price
+	 */
 	public Seed(Class _class, Image img, Integer price) {
 		this._class = _class;
 		this.img = img;
@@ -28,6 +39,12 @@ public class Seed {
 	}
 
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Crete Seed with class, img directory and price
+	 * @param _class Classname
+	 * @param img	Filename directory
+	 * @param price	Price
+	 */
 	public Seed(Class _class, String img, Integer price) {
 		this._class = _class;
 		try {
@@ -37,5 +54,4 @@ public class Seed {
 		}
 		this.price = price;
 	}
-
 }

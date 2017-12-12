@@ -9,6 +9,11 @@ import com.Position;
 import pz.Bullet;
 import pz.Zombie;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public class BPeashooter extends pz.Bullet {
 	
 	private static int damage 	= 10;
@@ -50,10 +55,6 @@ public class BPeashooter extends pz.Bullet {
 
 	public void move() {
 		setPos(getPos().x + getSpeed(), getPos().y);
-//		if (getPos().x > PZGUI.getWidth() || getPos().y > PZGUI.getHeight()) {
-//			bulletList.remove(this);
-//			return;
-//		}
 	}
 
 	@Override

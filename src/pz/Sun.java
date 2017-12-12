@@ -8,8 +8,6 @@ import com.Clickable;
 import gui.PZGUI;
 import gui.SunUI;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public abstract class Sun implements Clickable{
 	private float posX;
 	private float posY;
@@ -92,13 +90,8 @@ public abstract class Sun implements Clickable{
 		}
 	}
 
-	public boolean isDone() {
-		return isDone;
-	}
+	public boolean isDone() {return isDone;}
 
 	@Override
-	public void onClicked() {
-		// TODO Auto-generated method stub
-		
-	}	
+	public void onClicked() {}	
 }
