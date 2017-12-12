@@ -22,7 +22,7 @@ public class BPeashooter extends pz.Bullet {
 	
 	protected void loadAnimation() { 
 		try {
-			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Pea.png"), 10);
+			getAnimation().addFrame(new Image("res/Plants/PeaShooter/Bullet/normal/Pea.png"), 10);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
