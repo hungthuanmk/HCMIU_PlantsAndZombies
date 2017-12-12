@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -44,11 +45,11 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Torchwood.class, 100);
 		SeedUI.addSeed(Peashooter3.class, 100);
 		
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
-		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-		zombie.add(CharacterBuilder.buildZombie(NhiZombie.class, 2));
-		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
+//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
+//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
+//		zombie.add(CharacterBuilder.buildZombie(NhiZombie   .class, 2));
+//		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
+//		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
 	}
 
 	// Show Background
@@ -132,17 +133,9 @@ public class Play extends BasicGameState {
 				zombie.get(i).move(); //move zombie
 				zombie.get(i).attack(plant, bullet);
 			}
-		}
+		}	
 		
-//		if (delta % 5 == 0) {
-//			zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
-//			zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-//			zombie.add(CharacterBuilder.buildZombie(NhiZombie.class, 2));
-//			zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
-//			zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
-//		}
-		
-		
+		spawnRandZombie(1000);
 	}
 	
 	private void eventHandle(GameContainer gc, Graphics g) {
@@ -188,7 +181,16 @@ public class Play extends BasicGameState {
 			}
 		}
 		
-		
+	}
+	
+	private void spawnRandZombie(int delta) {
+		int row = ThreadLocalRandom.current().nextInt(0,delta);
+		int zombieN;
+		Class[] zombieClass = {FemaleZombie.class, MaleZombie.class, NhiZombie.class};
+		if (row>=0 && row<=4) {
+			zombieN = ThreadLocalRandom.current().nextInt(0, zombieClass.length);
+			zombie.add(CharacterBuilder.buildZombie(zombieClass[zombieN], row));
+		}
 	}
 	
 	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
