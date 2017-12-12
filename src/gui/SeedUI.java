@@ -99,7 +99,7 @@ public class SeedUI {
 	}
 	
 	/**
-	 * The plant had been bought successfully and substrat money!
+	 * The plant had been bought successfully and subtract money!
 	 */
 	public static void bought() {
 		pickedClass = null;
