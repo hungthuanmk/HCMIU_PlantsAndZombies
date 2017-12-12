@@ -9,6 +9,11 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.state.transition.*;
 
+/**
+ * 
+ * @author Nguyen Thanh Xuan Tung + Nguyen Phan Hung Thuan
+ *
+ */
 public class PZGUI extends StateBasedGame {
 	private static int width 	= 1600; 	
 	private static int height 	= 900;
@@ -34,6 +39,10 @@ public class PZGUI extends StateBasedGame {
 	private static int defaultWidth = 1600;
 	private static int defaultHeight = 900;
 	
+	/**
+	 * INITIALIZE GAME WITH DEFAULT NAME
+	 * @param gameName	Game title
+	 */
 	public PZGUI(String gameName) {
 		super(gameName);
 		try {
@@ -60,6 +69,14 @@ public class PZGUI extends StateBasedGame {
 		//this.addState(new GameOver(gameOver));
 	}
 	
+	/**
+	 * Load default settings for game
+	 * targetFPS=60
+	 * showFPS=true
+	 * fullScreeen=false
+	 * vSync=true
+	 * AA=true
+	 */
 	private void loadDefaultSettings() {
 		width      = defaultWidth;
 		height     = defaultWidth;
@@ -70,6 +87,9 @@ public class PZGUI extends StateBasedGame {
 		AA         = true;
 	}
 	
+	/**
+	 * Initialize game State
+	 */
 	public void initStatesList(GameContainer gc) throws SlickException {
 		//this.getState(splashScreen).init(gc, this);
 		//this.getState(menu).		  init(gc, this);
@@ -78,11 +98,13 @@ public class PZGUI extends StateBasedGame {
 		this.enterState(splashScreen, new FadeInTransition(), new EmptyTransition()); // show SplashScreen first	
 	}
 	
+	/**
+	 * Main process
+	 * @param args Arguments
+	 */
 	public static void main(String[] args){
 		AppGameContainer appgc;
-	    
 		try {
-			
 			appgc = new AppGameContainer(new PZGUI(gameName));	
 			appgc.setShowFPS(showFPS);
 			
@@ -106,6 +128,10 @@ public class PZGUI extends StateBasedGame {
 		}
 	}
 
+	/**
+	 * Anti-Alias
+ 	 * @return AA
+	 */
 	public static boolean isAA() 					{return AA;}
 	public static void 	  setAA(boolean aA) 		{AA = aA;}
 

@@ -2,9 +2,6 @@ package pz.zombie;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-
 import com.Position;
 
 import gui.AnimationLoader;
@@ -49,6 +46,7 @@ public class FemaleZombie extends Zombie {
 							setFramePassed(0);
 						}
 						setFramePassed(getFramePassed()+1);
+						return;
 					}
 				}			
 			}

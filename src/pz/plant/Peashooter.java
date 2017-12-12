@@ -7,6 +7,11 @@ import com.Position;
 import gui.AnimationLoader;
 import pz.Bullet;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public class Peashooter extends pz.Plant {
 	
 	private static int _hp = 100;
@@ -35,7 +40,7 @@ public class Peashooter extends pz.Plant {
 
 	@Override
 	public void move() {
-		//setPos(getPos().x + getSpeed(), getPos().y);
+		setPos(getPos().x + getSpeed(), getPos().y);
 	}
 
 

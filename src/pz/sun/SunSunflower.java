@@ -7,8 +7,8 @@ import pz.Sun;
 
 public class SunSunflower extends Sun {
 	
-	private float x;
-	private float y;
+	private float x=0;
+	private float y=0;
 	private float initX, initY;
 	private static float speed  = 0.1f;
 	private static float height = 40f;
@@ -17,6 +17,7 @@ public class SunSunflower extends Sun {
 		super(ani, posX, posY, 0);
 		initX = posX;
 		initY = posY;
+		x = (float) Math.sqrt(height-1);
 	}	
 
 	@Override

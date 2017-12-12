@@ -25,12 +25,14 @@ public abstract class Plant extends Character {
 	
 	@Override
 	public float getWidth() {
-		return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;}	
+		return getAnimation().getWidth()  * scaleFactor * PZGUI.getResolutionRateWidth();  }	
 	@Override
 	public float getHeight() {
-		return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight() ;
-	}
+		return getAnimation().getHeight() * scaleFactor * PZGUI.getResolutionRateHeight(); }
 	
+	/**
+	 * Draw character
+	 */
 	public void draw(boolean updateImg) {
 		getAnimation().setAutoUpdate(updateImg);
 		getAnimation().draw(getPos().x, getPos().y, getWidth(), getHeight());

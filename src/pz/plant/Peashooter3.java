@@ -33,7 +33,13 @@ public class Peashooter3 extends pz.Plant {
 			if (getFramePassed() == getAttackInterval()+10) {
 				bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
 						  									  (getPos().y + getHeight() * 0.15f), 
-						  									  getDamage()));
+						  									  getDamage()) {
+					@Override
+					public void setSpeed(float speed) {
+						// TODO Auto-generated method stub
+						super.setSpeed(-speed);
+					}
+				});
 				
 			}
 			else
@@ -41,8 +47,21 @@ public class Peashooter3 extends pz.Plant {
 					bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
 							  									  (getPos().y + getHeight() * 0.15f), 
 							  									  getDamage()));
-					setFramePassed(0);
+					//setFramePassed(0);
 				}
+				else
+					if (getFramePassed() == getAttackInterval()+30) {
+						bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
+								  									  (getPos().y + getHeight() * 0.15f), 
+								  									  getDamage()) {
+							@Override
+							public void setSpeed(float speed) {
+								// TODO Auto-generated method stub
+								super.setSpeed(-speed);
+							}
+						});
+						setFramePassed(0);
+					}
 		
 		setFramePassed(getFramePassed()+1);
 	}

@@ -1,28 +1,39 @@
 package gui;
 
-import java.io.IOException;
-
 import org.lwjgl.input.Mouse;
-import org.newdawn.slick.*;
-import org.newdawn.slick.loading.DeferredResource;
-import org.newdawn.slick.loading.LoadingList;
-import org.newdawn.slick.state.*;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
 
 import com.SSound;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan + Nguyen Thanh Xuan Tung
+ *
+ */
 public class SplashScreen extends BasicGameState {
 	// Declare variable
 	private Image background;
 	public Image logo;
 	public Image playButton;
 	
-	
-	// PlaySound
+	/**
+	 * Create splash screen
+	 * @param state	State index
+	 */
 	public SplashScreen(int state) {
 		SSound.play("res/main_theme.ogg", false, 1f, 1f);
 	}
 	
 	// Initialization
+	/**
+	 * Initialize SplashScreen state
+	 */
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		gc.getGraphics().setAntiAlias(PZGUI.isAA());
 
@@ -76,6 +87,9 @@ public class SplashScreen extends BasicGameState {
 	}
 	
 	// Render
+	/**
+	 * SplashScreen render
+	 */
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setAntiAlias(PZGUI.isAA());
 		showBackGround();

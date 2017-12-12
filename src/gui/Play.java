@@ -12,6 +12,11 @@ import pz.*;
 import pz.plant.*;
 import pz.zombie.*;
 
+/**
+ * 
+ * @author Nguyen Thanh Xuan Tung + Nguyen Phan Hung Thuan
+ *
+ */
 public class Play extends BasicGameState {
 
 	private ArrayList<Zombie> zombie 	= new ArrayList<Zombie>();	
@@ -36,10 +41,11 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Peashooter.class, 100);
 		SeedUI.addSeed(Wallnut.class, 50);
 		SeedUI.addSeed(Torchwood.class, 100);
+		SeedUI.addSeed(Peashooter3.class, 100);
 		
 		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 0));
 		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 1));
-		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 2));
+		zombie.add(CharacterBuilder.buildZombie(NhiZombie.class, 2));
 		zombie.add(CharacterBuilder.buildZombie(MaleZombie  .class, 3));
 		zombie.add(CharacterBuilder.buildZombie(FemaleZombie.class, 4));
 	}

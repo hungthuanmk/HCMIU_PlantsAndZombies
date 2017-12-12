@@ -9,6 +9,11 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.util.ResourceLoader;
 
+/**
+ * 
+ * @author Nguyen Thanh Xuan Tung
+ *
+ */
 public class Text {
 	private static String fontDir = "res/Fonts/FbUsv8C5eI.ttf";
 	private static boolean antiAlias = true;

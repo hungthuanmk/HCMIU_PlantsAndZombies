@@ -90,13 +90,8 @@ public abstract class Sun implements Clickable{
 		}
 	}
 
-	public boolean isDone() {
-		return isDone;
-	}
+	public boolean isDone() {return isDone;}
 
 	@Override
-	public void onClicked() {
-		// TODO Auto-generated method stub
-		
-	}	
+	public void onClicked() {}	
 }

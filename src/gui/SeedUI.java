@@ -20,30 +20,46 @@ public class SeedUI {
 	private static Class pickedClass = null;
 	
 	@SuppressWarnings("rawtypes")
-	public static void setPickedClass(Class pickedClass) {
-		SeedUI.pickedClass = pickedClass;
-	}
+	/**
+	 * Set picked class for onItemClicked event
+	 * @param pickedClass Class of plant had been selected
+	 */
+	public static void setPickedClass(Class pickedClass) { SeedUI.pickedClass = pickedClass; }
 
 	@SuppressWarnings("rawtypes")
-	public static Class getPickedClass() {
-		return pickedClass;
-	}
-
-
-	public SeedUI() {
-		seed.clear();	
-	}
-	
+	/**
+	 * Get picked class after onItemClicked event
+	 * @return Class of plant Ex: Peashooter.class
+	 */
+	public static Class getPickedClass() { return pickedClass; }
+	/** 
+	 * Initiaize SeedUI and clear all existing seeds in collection
+	 */
+	public SeedUI() 		   { seed.clear(); }
+	/**
+	 * Clear all existing seed in collection
+	 */
 	public static void clear() { new SeedUI(); }
 	
 	@SuppressWarnings("rawtypes")
-	public static void addSeed(Class plantClass, Integer money) {
+	/**
+	 * Add new Seed into Seeds collections area
+	 * @param plantClass	Class of plants Ex: Peashooter.class
+	 * @param price		Price for buying
+	 */
+	public static void addSeed(Class plantClass, Integer price) {
 		if (plantClass.getSuperclass() == Plant.class)
-			seed.add(new Seed(plantClass, "res/Seed/"+plantClass.getSimpleName()+".png", money));
+			seed.add(new Seed(plantClass, "res/Seed/"+plantClass.getSimpleName()+".png", price));
 		else
 			System.out.println(plantClass.getName() + " is not subclass of Plant!");		
 	}
 	
+	/**
+	 * Render Seeds area
+	 * @param gc GameContainer
+	 * @param sbg StateBasedGame
+	 * @param g	Graphics
+	 */
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) {
 		for (int i=0; i<seed.size() && i<8; i++) {
 			if (seed.get(i) != null) {
@@ -61,8 +77,12 @@ public class SeedUI {
 		}
 	}
 	
+	/**
+	 * EVENT: Click one of items on Seeds area
+	 * @param itemIdx Item index, 0 to maximum 7 
+	 */
 	public static void onItemClicked(int itemIdx) {
-		if (seed.get(itemIdx) == null) return;
+		if (itemIdx > seed.size()) return;
 		if (seed.get(itemIdx).getPrice() <= SunUI.getSunCollected()) { //having enough money
 			itemPrice = seed.get(itemIdx).getPrice();
 			pickedClass = seed.get(itemIdx).get_class();
@@ -70,6 +90,9 @@ public class SeedUI {
 		}
 	}
 	
+	/**
+	 * The plant had been bought successfully and substrat money!
+	 */
 	public static void bought() {
 		pickedClass = null;
 		SunUI.gainSun( - itemPrice);

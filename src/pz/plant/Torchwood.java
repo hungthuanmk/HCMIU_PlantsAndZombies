@@ -18,8 +18,10 @@ public class Torchwood extends Plant{
 	}
 
 	@Override
-	public void attack(ArrayList<Bullet> bulletArrayList) {
-		// TODO Auto-generated method stub
+	public void attack(ArrayList<Bullet> bulletList) {
+		for (int i=0; i<bulletList.size(); i++) {
+			
+		}
 		
 	}
 

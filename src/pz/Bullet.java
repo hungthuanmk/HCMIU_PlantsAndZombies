@@ -8,6 +8,11 @@ import com.Position;
 
 import gui.PZGUI;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public abstract class Bullet {
 	private int damage = 0;
 	private Animation ani = new Animation();

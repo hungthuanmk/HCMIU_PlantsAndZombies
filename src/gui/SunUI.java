@@ -22,7 +22,7 @@ public class SunUI {
 	static Integer spawnCoolDownInMilisec = 1000;
 	static Integer spawnCoolDownInFrame = 300;
 	static Integer startTime;
-	static Integer framePass = 0;
+	static Integer framePassed = 0;
 	
 	static Timer timer;		
 	
@@ -55,8 +55,15 @@ public class SunUI {
 		return sunIcon;
 	}
 	
+	/**
+	 * Render SunUI
+	 * @param gc	GameContainer
+	 * @param sbg	StateBasedGame
+	 * @param g	Graphics
+	 * @throws SlickException
+	 */
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
-		framePass++;
+		framePassed++;
 		for (int i=0; i<sunManager.size(); i++)
 			if (!gc.isPaused()) {
 				sunManager.get(i).drawSun();	
@@ -67,9 +74,9 @@ public class SunUI {
 	
 	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		//timer.schedule(sunTask, 0, spawnCoolDownInMilisec);
-		if (framePass > spawnCoolDownInFrame)
+		if (framePassed > spawnCoolDownInFrame)
 		{
-			framePass = 0;
+			framePassed = 0;
 			sunManager.add(new SunNatural(sunAni));
 		}
 		
@@ -81,9 +88,6 @@ public class SunUI {
 			}
 	}
 
-	public static ArrayList<Sun> getSunManager() {
-		return sunManager;
-	}
+	public static ArrayList<Sun> getSunManager() {return sunManager;}
 	
-
 }
