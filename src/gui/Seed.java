@@ -9,7 +9,6 @@ import org.newdawn.slick.SlickException;
  *
  */
 public class Seed {
-	
 	@SuppressWarnings("rawtypes")
 	private Class 	_class;
 	private Image 	img;

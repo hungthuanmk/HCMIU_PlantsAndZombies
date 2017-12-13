@@ -12,7 +12,7 @@ public class DeadBody {
 	private Position pos;
 	
 	public DeadBody(Class _class, Position pos) {
-		this.pos = pos;
+		pos = pos;
 		loadAnimation(_class);
 	}
 	

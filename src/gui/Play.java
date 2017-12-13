@@ -5,10 +5,14 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
+import org.newdawn.slick.loading.LoadingList;
 import org.newdawn.slick.state.*;
 
 import com.Controller;
+import com.Position;
+
 import pz.*;
 import pz.plant.*;
 import pz.zombie.*;
@@ -20,9 +24,14 @@ import pz.zombie.*;
  */
 public class Play extends BasicGameState {
 
+	private ArrayList<Zombie> zombie 	= new ArrayList<Zombie>();	
+	private Plant[][] 		  plant 	= new Plant[5][9];
+	private ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
 	
 	private static Image background;
 	
+	public Play(int state) {	
+	}
 
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -34,6 +43,7 @@ public class Play extends BasicGameState {
 		
 		SeedUI.addSeed(Sunflower.  class, 50);
 		SeedUI.addSeed(Peashooter. class, 100);
+		SeedUI.addSeed(Peashooter2.class, 200);
 		SeedUI.addSeed(Wallnut.    class, 50);
 		SeedUI.addSeed(Torchwood.  class, 100);
 	}
@@ -58,7 +68,23 @@ public class Play extends BasicGameState {
 		//PlayUI.showPlantZoneGrid(gc, sbg, g);
 		//PlayUI.showSeedZoneGrid(gc, sbg, g);
 		//PlayUI.showSunCollected(gc, sbg, g);
+
+		for (Plant[] iPlantRow : plant) {
+			for (Plant iPlant : iPlantRow) {
+				if (iPlant != null) {
+					iPlant.draw(!gc.isPaused());
+				}		
+			}
+		}
 		
+		for (Zombie iZombie : zombie) {
+			iZombie.draw(!gc.isPaused());
+		}
+		
+		for (Bullet iBullet : bullet) {
+			iBullet.draw(!gc.isPaused());
+		}
+	
 		
 		SunUI. render(gc, sbg, g);
 		SeedUI.render(gc, sbg, g);
@@ -105,8 +131,6 @@ public class Play extends BasicGameState {
 				zombie.get(i).attack(plant, bullet);
 				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
-			
-			spawnRandZombie(1000);
 		}	
 		
 		spawnRandZombie(1500 - ((bullet.size() * 10)<1400 ? bullet.size()*10 : 1000));
@@ -122,9 +146,20 @@ public class Play extends BasicGameState {
 			
 			int hozId = (int) ( (mouseX - PlayUI.getPlantZonePosX()) / PlayUI.getCellW() ) ;
 			int verId = (int) ( (mouseY - PlayUI.getPlantZonePosY()) / PlayUI.getCellH() ) ;
+			Position posCell = new Position(  (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
+						    (PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
+			if (SeedUI.getPickedClass() != null)
+				onPlantZoneMoveOn(hozId, verId, posCell, g);
+			
+			if (PlayUI.isShovelClicked() == true)
+				onPlantZoneMoveOn(hozId, verId, posCell, g);
 		}
 	}
 
+	@Override
+	public void mouseMoved(int oldx, int oldy, int newx, int newy) {
+	}
+	
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
 		if (Controller.mouseInArea( PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY(), 
@@ -155,6 +190,8 @@ public class Play extends BasicGameState {
 		
 	}
 	
+	private void spawnRandZombie(int delta) {
+		int row = ThreadLocalRandom.current().nextInt(0,delta);
 		int zombieN;
 		Class[] zombieClass = {FemaleZombie.class, MaleZombie.class, NhiZombie.class};
 		if (row>=0 && row<=4) {
@@ -163,6 +200,7 @@ public class Play extends BasicGameState {
 		}
 	}
 	
+	private void onPlantZoneMoveOn(int hozId, int verId, Position pos, Graphics g) {
 		g.setColor(new Color(1, 1, 1, 0.15f));
 		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
 		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());

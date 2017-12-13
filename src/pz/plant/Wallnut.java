@@ -18,7 +18,7 @@ public class Wallnut extends pz.Plant {
 	}
 
 	@Override
-	public void attack(ArrayList<Bullet> bulletList) {
+	public void attack(ArrayList<Bullet> bulletArrayList) {
 		
 	}
 

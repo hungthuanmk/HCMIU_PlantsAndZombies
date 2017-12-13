@@ -10,7 +10,6 @@ import com.Position;
  *
  */
 public interface CharacterI {
-	
     Animation getAnimation(); 
 	void      setAnimation(Animation ani);    
 	

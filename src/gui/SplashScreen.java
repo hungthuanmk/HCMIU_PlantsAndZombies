@@ -17,7 +17,6 @@ import com.SSound;
  *
  */
 public class SplashScreen extends BasicGameState {
-	
 	// Declare variable
 	private Image background;
 	public Image logo;
@@ -28,7 +27,7 @@ public class SplashScreen extends BasicGameState {
 	 * @param state	State index
 	 */
 	public SplashScreen(int state) {
-		SSound.play("res/Sound/theme/main_theme.ogg", false, 1f, 1f);
+		SSound.play("res/main_theme.ogg", false, 1f, 1f);
 	}
 	
 	// Initialization

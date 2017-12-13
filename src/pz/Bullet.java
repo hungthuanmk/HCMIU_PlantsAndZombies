@@ -14,20 +14,13 @@ import gui.PZGUI;
  *
  */
 public abstract class Bullet {
-	
-	private int 		 damage = 0;
-	public  boolean 	 getBoosted = false; //boosted after fly over booster for Torchwoord for ex
-	private Animation    ani = new Animation();
-	private float 		 speed = 0;
-	private Position 	 pos;
+	private int damage = 0;
+	public boolean getBoosted = false; //boosted after fly over booster for Torchwoord for ex
+	private Animation ani = new Animation();
+	private float speed = 0;
+	private Position pos;
 	private static float scaleFactor = 0.6f;
 
-	/**
-	 * Construct bullet
-	 * @param damage	Bullet's damage
-	 * @param speed	Bullet's speed
-	 * @param pos	Bullet's position
-	 */
 	public Bullet(int damage, float speed, Position pos) {
 		setDamage(damage);
 		setSpeed(speed);
@@ -35,18 +28,18 @@ public abstract class Bullet {
 		loadAnimation();
 	}
 
-	public int  	 getDamage() 					 { return damage;				   }
-	public void 	 setDamage(int damage) 		   	 { this.damage = damage;		   }
+	public int  getDamage() 					 {return damage;}
+	public void setDamage(int damage) 		   	 {this.damage = damage;}
 
-	public float 	 getSpeed() 				     { return speed;				   }
-	public void  	 setSpeed(float speed) 			 { this.speed = speed;			   }
+	public float getSpeed() 				     {return speed;}
+	public void  setSpeed(float speed) 			 {this.speed = speed;}
 
-	public Animation getAnimation() 			 	 { return ani;					   }
-	public void 	 setAnimation(Animation img) 	 { this.ani = img;				   }
+	public Animation getAnimation() 			 {return ani;}
+	public void 	 setAnimation(Animation img) {this.ani = img;}
 
-	public Position  getPos() 					 	 { return pos;					   }
-	public void 	 setPos(Position pos) 		 	 { this.pos = pos;				   }
-	public void 	 setPos(float x, float y) 	 	 { this.pos.x = x; this.pos.y = y; }
+	public Position getPos() 					 {return pos;}
+	public void 	setPos(Position pos) 		 {this.pos = pos;}
+	public void 	setPos(float x, float y) 	 {this.pos.x = x; this.pos.y = y;}
 	
 	public float getWidth() {
 		return getAnimation().getWidth() * scaleFactor * PZGUI.getResolutionRateWidth() ;

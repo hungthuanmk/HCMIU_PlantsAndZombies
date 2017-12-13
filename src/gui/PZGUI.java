@@ -15,7 +15,6 @@ import org.newdawn.slick.state.transition.*;
  *
  */
 public class PZGUI extends StateBasedGame {
-	
 	private static int width 	= 1600; 	
 	private static int height 	= 900;
 	
@@ -67,7 +66,7 @@ public class PZGUI extends StateBasedGame {
 		this.addState(new SplashScreen(splashScreen));
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
-		//this.addState(new GameOver(gameOver));
+		this.addState(new GameOver(gameOver));
 	}
 	
 	/**
@@ -144,5 +143,7 @@ public class PZGUI extends StateBasedGame {
 
 	public static float   getResolutionRateWidth()  {return resolutionRateWidth;}
 	public static float   getResolutionRateHeight() {return resolutionRateHeight;}
+	
+	
 	
 }

@@ -2,8 +2,12 @@ package gui;
 
 import org.newdawn.slick.Animation;
 
+/**
+ * 
+ * @author Nguyen Phan Hung Thuan
+ *
+ */
 public class AnimationItem {
-	
 	private Animation ani = new Animation();
 	private Class  _class = null;
 
@@ -29,18 +33,18 @@ public class AnimationItem {
 	 * Get default Animation
 	 * @return	Animation
 	 */
-	public Animation getAni()  		   { return ani; }
+	public Animation getAni() {return ani;}
 	/**
 	 * Set Animation for AnimationItem
 	 * @param ani Animation
 	 */
-	public void setAni(Animation ani)  { this.ani = ani; }
+	public void setAni(Animation ani) {this.ani = ani;}
 
 	/**
 	 * Get Class of AnimationItem
 	 * @return Class
 	 */
-	public Class get_class() 		    {return _class;}
+	public Class get_class() {return _class;}
 	/**
 	 * Set Class for AnimationItem
 	 * @param _class Class
