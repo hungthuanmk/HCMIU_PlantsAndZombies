@@ -96,7 +96,7 @@ public class Play extends BasicGameState {
 		PlayUI.showPlayButton   (gc, g);
 		
 		if (SeedUI.getPickedImg() != null)
-			SeedUI.getPickedImg().draw(Controller.getMouseX(), Controller.getMouseY(), new Color(1,1,1,0.8f));
+			SeedUI.getPickedImg().drawCentered(Controller.getMouseX(), Controller.getMouseY());
 			
 		//DebugTool.showMousePosition(g);	
 	}
