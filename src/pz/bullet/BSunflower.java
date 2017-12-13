@@ -48,8 +48,7 @@ public class BSunflower extends Bullet implements Clickable{
 
 	@Override
 	public void onClicked() {
-		// inscrease Sun
-		
+		// inscrease Sun	
 	}
 
 	@Override

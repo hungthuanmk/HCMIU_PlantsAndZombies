@@ -14,6 +14,7 @@ import pz.Sun;
 import pz.sun.SunNatural;
 
 public class SunUI {
+	
 	private static int animationDuration = 200;
 	private static ArrayList<Sun> sunManager = new ArrayList<>();
 	private static Integer sunCollected = 50;
@@ -26,14 +27,24 @@ public class SunUI {
 	
 	static Timer timer;		
 	
-	public static Animation getSunAni() {
-		return sunAni;
-	}
+	/**
+	 * Get sun animation
+	 * @return	Sun Animation
+	 */
+	public static Animation getSunAni() { return sunAni; }
 
-	public static Integer getSunCollected() {
-		return sunCollected;
-	}
+	/**
+	 * Get sun collected, money
+	 * @return	Sun collected
+	 */
+	public static Integer getSunCollected() { return sunCollected; }
+	public static void setSunCollected(Integer sunCollected) { SunUI.sunCollected = sunCollected; }
+	public static void setFramePassed(int framePassed) { SunUI.framePassed = SunUI.framePassed; }
 	
+	/**
+	 * Gain sun
+	 * @param sunCollected	Sun collected amount
+	 */
 	public static void gainSun(Integer sunCollected) {
 		SunUI.sunCollected += sunCollected;
 	}
@@ -50,6 +61,15 @@ public class SunUI {
 		//startTime = (int) System.currentTimeMillis();
 	}
 	
+	/**
+	 * Draw icon
+	 * @param iconPosX	Pos X
+	 * @param iconPosY	Pos Y
+	 * @param iconWidth	Icon width
+	 * @param iconHeight	Icon height
+	 * @return	sun icon
+	 * @throws SlickException SlickException
+	 */
 	public static Image drawIcon(float iconPosX, float iconPosY, float iconWidth, float iconHeight) throws SlickException{
 		sunIcon.draw(iconPosX, iconPosY, iconWidth, iconHeight);
 		return sunIcon;
@@ -65,11 +85,10 @@ public class SunUI {
 	public static void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
 		framePassed++;
 		for (int i=0; i<sunManager.size(); i++)
-			if (!gc.isPaused()) {
+			if ( !gc.isPaused() ) 
 				sunManager.get(i).drawSun();	
-			}else {
-				sunManager.get(i).drawStopSun();
-			}
+			else 
+				sunManager.get(i).drawStopedSun();
 	}
 	
 	public static void update(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -87,10 +106,6 @@ public class SunUI {
 				sunManager.remove(i--);
 			}
 	}
-	
-	public static void setSunCollected(Integer sunCollected) { SunUI.sunCollected = sunCollected;}
-	public static void setFramePassed(Integer framePassed) { SunUI.framePassed = framePassed;}
 
-	public static ArrayList<Sun> getSunManager() {return sunManager;}
-	
+	public static ArrayList<Sun> getSunManager() { return sunManager; }	
 }
