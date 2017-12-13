@@ -21,6 +21,10 @@ public class Text {
 	private Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
 	private TrueTypeFont font = new TrueTypeFont(awtFont, antiAlias);
 	
+	/**
+	 * Initialize text with size
+	 * @param size	Text size
+	 */
 	public Text(Float size) {
 		inputStream = ResourceLoader.getResourceAsStream(fontDir);
 		try {
@@ -33,10 +37,23 @@ public class Text {
 		}
 	}
 	
+	/**
+	 * Draw string
+	 * @param x	X
+	 * @param y	y
+	 * @param whatchars	Text
+	 */
 	public void render(float x, float y, String whatchars) {
 		font.drawString(x, y, whatchars);
 	}
 	
+	/**
+	 * Draw string with specific color
+	 * @param x	X
+	 * @param y	Y
+	 * @param whatchars	Text
+	 * @param color	Color
+	 */
 	public void render(float x, float y, String whatchars, Color color) {
 		font.drawString(x, y, whatchars, color);
 	}

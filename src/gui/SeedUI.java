@@ -1,18 +1,14 @@
 package gui;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.openal.SoundStore;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.Position;
-import com.SSound;
-
 import pz.CharacterBuilder;
 import pz.Plant;
 
@@ -123,6 +119,14 @@ public class SeedUI {
 		pickedImg = null;
 		SunUI.gainSun( - itemPrice);
 		//SSound.play("res/Sound/effect/tantan.wav");
+	}
+	
+	/**
+	 * Return seed count
+	 * @return Seed count
+	 */
+	public static int getSeedCount() {
+		return seed.size();
 	}
 	
 	
