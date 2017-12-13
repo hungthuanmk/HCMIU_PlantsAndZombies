@@ -10,7 +10,7 @@ public class GameOver extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		text = new Text(100.0f);
+		text = new Text(120.0f);
 	}
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {

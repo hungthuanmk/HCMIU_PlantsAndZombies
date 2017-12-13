@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.lwjgl.input.Mouse;
@@ -34,7 +35,6 @@ public class Play extends BasicGameState {
 	// Initialization
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		new AnimationLoader();
-		
 		background = new Image("res/Map/Map_1.jpg");
 		
 		SunUI.init();
@@ -127,11 +127,12 @@ public class Play extends BasicGameState {
 					zombie.remove(i);
 					continue;
 				}
-				if (zombie.get(i).getPos().x < 100) {
-					sbg.enterState(3);
-				}
+//				if (zombie.get(i).getPos().x < 100) {
+//					sbg.enterState(3);
+//				}
 				zombie.get(i).move(); //move zombie
 				zombie.get(i).attack(plant, bullet);
+				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
 		}	
 		
@@ -197,6 +198,22 @@ public class Play extends BasicGameState {
 		g.setColor(new Color(1, 1, 1, 0.15f));
 		g.fillRect(PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY() + verId*PlayUI.getCellH(), 9*PlayUI.getCellW(), PlayUI.getCellH());
 		g.fillRect(PlayUI.getPlantZonePosX() + hozId*PlayUI.getCellW(), PlayUI.getPlantZonePosY(), PlayUI.getCellW(), 5*PlayUI.getCellH());
+	}
+	
+	private void toGameOver(StateBasedGame sbg, float x) {
+		if (x < 120) {
+			zombie.clear();
+			bullet.clear();
+			for (int i=0; i<5; i++)
+				for (int j=0; j<9; j++) {
+					plant[i][j] = null;
+				}
+			SunUI.getSunManager().clear();
+			SunUI.setSunCollected(50);
+			SunUI.setFramePassed(0);
+			sbg.getState(0);
+			sbg.enterState(0);
+		}
 	}
 	
 	public int getID() {
