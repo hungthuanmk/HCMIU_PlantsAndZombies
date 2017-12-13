@@ -13,6 +13,7 @@ public class Peashooter2 extends pz.Plant {
 	private static int _hp = 100;
 	private static int _damage = 20;
 	private static int _attackInterval = 100;
+	private static boolean _attackCoolDown = false;
 
 	public Peashooter2(Position pos) {
 		super("Peashooter2", _hp, _damage, _attackInterval, pos);
@@ -20,25 +21,22 @@ public class Peashooter2 extends pz.Plant {
 	
 	@Override
 	protected void loadAnimation() {
-		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter/Idle", 30));
+		setAnimation(AnimationLoader.getAnimationFromFolder("res/Plants/PeaShooter2/Idle", 30));
 	}
 
 	@Override
 	public void attack(ArrayList<Bullet> bulletArrayList) {
-		if (getFramePassed() == getAttackInterval()) {
+		if ((getAnimation().getFrame() == 16 || getAnimation().getFrame() == 27) && _attackCoolDown == false) {
 			bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
 														  (getPos().y + getHeight() * 0.15f), 
 														  getDamage()));
+			_attackCoolDown = true;
 		}
-		else
-			if (getFramePassed() == getAttackInterval()+10) {
-				bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth() * 0.8f) , 
-						  									  (getPos().y + getHeight() * 0.15f), 
-						  									  getDamage()));
-				setFramePassed(0);
-			}
 		
-		setFramePassed(getFramePassed()+1);
+		if (getAnimation().getFrame() == 18 || getAnimation().getFrame() == 29) {
+			_attackCoolDown = false;
+		}
+		
 	}
 
 	@Override
