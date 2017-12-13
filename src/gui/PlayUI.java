@@ -188,7 +188,7 @@ public class PlayUI {
 			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
 								new Color(0, 0, 0, 50));
 			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
-				gc.setTargetFrameRate(isSpeedUpClicked==false?180:60);
+				gc.setTargetFrameRate(isSpeedUpClicked==false?180:60); 
 				gc.setVSync(isSpeedUpClicked);
 				isSpeedUpClicked = !isSpeedUpClicked;
 				try {

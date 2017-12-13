@@ -3,6 +3,7 @@ package gui;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
@@ -45,12 +46,10 @@ public class Play extends BasicGameState {
 		SeedUI.addSeed(Peashooter2.class, 200);
 		SeedUI.addSeed(Wallnut.    class, 50);
 		SeedUI.addSeed(Torchwood.  class, 100);
-		
-		
 	}
 
 	// Show Background
-	public void showBackground(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+	private void showBackground(Graphics g) throws SlickException {
 		float rate 		= 0.69f;
 		float width 	= background.getWidth() * PZGUI.getResolutionRateWidth() * rate;
 		float height 	= background.getHeight() * PZGUI.getResolutionRateHeight() * rate;
@@ -62,7 +61,7 @@ public class Play extends BasicGameState {
 
 	// Render
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		showBackground(gc, sbg, g);
+		showBackground(g);
 		eventHandle(gc, g);
 		
 		//PlayUI.showSunCollectedGrid(gc, sbg, g);
@@ -185,6 +184,10 @@ public class Play extends BasicGameState {
 			}
 		}
 		
+		if (PlayUI.isShovelClicked() == true) {
+			PlayUI.setShovelClicked(false);
+		}
+		
 	}
 	
 	private void spawnRandZombie(int delta) {
@@ -204,7 +207,7 @@ public class Play extends BasicGameState {
 	}
 	
 	private void toGameOver(StateBasedGame sbg, float x) {
-		if (x < 120) {
+		if (x < 130 * PZGUI.getResolutionRateWidth()) { 
 			zombie.clear();
 			bullet.clear();
 			for (int i=0; i<5; i++)
