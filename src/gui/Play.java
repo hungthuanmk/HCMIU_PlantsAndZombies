@@ -42,10 +42,10 @@ public class Play extends BasicGameState {
 		
 		SeedUI.addSeed(Sunflower.  class, 50);
 		SeedUI.addSeed(Peashooter. class, 100);
-		SeedUI.addSeed(Peashooter2.class, 200);
+		SeedUI.addSeed(Peashooter2.class, 250);
 		SeedUI.addSeed(Wallnut.    class, 50);
-		SeedUI.addSeed(Torchwood.  class, 100);
-		
+		SeedUI.addSeed(Torchwood.  class, 300);
+		SeedUI.addSeed(Bloomerang. class, 300);
 		
 	}
 
