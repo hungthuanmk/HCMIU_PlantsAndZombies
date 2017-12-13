@@ -94,6 +94,7 @@ public class Play extends BasicGameState {
 		PlayUI.showPauseButton  (gc, g);
 		PlayUI.showSpeedUpButton(gc, g);
 		PlayUI.showPlayButton   (gc, g);
+		PlayUI.showShovel       (gc, g);
 		
 		if (SeedUI.getPickedImg() != null)
 			SeedUI.getPickedImg().drawCentered(Controller.getMouseX(), Controller.getMouseY());
@@ -127,34 +128,33 @@ public class Play extends BasicGameState {
 					zombie.remove(i);
 					continue;
 				}
-//				if (zombie.get(i).getPos().x < 100) {
-//					sbg.enterState(3);
-//				}
 				zombie.get(i).move(); //move zombie
 				zombie.get(i).attack(plant, bullet);
 				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
 		}	
 		
-		spawnRandZombie(1000);
+		spawnRandZombie(1500 - ((bullet.size() * 10)<1400 ? bullet.size()*10 : 1000));
 	}
 	
 	private void eventHandle(GameContainer gc, Graphics g) {
 		int mouseX = Controller.getMouseX();
 		int mouseY = Controller.getMouseY();
 		
-		
 		// Mouse on PlantZone
 		if (Controller.mouseInArea( PlayUI.getPlantZonePosX(), PlayUI.getPlantZonePosY(), 
 				PlayUI.getPlantZonePosX()+9*PlayUI.getCellW(), PlayUI.getPlantZonePosY()+5*PlayUI.getCellH())) {
+			
 			int hozId = (int) ( (mouseX - PlayUI.getPlantZonePosX()) / PlayUI.getCellW() ) ;
 			int verId = (int) ( (mouseY - PlayUI.getPlantZonePosY()) / PlayUI.getCellH() ) ;
 			Position posCell = new Position(  (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
 						    (PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
 			if (SeedUI.getPickedClass() != null)
 				onPlantZoneMoveOn(hozId, verId, posCell, g);
+			
+			if (PlayUI.isShovelClicked() == true)
+				onPlantZoneMoveOn(hozId, verId, posCell, g);
 		}
-		
 	}
 
 	@Override
@@ -163,7 +163,6 @@ public class Play extends BasicGameState {
 	
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
-		//System.out.println("Mouse clicked!");
 		if (Controller.mouseInArea( PlayUI.getSeedZonePosX(), PlayUI.getSeedZonePosY(), 
 				PlayUI.getSeedZonePosX()+PlayUI.getSeedZoneW(), PlayUI.getSeedZonePosY()+PlayUI.getSeedZoneH()*8)) {
 			int itemId = (int) ( (y - PlayUI.getSeedZonePosY()) / PlayUI.getSeedZoneH() ) ;
@@ -174,11 +173,15 @@ public class Play extends BasicGameState {
 				PlayUI.getPlantZonePosX()+9*PlayUI.getCellW(), PlayUI.getPlantZonePosY()+5*PlayUI.getCellH())) {
 			int hozId = (int) ( (x - PlayUI.getPlantZonePosX()) / PlayUI.getCellW() ) ;
 			int verId = (int) ( (y - PlayUI.getPlantZonePosY()) / PlayUI.getCellH() ) ;
-			//Position posCell = new Position(  (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
-						    //(PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
+
 			if (plant[verId][hozId] == null && SeedUI.getPickedClass() != null) {
 				plant[verId][hozId] = CharacterBuilder.buildPlant(SeedUI.getPickedClass(), verId, hozId);
 				SeedUI.bought(); //had bought
+			}
+			
+			if (plant[verId][hozId] != null && PlayUI.isShovelClicked() == true) { 
+				plant[verId][hozId] = null;
+				PlayUI.setShovelClicked(false);
 			}
 		}
 		
@@ -211,8 +214,8 @@ public class Play extends BasicGameState {
 			SunUI.getSunManager().clear();
 			SunUI.setSunCollected(50);
 			SunUI.setFramePassed(0);
-			sbg.getState(0);
-			sbg.enterState(0);
+			sbg.getState(3);
+			sbg.enterState(3);
 		}
 	}
 	
