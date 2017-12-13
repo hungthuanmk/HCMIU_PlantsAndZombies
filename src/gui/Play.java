@@ -126,7 +126,10 @@ public class Play extends BasicGameState {
 				if (zombie.get(i).getHp() <= 0) {
 					zombie.remove(i);
 					continue;
-				}		
+				}
+				if (zombie.get(i).getPos().x < 100) {
+					sbg.enterState(3);
+				}
 				zombie.get(i).move(); //move zombie
 				zombie.get(i).attack(plant, bullet);
 			}
