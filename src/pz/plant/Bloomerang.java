@@ -13,7 +13,7 @@ public class Bloomerang extends pz.Plant {
 	
 	private static int hp = 100;
 	private static int damage = 5;
-	private static int attackInterval = 500;
+	private static int attackInterval = 100;
 
 	public Bloomerang(Position pos) {
 		super("Bloomerang", hp, damage, attackInterval, pos);

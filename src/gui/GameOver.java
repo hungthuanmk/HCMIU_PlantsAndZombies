@@ -4,6 +4,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 public class GameOver extends BasicGameState {
+	
 	public GameOver(int state) {
 		
 	}

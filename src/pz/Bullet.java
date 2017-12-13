@@ -14,6 +14,7 @@ import gui.PZGUI;
  *
  */
 public abstract class Bullet {
+	
 	private int 		 damage = 0;
 	public  boolean 	 getBoosted = false; //boosted after fly over booster for Torchwoord for ex
 	private Animation    ani = new Animation();

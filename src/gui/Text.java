@@ -15,6 +15,7 @@ import org.newdawn.slick.util.ResourceLoader;
  *
  */
 public class Text {
+	
 	private static String fontDir = "res/Fonts/FbUsv8C5eI.ttf";
 	private static boolean antiAlias = true;
 	private InputStream inputStream = null;

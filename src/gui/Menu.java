@@ -1,10 +1,7 @@
 package gui;
 
-//import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-
-//import com.SSound;
 
 public class Menu extends BasicGameState {
 		

@@ -8,7 +8,8 @@ import com.Clickable;
 import gui.PZGUI;
 import gui.SunUI;
 
-public abstract class Sun implements Clickable{
+public abstract class Sun implements Clickable {
+	
 	private float posX;
 	private float posY;
 	private float edgeY;

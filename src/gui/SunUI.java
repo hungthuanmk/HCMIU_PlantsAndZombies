@@ -14,6 +14,7 @@ import pz.Sun;
 import pz.sun.SunNatural;
 
 public class SunUI {
+	
 	private static int animationDuration = 200;
 	private static ArrayList<Sun> sunManager = new ArrayList<>();
 	private static Integer sunCollected = 50;
@@ -30,17 +31,15 @@ public class SunUI {
 	 * Get sun animation
 	 * @return	Sun Animation
 	 */
-	public static Animation getSunAni() {
-		return sunAni;
-	}
+	public static Animation getSunAni() { return sunAni; }
 
 	/**
 	 * Get sun collected, money
 	 * @return	Sun collected
 	 */
-	public static Integer getSunCollected() {
-		return sunCollected;
-	}
+	public static Integer getSunCollected() { return sunCollected; }
+	public static void setSunCollected(Integer sunCollected) { SunUI.sunCollected = sunCollected; }
+	public static void setFramePassed(int framePassed) { SunUI.framePassed = SunUI.framePassed; }
 	
 	/**
 	 * Gain sun
@@ -108,6 +107,5 @@ public class SunUI {
 			}
 	}
 
-	public static ArrayList<Sun> getSunManager() { return sunManager; }
-	
+	public static ArrayList<Sun> getSunManager() { return sunManager; }	
 }

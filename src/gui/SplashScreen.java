@@ -17,6 +17,7 @@ import com.SSound;
  *
  */
 public class SplashScreen extends BasicGameState {
+	
 	// Declare variable
 	private Image background;
 	public Image logo;

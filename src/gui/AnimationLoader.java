@@ -14,11 +14,6 @@ import pz.zombie.FemaleZombie;
 import pz.zombie.MaleZombie;
 import pz.zombie.NhiZombie;
 
-/**
- * 
- * @author Nguyen Phan Hung Thuan
- *
- */
 public class AnimationLoader {
 
 	public static ArrayList<AnimationItem> aniList = new ArrayList<>();
