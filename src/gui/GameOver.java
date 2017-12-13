@@ -6,18 +6,22 @@ import org.newdawn.slick.state.*;
 import com.Controller;
 
 public class GameOver extends BasicGameState {
+<<<<<<< HEAD
 	private static Text text;
 	
 	private static Image background;
 	private static Image newGameButton;
 	private static Image exitGameButton;
 	
+=======
+>>>>>>> AnimationLoader
 	
 	public GameOver(int state) {
 		
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+<<<<<<< HEAD
 		text = new Text(50.0f);
 		background = new Image("res/Map/GameOver.png");
 		newGameButton = new Image("res/UI/GOver_NewGame_Button.png");
@@ -28,6 +32,13 @@ public class GameOver extends BasicGameState {
 		showBackground(g);
 		showExitGameButton(g);
 		showNewGameButton(g);
+=======
+		
+	}
+	
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		
+>>>>>>> AnimationLoader
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
