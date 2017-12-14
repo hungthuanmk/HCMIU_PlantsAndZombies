@@ -15,6 +15,7 @@ import org.newdawn.slick.state.transition.*;
  *
  */
 public class PZGUI extends StateBasedGame {
+	
 	private static int width 	= 1600; 	
 	private static int height 	= 900;
 	

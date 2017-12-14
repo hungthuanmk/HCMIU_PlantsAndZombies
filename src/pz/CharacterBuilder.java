@@ -16,6 +16,12 @@ import gui.PlayUI;
 public class CharacterBuilder {
 
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Create a new plant with corresponding class
+	 * @param plantClass	Plant class, ex Peashooter.class
+	 * @param pos	Position
+	 * @return	Plant
+	 */
 	public static Plant buildPlant(Class plantClass, Position pos) {
 		try {
 			@SuppressWarnings("unchecked")
@@ -30,6 +36,13 @@ public class CharacterBuilder {
 	}
 	
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Create a new plant with class, at position row index, column index
+	 * @param plantClass	Plant class
+	 * @param rowIdx	Row index
+	 * @param colIdx	Column index
+	 * @return	Plant
+	 */
 	public static Plant buildPlant(Class plantClass, int rowIdx, int colIdx) {
 		Position pos = new Position(PlayUI.getPlantZonePosX() + PlayUI.getCellW()*colIdx,
 									PlayUI.getPlantZonePosY() + PlayUI.getCellH()*rowIdx);
@@ -39,6 +52,12 @@ public class CharacterBuilder {
 	}
 	
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Create a new zombie with corresponding class
+	 * @param zombieClass	Zombie class
+	 * @param pos	Position
+	 * @return	Zombie
+	 */
 	public static Zombie buildZombie(Class zombieClass, Position pos) {
 		try {
 			@SuppressWarnings("unchecked")
@@ -53,6 +72,12 @@ public class CharacterBuilder {
 	}
 	
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Create a new zombie with corresponding class
+	 * @param zombieClass	Zombie class
+	 * @param rowIdx	Row index
+	 * @return	Zombie
+	 */
 	public static Zombie buildZombie(Class zombieClass, int rowIdx) {
 		rowIdx = rowIdx < 0 ? 0 : rowIdx > 4 ? 4 : rowIdx;
 		Position pos = new Position(PZGUI.getWidth(), PlayUI.getPlantZonePosY() + rowIdx*PlayUI.getCellH());
