@@ -120,10 +120,13 @@ public class Play extends BasicGameState {
 				zombie.get(i).attack(plant, bullet);
 				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
-			if ((int)((float)(10.0f/timePass) * 10000000) > 400)
-				spawnRandZombie((int)((float)(10.0f/timePass) * 10000000));
-			else
-				spawnRandZombie(400);
+			if ((int)((10.0f/timePass) * 4000000f) > 100) {
+				spawnRandZombie((int)((10.0f/timePass) * 4000000f));
+				System.out.println((int)((10.0f/timePass) * 4000000f));
+			}else {
+				spawnRandZombie(100);
+				System.out.println(100);
+			}
 			timePass += delta;
 		}	
 	}	

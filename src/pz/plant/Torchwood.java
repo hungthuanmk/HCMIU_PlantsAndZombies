@@ -12,7 +12,7 @@ import pz.bullet.BPeashooter;
 public class Torchwood extends Plant {
 	
 	private static int hp = 200;
-	private static int damage = 20;
+	private static int damage = 10;
 	private static int attackInterval = 0;
 	
 	public Torchwood(Position pos) {

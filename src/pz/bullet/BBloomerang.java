@@ -10,8 +10,8 @@ import pz.Zombie;
 
 public class BBloomerang extends Bullet {
 
-	private static int   damage 	= 1;
-	private static float speed		= 0.01f;
+//	private static int   damage 	= 1;
+	private static float speed		= 0.03f;
 	private static float range		= 400f;
 	
 	private Zombie justShoot = null;
@@ -32,12 +32,12 @@ public class BBloomerang extends Bullet {
 		y = (float) -Math.sqrt( (range - 1f) / 100f);
 	}
 	
-	public BBloomerang(float x, float y) {
-		super(damage, speed, new Position(x, y));
-		initMoveEquation();
-		loadAnimation();	
-		
-	}
+//	public BBloomerang(float x, float y) {
+//		super(damage, speed, new Position(x, y));
+//		initMoveEquation();
+//		loadAnimation();	
+//		
+//	}
 	
 	public BBloomerang(float x, float y, int _damage, float _speed) {
 		super(_damage, _speed, new Position(x, y));
@@ -51,11 +51,11 @@ public class BBloomerang extends Bullet {
 		loadAnimation();
 	}
 	
-	public BBloomerang(Position pos) {
-		super(damage, speed, pos);
-		initMoveEquation();
-		loadAnimation();
-	}
+//	public BBloomerang(Position pos) {
+//		super(damage, speed, pos);
+//		initMoveEquation();
+//		loadAnimation();
+//	}
 	
 	public BBloomerang(Position pos, int _damage, int _speed) {
 		super(_damage, _speed, pos);
