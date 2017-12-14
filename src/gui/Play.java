@@ -119,10 +119,9 @@ public class Play extends BasicGameState {
 				zombie.get(i).attack(plant, bullet);
 				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
-			
-			spawnRandZombie(1000);
+			spawnRandZombie(1500 - ((bullet.size() * 10)<1400 ? bullet.size()*10 : 1000));
 		}	
-	}
+	}	
 	
 	/**
 	 * Draw all plants
@@ -165,8 +164,7 @@ public class Play extends BasicGameState {
 			
 			int hozId = (int) ( (mouseX - PlayUI.getPlantZonePosX()) / PlayUI.getCellW() ) ;
 			int verId = (int) ( (mouseY - PlayUI.getPlantZonePosY()) / PlayUI.getCellH() ) ;
-//			Position posCell = new Position(  (PlayUI.getPlantZonePosX() + (hozId) * PlayUI.getCellW()), 
-//						    (PlayUI.getPlantZonePosY() + (verId) * PlayUI.getCellH())  );
+
 			if (SeedUI.getPickedClass() != null || PlayUI.isShovelClicked())
 				drawPlantZoneCoordinates(hozId, verId, g);
 		}
@@ -256,7 +254,8 @@ public class Play extends BasicGameState {
 
 
 	private void toGameOver(StateBasedGame sbg, float x) {
-		if (x < 120) {
+
+		if (x < 130 * PZGUI.getResolutionRateWidth()) {
 			zombie.clear();
 			bullet.clear();
 			for (int i=0; i<5; i++)
