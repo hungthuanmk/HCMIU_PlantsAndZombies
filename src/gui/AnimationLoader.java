@@ -14,11 +14,6 @@ import pz.zombie.FemaleZombie;
 import pz.zombie.MaleZombie;
 import pz.zombie.NhiZombie;
 
-/**
- * 
- * @author Nguyen Phan Hung Thuan
- *
- */
 public class AnimationLoader {
 
 	public static ArrayList<AnimationItem> aniList = new ArrayList<>();
@@ -34,6 +29,7 @@ public class AnimationLoader {
 		CharacterBuilder.buildPlant(Sunflower.	  class, null);
 		CharacterBuilder.buildPlant(Torchwood.	  class, null);
 		CharacterBuilder.buildPlant(Wallnut.	  class, null);
+		CharacterBuilder.buildPlant(Bloomerang.	  class, null);
 		
 		CharacterBuilder.buildZombie(MaleZombie.  class, null);
 		CharacterBuilder.buildZombie(FemaleZombie.class, null);
