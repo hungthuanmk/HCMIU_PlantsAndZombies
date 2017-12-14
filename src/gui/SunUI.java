@@ -87,9 +87,6 @@ public class SunUI {
 				sunManager.remove(i--);
 			}
 	}
-	
-	public static void setSunCollected(Integer sunCollected) { SunUI.sunCollected = sunCollected;}
-	public static void setFramePassed(Integer framePassed) { SunUI.framePassed = framePassed;}
 
 	public static ArrayList<Sun> getSunManager() {return sunManager;}
 	

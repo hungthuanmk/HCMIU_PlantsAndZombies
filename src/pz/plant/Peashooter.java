@@ -18,7 +18,6 @@ public class Peashooter extends pz.Plant {
 	private static int _hp = 100;
 	private static int _damage = 20;
 	private static int _attackInterval = 100;
-	private static boolean _attackCooldown = false;
 	
 	public Peashooter(Position pos) {
 		super("Peashooter", _hp, _damage, _attackInterval, pos);
@@ -31,17 +30,11 @@ public class Peashooter extends pz.Plant {
 
 	@Override
 	public void attack(ArrayList<Bullet> bulletArrayList) {
-//		if (getFramePassed() > getAttackInterval()) {
-		if (getAnimation().getFrame() == 16 && _attackCooldown == false) {
+		if (getFramePassed() > getAttackInterval()) {
 			bulletArrayList.add(new pz.bullet.BPeashooter((getPos().x + getWidth()  * 0.8f) , 
 														  (getPos().y + getHeight() * 0.15f), 
 														  getDamage()));
 			setFramePassed(0);
-			_attackCooldown = true;
-		}
-		
-		if (getAnimation().getFrame() == 18) {
-			_attackCooldown = false;
 		}
 		setFramePassed(getFramePassed()+1);
 	}
