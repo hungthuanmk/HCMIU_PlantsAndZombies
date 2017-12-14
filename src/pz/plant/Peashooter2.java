@@ -32,8 +32,9 @@ public class Peashooter2 extends pz.Plant {
 														  getDamage()));
 			_attackCoolDown = true;
 		}
-		
-		if (getAnimation().getFrame() == 18 || getAnimation().getFrame() == 29) {
+		if ((getAnimation().getFrame() >= 17 && getAnimation().getFrame() <=26) || 
+				(getAnimation().getFrame() >= 28 && getAnimation().getFrame() <= 40) ||
+				(getAnimation().getFrame() >= 0 && getAnimation().getFrame() <= 15)) {
 			_attackCoolDown = false;
 		}
 		

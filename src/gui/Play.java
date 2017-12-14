@@ -22,6 +22,7 @@ public class Play extends BasicGameState {
 	private static ArrayList<Zombie> zombie 	= new ArrayList<Zombie>();	
 	private static Plant[][] 		  plant 	= new Plant[5][9];
 	private static ArrayList<Bullet> bullet 	= new ArrayList<Bullet>();
+	private static Integer timePass = 1;
 	
 	private static Image background;
 	
@@ -119,7 +120,11 @@ public class Play extends BasicGameState {
 				zombie.get(i).attack(plant, bullet);
 				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
-			spawnRandZombie(1500 - ((bullet.size() * 10)<1400 ? bullet.size()*10 : 1000));
+			if ((int)((float)(10.0f/timePass) * 10000000) > 400)
+				spawnRandZombie((int)((float)(10.0f/timePass) * 10000000));
+			else
+				spawnRandZombie(400);
+			timePass += delta;
 		}	
 	}	
 	
@@ -262,9 +267,7 @@ public class Play extends BasicGameState {
 				for (int j=0; j<9; j++) {
 					plant[i][j] = null;
 				}
-			SunUI.getSunManager().clear();
-			SunUI.setSunCollected(50);
-			SunUI.setFramePassed(0);
+			
 			sbg.getState(3);
 			sbg.enterState(3);
 		}
