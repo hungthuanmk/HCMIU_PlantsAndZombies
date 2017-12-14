@@ -26,7 +26,7 @@ public class GameOver extends BasicGameState {
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		showBackground(g);
-		showExitGameButton(g);
+		showExitGameButton(gc, g);
 		showNewGameButton(g);
 	}
 	
@@ -58,7 +58,7 @@ public class GameOver extends BasicGameState {
 		}
 	}
 	
-	private void showExitGameButton(Graphics g) throws SlickException {
+	private void showExitGameButton(GameContainer gc, Graphics g) throws SlickException {
 		float rate = 1.14f;
 		float posX = 885 * PZGUI.getResolutionRateWidth();
 		float posY = 430 * PZGUI.getResolutionRateHeight();
@@ -69,6 +69,7 @@ public class GameOver extends BasicGameState {
 		
 		if (Controller.mouseInArea(posX, posY, posX + width, posY + height)) {
 			exitGameButton.draw(posX, posY, width, height, new Color(0, 0, 0, 100));
+			
 		}
 	}
 	
