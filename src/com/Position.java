@@ -4,6 +4,11 @@ import pz.*;
 
 public class Position {
 	public float x=0, y=0; 
+	/**
+	 * Construct Position
+	 * @param x	X
+	 * @param y	Y
+	 */
 	public Position(float x, float y) {
 		this.x = x;
 		this.y = y;
@@ -14,6 +19,12 @@ public class Position {
 		return "X:" +  x + " Y:" + y;
 	}
 	
+	/**
+	 * Check intersection between bullet and zombie
+	 * @param bullet	Bullet
+	 * @param zombie	Zombie
+	 * @return	Intersect
+	 */
 	public static boolean isIntersect(Bullet bullet, Zombie zombie) {
 		float topLeftX1 = bullet.getPos().x;
 		float topLeftY1 = bullet.getPos().y;
@@ -28,6 +39,12 @@ public class Position {
 				botRightX1 < botRightX2 && botRightY1 < botRightY2   );
 	}
 	
+	/**
+	 * Check intersection between zombie and plant
+	 * @param zombie	Zombie
+	 * @param plant	Plant
+	 * @return	Intersect
+	 */
 	public static boolean isInteract(Zombie zombie, Plant plant) {
 		float topLeftX1 = zombie.getPos().x + zombie.getWidth()*0.33f;
 		float topLeftY1 = zombie.getPos().y;
