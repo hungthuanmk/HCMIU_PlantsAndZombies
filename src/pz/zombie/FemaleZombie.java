@@ -13,7 +13,7 @@ import pz.Zombie;
 
 public class FemaleZombie extends Zombie {
 
-	private static int hp = 100;
+	private static int hp = 200;
 	private static int damage = 50;
 	private static int attackInterval = 50;
 	private static float speed = 0.4f;

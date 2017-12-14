@@ -9,7 +9,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.Position;
-
 import pz.CharacterBuilder;
 import pz.Plant;
 
@@ -119,6 +118,15 @@ public class SeedUI {
 		pickedClass = null;
 		pickedImg = null;
 		SunUI.gainSun( - itemPrice);
+		//SSound.play("res/Sound/effect/tantan.wav");
+	}
+	
+	/**
+	 * Return seed count
+	 * @return Seed count
+	 */
+	public static int getSeedCount() {
+		return seed.size();
 	}
 	
 	
