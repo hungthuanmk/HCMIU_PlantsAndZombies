@@ -22,13 +22,11 @@ public class PlayUI {
 	private static Image pauseButton;
 	private static Image playButton;
 	private static Image speedUpButton;
-	private static Image shovel;
 	
 	private static Text sunView = new Text(35.0f);
 	private static Text gamePausedText = new Text(70.0f);
 	
 	private static boolean isSpeedUpClicked = false;
-	private static boolean isShovelClicked = false;
 
 	private static float plantZonePosX = 432 * PZGUI.getResolutionRateWidth();
 	private static float plantZonePosY = 142 * PZGUI.getResolutionRateHeight();
@@ -50,21 +48,14 @@ public class PlayUI {
 	private static float speedUpButtonWidth  = 60   * PZGUI.getResolutionRateWidth();
 	private static float speedUpButtonHeight = 60   * PZGUI.getResolutionRateHeight();
 
-	private static float shovelButtonPosX    = 1500   * PZGUI.getResolutionRateWidth();
-	private static float shovelButtonPosY    = 800    * PZGUI.getResolutionRateHeight();
-	private static float shovelButtonWidth   = 87     * PZGUI.getResolutionRateWidth();
-	private static float shovelButtonHeight  = 83.75f * PZGUI.getResolutionRateHeight();
-	
-	public static boolean isShovelClicked() {return isShovelClicked;}
-	public static float getPlantZonePosX()  {return plantZonePosX;}
-	public static float getPlantZonePosY()  {return plantZonePosY;}
-	public static float getCellW() 		    {return cellW;}
-	public static float getCellH() 		    {return cellH;}
-	public static float getSeedZonePosX()   {return seedZonePosX;}
-	public static float getSeedZonePosY()   {return seedZonePosY;}
-	public static float getSeedZoneW()      {return seedZoneW;}
-	public static float getSeedZoneH()      {return seedZoneH;}
-	public static void setShovelClicked(boolean isShovelClicked) {PlayUI.isShovelClicked = isShovelClicked;}
+	public static float getPlantZonePosX() {return plantZonePosX;}
+	public static float getPlantZonePosY() {return plantZonePosY;}
+	public static float getCellW() 		   {return cellW;}
+	public static float getCellH() 		   {return cellH;}
+	public static float getSeedZonePosX()  {return seedZonePosX;}
+	public static float getSeedZonePosY()  {return seedZonePosY;}
+	public static float getSeedZoneW()     {return seedZoneW;}
+	public static float getSeedZoneH()     {return seedZoneH;}
 
 	/**
 	 * Initialize images for PlayUI
@@ -74,7 +65,6 @@ public class PlayUI {
 		pauseButton   = new Image("res/UI/pause.png");
 		playButton    = new Image("res/UI/play.png");
 		speedUpButton = new Image("res/UI/speedUp.png");
-		shovel 		  = new Image("res/UI/Shovel.png");
 	}
 
 	/**
@@ -152,7 +142,7 @@ public class PlayUI {
 	/**
 	 * Draw Pause button
 	 * @param gc	GameContainer
-	 * @param g	Graphics
+	 * @param g	Grapghics
 	 * @throws SlickException
 	 */
 	public static void showPauseButton(GameContainer gc, Graphics g) throws SlickException {
@@ -188,7 +178,7 @@ public class PlayUI {
 			speedUpButton.draw(speedUpButtonPosX, speedUpButtonPosY, speedUpButtonWidth, speedUpButtonHeight,
 								new Color(0, 0, 0, 50));
 			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
-				gc.setTargetFrameRate(isSpeedUpClicked==false?180:60); 
+				gc.setTargetFrameRate(isSpeedUpClicked==false?180:60);
 				gc.setVSync(isSpeedUpClicked);
 				isSpeedUpClicked = !isSpeedUpClicked;
 				try {
@@ -216,32 +206,6 @@ public class PlayUI {
 			gamePausedText.render((PZGUI.getWidth()/2 - 170) * PZGUI.getResolutionRateWidth(), 300 * PZGUI.getResolutionRateHeight(), "Game is Paused!");
 			playButton.draw(pauseButtonPosX, pauseButtonPosY, pauseButtonWidth, pauseButtonHeight);
 		}
-	}
-	
-	/**
-	 * Show Shovel button
-	 * @param gc	GameContainer
-	 * @param g Graphics
-	 */
-	public static void showShovel(GameContainer gc, Graphics g) {
-		shovel.draw(shovelButtonPosX, shovelButtonPosY, shovelButtonWidth, shovelButtonHeight);
-		if (Controller.mouseInArea(shovelButtonPosX, shovelButtonPosY, shovelButtonPosX + shovelButtonWidth, shovelButtonPosY + shovelButtonHeight)) {
-			shovel.draw(shovelButtonPosX, shovelButtonPosY, shovelButtonWidth, shovelButtonHeight, new Color(0, 0, 0, 100));
-			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
-				isShovelClicked = !isShovelClicked;
-				try {
-					TimeUnit.MILLISECONDS.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		if (isShovelClicked) {
-			shovel.draw(Controller.getMouseX() - (20 * PZGUI.getResolutionRateWidth()), 
-					    Controller.getMouseY() - (30 * PZGUI.getResolutionRateHeight()), 
-					    shovelButtonWidth, 
-					    shovelButtonHeight);
-		}		
 	}
 
 }
