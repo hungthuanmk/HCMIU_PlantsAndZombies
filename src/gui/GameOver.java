@@ -1,5 +1,8 @@
 package gui;
 
+import java.util.concurrent.TimeUnit;
+
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -18,7 +21,7 @@ public class GameOver extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		text = new Text(50.0f);
+		text = new Text(55.0f);
 		background = new Image("res/Map/GameOver.png");
 		newGameButton = new Image("res/UI/GOver_NewGame_Button.png");
 		exitGameButton = new Image("res/UI/GOver_ExitGame_Button.png");
@@ -27,7 +30,8 @@ public class GameOver extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		showBackground(g);
 		showExitGameButton(gc, g);
-		showNewGameButton(g);
+		showNewGameButton(sbg, g);
+		text.render(755 * PZGUI.getResolutionRateWidth(), 275 * PZGUI.getResolutionRateHeight(), SunUI.getSunCollected().toString());
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -44,7 +48,7 @@ public class GameOver extends BasicGameState {
 	}
 	
 	// Show Button
-	private void showNewGameButton(Graphics g) throws SlickException {
+	private void showNewGameButton(StateBasedGame sbg, Graphics g) throws SlickException {
 		float rate = 1.14f;
 		float posX = 435 * PZGUI.getResolutionRateWidth();
 		float posY = 430 * PZGUI.getResolutionRateHeight();
@@ -55,6 +59,18 @@ public class GameOver extends BasicGameState {
 		
 		if (Controller.mouseInArea(posX, posY, posX + width, posY + height)) {
 			newGameButton.draw(posX, posY, width, height, new Color(0, 0, 0, 100));
+			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
+				SunUI.getSunManager().clear();
+				SunUI.setSunCollected(50);
+				SunUI.setFramePassed(0);
+				sbg.getState(2);
+				sbg.enterState(2);
+				try {
+					TimeUnit.MILLISECONDS.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
@@ -69,7 +85,14 @@ public class GameOver extends BasicGameState {
 		
 		if (Controller.mouseInArea(posX, posY, posX + width, posY + height)) {
 			exitGameButton.draw(posX, posY, width, height, new Color(0, 0, 0, 100));
-			
+			if (Mouse.getEventButtonState() && Mouse.getEventButton() == 0) {
+				gc.exit();
+				try {
+					TimeUnit.MILLISECONDS.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	

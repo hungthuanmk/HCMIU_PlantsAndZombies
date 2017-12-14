@@ -131,9 +131,9 @@ public class Play extends BasicGameState {
 				zombie.get(i).attack(plant, bullet);
 				toGameOver(sbg, zombie.get(i).getPos().x);
 			}
+			spawnRandZombie(1500 - ((bullet.size() * 10)<1400 ? bullet.size()*10 : 1000));
 		}	
 		
-		spawnRandZombie(1500 - ((bullet.size() * 10)<1400 ? bullet.size()*10 : 1000));
 	}
 	
 	private void eventHandle(GameContainer gc, Graphics g) {
@@ -184,10 +184,6 @@ public class Play extends BasicGameState {
 			}
 		}
 		
-		if (PlayUI.isShovelClicked() == true) {
-			PlayUI.setShovelClicked(false);
-		}
-		
 	}
 	
 	private void spawnRandZombie(int delta) {
@@ -207,7 +203,7 @@ public class Play extends BasicGameState {
 	}
 	
 	private void toGameOver(StateBasedGame sbg, float x) {
-		if (x < 130 * PZGUI.getResolutionRateWidth()) { 
+		if (x < 130 * PZGUI.getResolutionRateWidth()) { // 130 
 			zombie.clear();
 			bullet.clear();
 			for (int i=0; i<5; i++)
