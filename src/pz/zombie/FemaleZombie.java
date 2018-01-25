@@ -20,11 +20,13 @@ public class FemaleZombie extends Zombie {
 	
 	private Animation walkAni;
 	private Animation attackAni;
+	private Animation deadAni;
 
 	public FemaleZombie(Position pos) {
 		super("FemaleZombie", hp, damage, attackInterval, speed, pos);
 		walkAni = getAnimation();
 		attackAni = AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/attack", 110);
+		deadAni = AnimationLoader.getAnimationFromFolder("res/ZombieTest/FemaleZombie/dead", 110);	
 	}
 
 	@Override
@@ -47,7 +49,6 @@ public class FemaleZombie extends Zombie {
 						hit = true;
 						setSpeed(0);
 						setAnimation(attackAni);
-						//System.out.println("touched");
 						if (getFramePassed() >= getAttackInterval()) {
 							plant[i][j].setHp(plant[i][j].getHp() - getDamage());
 							setFramePassed(0);
@@ -62,6 +63,17 @@ public class FemaleZombie extends Zombie {
 			setAnimation(walkAni);
 			setSpeed(speed);
 		}
+	}
+
+	@Override
+	public boolean dead() {
+		if (getAnimation() != deadAni) {
+			setAnimation(deadAni);
+		}
+		System.out.println(getAnimation().getFrame());
+		if (getAnimation().getFrame() == getAnimation().getFrameCount() - 1)
+			return true;
+		return false;
 	}
 
 }

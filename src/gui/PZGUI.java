@@ -162,7 +162,7 @@ public class PZGUI extends StateBasedGame {
 		}
 		
 		PZGUI.highestPoint = highestPoint;
-		}
+	}
 	
 	
 }

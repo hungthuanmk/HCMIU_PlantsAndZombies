@@ -39,4 +39,6 @@ public abstract class Zombie extends Character {
 	}
 	
 	public abstract void attack(Plant[][] plant, ArrayList<Bullet> bulletList);
+	
+	public abstract boolean dead();
 }
