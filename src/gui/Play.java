@@ -270,10 +270,11 @@ public class Play extends BasicGameState {
 				for (int j=0; j<9; j++) {
 					plant[i][j] = null;
 				}
-			
+			timePass=1;
 			sbg.getState(3);
 			sbg.enterState(3);
 		}
+		
 	}
 	
 	public int getID() {
