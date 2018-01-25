@@ -15,7 +15,6 @@ public class GameOver extends BasicGameState {
 	private static Image newGameButton;
 	private static Image exitGameButton;
 	
-	
 	public GameOver(int state) {
 		
 	}
@@ -31,7 +30,19 @@ public class GameOver extends BasicGameState {
 		showBackground(g);
 		showExitGameButton(gc, g);
 		showNewGameButton(sbg, g);
-		text.render(755 * PZGUI.getResolutionRateWidth(), 275 * PZGUI.getResolutionRateHeight(), SunUI.getSunCollected().toString());
+		int highScore = PZGUI.getHighestPoint();
+		int score = SunUI.getSunCollected();
+		String scoreStr = SunUI.getSunCollected().toString();
+		if (score >= highScore) {
+			PZGUI.setHighestPoint(score);
+			scoreStr += " (NEW RECORD)";
+			System.out.println(scoreStr);
+		}
+		
+		text.render(755 * PZGUI.getResolutionRateWidth(), 275 * PZGUI.getResolutionRateHeight(), scoreStr);
+		System.out.println(scoreStr);
+		
+		text.render(755 * PZGUI.getResolutionRateWidth(), 350 * PZGUI.getResolutionRateHeight(), String.format("%d",PZGUI.getHighestPoint()));
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
