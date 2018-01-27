@@ -1,7 +1,10 @@
 package gui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
@@ -149,20 +152,10 @@ public class PZGUI extends StateBasedGame {
 
 	public static int getHighestPoint()             {return highestPoint;}
 
-	public static void setHighestPoint(int highestPoint) {
-		try {
-			Ini config = new Ini(new File("config.ini"));
-			config.put("SAVEGAME", "highScore", highestPoint);
-		} catch (InvalidFileFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public static void setHighestPoint(int highestPoint) throws InvalidFileFormatException, IOException {
 		PZGUI.highestPoint = highestPoint;
+
+		Ini config = new Ini(new File("config.ini"));
+		config.put("SAVEGAME", "highScore", highestPoint);
 	}
-	
-	
 }

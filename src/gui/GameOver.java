@@ -1,7 +1,9 @@
 package gui;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.ini4j.InvalidFileFormatException;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
@@ -20,7 +22,7 @@ public class GameOver extends BasicGameState {
 	}
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		text = new Text(55.0f);
+		text = new Text(60.0f);
 		background = new Image("res/Map/GameOver.png");
 		newGameButton = new Image("res/UI/GOver_NewGame_Button.png");
 		exitGameButton = new Image("res/UI/GOver_ExitGame_Button.png");
@@ -34,15 +36,21 @@ public class GameOver extends BasicGameState {
 		int score = SunUI.getSunCollected();
 		String scoreStr = SunUI.getSunCollected().toString();
 		if (score >= highScore) {
-			PZGUI.setHighestPoint(score);
+			try {
+				PZGUI.setHighestPoint(score);
+			} catch (InvalidFileFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			scoreStr += " (NEW RECORD)";
-			System.out.println(scoreStr);
 		}
 		
 		text.render(755 * PZGUI.getResolutionRateWidth(), 275 * PZGUI.getResolutionRateHeight(), scoreStr);
-		System.out.println(scoreStr);
 		
-		text.render(755 * PZGUI.getResolutionRateWidth(), 350 * PZGUI.getResolutionRateHeight(), String.format("%d",PZGUI.getHighestPoint()));
+		text.render(755 * PZGUI.getResolutionRateWidth(), 375 * PZGUI.getResolutionRateHeight(), String.format("%d",PZGUI.getHighestPoint()));
 	}
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
@@ -62,7 +70,7 @@ public class GameOver extends BasicGameState {
 	private void showNewGameButton(StateBasedGame sbg, Graphics g) throws SlickException {
 		float rate = 1.14f;
 		float posX = 435 * PZGUI.getResolutionRateWidth();
-		float posY = 430 * PZGUI.getResolutionRateHeight();
+		float posY = 470 * PZGUI.getResolutionRateHeight();
 		float width = newGameButton.getWidth() * PZGUI.getResolutionRateWidth() * rate;
 		float height = newGameButton.getHeight() * PZGUI.getResolutionRateHeight() * rate;
 		
@@ -88,7 +96,7 @@ public class GameOver extends BasicGameState {
 	private void showExitGameButton(GameContainer gc, Graphics g) throws SlickException {
 		float rate = 1.14f;
 		float posX = 885 * PZGUI.getResolutionRateWidth();
-		float posY = 430 * PZGUI.getResolutionRateHeight();
+		float posY = 470 * PZGUI.getResolutionRateHeight();
 		float width = newGameButton.getWidth() * PZGUI.getResolutionRateWidth() * rate;
 		float height = newGameButton.getHeight() * PZGUI.getResolutionRateHeight() * rate;
 		
