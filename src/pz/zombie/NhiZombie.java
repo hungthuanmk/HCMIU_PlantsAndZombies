@@ -20,10 +20,12 @@ public class NhiZombie extends Zombie {
 	
 	private Animation attackAni;
 	private Animation walkAni;
-
+	private Animation deadAni;
+	
 	public NhiZombie(Position pos) {
 		super("FemaleZombie", hp, damage, attackInterval, speed, pos);
 		attackAni = AnimationLoader.getAnimationFromFolder("res/ZombieTest/NhiZombie/attack", 110);
+		deadAni = AnimationLoader.getAnimationFromFolder("res/ZombieTest/NhiZombie/dead", 110);
 		walkAni = getAnimation();
 	}
 
@@ -62,6 +64,17 @@ public class NhiZombie extends Zombie {
 			setAnimation(walkAni);
 			setSpeed(speed);
 		}
+	}
+	
+	@Override
+	public boolean dead() {
+		if (getAnimation() != deadAni) {
+			setAnimation(deadAni);
+		}
+		System.out.println(getAnimation().getFrame());
+		if (getAnimation().getFrame() == getAnimation().getFrameCount() - 1)
+			return true;
+		return false;
 	}
 
 }

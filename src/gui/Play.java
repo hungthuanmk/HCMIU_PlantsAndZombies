@@ -113,7 +113,9 @@ public class Play extends BasicGameState {
 			for (int i=0; i < zombie.size(); i++) {
 				if (zombie.get(i) == null) continue;
 				if (zombie.get(i).getHp() <= 0) {
-					zombie.remove(i);
+					if (zombie.get(i).dead()) {
+						zombie.remove(i);
+					}
 					continue;
 				}
 				zombie.get(i).move(); //move zombie
@@ -122,10 +124,10 @@ public class Play extends BasicGameState {
 			}
 			if ((int)((10.0f/timePass) * 4000000f) > 100) {
 				spawnRandZombie((int)((10.0f/timePass) * 4000000f));
-				System.out.println((int)((10.0f/timePass) * 4000000f));
+//				System.out.println((int)((10.0f/timePass) * 4000000f));
 			}else {
 				spawnRandZombie(100);
-				System.out.println(100);
+//				System.out.println(100);
 			}
 			timePass += delta;
 		}	
@@ -270,10 +272,11 @@ public class Play extends BasicGameState {
 				for (int j=0; j<9; j++) {
 					plant[i][j] = null;
 				}
-			
+			timePass=1;
 			sbg.getState(3);
 			sbg.enterState(3);
 		}
+		
 	}
 	
 	public int getID() {

@@ -1,7 +1,10 @@
 package gui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
@@ -21,11 +24,12 @@ public class PZGUI extends StateBasedGame {
 	
 //	public static int width		= 800;  	public static int height	= 450;
 	
-	private static int 	   targetFPS = 65;
-	private static boolean showFPS 	 = true;
-	private static boolean fullScreen = false;
-	private static boolean vSync 	 = true;
-	private static boolean AA		 = true;
+	private static int 	   targetFPS     = 65;
+	private static boolean showFPS 	     = true;
+	private static boolean fullScreen    = false;
+	private static boolean vSync 	     = true;
+	private static boolean AA		     = true;
+	private static int 	   highestPoint  = 0;
 	
 	private static final String gameName = "TNT Plants Vs. Zombies HCMIU";
 	private static final int splashScreen = 0;
@@ -48,13 +52,14 @@ public class PZGUI extends StateBasedGame {
 		super(gameName);
 		try {
 			Ini ini = new Ini(new File("config.ini"));
-//			width      = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
-//			height     = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
-			targetFPS  = Integer.parseInt	  (ini.get("DISPLAY", "targetFPS" ));
-			showFPS    = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
-			fullScreen = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
-			vSync      = Boolean.parseBoolean (ini.get("DISPLAY", "vSync"	  ));
-			AA         = Boolean.parseBoolean (ini.get("DISPLAY", "AA"	  ));
+//			width        = Integer.parseInt	  (ini.get("DISPLAY", "width"	  ));
+//			height       = Integer.parseInt	  (ini.get("DISPLAY", "height"	  ));
+			targetFPS    = Integer.parseInt	    (ini.get("DISPLAY", "targetFPS" ));
+			showFPS      = Boolean.parseBoolean (ini.get("DISPLAY", "showFPS"	  ));
+			fullScreen   = Boolean.parseBoolean (ini.get("DISPLAY", "fullScreen"));
+			vSync        = Boolean.parseBoolean (ini.get("DISPLAY", "vSync"	  ));
+			AA           = Boolean.parseBoolean (ini.get("DISPLAY", "AA"	  ));
+			highestPoint = Integer.parseInt     (ini.get("SAVEGAME", "highScore"));
 			
 		} catch (InvalidFileFormatException e) {
 			e.printStackTrace();
@@ -144,5 +149,13 @@ public class PZGUI extends StateBasedGame {
 
 	public static float   getResolutionRateWidth()  {return resolutionRateWidth;}
 	public static float   getResolutionRateHeight() {return resolutionRateHeight;}
-	
+
+	public static int getHighestPoint()             {return highestPoint;}
+
+	public static void setHighestPoint(int highestPoint) throws InvalidFileFormatException, IOException {
+		PZGUI.highestPoint = highestPoint;
+
+		Ini config = new Ini(new File("config.ini"));
+		config.put("SAVEGAME", "highScore", highestPoint);
+	}
 }
